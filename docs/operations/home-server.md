@@ -25,8 +25,15 @@ checkouts, non-fast-forward changes, unsafe paths, and password prompts.
 
 ## Cognee environment
 
-The server uses Python 3.12 and keeps Cognee isolated from the system interpreter. After syncing
-the checkout, run:
+The server uses Python 3.12 and keeps Cognee isolated from the system interpreter. The bootstrap
+uses `uv` when available; install it once in the user account if needed:
+
+```bash
+UV_INSTALL_DIR="$HOME/.local" UV_NO_MODIFY_PATH=1 \
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+After syncing the checkout, run:
 
 ```bash
 cd /home/talha/testflight
