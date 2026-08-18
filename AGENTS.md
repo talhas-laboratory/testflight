@@ -7,3 +7,5 @@
   architecture decision record.
 - New adapters need a descriptor, a dependency-free health probe, documentation, and tests.
 - Run `make check` before committing.
+- Server access uses the endpoint documented in `.env.example`; never add credentials to this
+  file or any tracked file.
