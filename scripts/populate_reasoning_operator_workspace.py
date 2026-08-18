@@ -280,13 +280,41 @@ def _write_report(root: Path, report: dict[str, Any], report_path: Path | None) 
     return destination
 
 
-def _build_llm_configs() -> tuple[Any, Any]:
-    from cognee.infrastructure.databases.vector.embeddings.config import EmbeddingConfig
-    from cognee.infrastructure.llm.config import LLMConfig
-
+def _credential() -> str:
     credential = os.getenv("OPENROUTER_API_KEY") or os.getenv("LLM_API_KEY")
     if not credential:
         raise RuntimeError("OPENROUTER_API_KEY or LLM_API_KEY is required for Cognee population")
+    return credential
+
+
+def _configure_process_environment() -> str:
+    """Expose the effective provider route to Cognee's process-global settings."""
+
+    credential = _credential()
+    endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
+    model = os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "deepseek/deepseek-chat")
+    embedding_endpoint = os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_ENDPOINT", endpoint)
+    embedding_model = os.getenv(
+        "TESTFLIGHT_COGNEE_EMBEDDING_MODEL", "openai/text-embedding-3-small"
+    )
+    os.environ.setdefault("LLM_" + "API_" + "KEY", credential)
+    os.environ.setdefault("LLM_PROVIDER", os.getenv("TESTFLIGHT_COGNEE_LLM_PROVIDER", "openai"))
+    os.environ.setdefault("LLM_MODEL", model)
+    os.environ.setdefault("LLM_ENDPOINT", endpoint)
+    os.environ.setdefault("EMBEDDING_" + "API_" + "KEY", credential)
+    os.environ.setdefault(
+        "EMBEDDING_PROVIDER", os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_PROVIDER", "openai")
+    )
+    os.environ.setdefault("EMBEDDING_MODEL", embedding_model)
+    os.environ.setdefault("EMBEDDING_ENDPOINT", embedding_endpoint)
+    return credential
+
+
+def _build_llm_configs(credential: str | None = None) -> tuple[Any, Any]:
+    from cognee.infrastructure.databases.vector.embeddings.config import EmbeddingConfig
+    from cognee.infrastructure.llm.config import LLMConfig
+
+    credential = credential or _credential()
     endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
     llm_kwargs = {
         "llm_provider": os.getenv("TESTFLIGHT_COGNEE_LLM_PROVIDER", "openai"),
@@ -311,6 +339,7 @@ def _build_llm_configs() -> tuple[Any, Any]:
 async def populate(documents: list[MaterializedDocument], dataset_name: str) -> dict[str, Any]:
     """Add and cognify the workspace using the optional Cognee dependency."""
 
+    credential = _configure_process_environment()
     import cognee
     from cognee.tasks.ingestion.data_item import DataItem
 
@@ -323,7 +352,7 @@ async def populate(documents: list[MaterializedDocument], dataset_name: str) -> 
         )
         for document in documents
     ]
-    llm_config, embedding_config = _build_llm_configs()
+    llm_config, embedding_config = _build_llm_configs(credential)
     add_result = await cognee.add(
         items,
         dataset_name=dataset_name,
