@@ -397,6 +397,11 @@ async def populate(
         child.terminate()
     for child in children:
         child.join(timeout=10)
+    for child in children:
+        if child.is_alive():
+            child.kill()
+    for child in children:
+        child.join(timeout=5)
     return {
         "add_result_type": type(add_result).__name__,
         "cognify_result_type": type(cognify_result).__name__,
