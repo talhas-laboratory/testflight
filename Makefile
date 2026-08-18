@@ -1,9 +1,12 @@
-.PHONY: setup format lint test check registry compose-config sync-server
+.PHONY: setup setup-server-cognee format lint test check registry compose-config sync-server
 
 setup:
 	corepack enable
 	uv sync --all-packages
 	pnpm install --frozen-lockfile
+
+setup-server-cognee:
+	./scripts/setup_server_cognee.sh
 
 format:
 	uv run ruff format .

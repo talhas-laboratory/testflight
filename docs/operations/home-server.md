@@ -22,3 +22,17 @@ make sync-server
 Override the defaults with `TESTFLIGHT_SERVER`, `TESTFLIGHT_REMOTE_DIR`,
 `TESTFLIGHT_REPOSITORY`, or `TESTFLIGHT_BRANCH`. The script refuses dirty local and server
 checkouts, non-fast-forward changes, unsafe paths, and password prompts.
+
+## Cognee environment
+
+The server uses Python 3.12 and keeps Cognee isolated from the system interpreter. After syncing
+the checkout, run:
+
+```bash
+cd /home/talha/testflight
+./scripts/setup_server_cognee.sh
+source .venv-cognee/bin/activate
+```
+
+The script installs the pinned Cognee release through the owned adapter and finishes with the
+adapter health probe. `.venv-cognee/` is ignored and never synchronized through Git.

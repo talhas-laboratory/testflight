@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "testflight-adapter-cognee"
 version = "0.1.0"
 description = "Optional Cognee integration boundary for Testflight"
-requires-python = ">=3.13,<3.14"
+requires-python = ">=3.12,<3.14"
 dependencies = ["testflight-core"]
 
 [project.optional-dependencies]

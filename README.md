@@ -50,6 +50,12 @@ uv sync --all-packages --extra cognee --extra langgraph
 pnpm --filter @testflight/deepseek-harness-adapter upstream:version
 ```
 
+On the home server, set up Cognee in its own ignored virtual environment with:
+
+```bash
+./scripts/setup_server_cognee.sh
+```
+
 See [the integration guide](docs/integrations/adding-an-upstream.md) before adding another
 project and [the server guide](docs/operations/home-server.md) before enabling synchronization.
 

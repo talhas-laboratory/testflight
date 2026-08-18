@@ -2,7 +2,7 @@
 name = "testflight-dev"
 version = "0.1.0"
 description = "Development tooling for the Testflight integration laboratory"
-requires-python = ">=3.13,<3.14"
+requires-python = ">=3.12,<3.14"
 
 [dependency-groups]
 dev = [
