@@ -1,0 +1,33 @@
+[project]
+name = "testflight-dev"
+version = "0.1.0"
+description = "Development tooling for the Testflight integration laboratory"
+requires-python = ">=3.13,<3.14"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.4,<9",
+  "pyyaml>=6.0,<7",
+  "ruff>=0.12,<0.15",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = [
+  "packages/testflight-core",
+  "adapters/cognee",
+  "adapters/langgraph",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q --import-mode=importlib --strict-config --strict-markers"
+testpaths = ["tests", "packages", "adapters"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

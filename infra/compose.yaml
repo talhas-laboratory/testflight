@@ -1,0 +1,17 @@
+name: testflight
+
+services:
+  workspace:
+    image: python:3.13-slim-bookworm
+    profiles: [workspace]
+    working_dir: /workspace
+    command: ["sleep", "infinity"]
+    init: true
+    volumes:
+      - ..:/workspace
+      - testflight-data:/var/lib/testflight
+    environment:
+      TESTFLIGHT_DATA_DIR: /var/lib/testflight
+
+volumes:
+  testflight-data:

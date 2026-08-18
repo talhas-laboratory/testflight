@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testflight-adapter-langgraph"
+version = "0.1.0"
+description = "Optional LangGraph integration boundary for Testflight"
+requires-python = ">=3.13,<3.14"
+dependencies = ["testflight-core"]
+
+[project.optional-dependencies]
+langgraph = ["langgraph==1.2.11"]
+
+[tool.uv.sources]
+testflight-core = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testflight_adapter_langgraph"]

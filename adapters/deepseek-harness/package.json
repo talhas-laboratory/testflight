@@ -1,0 +1,16 @@
+{
+  "name": "@testflight/deepseek-harness-adapter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "test": "node --test test/*.test.mjs",
+    "upstream:version": "pnpm dlx @deepseek-ai/dsh@0.1.0-rc.7 --version"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2",
+    "typescript": "5.9.2"
+  }
+}

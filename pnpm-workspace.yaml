@@ -1,0 +1,4 @@
+packages:
+  - "adapters/deepseek-harness"
+  - "apps/*"
+  - "packages/*"
