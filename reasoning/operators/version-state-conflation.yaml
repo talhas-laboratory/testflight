@@ -1,0 +1,72 @@
+operator:
+  id: world://operator/guardrail/version-state-conflation
+  version: 1
+  kind: control
+  category: version_state_conflation
+  purpose: Keep a current projection separate from its historical versions, branches, and derivations.
+  accepts:
+    - state snapshot, proposal, or projection
+    - version/branch history and derivation records
+  requires_context:
+    - entity/locus identity and valid/recorded time
+    - branch, commit, and optimistic concurrency information
+    - source evidence and downstream dependencies
+  preconditions:
+    - snapshot has a version or explicit unversioned hold
+    - mutation authority and expected revision are known
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: end_to_end
+  procedure:
+    - step: separate_snapshot_history
+      action: Record current state, prior versions, branches, and projection metadata as separate objects.
+    - step: bind_time
+      action: Attach valid time, recorded time, source time, and derivation time where available.
+    - step: check_dependencies
+      action: Identify claims, contexts, indexes, and outputs that depend on this version.
+    - step: propose_delta
+      action: Produce an append-only state delta or branch proposal with expected revision.
+    - step: invalidate_rebuild
+      action: Mark dependent projections stale when evidence or a prior version is corrected; preserve rebuild path.
+  returns:
+    - current_projection
+    - version_lineage
+    - proposed_delta
+    - invalidated_dependents
+    - status: current | conflict | stale | hold
+  invariants:
+    - history is not overwritten by a current snapshot
+    - branches and contradictions remain addressable
+    - derived projections can be rebuilt from immutable evidence
+  forbidden_shortcuts:
+    - update a snapshot in place without a derivation
+    - treat latest as truest without scope/time policy
+    - erase a branch because it is not currently selected
+  hold_when:
+    - expected revision differs from current revision
+    - valid time and recorded time materially disagree without policy
+    - a correction would invalidate an untracked dependent projection
+  failure_modes:
+    - history_overwrite
+    - stale_projection
+    - branch_loss
+    - lost_update
+  evaluators:
+    - id: lineage_replay
+      check: Rebuilding from evidence reproduces the projection or reports explicit divergence.
+      pass_condition: Replay path and version ids are complete.
+    - id: concurrency
+      check: Writes reject unexpected revisions.
+      pass_condition: No silent lost update.
+  evidence:
+    mindscape_operator_refs: [O-06, O-10]
+    source_basis:
+      - epistemics: bitemporal claims and dependency invalidation
+      - AGENT_CONFIG: optimistic concurrency and append-only evidence
+      - failure_modes: materialized view as source
+

@@ -1,0 +1,76 @@
+operator:
+  id: world://operator/guardrail/validation-persistence-conflation
+  version: 1
+  kind: control
+  category: validation_persistence_conflation
+  purpose: Keep structural validity separate from semantic acceptance and persistent world mutation.
+  accepts:
+    - candidate output/proposal
+    - schema, invariant, semantic evaluator, and persistence policy
+  requires_context:
+    - operator id/version and output schema
+    - source evidence and derivation
+    - mutation authority, expected revision, and review policy
+  preconditions:
+    - output parses against the declared schema or is explicitly invalid
+    - semantic status and persistence status are separate fields
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: hold
+    proof_demand: end_to_end
+  procedure:
+    - step: run_structural_checks
+      action: Validate schema, required fields, types, identifiers, bounds, and references.
+    - step: run_invariant_checks
+      action: Validate provenance, scope, authority, contradiction, and operator-specific invariants.
+    - step: run_semantic_checks
+      action: Apply an independent semantic evaluator; schema success alone is insufficient.
+    - step: classify_result
+      action: Return accepted, partial, held, rejected, or unavailable with diagnostics and evidence.
+    - step: gate_persistence
+      action: Persist only an explicit proposal/commit allowed by policy; never auto-commit on parser success.
+  returns:
+    - structural_validation
+    - invariant_validation
+    - semantic_evaluation
+    - persistence_decision
+    - diagnostics
+    - status: accepted | partial | held | rejected | unavailable
+  invariants:
+    - provider exit success is not inference success
+    - invalid outputs never enter semantic cache or committed state
+    - held/rejected proposals retain diagnostics and source lineage
+  forbidden_shortcuts:
+    - map missing fields to guessed semantic values
+    - treat JSON/schema validity as truth
+    - mutate the world because a model returned successfully
+  hold_when:
+    - semantic evaluator is unavailable for a material decision
+    - output is structurally valid but evidence/provenance is incomplete
+    - persistence authority or revision is unresolved
+  failure_modes:
+    - schema_truth
+    - silent_repair
+    - invalid_cache_entry
+    - auto_commit
+  evaluators:
+    - id: schema_independence
+      check: Structural and semantic checks produce separate records.
+      pass_condition: No single pass flag represents both.
+    - id: persistence_gate
+      check: Held/rejected semantic output cannot become committed state.
+      pass_condition: Unauthorized mutation count is zero.
+    - id: diagnostic_fidelity
+      check: Failure phase and source lineage remain inspectable.
+      pass_condition: Reproduction information is retained.
+  evidence:
+    mindscape_operator_refs: [O-06, O-12]
+    source_basis:
+      - sustainable_operator_runtime: schema/invariant validation and proposal record
+      - task_operate: evaluate before commit/action
+      - failure_modes: validation/persistence collapse
+

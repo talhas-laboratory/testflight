@@ -1,0 +1,71 @@
+operator:
+  id: world://operator/guardrail/ontology-conflation
+  version: 1
+  kind: control
+  category: ontology_conflation
+  purpose: Prevent storage labels, implementation classes, and semantic types from being treated as interchangeable.
+  accepts:
+    - extracted record, schema, or proposed entity model
+    - relevant ontology definitions and relations
+  requires_context:
+    - locus and goal
+    - candidate referents, events, states, relations, claims, and contexts
+    - temporal scope and representation
+  preconditions:
+    - each candidate has a source span or explicit unknown status
+    - the requested abstraction level is known
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: conceptual
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: conceptual
+  procedure:
+    - step: classify_type
+      action: Assign candidate semantic types such as referent, entity, event, state, relation, claim, context, or projection.
+    - step: inspect_behavior
+      action: Check whether the candidate persists, changes over time, relates other items, or merely records an assertion.
+    - step: compare_levels
+      action: Separate world-model type from storage type, provider schema, UI label, and retrieval index.
+    - step: preserve_alternatives
+      action: Keep competing types or missing intermediaries when evidence cannot discriminate them.
+    - step: return_mapping
+      action: Return the typed semantic proposal and the adapter mapping needed by the implementation.
+  returns:
+    - semantic_type
+    - implementation_mapping
+    - type_rationale
+    - alternatives
+    - status: resolved | ambiguous | hold
+  invariants:
+    - ontology is not invented merely to satisfy a table schema
+    - temporary state is not reified as identity
+    - relation meaning and scope remain explicit
+  forbidden_shortcuts:
+    - use a database row name as a semantic definition
+    - flatten event, state, relation, and claim into one generic entity
+    - resolve an ambiguity by selecting the most familiar label
+  hold_when:
+    - the candidate has no evidence-bearing referent
+    - type choice changes downstream authority or persistence semantics
+    - the available ontology cannot represent the candidate without distortion
+  failure_modes:
+    - type_erasure
+    - storage_ontology_leak
+    - state_reification
+    - relation_flattening
+  evaluators:
+    - id: typed_consistency
+      check: The selected type is compatible with temporal behavior and relation roles.
+      pass_condition: No incompatible role is asserted.
+    - id: adapter_thinness
+      check: Implementation mapping does not add semantic meaning.
+      pass_condition: Mapping is reversible or explicitly lossy with omissions recorded.
+  evidence:
+    mindscape_operator_refs: [O-03, O-04]
+    source_basis:
+      - ONTOLOGY: Entity, Event, State, Relation, Claim, Context distinctions
+      - failure_modes: reify temporary state and diagnosis-derived grammar
+      - PORTABLE_WORLD_INTERFACE: adapter rule is thin

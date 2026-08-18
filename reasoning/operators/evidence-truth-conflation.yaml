@@ -1,0 +1,77 @@
+operator:
+  id: world://operator/guardrail/evidence-truth-conflation
+  version: 1
+  kind: control
+  category: evidence_truth_conflation
+  purpose: Convert source material into explicitly scoped claims without treating evidence as self-interpreting truth.
+  accepts:
+    - evidence envelope and bounded source excerpt
+    - candidate interpretation or extraction
+  requires_context:
+    - source, actor, time, integrity, access, and provenance
+    - claim status vocabulary
+    - scope, alternatives, and contradictions
+    - authority and task goal
+  preconditions:
+    - evidence hash/source reference is present or status is unavailable
+    - the proposed claim has a stated scope
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: conceptual
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: branch
+    proof_demand: operational
+  procedure:
+    - step: preserve_envelope
+      action: Store or reference the immutable evidence envelope before interpretation.
+    - step: classify_status
+      action: Label the output observed, reported, inferred, hypothesized, simulated, normative, retracted, or unresolved.
+    - step: bind_claim
+      action: Attach scope, valid time, recorded time, support, contradiction, and authority.
+    - step: inspect_alternatives
+      action: Search for competing interpretations and state what the evidence cannot establish.
+    - step: emit_proposal
+      action: Return a contestable claim proposal with derivation; never silently promote it to fact.
+  returns:
+    - evidence_reference
+    - claim_proposal
+    - epistemic_status
+    - support_and_contradictions
+    - omissions
+    - status: grounded | partial | unresolved | hold
+  invariants:
+    - evidence precedes interpretation
+    - claims remain scoped, revisable, and provenance-bearing
+    - missing evidence and no-hit are valid outcomes
+  forbidden_shortcuts:
+    - present a model-generated sentence as an observed fact
+    - fill missing evidence with plausible detail
+    - delete contradictions to produce a clean answer
+  hold_when:
+    - the source cannot be located
+    - the interpretation requires a private state or diagnosis not evidenced by the source
+    - support and contradiction cannot be represented without collapsing alternatives
+  failure_modes:
+    - evidence_as_fact
+    - detail_laundering
+    - contradiction_deletion
+    - unsupported_inference
+  evaluators:
+    - id: provenance_completeness
+      check: Every material claim has a source and derivation reference.
+      pass_condition: No uncited material claim.
+    - id: status_accuracy
+      check: Output status matches the available evidence and authority.
+      pass_condition: Observed/reported/inferred distinctions survive.
+    - id: contradiction_retention
+      check: Known conflicts remain represented.
+      pass_condition: No silent conflict deletion.
+  evidence:
+    mindscape_operator_refs: [O-06, O-12]
+    source_basis:
+      - epistemics: evidence envelope, claim status, bitemporal scope, derivation graph
+      - WORLD_SUBSTRATE: evidence precedes interpretation
+      - failure_modes: collapse evidence/report/inference/simulation
+

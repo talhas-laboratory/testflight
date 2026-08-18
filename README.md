@@ -27,6 +27,7 @@ reusable packages or independently deployable services.
 | `experiments/` | Disposable, time-boxed proofs of concept |
 | `infra/` | Local and deployment infrastructure |
 | `upstreams/` | Source, version, license, and integration registry |
+| `reasoning/` | Portable reasoning-operator contracts and guardrail catalog |
 | `docs/` | Designs, decisions, and research |
 | `scripts/` | Setup, validation, and synchronization tools |
 
@@ -58,6 +59,10 @@ On the home server, set up Cognee in its own ignored virtual environment with:
 
 See [the integration guide](docs/integrations/adding-an-upstream.md) before adding another
 project and [the server guide](docs/operations/home-server.md) before enabling synchronization.
+
+For semantic extraction or agent-runtime work, start with the
+[reasoning-operator guide](reasoning/README.md) and select the smallest applicable contract
+from [`reasoning/operators/index.yaml`](reasoning/operators/index.yaml).
 
 ## Current integrations
 

@@ -23,6 +23,7 @@ lint:
 	uv run ruff format --check .
 	uv run ruff check .
 	uv run python scripts/validate_registry.py
+	uv run python scripts/validate_reasoning_operators.py
 	uv run python scripts/check_secrets.py
 	pnpm run check
 

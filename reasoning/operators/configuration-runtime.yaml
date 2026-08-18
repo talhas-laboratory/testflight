@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/guardrail/configuration-runtime
+  version: 1
+  kind: control
+  category: configuration_runtime
+  purpose: Verify that declared configuration, effective runtime configuration, and execution evidence agree.
+  accepts:
+    - configuration sources, environment/credential references, and runtime dump
+    - operation request and provider/model route
+  requires_context:
+    - workspace and allowed secret references
+    - precedence rules and effective values
+    - operator/version, provider capability, and execution environment
+  preconditions:
+    - configuration sources are enumerated without exposing secret values
+    - an effective configuration can be inspected before execution
+  parameters:
+    abstraction_level: system
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: hold
+    proof_demand: end_to_end
+  procedure:
+    - step: enumerate_sources
+      action: List defaults, files, environment references, CLI overrides, and runtime adapters with precedence.
+    - step: resolve_effective
+      action: Compute effective non-secret configuration and credential references without printing secret material.
+    - step: compare_contracts
+      action: Check provider/model, endpoint, workspace roots, budgets, and operator version against the requested contract.
+    - step: dry_run
+      action: Produce a preflight manifest or dump-config result before any inference or mutation.
+    - step: record_runtime
+      action: Bind the effective configuration and environment fingerprint to the execution receipt.
+  returns:
+    - declared_configuration
+    - effective_configuration_redacted
+    - mismatches
+    - preflight_manifest
+    - status: consistent | mismatch | unavailable | hold
+  invariants:
+    - secrets are references at rest and never appear in logs/prompts/receipts
+    - runtime behavior is governed by effective configuration, not assumed defaults
+    - configuration changes are visible in derivation/cache identity
+  forbidden_shortcuts:
+    - claim a provider/model is active because it is written in a template
+    - print API keys while debugging configuration
+    - execute before preflight configuration and budget checks pass
+  hold_when:
+    - effective configuration cannot be determined
+    - declared and effective route/model/workspace differ materially
+    - credential reference or endpoint is missing
+  failure_modes:
+    - config_drift
+    - wrong_provider
+    - secret_leak
+    - preflight_bypass
+  evaluators:
+    - id: effective_config_match
+      check: Runtime dump agrees with the requested route and operator contract.
+      pass_condition: No material mismatch.
+    - id: secret_hygiene
+      check: Receipts and logs contain only redacted credential references.
+      pass_condition: Secret scan is clean.
+    - id: preflight_gate
+      check: No provider call occurs before a valid manifest.
+      pass_condition: Call count is zero on failed preflight.
+  evidence:
+    mindscape_operator_refs: [O-07, O-12]
+    source_basis:
+      - sustainable_operator_runtime: dry-run manifest and no provider before preflight
+      - AGENT_CONFIG: disclosure minimum necessary
+      - failure_modes: configuration/runtime conflation
+

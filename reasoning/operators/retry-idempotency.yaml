@@ -1,0 +1,76 @@
+operator:
+  id: world://operator/guardrail/retry-idempotency
+  version: 1
+  kind: control
+  category: retry_idempotency
+  purpose: Separate execution attempts from semantic results and make retries safe, bounded, and reconstructible.
+  accepts:
+    - operation request and deterministic semantic input identity
+    - prior attempts, cache entry, and side-effect policy
+  requires_context:
+    - operator/version, input/source hashes, workspace, and configuration
+    - attempt status and provider route
+    - idempotency key and mutation/action policy
+  preconditions:
+    - semantic cache identity is distinct from execution attempt id
+    - side effects are proposal-only or have an explicit idempotency mechanism
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: hold
+    proof_demand: end_to_end
+  procedure:
+    - step: derive_key
+      action: Hash operator/version/configuration/input references/workspace into a semantic identity.
+    - step: inspect_prior
+      action: Distinguish valid result, incomplete attempt, timeout, provider failure, and invalid payload.
+    - step: decide_retry
+      action: Apply bounded retry, circuit, and backoff policy; do not retry non-idempotent actions automatically.
+    - step: deduplicate
+      action: Reuse only a validated semantic result; never cache invalid or empty payloads as success.
+    - step: record_attempt
+      action: Persist attempt receipt, result lineage, and any hold/partial state separately.
+  returns:
+    - semantic_identity
+    - attempt_decision
+    - retry_plan
+    - result_or_status
+    - receipts
+    - status: reused | execute | retry | circuit_open | hold
+  invariants:
+    - retries do not duplicate semantic records or side effects
+    - timeout-only changes do not invalidate a valid semantic result
+    - semantic/schema/model/input changes invalidate the cache
+  forbidden_shortcuts:
+    - retry until a provider returns something parseable
+    - treat process exit zero as a valid inference
+    - reuse a result across operator/config/workspace changes
+  hold_when:
+    - side effect is not idempotent or authorization is unresolved
+    - prior payload is invalid, empty, or provenance-incomplete
+    - retry budget/circuit policy is exhausted
+  failure_modes:
+    - duplicate_commit
+    - invalid_cache_reuse
+    - retry_storm
+    - attempt_result_collapse
+  evaluators:
+    - id: duplicate_safety
+      check: Repeated identical requests produce one semantic result and bounded attempts.
+      pass_condition: No duplicate commit.
+    - id: cache_identity
+      check: Semantic identity changes when meaning-affecting inputs change.
+      pass_condition: No stale reuse.
+    - id: circuit_behavior
+      check: Repeated known failures open the circuit.
+      pass_condition: No unbounded calls.
+  evidence:
+    mindscape_operator_refs: [O-10, O-12]
+    source_basis:
+      - sustainable_operator_runtime: semantic cache identity, bounded retries, circuit breaking
+      - AGENT_CONFIG: append-only and optimistic concurrency
+      - failure_modes: retry/idempotency collapse
+

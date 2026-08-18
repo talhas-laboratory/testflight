@@ -1,0 +1,73 @@
+operator:
+  id: world://operator/guardrail/occurrence-canonical-conflation
+  version: 1
+  kind: control
+  category: occurrence_canonical_conflation
+  purpose: Keep an observed occurrence, episode, or mention separate from a reusable canonical concept.
+  accepts:
+    - occurrence/event/episode record with source anchors
+    - candidate canonical concepts and prior versions
+  requires_context:
+    - temporal position and scope
+    - episode boundaries and branch
+    - identity hypotheses and provenance
+    - task goal and abstraction level
+  preconditions:
+    - occurrence boundaries are explicit or marked uncertain
+    - canonical candidate has independent supporting evidence
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: conceptual
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: operational
+  procedure:
+    - step: anchor_occurrence
+      action: Preserve the local event, episode, or mention with exact time/order and source references.
+    - step: describe_local_shape
+      action: Record the occurrence's state, goal, relations, and context without generalizing it.
+    - step: compare_candidates
+      action: Compare against canonical concepts across independent occurrences and scopes.
+    - step: test_recurrence
+      action: Require scoped recurrence, counterexamples, outcome relevance, and a correction path before promotion.
+    - step: emit
+      action: Return a link hypothesis or a standalone occurrence; do not overwrite either object.
+  returns:
+    - occurrence
+    - canonical_link_hypotheses
+    - recurrence_summary
+    - counterexamples
+    - status: occurrence_only | candidate_link | promoted_link | hold
+  invariants:
+    - a single occurrence does not define a universal concept or trait
+    - canonical identity keeps its supporting occurrences and scope
+    - corrections and counterexamples remain visible
+  forbidden_shortcuts:
+    - promote a first mention into a canonical object
+    - treat repetition inside one episode as independent recurrence
+    - delete occurrences after consolidation
+  hold_when:
+    - recurrence is sparse, scoped, or contradicted
+    - canonical promotion would imply a diagnosis or fixed trait
+    - occurrence boundaries are unknown and materially affect the result
+  failure_modes:
+    - single_example_generalization
+    - episode_duplication
+    - trait_reification
+    - history_loss
+  evaluators:
+    - id: recurrence_gate
+      check: Promotion has multiple independent occurrences and counterexample review.
+      pass_condition: Gate evidence is present or status is held.
+    - id: lineage_retention
+      check: Canonical links resolve to all supporting occurrences.
+      pass_condition: No orphaned occurrence.
+  evidence:
+    mindscape_operator_refs: [O-08, O-10]
+    source_basis:
+      - task_infer: pattern gate and no diagnosis generalization
+      - cognitive_episodes: occurrence/episode schema
+      - failure_modes: reify temporary state
+

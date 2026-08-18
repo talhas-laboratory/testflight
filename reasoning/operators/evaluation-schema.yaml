@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/guardrail/evaluation-schema
+  version: 1
+  kind: control
+  category: evaluation_schema
+  purpose: Separate syntactic/schema validity, invariant compliance, semantic quality, and outcome usefulness.
+  accepts:
+    - candidate output and declared schema
+    - invariant set, semantic rubric, and expected outcome
+  requires_context:
+    - operator/station contract and context packet
+    - source lineage, epistemic status, and permissions
+    - independent evaluator or held-out case set
+  preconditions:
+    - evaluation dimensions and thresholds are explicit
+    - evaluator cannot simply repeat the producer's pass flag
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: branch
+    proof_demand: end_to_end
+  procedure:
+    - step: validate_schema
+      action: Check parseability, types, required fields, bounds, and references.
+    - step: validate_invariants
+      action: Check authority, provenance, scope, branch, uncertainty, permissions, and operator-specific constraints.
+    - step: evaluate_semantics
+      action: Apply a bounded rubric for factual/structural fidelity, context fit, relational preservation, and non-invention.
+    - step: evaluate_usefulness
+      action: Check whether the result improves the requested retrieval, decision, implementation, or authorized action.
+    - step: reconcile
+      action: Report dimensions separately; a schema pass cannot erase a semantic or outcome failure.
+  returns:
+    - schema_result
+    - invariant_result
+    - semantic_result
+    - usefulness_result
+    - unresolved_risks
+    - status: pass | partial | fail | hold
+  invariants:
+    - structural validity is necessary but not sufficient
+    - evaluator results are inspectable and versioned
+    - failures remain diagnosable rather than normalized away
+  forbidden_shortcuts:
+    - equate valid JSON with a good answer
+    - let the producing model grade itself without an independent rubric
+    - optimize one metric while losing provenance, context, or utility
+  hold_when:
+    - no semantic evaluator exists for a material interpretation
+    - the test case does not contain enough evidence to judge the claim
+    - evaluator dimensions conflict and no policy selects the trade-off
+  failure_modes:
+    - schema_pass_false_positive
+    - self_grading
+    - metric_tunnel_vision
+    - outcome_blindness
+  evaluators:
+    - id: dimension_separation
+      check: Schema, invariants, semantics, usefulness, and risk are separate results.
+      pass_condition: No overloaded score.
+    - id: held_out_quality
+      check: Semantic quality is measured on independent cases or explicit user review.
+      pass_condition: Producer output alone is not sufficient proof.
+    - id: provenance
+      check: Evaluation references the exact operator version, context, and source lineage.
+      pass_condition: Result is reproducible.
+  evidence:
+    mindscape_operator_refs: [O-09, O-12]
+    source_basis:
+      - cognitive_runtime: multidimensional evaluator dimensions
+      - sustainable_operator_runtime: contract, deterministic, semantic, continuity, failure, and live proofs
+      - failure_modes: validation/persistence and evaluation collapse

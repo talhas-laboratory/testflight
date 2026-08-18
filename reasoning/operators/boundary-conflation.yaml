@@ -1,0 +1,76 @@
+operator:
+  id: world://operator/guardrail/boundary-conflation
+  version: 1
+  kind: control
+  category: boundary_conflation
+  purpose: Keep evidential, semantic, operational, workspace, and authority boundaries explicit.
+  accepts:
+    - proposed model, pipeline, or record transformation
+    - bounded source references and current context packet
+  requires_context:
+    - locus
+    - goal
+    - relevant planes: evidence, meaning, cognition, runtime, agency
+    - authority and permissions
+    - entities, states, relations, and branch/conflict information
+  preconditions:
+    - input and intended output are named
+    - source references are resolvable or explicitly marked missing
+  parameters:
+    abstraction_level: system
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: operational
+  procedure:
+    - step: inventory_planes
+      action: Classify every input and output as evidential, semantic, operational, cognitive, or agency data.
+    - step: trace_transitions
+      action: Draw each boundary crossing and name the contract, authority, and provenance required at that crossing.
+    - step: detect_collapses
+      action: Flag any direct jump from evidence to fact, proposal to mutation, retrieval to conclusion, or access to permission.
+    - step: propose_repair
+      action: Insert the smallest missing handoff, review gate, or scoped projection; preserve unresolved alternatives.
+    - step: verify
+      action: Check that no layer has been silently flattened and return a hold when the boundary cannot be established.
+  returns:
+    - boundary_map
+    - conflations: list of typed boundary violations with source references
+    - required_handoffs
+    - status: pass | partial | hold
+  invariants:
+    - evidence is append-only and is not a claim
+    - semantic meaning is versioned and is not operational state
+    - operational state is not authority to act
+    - user authority and permission checks remain explicit
+  forbidden_shortcuts:
+    - treat a convenient storage shape as the ontology
+    - treat a model answer as a committed world fact
+    - infer authorization from visibility or workspace membership
+  hold_when:
+    - the proposed boundary depends on an unstated authority decision
+    - a source is unavailable and the missing source could change the classification
+    - multiple planes are intentionally collapsed but no reversible projection is defined
+  failure_modes:
+    - untyped_boundary
+    - silent_projection
+    - authority_leak
+    - provenance_loss
+  evaluators:
+    - id: plane_coverage
+      check: Every material field has one or more explicit plane labels.
+      pass_condition: No unclassified field crosses a boundary.
+    - id: handoff_completeness
+      check: Every crossing has input, output, authority, and provenance.
+      pass_condition: All required handoffs are present or status is hold.
+    - id: reversibility
+      check: A projection can be rebuilt from preserved source and derivation records.
+      pass_condition: Rebuild path is named.
+  evidence:
+    mindscape_operator_refs: [O-04, O-06, O-12]
+    source_basis:
+      - WORLD_SUBSTRATE: three realities must not collapse
+      - cognitive_runtime: capture-to-compile-to-operate loop
+      - failure_modes: collapse evidence, report, inference, and simulation

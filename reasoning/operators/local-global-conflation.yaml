@@ -1,0 +1,72 @@
+operator:
+  id: world://operator/guardrail/local-global-conflation
+  version: 1
+  kind: control
+  category: local_global_conflation
+  purpose: Keep a bounded local observation separate from a world-level pattern or policy.
+  accepts:
+    - local observation, episode, or component result
+    - broader corpus/world context and scope definition
+  requires_context:
+    - locus, scope, time, branch, and population/corpus boundary
+    - counterexamples and independent episodes
+    - requested abstraction level and use case
+  preconditions:
+    - local source boundaries are explicit
+    - global target scope is named rather than implied
+  parameters:
+    abstraction_level: system
+    depth: working
+    context_lens: conceptual
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: operational
+  procedure:
+    - step: mark_locus
+      action: Identify exactly where and when the observation holds.
+    - step: define_target_scope
+      action: State the larger population, corpus, system, or workspace to which generalization is proposed.
+    - step: compare_independent_cases
+      action: Search for recurrence, variation, counterexamples, and environmental explanations.
+    - step: label_level
+      action: Return local, scoped pattern, or global hypothesis; never silently widen scope.
+    - step: attach_transfer_conditions
+      action: State what must remain invariant for transfer to another locus or domain.
+  returns:
+    - local_observation
+    - target_scope
+    - transfer_hypothesis
+    - counterexamples
+    - status: local_only | scoped_pattern | global_candidate | hold
+  invariants:
+    - scope is explicit on every claim
+    - broader patterns require independent supporting cases
+    - environmental and relational factors remain visible
+  forbidden_shortcuts:
+    - generalize from one conversation, user, file, or workspace
+    - treat a local configuration as a universal rule
+    - use abstraction to erase meaningful constraints
+  hold_when:
+    - target scope is not defined
+    - recurrence cannot be distinguished from duplicated evidence
+    - generalization would imply a sensitive trait or diagnosis
+  failure_modes:
+    - overgeneralization
+    - scope_leak
+    - context_erasure
+    - stereotype_reification
+  evaluators:
+    - id: scope_accuracy
+      check: Output scope matches the source and requested level.
+      pass_condition: No unmarked widening.
+    - id: recurrence_quality
+      check: Global candidates include independent cases and counterexamples.
+      pass_condition: Otherwise local/scoped status.
+  evidence:
+    mindscape_operator_refs: [O-01, O-02]
+    source_basis:
+      - WORLD_SUBSTRATE: claims are scoped; no omniscience
+      - task_infer: multiple episodes and counterexamples gate patterns
+      - failure_modes: explain all as cognition vs environment
+

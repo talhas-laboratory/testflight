@@ -1,0 +1,74 @@
+operator:
+  id: world://operator/guardrail/confidence-truth-conflation
+  version: 1
+  kind: control
+  category: confidence_truth_conflation
+  purpose: Keep confidence as uncertainty about a claim rather than treating it as a truth value.
+  accepts:
+    - scoped claim proposal
+    - evidence/support/contradiction set and confidence estimate
+  requires_context:
+    - epistemic status and claim scope
+    - evidence quality and independence
+    - calibration examples or evaluator policy
+    - uncertainty policy
+  preconditions:
+    - confidence is attached to a specific proposition and scope
+    - confidence semantics are declared (model estimate, reviewer estimate, or calibrated score)
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: ethical
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: operational
+  procedure:
+    - step: state_proposition
+      action: Write the exact claim, scope, time, and status before assigning confidence.
+    - step: separate_dimensions
+      action: Record support strength, contradiction, confidence, and truth/validity as distinct fields.
+    - step: calibrate
+      action: Compare confidence with held-out outcomes or explicit reviewer criteria where available.
+    - step: expose_uncertainty
+      action: Return what would raise, lower, or invalidate confidence and preserve alternative hypotheses.
+    - step: gate_use
+      action: Prevent confidence alone from authorizing persistence, action, or generalization.
+  returns:
+    - proposition
+    - confidence_record
+    - support_quality
+    - calibration_notes
+    - invalidation_conditions
+    - status: calibrated | uncalibrated | hold
+  invariants:
+    - high confidence is not proof
+    - low confidence does not mean false
+    - truth/validity remains subject to evidence, scope, and review
+  forbidden_shortcuts:
+    - convert a probability into a fact label
+    - use model certainty language as a substitute for calibration
+    - hide uncertainty because an answer is inconvenient
+  hold_when:
+    - confidence semantics are missing
+    - there is no evidence supporting the proposition
+    - the requested action requires a truth guarantee the evaluator cannot provide
+  failure_modes:
+    - certainty_language
+    - probability_as_truth
+    - uncalibrated_threshold
+    - uncertainty_suppression
+  evaluators:
+    - id: dimension_separation
+      check: Confidence, status, support, and contradiction are distinct fields.
+      pass_condition: No overloaded truth/confidence field.
+    - id: calibration_disclosure
+      check: Calibration evidence or its absence is explicit.
+      pass_condition: Uncalibrated results cannot pass as calibrated.
+  evidence:
+    mindscape_operator_refs: [O-06]
+    source_basis:
+      - epistemics: confidence is not truth
+      - AGENT_CONFIG: provenance and no-hit certification thresholds
+      - failure_modes: confidence uncalibrated
+

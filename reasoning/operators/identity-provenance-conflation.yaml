@@ -1,0 +1,72 @@
+operator:
+  id: world://operator/guardrail/identity-provenance-conflation
+  version: 1
+  kind: control
+  category: identity_provenance_conflation
+  purpose: Keep semantic identity, source identity, actor authority, and derivation lineage distinct.
+  accepts:
+    - entity/referent proposal or merged record
+    - source anchors, actor/speaker metadata, and derivation graph
+  requires_context:
+    - workspace/locus and temporal scope
+    - authority labels and identity hypotheses
+    - evidence envelope and prior versions
+  preconditions:
+    - source actor and derivation are available or marked unknown
+    - identity merge has a stated scope
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: branch
+    proof_demand: end_to_end
+  procedure:
+    - step: inventory_identities
+      action: Separate semantic referent id, source document/message id, actor/speaker id, workspace id, and derivation id.
+    - step: verify_scope
+      action: Check whether an identity link is valid across time, branch, workspace, and authority boundaries.
+    - step: trace_lineage
+      action: Follow evidence -> claim -> projection -> context -> operator -> evaluation -> output.
+    - step: preserve_merge_hypothesis
+      action: Store merge evidence, confidence, alternatives, and invalidation conditions.
+    - step: emit
+      action: Return identity mappings with provenance fields intact; unresolved links remain hypotheses.
+  returns:
+    - identity_map
+    - provenance_chain
+    - merge_hypotheses
+    - invalidation_conditions
+    - status: consistent | ambiguous | broken | hold
+  invariants:
+    - provenance does not make a claim true
+    - a source id is not a semantic entity id
+    - actor authority is not inferred from record ownership
+  forbidden_shortcuts:
+    - use database primary key as semantic identity
+    - merge records because they share a source or provider id
+    - drop derivation after materialization
+  hold_when:
+    - identity crosses a workspace or authority boundary without authorization
+    - lineage has a missing material edge
+    - merge would be irreversible or hide competing identities
+  failure_modes:
+    - id_collision
+    - provenance_drop
+    - authority_misattribution
+    - irreversible_merge
+  evaluators:
+    - id: lineage_completeness
+      check: Every material output resolves through the derivation graph.
+      pass_condition: No orphaned semantic record.
+    - id: identity_scope
+      check: Merge validity is explicitly scoped in time and workspace.
+      pass_condition: No unscoped merge.
+  evidence:
+    mindscape_operator_refs: [O-06, O-08]
+    source_basis:
+      - epistemics: derivation graph and identity hypotheses
+      - master_prompt: stable source anchors and conservative consolidation
+      - failure_modes: identity/provenance collapse
+

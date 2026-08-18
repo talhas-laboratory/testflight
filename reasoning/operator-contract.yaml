@@ -1,0 +1,39 @@
+contract:
+  id: world://operator-contract/portable-v1
+  version: 1
+  source: Mindspace PORTABLE_WORLD_INTERFACE and cognitive runtime contract
+  required_fields:
+    - id
+    - version
+    - kind
+    - category
+    - purpose
+    - accepts
+    - requires_context
+    - preconditions
+    - parameters
+    - procedure
+    - returns
+    - invariants
+    - forbidden_shortcuts
+    - hold_when
+    - failure_modes
+    - evaluators
+    - evidence
+  kinds:
+    - control
+    - transformational
+  parameter_axes:
+    abstraction_level: [world, system, module, implementation]
+    depth: [map, working, exhaustive]
+    context_lens: [conceptual, technical, strategic, ethical, operational]
+    output_mode: [plain_language, technical, machine_readable]
+    evidence_strictness: [exploratory, grounded, citation_required]
+    uncertainty_policy: [branch, ask, hold]
+    proof_demand: [conceptual, operational, end_to_end]
+  result_posture:
+    mutation: proposal_only
+    action: deny_unless_authorized
+    uncertainty: preserve_and_surface
+    evidence: append_only
+    no_hit: valid

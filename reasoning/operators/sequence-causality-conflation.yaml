@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/guardrail/sequence-causality-conflation
+  version: 1
+  kind: control
+  category: sequence_causality_conflation
+  purpose: Distinguish temporal order and narrative adjacency from a supported causal relation.
+  accepts:
+    - ordered events, states, or turns
+    - candidate causal relation and supporting evidence
+  requires_context:
+    - timestamps/order and branch structure
+    - actors, mechanisms, interventions, and alternatives
+    - scope, outcome, and counterexamples
+  preconditions:
+    - event boundaries and ordering are known or marked uncertain
+    - candidate cause/effect roles are named
+  parameters:
+    abstraction_level: system
+    depth: working
+    context_lens: conceptual
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: operational
+  procedure:
+    - step: reconstruct_order
+      action: Establish temporal order and preserve simultaneous/unknown ordering.
+    - step: identify_mechanism
+      action: Ask what mechanism, dependency, intervention, or explicit source statement links cause and effect.
+    - step: test_alternatives
+      action: Compare confounders, reverse direction, coincidence, and narrative-selection explanations.
+    - step: classify_relation
+      action: Emit temporal, correlational, enabling, causal, or unresolved relation with evidence and scope.
+    - step: gate_language
+      action: Use causal language only when the causal evaluator passes; otherwise retain weaker relation wording.
+  returns:
+    - ordered_events
+    - relation_proposal
+    - mechanism_and_alternatives
+    - counterexamples
+    - status: temporal_only | relational | causal_candidate | unresolved
+  invariants:
+    - order does not imply cause
+    - correlation does not establish mechanism
+    - causal claims stay scoped and revisable
+  forbidden_shortcuts:
+    - use “after” as evidence for “because”
+    - infer intent from sequence alone
+    - collapse competing causal explanations
+  hold_when:
+    - ordering is incomplete and changes causal direction
+    - no mechanism or source statement supports causality
+    - the causal conclusion would materially affect action or safety
+  failure_modes:
+    - post_hoc_causality
+    - narrative_causality
+    - confounder_omission
+    - intent_inference
+  evaluators:
+    - id: temporal_accuracy
+      check: Ordered relations match source timestamps/order.
+      pass_condition: No impossible ordering.
+    - id: mechanism_support
+      check: Causal candidate includes mechanism, intervention, or strong direct evidence.
+      pass_condition: Otherwise status is non-causal or hold.
+    - id: alternative_coverage
+      check: Plausible alternatives are listed when material.
+      pass_condition: No single-cause presentation under unresolved alternatives.
+  evidence:
+    mindscape_operator_refs: [O-02, O-05]
+    source_basis:
+      - ONTOLOGY: temporal and causal relation families
+      - cognitive_runtime: state, relation, and outcome evaluation
+      - failure_modes: detail laundering and confirmation loops
+

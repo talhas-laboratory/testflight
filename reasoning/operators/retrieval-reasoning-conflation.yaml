@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/guardrail/retrieval-reasoning-conflation
+  version: 1
+  kind: control
+  category: retrieval_reasoning_conflation
+  purpose: Keep retrieval as evidence selection and make interpretation an explicit downstream operator.
+  accepts:
+    - query/task and retrieval results
+    - source/index metadata and no-hit state
+  requires_context:
+    - locus, scope, branch, time, perspective, and permissions
+    - ranking rationale and source anchors
+    - requested output and evidence strictness
+  preconditions:
+    - retrieval strategy is named (exact, lexical, semantic, relation, structural)
+    - result count and bounded context budget are declared
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: operational
+  procedure:
+    - step: compile_query
+      action: Resolve task, scope, branch, time, lens, permissions, and desired evidence before searching.
+    - step: retrieve_child_first
+      action: Search the smallest relevant container first, using exact/lexical retrieval before bounded hybrid or graph expansion.
+    - step: return_hits_or_no_hit
+      action: Preserve ranking rationale, source anchors, omissions, and an honest no-hit; do not synthesize yet.
+    - step: handoff_interpretation
+      action: Pass the bounded evidence packet to a separate interpretation operator with its own contract.
+    - step: verify_citations
+      action: Ensure every interpretation claim resolves to a retrieved source span.
+  returns:
+    - retrieval_packet
+    - ranked_evidence
+    - ranking_rationale
+    - omissions
+    - status: hit | partial | no_hit | hold
+  invariants:
+    - retrieval does not decide semantic truth
+    - no-hit is not a failed search requiring invention
+    - context is bounded and permission-filtered
+  forbidden_shortcuts:
+    - treat top-ranked text as the answer
+    - use embeddings as truth or skip lexical grounding
+    - query the whole archive when a child container suffices
+  hold_when:
+    - permissions or scope are unresolved
+    - retrieved evidence is insufficient for the requested claim
+    - the ranking route cannot provide source anchors
+  failure_modes:
+    - search_answer_collapse
+    - embedding_truth
+    - unbounded_dump
+    - citation_gap
+  evaluators:
+    - id: no_hit_correctness
+      check: Unsupported queries return no_hit rather than plausible text.
+      pass_condition: No-hit fixture is honest.
+    - id: citation_resolution
+      check: Every returned evidence item resolves to immutable source.
+      pass_condition: 100 percent resolution.
+    - id: budget
+      check: Packet respects declared context budget.
+      pass_condition: No unbounded archive dump.
+  evidence:
+    mindscape_operator_refs: [O-05, O-12]
+    source_basis:
+      - AGENT_INDEX: child-first retrieval, BM25-first, bounded graph, no-hit valid
+      - task_compile_context: operator-local packet
+      - failure_modes: unbounded dump and embeddings truth
+

@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/guardrail/workspace-isolation
+  version: 1
+  kind: control
+  category: workspace_isolation
+  purpose: Prevent evidence, identity, configuration, and derived state from crossing workspace boundaries without an explicit bridge.
+  accepts:
+    - read/write/query/action request
+    - workspace/locus policy and candidate records
+  requires_context:
+    - source and target workspace ids
+    - actor, permissions, tenant/locus, and data classification
+    - provenance and export/import policy
+  preconditions:
+    - current workspace and requested target are explicit
+    - permission check and boundary policy are available
+  parameters:
+    abstraction_level: system
+    depth: working
+    context_lens: ethical
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: hold
+    proof_demand: end_to_end
+  procedure:
+    - step: resolve_workspace
+      action: Bind every input, output, credential reference, index, and cache to a workspace/locus.
+    - step: classify_boundary
+      action: Determine whether the operation is local, authorized export/import, shared read, or prohibited crossing.
+    - step: check_permissions
+      action: Evaluate explicit actor permission and data sensitivity; do not infer access from reachability.
+    - step: isolate_state
+      action: Ensure storage roots, semantic caches, model context, and logs do not mix workspaces.
+    - step: emit_audit
+      action: Return a decision and a boundary receipt; blocked crossings remain blocked.
+  returns:
+    - workspace_binding
+    - permission_decision
+    - isolation_checks
+    - boundary_receipt
+    - status: local | authorized_bridge | denied | hold
+  invariants:
+    - workspace access is not permission
+    - secrets and sensitive derived inferences do not cross by default
+    - every cross-workspace transfer is explicit and auditable
+  forbidden_shortcuts:
+    - use a global cache for workspace-scoped semantic results
+    - copy `.env`, databases, or knowledge stores across workspaces
+    - infer permission from the same host, user, or network
+  hold_when:
+    - target workspace or data classification is unknown
+    - permission cannot be verified at execution time
+    - a provider/logging path may exfiltrate data outside the workspace
+  failure_modes:
+    - cross_workspace_leak
+    - cache_contamination
+    - implicit_permission
+    - sensitive_log_exposure
+  evaluators:
+    - id: boundary_containment
+      check: Workspace id is present on every persisted or transmitted artifact.
+      pass_condition: No unbound artifact.
+    - id: permission_zero_fail
+      check: Unauthorized crossing is rejected.
+      pass_condition: Unauthorized action count is zero.
+    - id: cache_isolation
+      check: Identical semantic inputs in different workspaces cannot share unscoped cache entries.
+      pass_condition: Cache key contains workspace/locus scope.
+  evidence:
+    mindscape_operator_refs: [O-07, O-12]
+    source_basis:
+      - AGENT_CONFIG: semantic permissions and disclosure policy
+      - WORLD_SUBSTRATE: user authority and scoped guests
+      - failure_modes: world access equals permission
+

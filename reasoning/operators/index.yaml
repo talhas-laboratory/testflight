@@ -1,0 +1,128 @@
+catalog:
+  id: world://operator-catalog/testflight-guardrails
+  version: 1
+  status: candidate
+  purpose: >-
+    Route reasoning through small, inspectable guardrails so boundaries,
+    evidence, identity, state, persistence, and runtime behavior are not
+    silently conflated.
+  contract: ../operator-contract.yaml
+  source_basis:
+    - Mindspace AGENT_INDEX.md
+    - Mindspace AGENT_CONFIG.yaml
+    - Mindspace WORLD_SUBSTRATE.md
+    - Mindspace PORTABLE_WORLD_INTERFACE.md
+    - Mindspace cognitive runtime artifact
+    - Mindspace failure modes artifact
+    - Mindscape current-conversation operator reconstruction
+    - Mindscape sustainable operator runtime plan
+  defaults:
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    mutation: proposal_only
+    action: deny_unless_authorized
+
+operators:
+  - id: world://operator/guardrail/boundary-conflation
+    file: boundary-conflation.yaml
+    category: boundary_conflation
+    kind: control
+    mindscape_operator_refs: [O-04, O-06, O-12]
+  - id: world://operator/guardrail/ontology-conflation
+    file: ontology-conflation.yaml
+    category: ontology_conflation
+    kind: control
+    mindscape_operator_refs: [O-03, O-04]
+  - id: world://operator/guardrail/mention-entity-conflation
+    file: mention-entity-conflation.yaml
+    category: mention_entity_conflation
+    kind: control
+    mindscape_operator_refs: [O-08]
+  - id: world://operator/guardrail/occurrence-canonical-conflation
+    file: occurrence-canonical-conflation.yaml
+    category: occurrence_canonical_conflation
+    kind: control
+    mindscape_operator_refs: [O-08, O-10]
+  - id: world://operator/guardrail/evidence-truth-conflation
+    file: evidence-truth-conflation.yaml
+    category: evidence_truth_conflation
+    kind: control
+    mindscape_operator_refs: [O-06, O-12]
+  - id: world://operator/guardrail/confidence-truth-conflation
+    file: confidence-truth-conflation.yaml
+    category: confidence_truth_conflation
+    kind: control
+    mindscape_operator_refs: [O-06]
+  - id: world://operator/guardrail/sequence-causality-conflation
+    file: sequence-causality-conflation.yaml
+    category: sequence_causality_conflation
+    kind: control
+    mindscape_operator_refs: [O-02, O-05]
+  - id: world://operator/guardrail/version-state-conflation
+    file: version-state-conflation.yaml
+    category: version_state_conflation
+    kind: control
+    mindscape_operator_refs: [O-06, O-10]
+  - id: world://operator/guardrail/retrieval-reasoning-conflation
+    file: retrieval-reasoning-conflation.yaml
+    category: retrieval_reasoning_conflation
+    kind: control
+    mindscape_operator_refs: [O-05, O-12]
+  - id: world://operator/guardrail/local-global-conflation
+    file: local-global-conflation.yaml
+    category: local_global_conflation
+    kind: control
+    mindscape_operator_refs: [O-01, O-02]
+  - id: world://operator/guardrail/identity-provenance-conflation
+    file: identity-provenance-conflation.yaml
+    category: identity_provenance_conflation
+    kind: control
+    mindscape_operator_refs: [O-06, O-08]
+  - id: world://operator/guardrail/validation-persistence-conflation
+    file: validation-persistence-conflation.yaml
+    category: validation_persistence_conflation
+    kind: control
+    mindscape_operator_refs: [O-06, O-12]
+  - id: world://operator/guardrail/workspace-isolation
+    file: workspace-isolation.yaml
+    category: workspace_isolation
+    kind: control
+    mindscape_operator_refs: [O-07, O-12]
+  - id: world://operator/guardrail/retry-idempotency
+    file: retry-idempotency.yaml
+    category: retry_idempotency
+    kind: control
+    mindscape_operator_refs: [O-10, O-12]
+  - id: world://operator/guardrail/configuration-runtime
+    file: configuration-runtime.yaml
+    category: configuration_runtime
+    kind: control
+    mindscape_operator_refs: [O-07, O-12]
+  - id: world://operator/guardrail/evaluation-schema
+    file: evaluation-schema.yaml
+    category: evaluation_schema
+    kind: control
+    mindscape_operator_refs: [O-09, O-12]
+
+routes:
+  extraction:
+    - mention_entity_conflation
+    - occurrence_canonical_conflation
+    - evidence_truth_conflation
+    - confidence_truth_conflation
+    - sequence_causality_conflation
+  architecture:
+    - boundary_conflation
+    - ontology_conflation
+    - local_global_conflation
+    - configuration_runtime
+    - evaluation_schema
+  persistence:
+    - identity_provenance_conflation
+    - validation_persistence_conflation
+    - retry_idempotency
+    - workspace_isolation
+  retrieval:
+    - retrieval_reasoning_conflation
+    - local_global_conflation
+    - evidence_truth_conflation

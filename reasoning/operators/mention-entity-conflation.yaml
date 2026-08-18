@@ -1,0 +1,76 @@
+operator:
+  id: world://operator/guardrail/mention-entity-conflation
+  version: 1
+  kind: control
+  category: mention_entity_conflation
+  purpose: Separate a textual mention from the referent or entity it may denote.
+  accepts:
+    - bounded text span, role, and conversation position
+    - candidate referents and identity evidence
+  requires_context:
+    - source span and speaker authority
+    - local and inherited conversation context
+    - aliases, pronouns, and competing referents
+    - workspace/locus scope
+  preconditions:
+    - source span is preserved exactly or marked unavailable
+    - candidate identity hypotheses have evidence references
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: conceptual
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: branch
+    proof_demand: operational
+  procedure:
+    - step: anchor_mention
+      action: Record the exact mention span, speaker, timestamp/order, and local context.
+    - step: generate_hypotheses
+      action: Enumerate candidate referents using lexical, relational, temporal, and conversational evidence.
+    - step: score_discrimination
+      action: Compare candidates only on evidence that can distinguish them; do not use similarity as identity proof.
+    - step: preserve_unresolved
+      action: Keep aliases, alternatives, and unresolved pronouns as hypotheses with scope and confidence.
+    - step: emit
+      action: Return mention-to-referent links without creating a canonical entity unless the identity gate passes.
+  returns:
+    - mention_record
+    - referent_hypotheses
+    - identity_evidence
+    - unresolved_ambiguities
+    - status: linked | unresolved | no_hit
+  invariants:
+    - every link resolves to a source span
+    - mention, referent, and canonical entity remain distinct objects
+    - assistant language cannot become a user-owned entity without authority labeling
+  forbidden_shortcuts:
+    - create one entity per noun phrase
+    - merge by embedding similarity alone
+    - treat a pronoun or repeated name as unambiguous identity
+  hold_when:
+    - two referents fit the local context equally well
+    - identity would cross a workspace, speaker, or temporal scope
+    - no source span can support the proposed link
+  failure_modes:
+    - noun_phrase_entity_explosion
+    - alias_overmerge
+    - pronoun_misattribution
+    - authority_leak
+  evaluators:
+    - id: span_grounding
+      check: Every mention and link has a resolvable source anchor.
+      pass_condition: 100 percent of emitted links resolve.
+    - id: ambiguity_recall
+      check: Known ambiguous fixtures remain unresolved.
+      pass_condition: No forced canonical identity.
+    - id: speaker_preservation
+      check: User, assistant, and external source authority remain distinct.
+      pass_condition: No speaker collapse.
+  evidence:
+    mindscape_operator_refs: [O-08]
+    source_basis:
+      - current-conversation-reconstruction: semantic precision and referent identity
+      - master_prompt: conservative identity and reference resolution
+      - failure_modes: assistant output as fact
+
