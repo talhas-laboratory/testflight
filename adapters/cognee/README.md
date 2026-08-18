@@ -67,5 +67,7 @@ Brand system, Brand components, and first-class Brand assertions. Assertions are
 after canonical acceptance. Keep assertion nodes for evidence and provenance, and use
 `brand_assertion_custom_edges` only for bounded endpoint traversal; the edge metadata retains
 perspective, epistemic status, evidence confidence, and structural weight as separate dimensions.
-The canonical ontology and policies live under `domains/brand/`, while accepted evidence and
-assertions live in the SQLite semantic repository.
+Cognee's UUID-only `DataPoint.id` is derived deterministically from the workspace and canonical
+semantic ID; the original IDs remain explicit fields and edge metadata. The canonical ontology
+and policies live under `domains/brand/`, while accepted evidence and assertions live in the SQLite
+semantic repository.

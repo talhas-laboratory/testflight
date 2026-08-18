@@ -37,6 +37,7 @@ def load_brand_fixture(path: Path) -> BrandFixture:
         BrandComponent.model_validate(
             {
                 "component_id": item.get("component_id", item.get("id")),
+                "workspace_id": system.workspace_id,
                 "brand_id": system.brand_id,
                 "definition_id": item["definition_id"],
                 "label": item["label"],

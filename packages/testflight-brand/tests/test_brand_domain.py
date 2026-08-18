@@ -37,6 +37,7 @@ def test_brand_system_keeps_components_and_assertions_distinct() -> None:
     )
     component = BrandComponent(
         component_id="component:promise",
+        workspace_id=brand.workspace_id,
         brand_id=brand.brand_id,
         definition_id="identity",
         label="reliable progress",

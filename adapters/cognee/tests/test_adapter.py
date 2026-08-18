@@ -165,5 +165,7 @@ def test_brand_projection_keeps_accepted_assertions_as_direct_edges() -> None:
     edges = brand_assertion_custom_edges([accepted, held])
 
     assert len(edges) == 1
-    assert edges[0][:3] == ("brand-1", "component-1", "has_component")
+    assert edges[0][0] != "brand-1"
+    assert edges[0][1] != "component-1"
+    assert edges[0][2] == "has_component"
     assert edges[0][3]["assertion_id"] == "assertion-1"

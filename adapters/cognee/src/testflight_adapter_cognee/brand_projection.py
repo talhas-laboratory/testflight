@@ -2,8 +2,20 @@
 
 from functools import lru_cache
 from typing import Any
+from uuid import UUID
 
 from testflight_brand import BrandAssertion, BrandComponent, BrandSystem
+from testflight_semantic.ids import stable_id
+
+
+def _brand_node_id(workspace_id: str, semantic_id: str) -> UUID:
+    """Map a canonical URI-like ID to Cognee's UUID DataPoint identity."""
+
+    return stable_id("brand-node", workspace_id, semantic_id)
+
+
+def _brand_assertion_id(assertion: BrandAssertion) -> UUID:
+    return stable_id("brand-assertion", assertion.workspace_id, assertion.assertion_id)
 
 
 @lru_cache(maxsize=1)
@@ -65,7 +77,7 @@ def _brand_datapoint_classes() -> tuple[type[Any], type[Any], type[Any]]:
 def brand_system_to_datapoint(system: BrandSystem) -> Any:
     system_class, _, _ = _brand_datapoint_classes()
     return system_class(
-        id=system.brand_id,
+        id=_brand_node_id(system.workspace_id, system.brand_id),
         brand_id=system.brand_id,
         workspace_id=system.workspace_id,
         label=system.label,
@@ -76,7 +88,7 @@ def brand_system_to_datapoint(system: BrandSystem) -> Any:
 def brand_component_to_datapoint(component: BrandComponent) -> Any:
     _, component_class, _ = _brand_datapoint_classes()
     return component_class(
-        id=component.component_id,
+        id=_brand_node_id(component.workspace_id or component.brand_id, component.component_id),
         component_id=component.component_id,
         brand_id=component.brand_id,
         definition_id=component.definition_id,
@@ -89,7 +101,7 @@ def brand_component_to_datapoint(component: BrandComponent) -> Any:
 def brand_assertion_to_datapoint(assertion: BrandAssertion) -> Any:
     _, _, assertion_class = _brand_datapoint_classes()
     return assertion_class(
-        id=assertion.assertion_id,
+        id=_brand_assertion_id(assertion),
         assertion_id=assertion.assertion_id,
         workspace_id=assertion.workspace_id,
         brand_id=assertion.brand_id,
@@ -136,8 +148,8 @@ def brand_assertion_custom_edges(
 
     return [
         (
-            assertion.subject_id,
-            assertion.object_id,
+            str(_brand_node_id(assertion.workspace_id, assertion.subject_id)),
+            str(_brand_node_id(assertion.workspace_id, assertion.object_id)),
             assertion.predicate,
             {
                 "assertion_id": assertion.assertion_id,
