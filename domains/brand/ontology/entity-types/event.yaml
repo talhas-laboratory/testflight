@@ -1,0 +1,4 @@
+id: event
+label: Brand event
+definition: A bounded change, launch, campaign, incident, or external event that may alter Brand state.
+layer: event

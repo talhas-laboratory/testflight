@@ -1,0 +1,7 @@
+id: offers
+label: offers
+definition: A Brand makes the referenced offering available under its scope.
+family: composition
+source_types: [brand-system]
+target_types: [offering]
+allow_inference: false

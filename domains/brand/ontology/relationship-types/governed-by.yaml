@@ -1,0 +1,7 @@
+id: governed_by
+label: governed by
+definition: A Brand is owned, managed, or constrained by the referenced governance entity.
+family: governance
+source_types: [brand-system]
+target_types: [governance]
+allow_inference: false

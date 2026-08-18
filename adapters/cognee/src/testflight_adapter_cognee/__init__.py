@@ -4,6 +4,13 @@ from importlib.util import find_spec
 
 from testflight_core import AdapterDescriptor, Capability, HealthReport, HealthState
 
+from .brand_projection import (
+    brand_assertion_custom_edges,
+    brand_assertion_to_datapoint,
+    brand_component_to_datapoint,
+    brand_records_to_datapoints,
+    brand_system_to_datapoint,
+)
 from .datapoints import (
     entity_occurrence_to_datapoint,
     relationship_custom_edges,
@@ -43,6 +50,11 @@ class CogneeAdapter:
 
 __all__ = [
     "CogneeAdapter",
+    "brand_assertion_custom_edges",
+    "brand_assertion_to_datapoint",
+    "brand_component_to_datapoint",
+    "brand_records_to_datapoints",
+    "brand_system_to_datapoint",
     "DefinitionExample",
     "EntityDefinition",
     "EntityMatch",

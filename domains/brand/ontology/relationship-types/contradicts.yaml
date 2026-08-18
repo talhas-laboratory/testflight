@@ -1,0 +1,7 @@
+id: contradicts
+label: contradicts
+definition: The source assertion conflicts with the target proposition within an overlapping scope.
+family: contradiction
+source_types: [identity, perception, expression, event, offering]
+target_types: [identity, perception, expression, offering]
+allow_inference: false

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testflight-brand-lab"
+version = "0.1.0"
+description = "CLI composition root for the Testflight Brand vertical slice"
+requires-python = ">=3.12,<3.14"
+dependencies = ["testflight-brand", "testflight-semantic"]
+
+[project.scripts]
+brand-lab = "testflight_brand_lab.cli:main"
+
+[tool.uv.sources]
+testflight-brand = { workspace = true }
+testflight-semantic = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testflight_brand_lab"]

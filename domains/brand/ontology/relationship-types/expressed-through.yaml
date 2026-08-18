@@ -1,0 +1,7 @@
+id: expressed_through
+label: expressed through
+definition: A Brand or identity component is represented by the referenced expression artifact.
+family: manifestation
+source_types: [brand-system, identity]
+target_types: [expression]
+allow_inference: false

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testflight-adapter-sqlite-semantic"
+version = "0.1.0"
+description = "Append-oriented SQLite repository for Testflight semantic records"
+requires-python = ">=3.12,<3.14"
+dependencies = ["testflight-brand", "testflight-semantic"]
+
+[tool.uv.sources]
+testflight-brand = { workspace = true }
+testflight-semantic = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testflight_adapter_sqlite_semantic"]

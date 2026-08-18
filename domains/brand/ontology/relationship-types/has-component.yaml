@@ -1,0 +1,7 @@
+id: has_component
+label: has component
+definition: The Brand system includes the referenced component in its declared boundary.
+family: composition
+source_types: [brand-system]
+target_types: [identity, expression, offering, experience, perception, governance, environment]
+allow_inference: false

@@ -1,0 +1,7 @@
+id: updates
+label: updates
+definition: An experience or event changes a perception or state in a declared temporal scope.
+family: temporal
+source_types: [experience, event]
+target_types: [perception, identity]
+allow_inference: false

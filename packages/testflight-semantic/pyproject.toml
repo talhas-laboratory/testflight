@@ -1,0 +1,13 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testflight-semantic"
+version = "0.1.0"
+description = "Provider-neutral evidence and semantic contracts for Testflight"
+requires-python = ">=3.12,<3.14"
+dependencies = ["pydantic>=2.10,<3"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testflight_semantic"]

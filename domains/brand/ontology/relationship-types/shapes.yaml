@@ -1,0 +1,7 @@
+id: shapes
+label: shapes
+definition: An expression or experience contributes to a scoped perception without asserting causality by sequence alone.
+family: influence
+source_types: [expression, experience, offering]
+target_types: [perception]
+allow_inference: false

@@ -1,0 +1,7 @@
+id: supports
+label: supports
+definition: The source assertion or artifact provides explicit evidence for the target proposition.
+family: evidence
+source_types: [expression, perception, event, offering, identity]
+target_types: [identity, perception, offering, expression]
+allow_inference: false

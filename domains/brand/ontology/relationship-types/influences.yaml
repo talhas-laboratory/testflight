@@ -1,0 +1,7 @@
+id: influences
+label: influences
+definition: A scoped relation proposes contribution or influence without claiming a proven causal mechanism.
+family: influence
+source_types: [identity, expression, offering, experience, event, environment]
+target_types: [perception, identity, offering, environment]
+allow_inference: false

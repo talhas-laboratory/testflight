@@ -1,0 +1,31 @@
+{
+  "workspace_id": "world://workspace/brand/template",
+  "sources": [
+    {
+      "source_url": "repo://domains/brand/ontology/brand-system.yaml",
+      "doc_type": "ontology_index",
+      "evidence_tier": "T1",
+      "canonical": true,
+      "task_view": "define",
+      "module": "brand",
+      "unit": "ontology",
+      "tool": "testflight-brand",
+      "experience_type": "canonical",
+      "difficulty": "advanced",
+      "last_verified_at": "2026-08-18"
+    },
+    {
+      "source_url": "repo://docs/plans/2026-08-18-brand-system-modular-infrastructure-implementation-plan.md",
+      "doc_type": "architecture_plan",
+      "evidence_tier": "T1",
+      "canonical": true,
+      "task_view": "define",
+      "module": "brand",
+      "unit": "architecture",
+      "tool": "testflight",
+      "experience_type": "canonical",
+      "difficulty": "advanced",
+      "last_verified_at": "2026-08-18"
+    }
+  ]
+}

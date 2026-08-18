@@ -1,0 +1,8 @@
+id: world://brand/policy/assertion-acceptance/v1
+version: 1
+rules:
+  - require_exact_source_evidence
+  - require_declared_perspective_and_epistemic_status
+  - keep_support_and_contradiction_links
+  - separate_schema_invariant_semantic_and_usefulness_evaluations
+  - persist_proposals_only_until_explicit_acceptance

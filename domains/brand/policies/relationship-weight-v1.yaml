@@ -1,0 +1,13 @@
+id: world://brand/policy/relationship-weight/v1
+version: 1
+aggregate_enabled: false
+dimensions:
+  - structural_weight
+  - evidence_confidence
+  - source_authority
+  - salience
+  - valence
+notes:
+  - weights_are_not_truth_values
+  - aggregate_strength_requires_calibration
+  - causal_language_requires_mechanism_evidence

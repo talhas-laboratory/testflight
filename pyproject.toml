@@ -16,14 +16,18 @@ package = false
 
 [tool.uv.workspace]
 members = [
+  "apps/brand-lab",
   "packages/testflight-core",
+  "packages/testflight-semantic",
+  "packages/testflight-brand",
   "adapters/cognee",
   "adapters/langgraph",
+  "adapters/sqlite-semantic",
 ]
 
 [tool.pytest.ini_options]
 addopts = "-q --import-mode=importlib --strict-config --strict-markers"
-testpaths = ["tests", "packages", "adapters"]
+testpaths = ["tests", "packages", "adapters", "apps"]
 
 [tool.ruff]
 line-length = 100

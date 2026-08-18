@@ -1,0 +1,7 @@
+id: situated_in
+label: situated in
+definition: A Brand operates within the referenced market, cultural, category, or regulatory context.
+family: context
+source_types: [brand-system]
+target_types: [environment]
+allow_inference: false

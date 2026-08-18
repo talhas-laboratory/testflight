@@ -1,0 +1,8 @@
+id: world://brand/policy/identity-resolution/v1
+version: 1
+mode: conservative_hypothesis
+rules:
+  - preserve_mentions_and_occurrences_before_canonical_merge
+  - require_discriminating_evidence_for_identity_links
+  - keep_ambiguous_aliases_as_unresolved_hypotheses
+  - scope_merges_to_workspace_and_valid_time

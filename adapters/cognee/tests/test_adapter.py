@@ -1,4 +1,5 @@
 import asyncio
+from datetime import UTC, datetime
 
 from testflight_adapter_cognee import (
     CogneeAdapter,
@@ -14,7 +15,10 @@ from testflight_adapter_cognee import (
     relationship_custom_edges,
     validate_extraction,
 )
+from testflight_adapter_cognee.brand_projection import brand_assertion_custom_edges
+from testflight_brand import BrandAssertion
 from testflight_core import Capability, HealthState
+from testflight_semantic import EpistemicStatus, Perspective
 
 
 def test_descriptor_and_dependency_free_probe() -> None:
@@ -141,3 +145,25 @@ def test_extractor_accepts_injected_structured_output() -> None:
     )
 
     assert validated.occurrences[0].quote == "graph memory idea"
+
+
+def test_brand_projection_keeps_accepted_assertions_as_direct_edges() -> None:
+    common = {
+        "workspace_id": "workspace-1",
+        "brand_id": "brand-1",
+        "subject_id": "brand-1",
+        "predicate": "has_component",
+        "object_id": "component-1",
+        "relationship_definition_id": "has_component",
+        "perspective": Perspective.INTENDED,
+        "epistemic_status": EpistemicStatus.NORMATIVE,
+        "recorded_at": datetime.now(UTC),
+    }
+    accepted = BrandAssertion(assertion_id="assertion-1", status="accepted", **common)
+    held = BrandAssertion(assertion_id="assertion-2", status="held", **common)
+
+    edges = brand_assertion_custom_edges([accepted, held])
+
+    assert len(edges) == 1
+    assert edges[0][:3] == ("brand-1", "component-1", "has_component")
+    assert edges[0][3]["assertion_id"] == "assertion-1"

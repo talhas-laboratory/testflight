@@ -1,0 +1,49 @@
+brand_id: brand:example
+workspace_id: world://workspace/brand/example
+label: Example Brand
+ontology_version: 1.0.0
+components:
+  - component_id: component:promise
+    definition_id: identity
+    label: reliable progress
+    perspective: intended
+  - component_id: perception:clarity
+    definition_id: perception
+    label: clear and dependable
+    perspective: observed
+  - component_id: perception:ambiguity
+    definition_id: perception
+    label: unclear during onboarding
+    perspective: observed
+assertions:
+  - assertion_id: assertion:intended-promise
+    subject_id: brand:example
+    predicate: has_component
+    object_id: component:promise
+    relationship_definition_id: has_component
+    perspective: intended
+    epistemic_status: normative
+    evidence_ids: [source:intent]
+    recorded_at: 2026-08-18T00:00:00Z
+    status: accepted
+  - assertion_id: assertion:observed-clarity
+    subject_id: component:promise
+    predicate: supports
+    object_id: perception:clarity
+    relationship_definition_id: supports
+    perspective: observed
+    epistemic_status: observed
+    evidence_ids: [source:feedback-positive]
+    recorded_at: 2026-08-18T00:00:00Z
+    status: accepted
+  - assertion_id: assertion:observed-ambiguity
+    subject_id: perception:ambiguity
+    predicate: contradicts
+    object_id: perception:clarity
+    relationship_definition_id: contradicts
+    perspective: observed
+    epistemic_status: observed
+    evidence_ids: [source:feedback-negative]
+    contradiction_ids: [assertion:observed-clarity]
+    recorded_at: 2026-08-18T00:00:00Z
+    status: accepted

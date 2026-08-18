@@ -1,0 +1,7 @@
+id: evolves_through
+label: evolves through
+definition: A Brand state changes through the referenced bounded event.
+family: temporal
+source_types: [brand-system]
+target_types: [event]
+allow_inference: false

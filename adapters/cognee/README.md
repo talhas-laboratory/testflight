@@ -58,3 +58,14 @@ data_points = validation_to_datapoints(validated)
 boundary. They are intentionally separate from extraction so a different graph backend can be
 added without changing the semantic contract. Relationship records keep evidence as retrievable
 nodes; direct endpoint edges can be passed as Cognee `custom_edges` when writing the batch.
+
+### Brand projection
+
+The system-theoretic Brand domain has a separate projection boundary in
+`testflight_adapter_cognee.brand_projection`. It defines lazy Cognee DataPoint classes for a
+Brand system, Brand components, and first-class Brand assertions. Assertions are projected only
+after canonical acceptance. Keep assertion nodes for evidence and provenance, and use
+`brand_assertion_custom_edges` only for bounded endpoint traversal; the edge metadata retains
+perspective, epistemic status, evidence confidence, and structural weight as separate dimensions.
+The canonical ontology and policies live under `domains/brand/`, while accepted evidence and
+assertions live in the SQLite semantic repository.

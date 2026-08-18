@@ -1,0 +1,7 @@
+id: perceived_by
+label: perceived by
+definition: A Brand or perception is scoped to the referenced stakeholder or community.
+family: perspective
+source_types: [brand-system, perception]
+target_types: [stakeholder, environment]
+allow_inference: false

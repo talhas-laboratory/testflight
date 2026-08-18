@@ -1,0 +1,26 @@
+id: world://ontology/brand-system
+version: 1.0.0
+entity_types:
+  - entity-types/identity.yaml
+  - entity-types/expression.yaml
+  - entity-types/offering.yaml
+  - entity-types/experience.yaml
+  - entity-types/perception.yaml
+  - entity-types/governance.yaml
+  - entity-types/environment.yaml
+  - entity-types/event.yaml
+relationship_types:
+  - relationship-types/has-component.yaml
+  - relationship-types/expressed-through.yaml
+  - relationship-types/offers.yaml
+  - relationship-types/experienced-through.yaml
+  - relationship-types/perceived-by.yaml
+  - relationship-types/governed-by.yaml
+  - relationship-types/situated-in.yaml
+  - relationship-types/evolves-through.yaml
+  - relationship-types/shapes.yaml
+  - relationship-types/updates.yaml
+  - relationship-types/feeds-back-into.yaml
+  - relationship-types/supports.yaml
+  - relationship-types/contradicts.yaml
+  - relationship-types/influences.yaml

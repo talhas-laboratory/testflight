@@ -1,0 +1,42 @@
+id: world://workspace/brand/template
+version: 1
+status: template
+mission: >-
+  Isolate one Brand system's definitions, evidence, semantic proposals, canonical state, and
+  rebuildable Cognee projection.
+brand_id: brand:template
+ontology:
+  source: ../../domains/brand/ontology/brand-system.yaml
+  version: 1.0.0
+  policies:
+    - ../../domains/brand/policies/identity-resolution-v1.yaml
+    - ../../domains/brand/policies/assertion-acceptance-v1.yaml
+    - ../../domains/brand/policies/relationship-weight-v1.yaml
+projection:
+  provider: cognee
+  dataset_template: testflight_brand_<workspace_slug>_p<projection_version>
+  projection_version: 1
+  source_of_truth: canonical_semantic_repository
+storage:
+  runtime_root: /home/talha/testflight/.data/brand-workspaces/<workspace_slug>
+  evidence_root: /home/talha/testflight/.data/brand-workspaces/<workspace_slug>/evidence
+  semantic_repository: /home/talha/testflight/.data/brand-workspaces/<workspace_slug>/semantic.sqlite3
+scope:
+  includes:
+    - versioned Brand definitions
+    - intended and observed Brand assertions
+    - source evidence and exact spans
+    - identity hypotheses and accepted canonical entities
+    - derivation, evaluation, and projection receipts
+  excludes:
+    - private chain-of-thought
+    - unsupported personal traits or diagnoses
+    - autonomous external actions
+    - secrets, databases, model weights, and generated indexes in Git
+policy:
+  evidence_strictness: grounded
+  uncertainty_policy: branch
+  mutation: proposal_only
+  action: deny_unless_authorized
+  graph_max_hops: 2
+  retrieval_order: bm25_then_bounded_hybrid

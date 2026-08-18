@@ -30,6 +30,8 @@ reusable packages or independently deployable services.
 | `reasoning/` | Portable reasoning-operator contracts and guardrail catalog |
 | `docs/` | Designs, decisions, and research |
 | `scripts/` | Setup, validation, and synchronization tools |
+| `domains/brand/` | Versioned, provider-neutral Brand ontology and policies |
+| `workspaces/brand-template/` | Isolated Brand workspace template and retrieval routing |
 
 ## Quick start
 
@@ -70,6 +72,20 @@ project and [the server guide](docs/operations/home-server.md) before enabling s
 For semantic extraction or agent-runtime work, start with the
 [reasoning-operator guide](reasoning/README.md) and select the smallest applicable contract
 from [`reasoning/operators/index.yaml`](reasoning/operators/index.yaml).
+
+The first system-theoretic Brand slice is available through the `testflight-semantic`,
+`testflight-brand`, `testflight-adapter-sqlite-semantic`, and `testflight-brand-lab` packages.
+Validate the canonical ontology and create an isolated workspace with:
+
+```bash
+uv run brand-lab validate --root .
+uv run brand-lab certify --root .
+uv run brand-lab init acme --output /path/to/acme-brand
+```
+
+The SQLite repository is the append-oriented canonical persistence boundary for evidence and
+accepted assertions. Cognee receives only a rebuildable projection of accepted records; its
+dataset is never treated as the source of truth. See the [Brand workspace operations guide](docs/operations/brand-workspace.md).
 
 ## Current integrations
 

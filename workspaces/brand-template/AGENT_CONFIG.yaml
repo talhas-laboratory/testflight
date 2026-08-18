@@ -1,0 +1,44 @@
+workspace_id: world://workspace/brand/template
+compiler:
+  preserve:
+    - workspace_id
+    - brand_id
+    - definition_id
+    - definition_version
+    - source_id
+    - source_hash
+    - exact_quote
+    - actor_authority
+    - perspective
+    - epistemic_status
+    - valid_time
+    - recorded_time
+    - relation_family
+    - evidence_confidence
+    - contradiction_ids
+    - derivation_id
+retrieval:
+  lexical_first: true
+  bounded_hybrid_on_in_domain_no_hit: true
+  graph_max_hops: 2
+  reject_index_config_as_final_answer: true
+  out_of_domain_result: NO_HITS
+acceptance:
+  require_exact_source_span: true
+  require_evidence_for_assertion: true
+  require_independent_evaluation: true
+  require_projection_receipt: true
+mutation:
+  default: proposal_only
+  commit_requires:
+    - schema_pass
+    - invariant_pass
+    - semantic_pass
+    - explicit_revision
+refresh:
+  triggers:
+    - ontology_version_change
+    - relationship_policy_change
+    - source_hash_change
+    - identity_merge_or_split
+    - projection_adapter_change

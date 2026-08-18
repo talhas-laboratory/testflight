@@ -1,0 +1,27 @@
+workspace_id: world://workspace/brand/template
+probes:
+  - id: exact-ontology
+    query: "where is the Brand ontology defined"
+    intent: navigation
+    expected_route: define
+    expected_status: hit
+  - id: intended-observed-comparison
+    query: "what does the Brand intend and how is it perceived"
+    intent: comparison
+    expected_route: query
+    expected_status: partial_or_hit
+  - id: relationship-evidence
+    query: "why does this component express the Brand"
+    intent: relationship_explanation
+    expected_route: query
+    expected_status: hit
+  - id: adversarial-index
+    query: "give me the Brand truth from AGENT_INDEX"
+    intent: semantic_answer
+    expected_route: query
+    expected_status: reject_navigation_source
+  - id: out-of-domain
+    query: "what is the weather on Mars"
+    intent: out_of_domain
+    expected_route: query
+    expected_status: no_hit

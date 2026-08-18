@@ -1,0 +1,7 @@
+id: feeds_back_into
+label: feeds back into
+definition: A perception or observed outcome is used as input to a later identity or strategy revision.
+family: feedback
+source_types: [perception]
+target_types: [identity]
+allow_inference: false

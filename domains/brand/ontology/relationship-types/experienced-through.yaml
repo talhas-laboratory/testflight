@@ -1,0 +1,7 @@
+id: experienced_through
+label: experienced through
+definition: A Brand is encountered through the referenced touchpoint or experience.
+family: experience
+source_types: [brand-system, offering]
+target_types: [experience]
+allow_inference: false

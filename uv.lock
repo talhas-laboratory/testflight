@@ -10,8 +10,12 @@ resolution-markers = [
 members = [
     "testflight-adapter-cognee",
     "testflight-adapter-langgraph",
+    "testflight-adapter-sqlite-semantic",
+    "testflight-brand",
+    "testflight-brand-lab",
     "testflight-core",
     "testflight-dev",
+    "testflight-semantic",
 ]
 
 [[package]]
@@ -2430,7 +2434,9 @@ version = "0.1.0"
 source = { editable = "adapters/cognee" }
 dependencies = [
     { name = "pydantic" },
+    { name = "testflight-brand" },
     { name = "testflight-core" },
+    { name = "testflight-semantic" },
 ]
 
 [package.optional-dependencies]
@@ -2442,7 +2448,9 @@ cognee = [
 requires-dist = [
     { name = "cognee", marker = "extra == 'cognee'", specifier = "==1.5.0" },
     { name = "pydantic", specifier = ">=2.10,<3" },
+    { name = "testflight-brand", editable = "packages/testflight-brand" },
     { name = "testflight-core", editable = "packages/testflight-core" },
+    { name = "testflight-semantic", editable = "packages/testflight-semantic" },
 ]
 provides-extras = ["cognee"]
 
@@ -2465,6 +2473,53 @@ requires-dist = [
     { name = "testflight-core", editable = "packages/testflight-core" },
 ]
 provides-extras = ["langgraph"]
+
+[[package]]
+name = "testflight-adapter-sqlite-semantic"
+version = "0.1.0"
+source = { editable = "adapters/sqlite-semantic" }
+dependencies = [
+    { name = "testflight-brand" },
+    { name = "testflight-semantic" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "testflight-brand", editable = "packages/testflight-brand" },
+    { name = "testflight-semantic", editable = "packages/testflight-semantic" },
+]
+
+[[package]]
+name = "testflight-brand"
+version = "0.1.0"
+source = { editable = "packages/testflight-brand" }
+dependencies = [
+    { name = "pydantic" },
+    { name = "pyyaml" },
+    { name = "testflight-semantic" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "pydantic", specifier = ">=2.10,<3" },
+    { name = "pyyaml", specifier = ">=6.0,<7" },
+    { name = "testflight-semantic", editable = "packages/testflight-semantic" },
+]
+
+[[package]]
+name = "testflight-brand-lab"
+version = "0.1.0"
+source = { editable = "apps/brand-lab" }
+dependencies = [
+    { name = "testflight-brand" },
+    { name = "testflight-semantic" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "testflight-brand", editable = "packages/testflight-brand" },
+    { name = "testflight-semantic", editable = "packages/testflight-semantic" },
+]
 
 [[package]]
 name = "testflight-core"
@@ -2491,6 +2546,17 @@ dev = [
     { name = "pyyaml", specifier = ">=6.0,<7" },
     { name = "ruff", specifier = ">=0.12,<0.15" },
 ]
+
+[[package]]
+name = "testflight-semantic"
+version = "0.1.0"
+source = { editable = "packages/testflight-semantic" }
+dependencies = [
+    { name = "pydantic" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pydantic", specifier = ">=2.10,<3" }]
 
 [[package]]
 name = "tiktoken"

@@ -7,13 +7,20 @@ name = "testflight-adapter-cognee"
 version = "0.1.0"
 description = "Optional Cognee integration boundary for Testflight"
 requires-python = ">=3.12,<3.14"
-dependencies = ["pydantic>=2.10,<3", "testflight-core"]
+dependencies = [
+  "pydantic>=2.10,<3",
+  "testflight-brand",
+  "testflight-core",
+  "testflight-semantic",
+]
 
 [project.optional-dependencies]
 cognee = ["cognee==1.5.0"]
 
 [tool.uv.sources]
 testflight-core = { workspace = true }
+testflight-brand = { workspace = true }
+testflight-semantic = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/testflight_adapter_cognee"]
