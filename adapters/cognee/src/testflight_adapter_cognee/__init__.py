@@ -4,6 +4,24 @@ from importlib.util import find_spec
 
 from testflight_core import AdapterDescriptor, Capability, HealthReport, HealthState
 
+from .datapoints import (
+    entity_occurrence_to_datapoint,
+    relationship_custom_edges,
+    relationship_occurrence_to_datapoint,
+    validation_to_datapoints,
+)
+from .definitions import DefinitionExample, EntityDefinition, RelationshipDefinition
+from .extractor import SemanticExtractor
+from .models import EntityMatch, ExtractionResult, MatchType, RelationshipMatch
+from .prompt import compile_extraction_prompt
+from .validation import (
+    EntityOccurrence,
+    RelationshipOccurrence,
+    ValidationRejection,
+    ValidationResult,
+    validate_extraction,
+)
+
 
 class CogneeAdapter:
     """Owns all Cognee-specific behavior exposed to Testflight."""
@@ -23,4 +41,24 @@ class CogneeAdapter:
         return HealthReport(HealthState.AVAILABLE, "Cognee is importable.")
 
 
-__all__ = ["CogneeAdapter"]
+__all__ = [
+    "CogneeAdapter",
+    "DefinitionExample",
+    "EntityDefinition",
+    "EntityMatch",
+    "EntityOccurrence",
+    "ExtractionResult",
+    "MatchType",
+    "RelationshipDefinition",
+    "RelationshipMatch",
+    "RelationshipOccurrence",
+    "SemanticExtractor",
+    "ValidationRejection",
+    "ValidationResult",
+    "compile_extraction_prompt",
+    "entity_occurrence_to_datapoint",
+    "relationship_custom_edges",
+    "relationship_occurrence_to_datapoint",
+    "validate_extraction",
+    "validation_to_datapoints",
+]

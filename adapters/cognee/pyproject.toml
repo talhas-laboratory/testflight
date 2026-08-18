@@ -7,7 +7,7 @@ name = "testflight-adapter-cognee"
 version = "0.1.0"
 description = "Optional Cognee integration boundary for Testflight"
 requires-python = ">=3.12,<3.14"
-dependencies = ["testflight-core"]
+dependencies = ["pydantic>=2.10,<3", "testflight-core"]
 
 [project.optional-dependencies]
 cognee = ["cognee==1.5.0"]
