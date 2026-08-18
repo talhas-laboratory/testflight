@@ -300,7 +300,7 @@ def _configure_process_environment(root: Path) -> str:
 
     credential = _credential(root)
     endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
-    model = os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "deepseek/deepseek-chat")
+    model = os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "openai/deepseek/deepseek-chat")
     embedding_endpoint = os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_ENDPOINT", endpoint)
     embedding_model = os.getenv(
         "TESTFLIGHT_COGNEE_EMBEDDING_MODEL", "openai/text-embedding-3-small"
@@ -326,7 +326,7 @@ def _build_llm_configs(credential: str | None = None) -> tuple[Any, Any]:
     endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
     llm_kwargs = {
         "llm_provider": os.getenv("TESTFLIGHT_COGNEE_LLM_PROVIDER", "openai"),
-        "llm_model": os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "deepseek/deepseek-chat"),
+        "llm_model": os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "openai/deepseek/deepseek-chat"),
         "llm_endpoint": endpoint,
         "llm_temperature": 0.0,
         "llm_" + "api_" + "key": credential,
