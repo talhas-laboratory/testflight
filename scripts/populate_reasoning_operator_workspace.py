@@ -385,6 +385,18 @@ async def populate(
         llm_config=llm_config,
         embedding_config=embedding_config,
     )
+    # Cognee 1.5.0 starts local database workers through multiprocessing.  The
+    # blocking pipeline returns after its writes are committed, but those
+    # workers can otherwise survive ``asyncio.run`` and keep the Ladybug file
+    # lock open.  This command is a bounded one-shot population job, so close
+    # only children owned by this process before returning to the report writer.
+    import multiprocessing
+
+    children = multiprocessing.active_children()
+    for child in children:
+        child.terminate()
+    for child in children:
+        child.join(timeout=10)
     return {
         "add_result_type": type(add_result).__name__,
         "cognify_result_type": type(cognify_result).__name__,
