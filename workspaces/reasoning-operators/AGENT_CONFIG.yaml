@@ -1,0 +1,46 @@
+workspace_id: world://workspace/reasoning-operators
+version: 1
+context_compiler:
+  minimize_tokens: true
+  preserve:
+    - source_evidence
+    - authority
+    - scope
+    - valid_time
+    - relations
+    - branches
+    - uncertainty
+    - invariants
+  disclose_omissions: true
+retrieval:
+  container_ids:
+    - world://workspace/reasoning-operators
+  route_smallest_child_first: true
+  primary: bm25
+  fallback: bounded_hybrid_same_container
+  graph:
+    enabled_for_explicit_path_queries_only: true
+    max_hops: 2
+  reject_index_config_as_answer: true
+  no_hit_is_valid: true
+mutation:
+  mode: proposal_only
+  derivation_required: true
+  append_only_evidence: true
+  optimistic_concurrency: true
+action:
+  mode: deny_unless_authorized
+  lifecycle: propose_authorize_execute_observe_verify
+quality:
+  metadata_completeness: 1.0
+  source_resolution: 1.0
+  no_hit_correctness: 1.0
+  unauthorized_action: 0.0
+  top1_precision_target: 0.90
+  routing_error_target: 0.03
+refresh:
+  trigger_on:
+    - operator_version_change
+    - source_hash_change
+    - workspace_policy_change
+  rebuild_derived_state: true

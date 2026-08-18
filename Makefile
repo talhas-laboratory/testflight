@@ -1,4 +1,4 @@
-.PHONY: setup setup-server-cognee setup-server-deepseek-harness run-deepseek-harness format lint test check registry compose-config sync-server
+.PHONY: setup setup-server-cognee setup-server-deepseek-harness setup-server-reasoning-operators run-deepseek-harness format lint test check registry compose-config sync-server
 
 setup:
 	corepack enable
@@ -10,6 +10,9 @@ setup-server-cognee:
 
 setup-server-deepseek-harness:
 	./scripts/setup_server_deepseek_harness.sh
+
+setup-server-reasoning-operators:
+	./scripts/setup_server_reasoning_operators.sh
 
 run-deepseek-harness:
 	./scripts/run_deepseek_harness.sh

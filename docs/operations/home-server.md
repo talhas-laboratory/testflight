@@ -41,6 +41,17 @@ cd /home/talha/testflight
 source .venv-cognee/bin/activate
 ```
 
+The reasoning-operator workspace is a separate Cognee dataset. Populate or rebuild it from the
+canonical Git contracts with:
+
+```bash
+cd /home/talha/testflight
+./scripts/setup_server_reasoning_operators.sh
+```
+
+Use `--validate-only` for a no-write contract check or `--dry-run` to preview the bounded source
+documents. The population report is written under the ignored `.data/` directory.
+
 The script installs the pinned Cognee release through the owned adapter and finishes with the
 adapter health probe. On first run it also creates an ignored `.env` containing only local
 Cognee data, system, and log paths under `.data/cognee/`; it never overwrites an existing `.env`.

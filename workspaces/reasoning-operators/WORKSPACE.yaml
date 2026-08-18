@@ -1,0 +1,50 @@
+workspace:
+  id: world://workspace/reasoning-operators
+  version: 1
+  status: active
+  name: Testflight Reasoning Operators
+  mission: >-
+    Provide a bounded, retrievable, provenance-preserving workspace of
+    reusable reasoning guardrails for semantic extraction, architecture,
+    retrieval, persistence, and agent-runtime work.
+  source_of_truth: ../../reasoning/operators/index.yaml
+  contract: ../../reasoning/operator-contract.yaml
+  cognee:
+    dataset_name: testflight_reasoning_operators
+    runtime_root: /home/talha/testflight/.data/cognee
+    population_command: scripts/populate_reasoning_operator_workspace.py
+  topology:
+    parent: reasoning-operators
+    children:
+      - id: selection
+        path: task_views/selection.md
+        purpose: route a task to the smallest applicable operator
+      - id: execution
+        path: task_views/execution.md
+        purpose: execute an operator-local procedure and preserve holds
+      - id: evaluation
+        path: task_views/evaluation.md
+        purpose: evaluate schema, invariants, semantics, and utility separately
+      - id: maintenance
+        path: task_views/maintenance.md
+        purpose: rebuild, refresh, and recertify the workspace
+  scope:
+    includes:
+      - the 16 versioned guardrail operator contracts
+      - operator selection, execution, evaluation, and maintenance guidance
+      - exact source provenance and certification probes
+    excludes:
+      - private chain-of-thought
+      - diagnoses or fixed psychological traits
+      - autonomous external actions
+      - unbounded archive ingestion
+      - secrets, databases, model weights, and generated knowledge stores
+  policy:
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    mutation: proposal_only
+    action: deny_unless_authorized
+    no_hit: valid
+    graph_max_hops: 2
+    retrieval_primary: bm25
+    retrieval_fallback: bounded_hybrid_same_container

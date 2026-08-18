@@ -23,3 +23,6 @@ down:
 
 sync-server:
     ./scripts/sync_server.sh
+
+setup-server-reasoning-operators:
+    ./scripts/setup_server_reasoning_operators.sh

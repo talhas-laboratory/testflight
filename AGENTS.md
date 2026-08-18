@@ -21,3 +21,6 @@
   semantic gap with an invented fact or silently commit a proposal.
 - Record the operator id/version and evaluator results when an operator influences a persisted
   artifact or material answer.
+- For workspace/container population, read `workspaces/reasoning-operators/README.md` and keep
+  `reasoning/operators/` as the source of truth; rebuild Cognee projections instead of editing
+  generated `.data/` state.

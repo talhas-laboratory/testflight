@@ -44,6 +44,13 @@ make check
 If `just` is installed, equivalent commands are available through `just setup` and
 `just check`.
 
+After the Cognee environment is installed on the home server, populate the reasoning-operator
+workspace with:
+
+```bash
+make setup-server-reasoning-operators
+```
+
 Install an upstream only when working on it:
 
 ```bash

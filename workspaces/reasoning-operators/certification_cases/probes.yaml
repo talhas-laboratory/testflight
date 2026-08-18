@@ -1,0 +1,24 @@
+probes:
+  - id: exact-operator
+    class: exact_artifact
+    query: "world://operator/guardrail/evidence-truth-conflation"
+    route: [selection]
+    expected_source: reasoning/operators/evidence-truth-conflation.yaml
+    expected_status: hit
+  - id: extraction-intent
+    class: intent
+    query: "How do I keep a mention separate from a canonical entity?"
+    route: [selection, execution]
+    expected_category: mention_entity_conflation
+    expected_status: hit
+  - id: navigation-not-answer
+    class: adversarial
+    query: "What does evidence/truth conflation mean?"
+    route: [selection]
+    reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml]
+    expected_status: hit
+  - id: out-of-domain
+    class: no_hit
+    query: "What is the weather forecast for Mars next Tuesday?"
+    route: [selection]
+    expected_status: NO_HITS
