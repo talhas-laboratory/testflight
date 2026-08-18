@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-server="${TESTFLIGHT_SERVER:-talha@192.168.0.102}"
+server="${TESTFLIGHT_SERVER:-home-server}"
 remote_dir="${TESTFLIGHT_REMOTE_DIR:-/home/talha/testflight}"
 repository="${TESTFLIGHT_REPOSITORY:-https://github.com/talhas-laboratory/testflight.git}"
 branch="${TESTFLIGHT_BRANCH:-main}"
 
-if [[ ! "$server" =~ ^[A-Za-z0-9._-]+@[A-Za-z0-9._:-]+$ ]]; then
+if [[ ! "$server" =~ ^([A-Za-z0-9._-]+@)?[A-Za-z0-9._:-]+$ ]]; then
   echo "TESTFLIGHT_SERVER has an unsafe format" >&2
   exit 2
 fi
