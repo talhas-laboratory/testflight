@@ -6,6 +6,17 @@ python_bin="${TESTFLIGHT_PYTHON:-python3}"
 venv_dir="${TESTFLIGHT_COGNEE_VENV:-$repo_root/.venv-cognee}"
 uv_bin=""
 
+cd "$repo_root"
+
+if [[ ! -e "$repo_root/.env" ]]; then
+  umask 077
+  {
+    printf 'DATA_ROOT_DIRECTORY=%s\n' "$repo_root/.data/cognee/data"
+    printf 'SYSTEM_ROOT_DIRECTORY=%s\n' "$repo_root/.data/cognee/system"
+    printf 'COGNEE_LOGS_DIR=%s\n' "$repo_root/.data/cognee/logs"
+  } > "$repo_root/.env"
+fi
+
 if command -v uv >/dev/null 2>&1; then
   uv_bin="$(command -v uv)"
 elif [[ -x "$HOME/.local/uv" ]]; then

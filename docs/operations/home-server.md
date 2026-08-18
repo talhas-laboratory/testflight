@@ -42,4 +42,6 @@ source .venv-cognee/bin/activate
 ```
 
 The script installs the pinned Cognee release through the owned adapter and finishes with the
-adapter health probe. `.venv-cognee/` is ignored and never synchronized through Git.
+adapter health probe. On first run it also creates an ignored `.env` containing only local
+Cognee data, system, and log paths under `.data/cognee/`; it never overwrites an existing `.env`.
+`.venv-cognee/` and `.data/` are ignored and never synchronized through Git.
