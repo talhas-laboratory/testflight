@@ -9,4 +9,6 @@ test("the adapter pins the preview release", async () => {
   );
   assert.match(source, /@deepseek-ai\/dsh@0\.1\.0-rc\.7/);
   assert.match(source, /agent-runtime/);
+  assert.match(source, /"--profile"/);
+  assert.match(source, /patchFile/);
 });

@@ -1,4 +1,4 @@
-.PHONY: setup setup-server-cognee format lint test check registry compose-config sync-server
+.PHONY: setup setup-server-cognee setup-server-deepseek-harness run-deepseek-harness format lint test check registry compose-config sync-server
 
 setup:
 	corepack enable
@@ -7,6 +7,12 @@ setup:
 
 setup-server-cognee:
 	./scripts/setup_server_cognee.sh
+
+setup-server-deepseek-harness:
+	./scripts/setup_server_deepseek_harness.sh
+
+run-deepseek-harness:
+	./scripts/run_deepseek_harness.sh
 
 format:
 	uv run ruff format .
