@@ -280,17 +280,25 @@ def _write_report(root: Path, report: dict[str, Any], report_path: Path | None) 
     return destination
 
 
-def _credential() -> str:
+def _credential(root: Path | None = None) -> str:
     credential = os.getenv("OPENROUTER_API_KEY") or os.getenv("LLM_API_KEY")
+    if not credential and root is not None:
+        env_path = root / ".env"
+        if env_path.is_file():
+            for line in env_path.read_text().splitlines():
+                name, separator, value = line.partition("=")
+                if separator and name in {"OPENROUTER_API_KEY", "LLM_API_KEY"} and value.strip():
+                    credential = value.strip()
+                    break
     if not credential:
         raise RuntimeError("OPENROUTER_API_KEY or LLM_API_KEY is required for Cognee population")
     return credential
 
 
-def _configure_process_environment() -> str:
+def _configure_process_environment(root: Path) -> str:
     """Expose the effective provider route to Cognee's process-global settings."""
 
-    credential = _credential()
+    credential = _credential(root)
     endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
     model = os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "deepseek/deepseek-chat")
     embedding_endpoint = os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_ENDPOINT", endpoint)
@@ -336,10 +344,12 @@ def _build_llm_configs(credential: str | None = None) -> tuple[Any, Any]:
     return llm, embedding
 
 
-async def populate(documents: list[MaterializedDocument], dataset_name: str) -> dict[str, Any]:
+async def populate(
+    documents: list[MaterializedDocument], dataset_name: str, root: Path
+) -> dict[str, Any]:
     """Add and cognify the workspace using the optional Cognee dependency."""
 
-    credential = _configure_process_environment()
+    credential = _configure_process_environment(root)
     import cognee
     from cognee.tasks.ingestion.data_item import DataItem
 
@@ -415,7 +425,7 @@ def main() -> int:
             details={"would_add": len(documents), "would_cognify": True},
         )
     else:
-        details = asyncio.run(populate(documents, dataset_name))
+        details = asyncio.run(populate(documents, dataset_name, root))
         report = _redacted_report(
             root=root,
             validated=validated,
