@@ -39,6 +39,17 @@ bitemporal history, shared identity, adaptive representation, portfolio scope, e
 causal guardrails and representation conflicts. Fixture certification remains separate from Cognee
 projection certification.
 
+The projection materializer is deterministic and credential-free in its safe modes:
+
+```bash
+make brand-research-projection
+```
+
+It currently produces 11 bounded research documents from the tracked pack. On the server, use
+`make setup-server-brand-research -- --dry-run` after the isolated Cognee environment exists. The
+`--populate` mode is intentionally gated until projection retrieval is separately certified and
+the workspace manifest is explicitly authorized.
+
 Start with:
 
 - [`AGENT_INDEX.md`](AGENT_INDEX.md) for routing;

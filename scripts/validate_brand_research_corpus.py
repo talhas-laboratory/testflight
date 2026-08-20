@@ -37,6 +37,7 @@ EVIDENCE_REQUIRED = {
     "supports",
     "limitations",
 }
+SPAN_REQUIRED = {"id", "source_id", "note_id", "locator", "span_mode"}
 CANDIDATE_REQUIRED = {
     "candidate_id",
     "semantic_kind",
@@ -86,6 +87,7 @@ def validate_corpus(root: Path = REPO_ROOT) -> dict[str, Any]:
     workspace = root / "workspaces/brand-ontology-research"
     sources = _load(workspace / "artifacts/source-catalog.yaml").get("sources")
     evidence = _load(workspace / "artifacts/evidence-notes.yaml").get("notes")
+    spans = _load(workspace / "artifacts/evidence-spans.yaml").get("spans")
     candidates = _load(workspace / "artifacts/candidate-definitions.yaml").get("candidates")
     questions = _load(workspace / "artifacts/competency-questions.yaml").get("questions")
     worlds = _load(workspace / "artifacts/synthetic-worlds.yaml").get("worlds")
@@ -94,6 +96,8 @@ def validate_corpus(root: Path = REPO_ROOT) -> dict[str, Any]:
         raise ValueError("anchor corpus must contain exactly 24 sources")
     if not isinstance(evidence, list) or len(evidence) != len(sources):
         raise ValueError("every anchor source must have one bounded evidence note")
+    if not isinstance(spans, list) or len(spans) != len(evidence):
+        raise ValueError("every evidence note must have one bounded source span")
     if not isinstance(candidates, list) or len(candidates) < 8:
         raise ValueError("corpus must contain at least eight candidate definitions")
     if not isinstance(questions, list) or len(questions) != 30:
@@ -144,6 +148,30 @@ def validate_corpus(root: Path = REPO_ROOT) -> dict[str, Any]:
         if unknown:
             raise ValueError(f"evidence note {note['id']} references unknown questions: {unknown}")
         covered_questions.update(note["supports"])
+
+    span_ids: set[str] = set()
+    note_ids = {note["id"] for note in evidence}
+    span_sources: set[str] = set()
+    for span in spans:
+        if not isinstance(span, dict):
+            raise ValueError("evidence span must be a mapping")
+        missing = SPAN_REQUIRED - set(span)
+        if missing:
+            raise ValueError(f"evidence span {span.get('id')} missing {sorted(missing)}")
+        if span["id"] in span_ids:
+            raise ValueError(f"duplicate evidence span id: {span['id']}")
+        span_ids.add(span["id"])
+        if span["source_id"] not in source_ids:
+            raise ValueError(f"evidence span references unknown source: {span['source_id']}")
+        if span["note_id"] not in note_ids:
+            raise ValueError(f"evidence span references unknown note: {span['note_id']}")
+        if span["span_mode"] != "faithful_paraphrase":
+            raise ValueError(
+                "anchor spans must be faithful paraphrases until licensed excerpts exist"
+            )
+        span_sources.add(span["source_id"])
+    if span_sources != source_ids:
+        raise ValueError("bounded source spans must cover every anchor source")
 
     candidate_ids: set[str] = set()
     candidate_statuses: set[str] = set()
@@ -206,6 +234,7 @@ def validate_corpus(root: Path = REPO_ROOT) -> dict[str, Any]:
     return {
         "source_count": len(sources),
         "evidence_count": len(evidence),
+        "span_count": len(spans),
         "candidate_count": len(candidates),
         "question_count": len(question_ids),
         "world_count": len(world_ids),

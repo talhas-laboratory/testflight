@@ -1,0 +1,31 @@
+version: 1
+status: locator_bounded
+policy:
+  exact_quote_storage: prohibited_unless_licensed
+  default_span_mode: faithful_paraphrase
+  source_text_is_not_canonical: true
+spans:
+  - {id: SPAN-001, source_id: SRC-001, note_id: EVD-001, locator: "Introduction and PROV-O at a glance", span_mode: faithful_paraphrase}
+  - {id: SPAN-002, source_id: SRC-002, note_id: EVD-002, locator: "Abstract and synopsis", span_mode: faithful_paraphrase}
+  - {id: SPAN-003, source_id: SRC-003, note_id: EVD-003, locator: "Introduction and conformance", span_mode: faithful_paraphrase}
+  - {id: SPAN-004, source_id: SRC-004, note_id: EVD-004, locator: "Abstract", span_mode: faithful_paraphrase}
+  - {id: SPAN-005, source_id: SRC-005, note_id: EVD-005, locator: "Abstract and lifecycle", span_mode: faithful_paraphrase}
+  - {id: SPAN-006, source_id: SRC-006, note_id: EVD-006, locator: "Current TC 289 catalogue", span_mode: faithful_paraphrase}
+  - {id: SPAN-007, source_id: SRC-007, note_id: EVD-007, locator: "Trademark overview", span_mode: faithful_paraphrase}
+  - {id: SPAN-008, source_id: SRC-008, note_id: EVD-008, locator: "Database scope and search capabilities", span_mode: faithful_paraphrase}
+  - {id: SPAN-009, source_id: SRC-009, note_id: EVD-009, locator: "Classification overview", span_mode: faithful_paraphrase}
+  - {id: SPAN-010, source_id: SRC-010, note_id: EVD-010, locator: "Assessment of the evidence", span_mode: faithful_paraphrase}
+  - {id: SPAN-011, source_id: SRC-011, note_id: EVD-011, locator: "Abstract", span_mode: faithful_paraphrase}
+  - {id: SPAN-012, source_id: SRC-012, note_id: EVD-012, locator: "Article title and abstract metadata", span_mode: faithful_paraphrase}
+  - {id: SPAN-013, source_id: SRC-013, note_id: EVD-013, locator: "Abstract", span_mode: faithful_paraphrase}
+  - {id: SPAN-014, source_id: SRC-014, note_id: EVD-014, locator: "Abstract", span_mode: faithful_paraphrase}
+  - {id: SPAN-015, source_id: SRC-015, note_id: EVD-015, locator: "Abstract", span_mode: faithful_paraphrase}
+  - {id: SPAN-016, source_id: SRC-016, note_id: EVD-016, locator: "Abstract", span_mode: faithful_paraphrase}
+  - {id: SPAN-017, source_id: SRC-017, note_id: EVD-017, locator: "Abstract", span_mode: faithful_paraphrase}
+  - {id: SPAN-018, source_id: SRC-018, note_id: EVD-018, locator: "Abstract and keywords", span_mode: faithful_paraphrase}
+  - {id: SPAN-019, source_id: SRC-019, note_id: EVD-019, locator: "Abstract", span_mode: faithful_paraphrase}
+  - {id: SPAN-020, source_id: SRC-020, note_id: EVD-020, locator: "Abstract and language-tag section", span_mode: faithful_paraphrase}
+  - {id: SPAN-021, source_id: SRC-021, note_id: EVD-021, locator: "Summary and introduction", span_mode: faithful_paraphrase}
+  - {id: SPAN-022, source_id: SRC-022, note_id: EVD-022, locator: "Abstract", span_mode: faithful_paraphrase}
+  - {id: SPAN-023, source_id: SRC-023, note_id: EVD-023, locator: "Original article introduction and conclusion", span_mode: faithful_paraphrase}
+  - {id: SPAN-024, source_id: SRC-024, note_id: EVD-024, locator: "Abstract and theoretical development", span_mode: faithful_paraphrase}

@@ -59,3 +59,10 @@ refresh:
     - question_catalog_change
     - fixture_change
     - ontology_candidate_revision
+projection:
+  safe_modes: [validate-only, dry-run]
+  default_status: pack_only_until_certified
+  population_requires:
+    - projection_retrieval_certified
+    - authorized_manifest_change
+    - credential_available_outside_repository
