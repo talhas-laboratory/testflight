@@ -46,7 +46,13 @@ brand-research-corpus:
 	python3 scripts/validate_brand_research_corpus.py
 
 brand-research-fixtures:
-	PYTHONPATH=scripts uv run python scripts/validate_brand_ontology_fixtures.py
+	@if command -v uv >/dev/null 2>&1; then \
+		PYTHONPATH=scripts uv run python scripts/validate_brand_ontology_fixtures.py; \
+	elif [ -x "$${TESTFLIGHT_COGNEE_VENV:-.venv-cognee}/bin/python" ]; then \
+		PYTHONPATH=scripts:packages/testflight-semantic/src "$${TESTFLIGHT_COGNEE_VENV:-.venv-cognee}/bin/python" scripts/validate_brand_ontology_fixtures.py; \
+	else \
+		echo "uv or TESTFLIGHT_COGNEE_VENV is required for fixture validation" >&2; exit 1; \
+	fi
 
 compose-config:
 	docker compose -f infra/compose.yaml config --quiet
