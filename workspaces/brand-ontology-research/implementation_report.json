@@ -1,0 +1,10 @@
+{
+  "workspace_id": "world://workspace/brand-ontology-research",
+  "version": 1,
+  "status": "scaffolded",
+  "document_count": 0,
+  "competency_question_count": 30,
+  "synthetic_world_count": 9,
+  "projection_status": "pack_only_until_certified",
+  "notes": "Tracked research pack only; no generated knowledge store is committed."
+}

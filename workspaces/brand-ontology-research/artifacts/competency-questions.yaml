@@ -1,0 +1,33 @@
+version: 1
+status: candidate
+questions:
+  - {id: CQ-001, category: identity, question: "Can the system distinguish a source mention from a persistent Brand entity?", expected_invariant: "mention != entity", required_kinds: [entity, evidence]}
+  - {id: CQ-002, category: identity, question: "Can two identical labels remain separate when identity evidence is insufficient?", expected_invariant: "similarity does not merge identity", required_kinds: [entity, observation]}
+  - {id: CQ-003, category: identity, question: "Can an alias carry language, scope, and time without proving identity?", expected_invariant: "alias is evidence, not identity", required_kinds: [entity, evidence]}
+  - {id: CQ-004, category: identity, question: "Can a shared entity be referenced by multiple workspaces without local assertions mutating its identity?", expected_invariant: "shared identity + scoped augmentation", required_kinds: [entity, assertion, context]}
+  - {id: CQ-005, category: portfolio, question: "Can Organization, Brand, Portfolio, Offering, and Initiative remain distinct?", expected_invariant: "portfolio topology is explicit", required_kinds: [entity, relationship]}
+  - {id: CQ-006, category: portfolio, question: "Can BrandSystem act as an analytical boundary rather than a second Brand type?", expected_invariant: "system boundary != domain entity type", required_kinds: [entity, context]}
+  - {id: CQ-007, category: assertion, question: "Can the same proposition retain perspective, evidence, and Context qualifiers?", expected_invariant: "assertion is contextualized", required_kinds: [assertion, evidence, context]}
+  - {id: CQ-008, category: assertion, question: "Can intended and observed Brand assertions coexist without being conflated?", expected_invariant: "perspectives remain separate", required_kinds: [assertion]}
+  - {id: CQ-009, category: assertion, question: "Can support and contradiction connect assertions without deleting either side?", expected_invariant: "conflict preserves both claims", required_kinds: [assertion, relationship]}
+  - {id: CQ-010, category: assertion, question: "Can a weakly evidenced proposal remain held rather than becoming accepted truth?", expected_invariant: "proposal != accepted", required_kinds: [assertion, evidence]}
+  - {id: CQ-011, category: relationship, question: "Can each relationship declare endpoint types, direction, inverse, and logical properties?", expected_invariant: "relation contract is explicit", required_kinds: [relationship]}
+  - {id: CQ-012, category: relationship, question: "Can n-ary qualifiers remain on an Assertion instead of being flattened into an edge?", expected_invariant: "qualified assertion survives projection", required_kinds: [assertion, relationship]}
+  - {id: CQ-013, category: relationship, question: "Can the system distinguish enables, influences, drives, precedes, and causes?", expected_invariant: "causal vocabulary is non-equivalent", required_kinds: [relationship, assertion]}
+  - {id: CQ-014, category: relationship, question: "Can competing causal hypotheses coexist under one alternative set?", expected_invariant: "causal uncertainty branches", required_kinds: [assertion, event]}
+  - {id: CQ-015, category: context, question: "Does equivalent Context content receive a stable identity regardless of field ordering?", expected_invariant: "Context hash is deterministic", required_kinds: [context]}
+  - {id: CQ-016, category: context, question: "Can applicability vary by audience, market, channel, locale, offering, and time?", expected_invariant: "truth != applicability", required_kinds: [context, assertion]}
+  - {id: CQ-017, category: context, question: "Can two assertions be valid concurrently in different exclusive scopes?", expected_invariant: "scoped concurrent validity", required_kinds: [context, assertion]}
+  - {id: CQ-018, category: context, question: "Can an equal-authority Context conflict remain unresolved?", expected_invariant: "no silent context winner", required_kinds: [context, assertion]}
+  - {id: CQ-019, category: representation, question: "Can one semantic entity have canonical, adaptive, and local bindings?", expected_invariant: "semantic identity != manifestation", required_kinds: [entity, context]}
+  - {id: CQ-020, category: representation, question: "Can semantic, symbolic, visual, verbal, interaction, behavioral, motion, and artifact facets coexist?", expected_invariant: "facets are extensible", required_kinds: [entity, relationship]}
+  - {id: CQ-021, category: representation, question: "Can profiles compose from shared to campaign scope without cycles?", expected_invariant: "profile composition is a DAG", required_kinds: [entity, relationship]}
+  - {id: CQ-022, category: representation, question: "Can equal-authority representation rules produce an explicit conflict?", expected_invariant: "conflict is not silently resolved", required_kinds: [relationship, assertion]}
+  - {id: CQ-023, category: dependency, question: "Can an instance-level dependency differ from a type-level dependency?", expected_invariant: "dependency selectors preserve level", required_kinds: [relationship, context]}
+  - {id: CQ-024, category: dependency, question: "Can a relation-derived dependency produce potentially_stale without asserting falsity?", expected_invariant: "staleness != truth", required_kinds: [relationship, assertion]}
+  - {id: CQ-025, category: dependency, question: "Can dependency propagation stop at a configured boundary and detect cycles?", expected_invariant: "bounded traversal", required_kinds: [relationship, context]}
+  - {id: CQ-026, category: time, question: "Can the system answer what was believed at one time about what was valid at another?", expected_invariant: "bitemporal reconstruction", required_kinds: [assertion, event]}
+  - {id: CQ-027, category: time, question: "Can corrections append knowledge history instead of overwriting it?", expected_invariant: "history is immutable", required_kinds: [assertion, event]}
+  - {id: CQ-028, category: governance, question: "Can an agent propose but not promote an ontology definition?", expected_invariant: "authority is explicit", required_kinds: [assertion, context]}
+  - {id: CQ-029, category: provenance, question: "Can every accepted record be traced through source, operation, model, policy, operator, and evaluator?", expected_invariant: "derivation is complete", required_kinds: [evidence, assertion]}
+  - {id: CQ-030, category: projection, question: "Can a Cognee projection be rebuilt and resolved back to canonical IDs and evidence?", expected_invariant: "projection is reversible", required_kinds: [assertion, evidence]}

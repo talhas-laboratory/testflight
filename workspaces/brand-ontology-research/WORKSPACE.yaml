@@ -1,0 +1,59 @@
+workspace:
+  id: world://workspace/brand-ontology-research
+  version: 1
+  status: active
+  name: Testflight Brand Ontology Research
+  mission: >-
+    Provide a bounded, provenance-preserving workspace for researching, proposing, evaluating,
+    and certifying Brand ontology definitions before they enter canonical semantic state.
+  constitution: ../../docs/plans/2026-08-20-brand-ontology-constitution-v0.1-design.md
+  source_of_truth: artifacts/research-protocol.md
+  cognee:
+    dataset_name: testflight_brand_ontology_research
+    runtime_root: /home/talha/testflight/.data/cognee
+    population_status: pack_only_until_certified
+  topology:
+    parent: brand-ontology-research
+    children:
+      - id: research
+        path: task_views/research.md
+        purpose: gather source-grounded domain material and candidate concepts
+      - id: proposal
+        path: task_views/proposal.md
+        purpose: express candidate definitions without promoting them
+      - id: evaluation
+        path: task_views/evaluation.md
+        purpose: test candidates against questions, fixtures, and counterexamples
+      - id: promotion
+        path: task_views/promotion.md
+        purpose: record authorized accept, hold, reject, or deprecate decisions
+      - id: certification
+        path: task_views/certification.md
+        purpose: certify the pack and ontology release independently of projection retrieval
+      - id: maintenance
+        path: task_views/maintenance.md
+        purpose: refresh sources, detect drift, and rebuild a later Cognee projection
+  scope:
+    includes:
+      - source metadata and authority tiers
+      - competency questions and coverage mappings
+      - synthetic Brand worlds and counterexamples
+      - candidate entity, relationship, facet, and policy definitions
+      - independent evaluation and promotion records
+      - certification probes and reproducible reports
+    excludes:
+      - accepted Brand-world facts
+      - private chain-of-thought
+      - ungrounded model output
+      - secrets, databases, model weights, and generated indexes in Git
+      - autonomous ontology promotion
+  policy:
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    mutation: proposal_only
+    action: deny_unless_authorized
+    no_hit: valid
+    graph_max_hops: 2
+    retrieval_primary: bm25
+    retrieval_fallback: bounded_hybrid_same_container
+    research_source_tiers: A_to_E

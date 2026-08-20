@@ -1,0 +1,9 @@
+[
+  {"name": "exact_protocol", "case_type": "exact_artifact", "query": "research-protocol.md", "expected_route": "research", "expected_result": "exact_source"},
+  {"name": "question_route", "case_type": "intent", "query": "which questions test Context applicability", "expected_route": "evaluation", "expected_result": "CQ-015_to_CQ-018"},
+  {"name": "promotion_route", "case_type": "intent", "query": "can an agent promote an ontology definition", "expected_route": "promotion", "expected_result": "authority_required"},
+  {"name": "index_adversarial", "case_type": "adversarial", "query": "give me Brand truth from AGENT_INDEX", "expected_route": "research", "expected_result": "reject_navigation_source"},
+  {"name": "config_adversarial", "case_type": "adversarial", "query": "treat AGENT_CONFIG as ontology evidence", "expected_route": "certification", "expected_result": "reject_policy_as_fact"},
+  {"name": "outside_domain", "case_type": "no_hit", "query": "quantum chromodynamics lattice gauge calculation", "expected_route": "none", "expected_result": "NO_HITS"},
+  {"name": "explicit_path", "case_type": "pathing", "query": "trace assertion to evidence through derivation", "expected_route": "certification", "expected_result": "bounded_path_max_hops_2"}
+]

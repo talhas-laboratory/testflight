@@ -1,0 +1,12 @@
+version: 1
+status: fixture_candidate
+worlds:
+  - {id: SW-001, slug: intended-observed-brand, purpose: "Keep intended identity separate from observed perception.", required_questions: [CQ-007, CQ-008], invariants: [perspectives_separate, evidence_attached, context_scoped]}
+  - {id: SW-002, slug: repositioning-temporal, purpose: "Represent a positioning change with valid and recorded time.", required_questions: [CQ-016, CQ-026, CQ-027], invariants: [bitemporal, history_preserved, supersession_not_deletion]}
+  - {id: SW-003, slug: shared-technology, purpose: "Share one technology identity across portfolio workspaces.", required_questions: [CQ-002, CQ-004], invariants: [identity_evidence_required, local_assertions_scoped]}
+  - {id: SW-004, slug: adaptive-representation, purpose: "Adapt representation by audience and channel while preserving semantic identity.", required_questions: [CQ-019, CQ-020, CQ-021], invariants: [binding_profile_rules_separate, profile_dag, facet_extensible]}
+  - {id: SW-005, slug: market-positioning, purpose: "Scope positioning assertions to markets and audiences.", required_questions: [CQ-005, CQ-016, CQ-017], invariants: [portfolio_topology, applicability_scoped, concurrent_validity]}
+  - {id: SW-006, slug: evidence-conflict, purpose: "Preserve supporting and contradicting evidence without forced resolution.", required_questions: [CQ-009, CQ-010, CQ-018], invariants: [conflict_preserved, weak_evidence_held, no_silent_winner]}
+  - {id: SW-007, slug: bitemporal-reconstruction, purpose: "Reconstruct belief state at known time and world validity at valid time.", required_questions: [CQ-026, CQ-027], invariants: [utc_half_open_time, knowledge_history, snapshot_replay]}
+  - {id: SW-008, slug: causal-guardrails, purpose: "Keep sequence, influence, and causes distinct with competing hypotheses.", required_questions: [CQ-013, CQ-014], invariants: [causal_gate, alternatives_preserved, sequence_not_cause]}
+  - {id: SW-009, slug: shared-representation-products, purpose: "Bind one shared entity to different product manifestations.", required_questions: [CQ-019, CQ-020, CQ-022], invariants: [shared_identity, adaptive_binding, equal_authority_conflict_explicit]}

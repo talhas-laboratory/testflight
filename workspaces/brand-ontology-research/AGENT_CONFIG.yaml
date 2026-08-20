@@ -1,0 +1,61 @@
+workspace_id: world://workspace/brand-ontology-research
+retrieval_defaults:
+  lexical_first: true
+  bounded_hybrid_on_in_domain_no_hit: true
+  graph_max_hops: 2
+  explicit_container_ids_required: true
+  out_of_domain_result: NO_HITS
+retrieval_acceptance_policy:
+  reject_index_config_as_final_answer: true
+  reject_parent_only_hybrid: true
+  exact_artifact_requires_source_match: true
+  path_queries_require_explicit_traversal_intent: true
+metadata_contract:
+  required:
+    - module
+    - unit
+    - task_view
+    - tool
+    - doc_type
+    - evidence_tier
+    - experience_type
+    - difficulty
+    - canonical
+    - last_verified_at
+    - source_url
+  evidence_tiers: [T1, T2, T3, T4, T5]
+  languages: [en]
+certification_policy:
+  exact_artifact_top_1_precision: 1.0
+  minimum_probe_top_1_precision: 0.9
+  maximum_routing_error: 0.03
+  no_hit_correctness: 1.0
+  ontology_and_projection_certification_are_separate: true
+  required_probe_classes:
+    - exact_artifact
+    - intent
+    - adversarial
+    - no_hit
+    - pathing
+acceptance:
+  proposal_only: true
+  require_source_or_fixture_evidence: true
+  require_counterexample: true
+  require_independent_evaluation: true
+  require_authorized_promotion: true
+  preserve_held_and_no_hit: true
+mutation:
+  default: proposal_only
+  promotion_requires:
+    - schema_pass
+    - invariant_pass
+    - competency_question_coverage
+    - synthetic_fixture_pass
+    - authority_grant
+refresh:
+  triggers:
+    - constitution_version_change
+    - source_hash_change
+    - question_catalog_change
+    - fixture_change
+    - ontology_candidate_revision

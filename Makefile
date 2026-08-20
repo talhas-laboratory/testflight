@@ -1,4 +1,4 @@
-.PHONY: setup setup-server-cognee setup-server-deepseek-harness setup-server-reasoning-operators run-deepseek-harness format lint test check registry compose-config sync-server
+.PHONY: setup setup-server-cognee setup-server-deepseek-harness setup-server-reasoning-operators run-deepseek-harness format lint test check registry brand-research-workspace compose-config sync-server
 
 setup:
 	corepack enable
@@ -34,10 +34,13 @@ test:
 	uv run pytest
 	pnpm test
 
-check: lint test compose-config
+check: lint test brand-research-workspace compose-config
 
 registry:
 	uv run python scripts/validate_registry.py
+
+brand-research-workspace:
+	uv run python scripts/validate_brand_ontology_workspace.py
 
 compose-config:
 	docker compose -f infra/compose.yaml config --quiet

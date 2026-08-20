@@ -1,0 +1,38 @@
+candidate_definition:
+  required:
+    - candidate_id
+    - semantic_kind
+    - module
+    - proposed_version
+    - necessary_definition
+    - inclusion_rules
+    - exclusion_rules
+    - examples
+    - counterexamples
+    - source_refs_or_fixture_refs
+    - competency_question_ids
+    - uncertainty
+    - derivation_id
+  statuses:
+    - proposed
+    - evaluated
+    - accepted
+    - held
+    - rejected
+    - deprecated
+evaluation:
+  dimensions:
+    - schema
+    - invariant
+    - semantic
+    - competency_coverage
+    - fixture_behavior
+    - usefulness
+    - provenance
+  independent_evaluator_required: true
+  producer_may_not_self_promote: true
+promotion:
+  authority_capability: promote
+  append_only: true
+  breaking_change_requires: migration_and_new_definition_id
+  unresolved_conflict_result: hold
