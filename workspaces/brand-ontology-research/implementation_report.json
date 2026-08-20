@@ -1,8 +1,18 @@
 {
   "workspace_id": "world://workspace/brand-ontology-research",
   "version": 1,
-  "status": "scaffolded",
-  "document_count": 0,
+  "status": "anchor_corpus_pack_only",
+  "document_count": 4,
+  "source_count": 24,
+  "evidence_note_count": 24,
+  "candidate_definition_count": 8,
+  "diversity_audit": {
+    "research_lenses": 34,
+    "methodologies": 12,
+    "stakeholders": 12,
+    "geographies": 5,
+    "source_types": 9
+  },
   "competency_question_count": 30,
   "synthetic_world_count": 9,
   "projection_status": "pack_only_until_certified",

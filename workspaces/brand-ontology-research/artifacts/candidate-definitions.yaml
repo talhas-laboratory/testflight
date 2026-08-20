@@ -1,0 +1,290 @@
+version: 1
+status: proposal_only
+candidates:
+  - candidate_id: candidate://brand/brand-system
+    semantic_kind: analytical_boundary
+    module: portfolio
+    proposed_version: 0.1.0
+    status: proposed
+    necessary_definition: "A BrandSystem is a bounded analytical Context for examining one or more related Brand entities, their components, expressions, stakeholders and evidence; it is not a second Brand entity."
+    inclusion_rules:
+      - "Has an explicit workspace or analytical boundary."
+      - "References domain entities and assertions rather than replacing them."
+      - "Carries scope, time and authority for the analysis."
+    exclusion_rules:
+      - "Must not be used as a synonym for Organization, Brand or Portfolio."
+      - "Must not create identity merely by grouping records."
+    examples:
+      - "An analysis of one organization's intended and observed brand system across two markets."
+    counterexamples:
+      - "A registered trademark is not a BrandSystem."
+    source_refs_or_fixture_refs: [SRC-006, SRC-017, SW-001, SW-005]
+    competency_question_ids: [CQ-005, CQ-006, CQ-016]
+    uncertainty:
+      status: branch
+      alternatives: ["BrandSystem as entity type", "BrandSystem as analytical boundary"]
+      unresolved: "Whether the boundary should be represented as Context only or as a first-class workspace object."
+    derivation_id: derivation://candidate/brand-system/v1
+    reasoning_operators:
+      - world://operator/guardrail/boundary-conflation@1
+      - world://operator/guardrail/ontology-conflation@1
+      - world://operator/guardrail/evaluation-schema@1
+    evaluator_receipt:
+      status: partial
+      schema: pass
+      invariant: pass
+      semantic: partial
+      usefulness: pass
+      note: "Fixture coverage exists; first-class object versus Context remains held."
+
+  - candidate_id: candidate://brand/assertion
+    semantic_kind: assertion
+    module: assertion
+    proposed_version: 0.1.0
+    status: proposed
+    necessary_definition: "An Assertion is a scoped proposition about identified subjects and objects, retaining perspective, evidence, authority, Context, valid time, recorded time and epistemic status."
+    inclusion_rules:
+      - "Has a predicate and exactly one supported object form."
+      - "References a Context and evidence or an explicit held/no-hit status."
+      - "Preserves intended, observed, reported, inferred and hypothesized perspectives."
+    exclusion_rules:
+      - "Must not be a raw source mention."
+      - "Must not be promoted solely from confidence or model output."
+    examples:
+      - "A customer-context assertion that a Brand is associated with reliability, supported by a survey span."
+    counterexamples:
+      - "A label occurrence without identity evidence is not an accepted Assertion about the Brand."
+    source_refs_or_fixture_refs: [SRC-001, SRC-007, SRC-010, SRC-011, SRC-024, SW-001, SW-006]
+    competency_question_ids: [CQ-001, CQ-007, CQ-008, CQ-009, CQ-010, CQ-012, CQ-018, CQ-026, CQ-029]
+    uncertainty:
+      status: proposed
+      alternatives: ["qualified edge", "first-class assertion"]
+      unresolved: "Projection adapters may offer simple edges while canonical state remains assertion-first."
+    derivation_id: derivation://candidate/assertion/v1
+    reasoning_operators:
+      - world://operator/guardrail/evidence-truth-conflation@1
+      - world://operator/guardrail/identity-provenance-conflation@1
+      - world://operator/guardrail/version-state-conflation@1
+      - world://operator/guardrail/evaluation-schema@1
+    evaluator_receipt:
+      status: pass
+      schema: pass
+      invariant: pass
+      semantic: pass
+      usefulness: pass
+      note: "Constitutional kernel and conflict fixtures exercise the required boundaries."
+
+  - candidate_id: candidate://brand/representation-binding
+    semantic_kind: relationship
+    module: representation
+    proposed_version: 0.1.0
+    status: proposed
+    necessary_definition: "A RepresentationBinding links a semantic entity to a RepresentationProfile within a Context and declares whether the binding is canonical, adaptive, local or constrained."
+    inclusion_rules:
+      - "References the semantic entity without replacing its identity."
+      - "References a profile and profile version."
+      - "Carries Context and binding mode."
+    exclusion_rules:
+      - "Must not flatten a visual, verbal or behavioral manifestation into the semantic entity."
+      - "Must not assume one universal representation across audiences or channels."
+    examples:
+      - "One Brand entity bound to distinct verbal and visual profiles for Arabic and German markets."
+    counterexamples:
+      - "A logo file alone is not the Brand entity."
+    source_refs_or_fixture_refs: [SRC-015, SRC-016, SRC-020, SRC-021, SRC-022, SW-004, SW-009]
+    competency_question_ids: [CQ-019, CQ-020, CQ-021, CQ-022]
+    uncertainty:
+      status: proposed
+      alternatives: ["representation as attributes", "representation as binding/profile graph"]
+      unresolved: "The exact profile facet vocabulary remains extensible."
+    derivation_id: derivation://candidate/representation-binding/v1
+    reasoning_operators:
+      - world://operator/guardrail/ontology-conflation@1
+      - world://operator/guardrail/local-global-conflation@1
+      - world://operator/guardrail/evaluation-schema@1
+    evaluator_receipt:
+      status: pass
+      schema: pass
+      invariant: pass
+      semantic: pass
+      usefulness: pass
+      note: "Existing representation profile DAG tests pass; cross-locale fixtures remain expansion work."
+
+  - candidate_id: candidate://brand/representation-facet
+    semantic_kind: type
+    module: representation
+    proposed_version: 0.1.0
+    status: proposed
+    necessary_definition: "A RepresentationFacet classifies one expressive dimension of a profile, including semantic, symbolic, visual, verbal, interaction, behavioral, motion and artifact-level facets."
+    inclusion_rules:
+      - "Is attached to a RepresentationProfile or rule."
+      - "Can be evaluated independently while retaining profile and Context references."
+      - "Allows future facet types without changing semantic entity identity."
+    exclusion_rules:
+      - "Must not imply that every facet is present for every entity."
+      - "Must not equate compliance with semantic truth."
+    examples:
+      - "A verbal tone rule and a visual color rule attached to the same adaptive profile."
+    counterexamples:
+      - "A market-positioning assertion is not itself a visual facet."
+    source_refs_or_fixture_refs: [SRC-016, SRC-018, SRC-020, SRC-022, SW-004, SW-009]
+    competency_question_ids: [CQ-019, CQ-020, CQ-021, CQ-022]
+    uncertainty:
+      status: proposed
+      alternatives: ["closed enumeration", "extensible facet registry"]
+      unresolved: "Governance for adding new facet types requires an explicit extension policy."
+    derivation_id: derivation://candidate/representation-facet/v1
+    reasoning_operators:
+      - world://operator/guardrail/ontology-conflation@1
+      - world://operator/guardrail/evaluation-schema@1
+    evaluator_receipt:
+      status: partial
+      schema: pass
+      invariant: pass
+      semantic: partial
+      usefulness: pass
+      note: "Facet list is intentionally extensible; no promotion until a second representation fixture is added."
+
+  - candidate_id: candidate://brand/dependency-rule
+    semantic_kind: relationship
+    module: dependency
+    proposed_version: 0.1.0
+    status: proposed
+    necessary_definition: "A DependencyRule declares how a change in an upstream instance, semantic type or relation-derived selector may affect a downstream object, with bounded traversal and an explicit effect such as potentially_stale."
+    inclusion_rules:
+      - "Declares selector level: instance, type or relation-derived."
+      - "Declares trigger change types and downstream effect."
+      - "Preserves bounded traversal and cycle detection."
+    exclusion_rules:
+      - "Must not assert that downstream content is false merely because it is stale."
+      - "Must not create an unbounded graph traversal."
+    examples:
+      - "Any Positioning assertion change marks dependent primary messaging artifacts potentially stale."
+    counterexamples:
+      - "A timestamp ordering without a dependency rule does not prove invalidation."
+    source_refs_or_fixture_refs: [SRC-012, SRC-018, SRC-023, SW-002, SW-008]
+    competency_question_ids: [CQ-013, CQ-023, CQ-024, CQ-025]
+    uncertainty:
+      status: proposed
+      alternatives: ["edge-only dependency", "first-class rule with selectors"]
+      unresolved: "Relation-derived selector syntax needs implementation-level tests."
+    derivation_id: derivation://candidate/dependency-rule/v1
+    reasoning_operators:
+      - world://operator/guardrail/sequence-causality-conflation@1
+      - world://operator/guardrail/retrieval-reasoning-conflation@1
+      - world://operator/guardrail/evaluation-schema@1
+    evaluator_receipt:
+      status: pass
+      schema: pass
+      invariant: pass
+      semantic: pass
+      usefulness: pass
+      note: "Kernel dependency tests distinguish potentially_stale from false."
+
+  - candidate_id: candidate://brand/context
+    semantic_kind: context
+    module: context
+    proposed_version: 0.1.0
+    status: proposed
+    necessary_definition: "A Context is a content-addressed applicability packet containing the dimensions needed to interpret an assertion, representation or dependency without changing the underlying semantic identity."
+    inclusion_rules:
+      - "May include audience, market, channel, locale, offering and purpose."
+      - "Equivalent content produces a stable identity independent of field order."
+      - "Can be used to represent exclusive scopes and unresolved conflicts."
+    exclusion_rules:
+      - "Must not be a source document or an ontology type."
+      - "Must not silently overwrite an earlier Context."
+    examples:
+      - "The same positioning assertion valid for enterprise buyers in Germany and a different assertion valid for consumers in Japan."
+    counterexamples:
+      - "A retrieval query alone is not a canonical Context."
+    source_refs_or_fixture_refs: [SRC-004, SRC-009, SRC-010, SRC-020, SRC-021, SW-005, SW-007]
+    competency_question_ids: [CQ-015, CQ-016, CQ-017, CQ-018, CQ-026]
+    uncertainty:
+      status: proposed
+      alternatives: ["Context as packet", "Context as graph node with dimensions"]
+      unresolved: "Projection encoding across Cognee datasets remains pending."
+    derivation_id: derivation://candidate/context/v1
+    reasoning_operators:
+      - world://operator/guardrail/local-global-conflation@1
+      - world://operator/guardrail/version-state-conflation@1
+      - world://operator/guardrail/evaluation-schema@1
+    evaluator_receipt:
+      status: pass
+      schema: pass
+      invariant: pass
+      semantic: pass
+      usefulness: pass
+      note: "Content-addressed Context and temporal tests pass in the semantic package."
+
+  - candidate_id: candidate://brand/evidence-envelope
+    semantic_kind: evidence
+    module: provenance
+    proposed_version: 0.1.0
+    status: proposed
+    necessary_definition: "An EvidenceEnvelope identifies a bounded source span and preserves source authority, access, integrity, scope, time and derivation before interpretation."
+    inclusion_rules:
+      - "Has a stable source reference and locator."
+      - "Separates observed or reported material from inferred and hypothesized claims."
+      - "Retains contradictions and limitations."
+    exclusion_rules:
+      - "Must not be treated as accepted truth without a scoped Assertion."
+      - "Must not be generated from a model summary alone."
+    examples:
+      - "A WIPO registry record used as evidence of a trademark filing in a jurisdiction and date."
+    counterexamples:
+      - "A search-engine snippet without a retrievable canonical source is held or no_hit."
+    source_refs_or_fixture_refs: [SRC-001, SRC-007, SRC-008, SRC-010, SW-006, SW-007]
+    competency_question_ids: [CQ-001, CQ-007, CQ-009, CQ-010, CQ-029, CQ-030]
+    uncertainty:
+      status: proposed
+      alternatives: ["evidence as metadata", "first-class evidence envelope"]
+      unresolved: "Exact content-hash and rights fields need integration with source acquisition tooling."
+    derivation_id: derivation://candidate/evidence-envelope/v1
+    reasoning_operators:
+      - world://operator/guardrail/evidence-truth-conflation@1
+      - world://operator/guardrail/identity-provenance-conflation@1
+      - world://operator/guardrail/evaluation-schema@1
+    evaluator_receipt:
+      status: pass
+      schema: pass
+      invariant: pass
+      semantic: pass
+      usefulness: pass
+      note: "Source registry and bounded evidence notes preserve provenance and limitations."
+
+  - candidate_id: candidate://brand/causal-claim
+    semantic_kind: assertion
+    module: relationship
+    proposed_version: 0.1.0
+    status: held
+    necessary_definition: "A CausalClaim is a scoped hypothesis that a specified event or condition changes an outcome through a stated mechanism and evidence threshold."
+    inclusion_rules:
+      - "Separates precedes, enables, influences and causes."
+      - "Records competing hypotheses and evidence limitations."
+      - "Requires a causal evaluation policy beyond temporal ordering."
+    exclusion_rules:
+      - "Must not be emitted from sequence, correlation or narrative rhetoric alone."
+      - "Must not be treated as accepted when the causal gate is not met."
+    examples:
+      - "A held hypothesis that a repositioning event influenced observed consideration, pending evidence."
+    counterexamples:
+      - "A campaign preceding a sales increase is not sufficient causal evidence."
+    source_refs_or_fixture_refs: [SRC-018, SRC-019, SRC-023, SW-002, SW-008]
+    competency_question_ids: [CQ-013, CQ-014, CQ-024, CQ-026]
+    uncertainty:
+      status: hold
+      alternatives: ["causal assertion", "influence hypothesis", "event relation"]
+      unresolved: "No Brand-specific causal evidence policy has yet been approved."
+    derivation_id: derivation://candidate/causal-claim/v1
+    reasoning_operators:
+      - world://operator/guardrail/sequence-causality-conflation@1
+      - world://operator/guardrail/evidence-truth-conflation@1
+      - world://operator/guardrail/evaluation-schema@1
+    evaluator_receipt:
+      status: hold
+      schema: pass
+      invariant: pass
+      semantic: partial
+      usefulness: partial
+      note: "Held deliberately until a causal evaluation policy and independent Brand cases exist."

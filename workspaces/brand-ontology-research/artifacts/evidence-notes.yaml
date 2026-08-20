@@ -1,0 +1,171 @@
+version: 1
+status: bounded_anchor_notes
+notes:
+  - id: EVD-001
+    source_id: SRC-001
+    locator: "Introduction and PROV-O at a glance"
+    evidence_status: reported
+    note: "PROV-O provides an OWL encoding for provenance entities, activities and agents; use it to test lineage vocabulary, not to define Brand semantics."
+    supports: [CQ-004, CQ-029, CQ-030]
+    limitations: "A technical provenance vocabulary does not establish authority or truth by itself."
+  - id: EVD-002
+    source_id: SRC-002
+    locator: "Abstract and synopsis"
+    evidence_status: reported
+    note: "SKOS supports identifiable concepts, multilingual labels, notes, hierarchies and mappings between concept schemes."
+    supports: [CQ-003, CQ-020, CQ-030]
+    limitations: "Concept-scheme relations are not equivalent to domain assertions or identity resolution."
+  - id: EVD-003
+    source_id: SRC-003
+    locator: "Introduction and conformance"
+    evidence_status: reported
+    note: "SHACL describes and validates RDF graph shapes, cardinalities, datatypes and constraints."
+    supports: [CQ-011, CQ-021, CQ-025, CQ-030]
+    limitations: "Shape validity cannot substitute for semantic or evidential validity."
+  - id: EVD-004
+    source_id: SRC-004
+    locator: "Abstract"
+    evidence_status: reported
+    note: "OWL-Time provides temporal entities, intervals, durations and ordering relations, including non-Gregorian reference systems."
+    supports: [CQ-016, CQ-026, CQ-027]
+    limitations: "Temporal ordering alone does not imply causal influence."
+  - id: EVD-005
+    source_id: SRC-005
+    locator: "Abstract and lifecycle"
+    evidence_status: reported
+    note: "ISO 10668 specifies procedures, methods, data assumptions and reporting for monetary brand valuation and is marked for revision."
+    supports: [CQ-005, CQ-029]
+    limitations: "Financial valuation is one perspective on a Brand and must not become the domain definition."
+  - id: EVD-006
+    source_id: SRC-006
+    locator: "Current TC 289 catalogue"
+    evidence_status: observed
+    note: "The current catalogue separates brand-evaluation principles, implementation/reporting, geographical indications and vocabulary work."
+    supports: [CQ-005, CQ-016, CQ-028]
+    limitations: "Work-item status is time-sensitive and must be refreshed before standards-based promotion."
+  - id: EVD-007
+    source_id: SRC-007
+    locator: "Trademark overview"
+    evidence_status: reported
+    note: "WIPO describes a trademark as a sign capable of distinguishing goods or services of one undertaking from another."
+    supports: [CQ-001, CQ-005, CQ-019]
+    limitations: "A legally distinctive sign is not automatically the entire semantic Brand system."
+  - id: EVD-008
+    source_id: SRC-008
+    locator: "Database scope and search capabilities"
+    evidence_status: reported
+    note: "The Global Brand Database includes international and national marks and supports searches by name, number, goods/services and image."
+    supports: [CQ-001, CQ-002, CQ-003, CQ-030]
+    limitations: "Registry presence is evidence of a filing or registration, not evidence of consumer perception."
+  - id: EVD-009
+    source_id: SRC-009
+    locator: "Classification overview"
+    evidence_status: reported
+    note: "The Nice Classification organizes goods and services for trademark registration and is versioned over time."
+    supports: [CQ-005, CQ-016, CQ-026]
+    limitations: "Classification scope should not be mistaken for portfolio structure or market positioning."
+  - id: EVD-010
+    source_id: SRC-010
+    locator: "Assessment of the evidence"
+    evidence_status: reported
+    note: "EUIPO guidance considers market share, intensity, geographic spread, duration, promotion and public recognition; evidence must be related to the relevant time and public."
+    supports: [CQ-007, CQ-016, CQ-017, CQ-026]
+    limitations: "Legal evidentiary sufficiency is jurisdiction-specific and cannot settle broader cultural meaning."
+  - id: EVD-011
+    source_id: SRC-011
+    locator: "Abstract"
+    evidence_status: reported
+    note: "Keller frames customer-based brand equity through differential response arising from brand knowledge, including awareness and image/associations."
+    supports: [CQ-007, CQ-008, CQ-016]
+    limitations: "This is a customer-based marketing framework, not a complete organizational or legal ontology."
+  - id: EVD-012
+    source_id: SRC-012
+    locator: "Article title and abstract metadata"
+    evidence_status: reported
+    note: "Aaker and Joachimsthaler present a brand relationship spectrum as an architecture challenge for organizing relationships among brands."
+    supports: [CQ-005, CQ-023, CQ-024]
+    limitations: "Management architecture categories require testing against shared identity and local context cases."
+  - id: EVD-013
+    source_id: SRC-013
+    locator: "Abstract"
+    evidence_status: reported
+    note: "Fournier argues for consumer-brand relationship theory and describes relationship quality as a diagnostic construct grounded in lived consumer bonds."
+    supports: [CQ-008, CQ-013, CQ-016]
+    limitations: "A relationship metaphor does not make a Brand a human agent or prove causal agency."
+  - id: EVD-014
+    source_id: SRC-014
+    locator: "Abstract"
+    evidence_status: reported
+    note: "Muniz and O'Guinn define brand community as non-geographic social relations among admirers and identify shared consciousness, rituals/traditions and moral responsibility."
+    supports: [CQ-005, CQ-008, CQ-017]
+    limitations: "The empirical cases are historically and culturally situated; community membership cannot be inferred from a label alone."
+  - id: EVD-015
+    source_id: SRC-015
+    locator: "Abstract"
+    evidence_status: reported
+    note: "Belk presents possessions as contributors to and reflections of identity, including relationships between individual, family, community and group selves."
+    supports: [CQ-019, CQ-020]
+    limitations: "Symbolic attachment is an interpretive relationship, not proof of ownership or canonical identity."
+  - id: EVD-016
+    source_id: SRC-016
+    locator: "Abstract"
+    evidence_status: reported
+    note: "McCracken models cultural meaning moving between a culturally constituted world, consumer goods and individual consumers through institutions and rituals."
+    supports: [CQ-008, CQ-019, CQ-020]
+    limitations: "The theory is a model of meaning movement and should remain scoped to its cultural-theoretical perspective."
+  - id: EVD-017
+    source_id: SRC-017
+    locator: "Abstract"
+    evidence_status: reported
+    note: "Arnould and Thompson synthesize sociocultural, experiential, symbolic and ideological approaches to consumption as a plural research tradition."
+    supports: [CQ-006, CQ-008, CQ-018]
+    limitations: "A synthesis identifies a research field; it does not provide a single interoperable type system."
+  - id: EVD-018
+    source_id: SRC-018
+    locator: "Abstract and keywords"
+    evidence_status: reported
+    note: "Lemon and Verhoef treat customer experience across journeys and distinguish brand-owned, partner-owned, customer-owned and social/external touchpoints."
+    supports: [CQ-005, CQ-016, CQ-019, CQ-020]
+    limitations: "Touchpoint participation does not by itself establish a stable Brand entity or intended identity."
+  - id: EVD-019
+    source_id: SRC-019
+    locator: "Abstract"
+    evidence_status: reported
+    note: "Vargo and Lusch shift attention toward intangible resources, co-created value and relationships in service provision."
+    supports: [CQ-013, CQ-016, CQ-017]
+    limitations: "Value co-creation is a theoretical lens and does not automatically establish a causal dependency edge."
+  - id: EVD-020
+    source_id: SRC-020
+    locator: "Abstract and language-tag section"
+    evidence_status: reported
+    note: "BCP 47 language tags identify language and refine it through script, region, variant and extension subtags."
+    supports: [CQ-003, CQ-016, CQ-019, CQ-020]
+    limitations: "A language tag identifies scope; it does not translate or validate a representation."
+  - id: EVD-021
+    source_id: SRC-021
+    locator: "Summary and introduction"
+    evidence_status: reported
+    note: "Unicode LDML provides structured locale data and emphasizes language-neutral storage with locale-sensitive formatting at the client or service boundary."
+    supports: [CQ-019, CQ-020, CQ-021]
+    limitations: "Locale data is a representation constraint, not a semantic identity definition."
+  - id: EVD-022
+    source_id: SRC-022
+    locator: "Abstract"
+    evidence_status: reported
+    note: "WCAG 2.2 defines technology-independent, testable accessibility success criteria across devices and disability contexts."
+    supports: [CQ-020, CQ-021, CQ-022]
+    limitations: "Accessibility conformance is one evaluation dimension and cannot replace semantic fidelity."
+  - id: EVD-023
+    source_id: SRC-023
+    locator: "Original article introduction and conclusion"
+    evidence_status: reported
+    note: "Bradford Hill asks when an observed association can justify a causal verdict and frames causal considerations rather than an automatic checklist."
+    supports: [CQ-013, CQ-014, CQ-024]
+    limitations: "The article is not a Brand-specific causal model; it is a guardrail against upgrading sequence or association into cause."
+  - id: EVD-024
+    source_id: SRC-024
+    locator: "Abstract and theoretical development"
+    evidence_status: reported
+    note: "Cruz, Seo and Scaraboto document competing cultural-appreciation and cultural-appropriation discourses among international K-pop consumers, with context-dependent strategies."
+    supports: [CQ-008, CQ-017, CQ-018, CQ-020]
+    limitations: "The study is a transnational qualitative case and should be used as a challenge and counterexample, not a universal cultural rule."

@@ -23,6 +23,11 @@ The pack is currently `pack_only_until_certified`. Do not create or edit generat
 as part of a source change. Once the pack passes certification, a dedicated population command may
 rebuild the Cognee dataset `testflight_brand_ontology_research` from this Git revision.
 
+The first population slice is a 24-source Tier A anchor catalog, bounded evidence notes and
+proposal-only candidate definitions. Validate it with `make brand-research-corpus`. The source
+search order, batch sequencing, diversity audit and stopping rule are in
+[`artifacts/research-playbook.md`](artifacts/research-playbook.md).
+
 Start with:
 
 - [`AGENT_INDEX.md`](AGENT_INDEX.md) for routing;
@@ -31,3 +36,8 @@ Start with:
 - [`artifacts/competency-questions.yaml`](artifacts/competency-questions.yaml) for the 30-question
   initial coverage map; and
 - [`artifacts/synthetic-worlds.yaml`](artifacts/synthetic-worlds.yaml) for deterministic fixtures.
+- [`artifacts/source-catalog.yaml`](artifacts/source-catalog.yaml) for the anchor source registry;
+- [`artifacts/evidence-notes.yaml`](artifacts/evidence-notes.yaml) for bounded, source-grounded
+  evidence; and
+- [`artifacts/candidate-definitions.yaml`](artifacts/candidate-definitions.yaml) for proposals
+  that have not been promoted into canonical ontology state.

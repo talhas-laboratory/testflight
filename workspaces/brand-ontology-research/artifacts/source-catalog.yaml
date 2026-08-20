@@ -1,0 +1,348 @@
+version: 1
+status: anchor_corpus
+purpose: >-
+  A bounded, diverse discovery corpus for Brand Ontology v0.1. These records identify canonical
+  sources and their permitted use; they do not constitute accepted ontology definitions.
+source_policy:
+  discovery_only: false
+  full_text_storage: prohibited_unless_licensed
+  canonical_links_required: true
+  evidence_requires_bounded_span: true
+  source_independence_is_explicit: true
+sources:
+  - id: SRC-001
+    title: "PROV-O: The PROV Ontology"
+    authors: [W3C]
+    year: 2013
+    canonical_url: https://www.w3.org/TR/prov-o/
+    source_type: standard
+    authority_tier: A
+    research_lenses: [provenance, ontology]
+    methodology: normative
+    stakeholder_perspective: technical
+    geography: global
+    language: en
+    use: provenance_model
+    status: verified
+  - id: SRC-002
+    title: SKOS Simple Knowledge Organization System Reference
+    authors: [W3C]
+    year: 2009
+    canonical_url: https://www.w3.org/TR/skos-reference/
+    source_type: standard
+    authority_tier: A
+    research_lenses: [ontology, multilingual_representation]
+    methodology: normative
+    stakeholder_perspective: technical
+    geography: global
+    language: en
+    use: concept_labels_and_mappings
+    status: verified
+  - id: SRC-003
+    title: Shapes Constraint Language (SHACL)
+    authors: [W3C]
+    year: 2017
+    canonical_url: https://www.w3.org/TR/shacl/
+    source_type: standard
+    authority_tier: A
+    research_lenses: [ontology, validation]
+    methodology: normative
+    stakeholder_perspective: technical
+    geography: global
+    language: en
+    use: graph_constraints
+    status: verified
+  - id: SRC-004
+    title: Time Ontology in OWL
+    authors: [W3C]
+    year: 2022
+    canonical_url: https://www.w3.org/TR/owl-time/
+    source_type: standard
+    authority_tier: A
+    research_lenses: [time, ontology]
+    methodology: normative
+    stakeholder_perspective: technical
+    geography: global
+    language: en
+    use: temporal_intervals_and_ordering
+    status: verified
+  - id: SRC-005
+    title: "ISO 10668:2010 Brand valuation — Requirements for monetary brand valuation"
+    authors: [ISO]
+    year: 2010
+    canonical_url: https://www.iso.org/standard/46032.html
+    source_type: standard
+    authority_tier: A
+    research_lenses: [measurement, valuation, governance]
+    methodology: normative
+    stakeholder_perspective: investor
+    geography: global
+    language: en
+    use: valuation_boundaries
+    status: verified_revision_pending
+  - id: SRC-006
+    title: ISO/TC 289 Brand evaluation catalogue
+    authors: [ISO]
+    year: 2026
+    canonical_url: https://www.iso.org/committee/5065082/x/catalogue/
+    source_type: standards_catalogue
+    authority_tier: A
+    research_lenses: [measurement, governance]
+    methodology: normative
+    stakeholder_perspective: governance
+    geography: global
+    language: en
+    use: standards_version_tracking
+    status: verified
+  - id: SRC-007
+    title: Trademarks overview
+    authors: [WIPO]
+    year: 2026
+    canonical_url: https://www.wipo.int/en/web/trademarks
+    source_type: legal_guidance
+    authority_tier: A
+    research_lenses: [legal, identity]
+    methodology: institutional_guidance
+    stakeholder_perspective: regulator
+    geography: global
+    language: en
+    use: legal_sign_identity
+    status: verified
+  - id: SRC-008
+    title: WIPO Global Brand Database
+    authors: [WIPO]
+    year: 2026
+    canonical_url: https://www.wipo.int/en/web/global-brand-database
+    source_type: authoritative_dataset
+    authority_tier: A
+    research_lenses: [legal, identity, classification]
+    methodology: registry_data
+    stakeholder_perspective: regulator
+    geography: global
+    language: en
+    use: trademark_fixture_data
+    status: verified
+  - id: SRC-009
+    title: Nice Classification
+    authors: [WIPO]
+    year: 2026
+    canonical_url: https://www.wipo.int/en/web/classification-nice/index
+    source_type: classification
+    authority_tier: A
+    research_lenses: [legal, classification, portfolio]
+    methodology: normative
+    stakeholder_perspective: regulator
+    geography: global
+    language: en
+    use: goods_and_services_scope
+    status: verified
+  - id: SRC-010
+    title: EUIPO Trade Mark Guidelines — Assessment of the evidence
+    authors: [EUIPO]
+    year: 2023
+    canonical_url: https://guidelines.euipo.europa.eu/2058843/2045123/trade-mark-guidelines/8-assessment-of-the-evidence
+    source_type: legal_guidance
+    authority_tier: A
+    research_lenses: [legal, provenance, time]
+    methodology: institutional_guidance
+    stakeholder_perspective: regulator
+    geography: EU
+    language: en
+    use: evidence_scope_and_time
+    status: verified
+  - id: SRC-011
+    title: Conceptualizing, Measuring, and Managing Customer-Based Brand Equity
+    authors: [Kevin Lane Keller]
+    year: 1993
+    canonical_url: https://journals.sagepub.com/doi/10.1177/002224299305700101
+    source_type: peer_reviewed_article
+    authority_tier: A
+    research_lenses: [brand_equity, cognition, measurement]
+    methodology: conceptual_framework
+    stakeholder_perspective: customer
+    geography: US
+    language: en
+    use: awareness_and_association_candidates
+    status: verified
+  - id: SRC-012
+    title: "The Brand Relationship Spectrum: The Key to the Brand Architecture Challenge"
+    authors: [David A. Aaker, Erich Joachimsthaler]
+    year: 2000
+    canonical_url: https://journals.sagepub.com/doi/10.1177/000812560004200401
+    source_type: peer_reviewed_article
+    authority_tier: A
+    research_lenses: [portfolio, architecture, governance]
+    methodology: management_framework
+    stakeholder_perspective: organization
+    geography: global
+    language: en
+    use: portfolio_relationship_candidates
+    status: verified
+  - id: SRC-013
+    title: "Consumers and Their Brands: Developing Relationship Theory in Consumer Research"
+    authors: [Susan Fournier]
+    year: 1998
+    canonical_url: https://academic.oup.com/jcr/article-abstract/24/4/343/1797962
+    source_type: peer_reviewed_article
+    authority_tier: A
+    research_lenses: [consumer_relationship, identity]
+    methodology: qualitative_case_study
+    stakeholder_perspective: customer
+    geography: US
+    language: en
+    use: experienced_relationship_candidates
+    status: verified
+  - id: SRC-014
+    title: Brand Community
+    authors: [Albert M. Muniz Jr., Thomas C. O'Guinn]
+    year: 2001
+    canonical_url: https://academic.oup.com/jcr/article-abstract/27/4/412/1810411
+    source_type: peer_reviewed_article
+    authority_tier: A
+    research_lenses: [community, culture, identity]
+    methodology: ethnography
+    stakeholder_perspective: community
+    geography: US
+    language: en
+    use: community_and_ritual_candidates
+    status: verified
+  - id: SRC-015
+    title: Possessions and the Extended Self
+    authors: [Russell W. Belk]
+    year: 1988
+    canonical_url: https://academic.oup.com/jcr/article-abstract/15/2/139/1841428
+    source_type: peer_reviewed_article
+    authority_tier: A
+    research_lenses: [identity, symbolic_representation]
+    methodology: conceptual_synthesis
+    stakeholder_perspective: customer
+    geography: US
+    language: en
+    use: identity_and_artifact_candidates
+    status: verified
+  - id: SRC-016
+    title: "Culture and Consumption: A Theoretical Account of the Structure and Movement of Cultural Meaning"
+    authors: [Grant McCracken]
+    year: 1986
+    canonical_url: https://academic.oup.com/jcr/article-abstract/13/1/71/1814669
+    source_type: peer_reviewed_article
+    authority_tier: A
+    research_lenses: [culture, semiotics, representation]
+    methodology: cultural_theory
+    stakeholder_perspective: cultural_system
+    geography: North_America
+    language: en
+    use: meaning_transfer_candidates
+    status: verified
+  - id: SRC-017
+    title: "Consumer Culture Theory: Twenty Years of Research"
+    authors: [Eric J. Arnould, Craig J. Thompson]
+    year: 2005
+    canonical_url: https://academic.oup.com/jcr/article-abstract/31/4/868/1812998
+    source_type: peer_reviewed_synthesis
+    authority_tier: A
+    research_lenses: [culture, ideology, methodology]
+    methodology: literature_synthesis
+    stakeholder_perspective: scholarly
+    geography: global
+    language: en
+    use: plural_methodology_and_scope
+    status: verified
+  - id: SRC-018
+    title: Understanding Customer Experience Throughout the Customer Journey
+    authors: [Katherine N. Lemon, Peter C. Verhoef]
+    year: 2016
+    canonical_url: https://journals.sagepub.com/doi/10.1509/jm.15.0420
+    source_type: peer_reviewed_synthesis
+    authority_tier: A
+    research_lenses: [experience, service, touchpoints]
+    methodology: literature_synthesis
+    stakeholder_perspective: customer
+    geography: global
+    language: en
+    use: experience_and_touchpoint_candidates
+    status: verified
+  - id: SRC-019
+    title: Evolving to a New Dominant Logic for Marketing
+    authors: [Stephen L. Vargo, Robert F. Lusch]
+    year: 2004
+    canonical_url: https://journals.sagepub.com/doi/10.1509/jmkg.68.1.1.24036
+    source_type: peer_reviewed_article
+    authority_tier: A
+    research_lenses: [service, co_creation, relationship]
+    methodology: conceptual_framework
+    stakeholder_perspective: market_system
+    geography: global
+    language: en
+    use: co_created_value_candidates
+    status: verified
+  - id: SRC-020
+    title: "RFC 5646: Tags for Identifying Languages"
+    authors: [IETF]
+    year: 2009
+    canonical_url: https://www.rfc-editor.org/info/rfc5646/
+    source_type: standard
+    authority_tier: A
+    research_lenses: [representation, localization]
+    methodology: normative
+    stakeholder_perspective: technical
+    geography: global
+    language: en
+    use: language_scope
+    status: verified
+  - id: SRC-021
+    title: Unicode Locale Data Markup Language (LDML)
+    authors: [Unicode Consortium]
+    year: 2026
+    canonical_url: https://www.unicode.org/reports/tr35/
+    source_type: standard
+    authority_tier: A
+    research_lenses: [representation, localization]
+    methodology: normative
+    stakeholder_perspective: technical
+    geography: global
+    language: en
+    use: locale_adaptation
+    status: verified
+  - id: SRC-022
+    title: Web Content Accessibility Guidelines (WCAG) 2.2
+    authors: [W3C]
+    year: 2024
+    canonical_url: https://www.w3.org/TR/WCAG22/
+    source_type: standard
+    authority_tier: A
+    research_lenses: [representation, accessibility, interaction]
+    methodology: normative
+    stakeholder_perspective: user
+    geography: global
+    language: en
+    use: representation_constraints
+    status: verified
+  - id: SRC-023
+    title: "The Environment and Disease: Association or Causation?"
+    authors: [Austin Bradford Hill]
+    year: 1965
+    canonical_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC1898525/
+    source_type: foundational_article
+    authority_tier: A
+    research_lenses: [causality, methodology]
+    methodology: causal_reasoning
+    stakeholder_perspective: scientific
+    geography: global
+    language: en
+    use: causal_guardrails
+    status: verified
+  - id: SRC-024
+    title: Between Cultural Appreciation and Cultural Appropriation
+    authors: [Angela Gracia B. Cruz, Yuri Seo, Daiane Scaraboto]
+    year: 2023
+    canonical_url: https://academic.oup.com/jcr/article/50/5/962/7100345
+    source_type: peer_reviewed_empirical
+    authority_tier: A
+    research_lenses: [culture, critical, cross_cultural, representation]
+    methodology: longitudinal_qualitative_study
+    stakeholder_perspective: community
+    geography: transnational
+    language: en
+    use: cultural_boundary_and_counterexample
+    status: verified

@@ -4,6 +4,8 @@
 
 - `workspace_id`: `world://workspace/brand-ontology-research`
 - `source_of_truth`: `artifacts/research-protocol.md`
+- `anchor corpus`: `artifacts/source-catalog.yaml` + `artifacts/evidence-notes.yaml`
+- `candidate layer`: `artifacts/candidate-definitions.yaml`
 - `constitution`: `docs/plans/2026-08-20-brand-ontology-constitution-v0.1-design.md`
 - `Cognee dataset`: `testflight_brand_ontology_research` (pack-only until certification)
 
@@ -11,6 +13,11 @@
 
 This container researches the vocabulary needed for Brand Ontology v0.1. It produces proposals and
 tests; it does not commit canonical Brand facts or silently change the ontology.
+
+The initial population is a 24-source Tier A anchor corpus. Use `artifacts/research-playbook.md`
+for search order, batch sequencing, diversity checks and stopping rules. Source metadata and
+bounded evidence notes are canonical within this research workspace; external full text remains
+outside the repository unless licensed.
 
 ## Routing
 
