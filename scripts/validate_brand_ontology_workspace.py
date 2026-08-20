@@ -140,6 +140,9 @@ def validate_workspace(root: Path = REPO_ROOT) -> dict[str, Any]:
     )
     if len(fixture_cases) != len(REQUIRED_WORLDS):
         raise ValueError("fixture case catalog must cover every synthetic world")
+    for case in fixture_cases:
+        if not isinstance(case, dict) or not isinstance(case.get("fixture_builder"), str):
+            raise ValueError("every synthetic world fixture needs an executable fixture_builder")
 
     return {
         "workspace": workspace,

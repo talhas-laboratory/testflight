@@ -1,11 +1,13 @@
 {
   "workspace_id": "world://workspace/brand-ontology-research",
   "version": 1,
-  "status": "anchor_corpus_pack_only",
-  "document_count": 4,
+  "status": "fixtures_certified_pack_only",
+  "document_count": 6,
   "source_count": 24,
   "evidence_note_count": 24,
   "candidate_definition_count": 8,
+  "fixture_world_count": 9,
+  "fixture_status": "certified",
   "diversity_audit": {
     "research_lenses": 34,
     "methodologies": 12,

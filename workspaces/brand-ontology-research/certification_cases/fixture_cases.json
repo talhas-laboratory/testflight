@@ -1,11 +1,11 @@
 [
-  {"case_type": "synthetic_world", "id": "SW-001", "slug": "intended-observed-brand", "expected": ["perspectives_separate", "evidence_attached", "context_scoped"]},
-  {"case_type": "synthetic_world", "id": "SW-002", "slug": "repositioning-temporal", "expected": ["bitemporal", "history_preserved", "supersession_not_deletion"]},
-  {"case_type": "synthetic_world", "id": "SW-003", "slug": "shared-technology", "expected": ["identity_evidence_required", "local_assertions_scoped"]},
-  {"case_type": "synthetic_world", "id": "SW-004", "slug": "adaptive-representation", "expected": ["binding_profile_rules_separate", "profile_dag", "facet_extensible"]},
-  {"case_type": "synthetic_world", "id": "SW-005", "slug": "market-positioning", "expected": ["portfolio_topology", "applicability_scoped", "concurrent_validity"]},
-  {"case_type": "synthetic_world", "id": "SW-006", "slug": "evidence-conflict", "expected": ["conflict_preserved", "weak_evidence_held", "no_silent_winner"]},
-  {"case_type": "synthetic_world", "id": "SW-007", "slug": "bitemporal-reconstruction", "expected": ["utc_half_open_time", "knowledge_history", "snapshot_replay"]},
-  {"case_type": "synthetic_world", "id": "SW-008", "slug": "causal-guardrails", "expected": ["causal_gate", "alternatives_preserved", "sequence_not_cause"]},
-  {"case_type": "synthetic_world", "id": "SW-009", "slug": "shared-representation-products", "expected": ["shared_identity", "adaptive_binding", "equal_authority_conflict_explicit"]}
+  {"case_type": "synthetic_world", "id": "SW-001", "slug": "intended-observed-brand", "fixture_builder": "intended_observed_brand", "expected": ["perspectives_separate", "evidence_attached", "context_scoped"]},
+  {"case_type": "synthetic_world", "id": "SW-002", "slug": "repositioning-temporal", "fixture_builder": "repositioning_temporal", "expected": ["bitemporal", "history_preserved", "supersession_not_deletion"]},
+  {"case_type": "synthetic_world", "id": "SW-003", "slug": "shared-technology", "fixture_builder": "shared_technology", "expected": ["identity_evidence_required", "local_assertions_scoped"]},
+  {"case_type": "synthetic_world", "id": "SW-004", "slug": "adaptive-representation", "fixture_builder": "adaptive_representation", "expected": ["binding_profile_rules_separate", "profile_dag", "facet_extensible"]},
+  {"case_type": "synthetic_world", "id": "SW-005", "slug": "market-positioning", "fixture_builder": "market_positioning", "expected": ["portfolio_topology", "applicability_scoped", "concurrent_validity"]},
+  {"case_type": "synthetic_world", "id": "SW-006", "slug": "evidence-conflict", "fixture_builder": "evidence_conflict", "expected": ["conflict_preserved", "weak_evidence_held", "no_silent_winner"]},
+  {"case_type": "synthetic_world", "id": "SW-007", "slug": "bitemporal-reconstruction", "fixture_builder": "bitemporal_reconstruction", "expected": ["utc_half_open_time", "knowledge_history", "snapshot_replay"]},
+  {"case_type": "synthetic_world", "id": "SW-008", "slug": "causal-guardrails", "fixture_builder": "causal_guardrails", "expected": ["causal_gate", "alternatives_preserved", "sequence_not_cause"]},
+  {"case_type": "synthetic_world", "id": "SW-009", "slug": "shared-representation-products", "fixture_builder": "shared_representation_products", "expected": ["shared_identity", "adaptive_binding", "equal_authority_conflict_explicit"]}
 ]

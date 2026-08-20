@@ -28,6 +28,17 @@ proposal-only candidate definitions. Validate it with `make brand-research-corpu
 search order, batch sequencing, diversity audit and stopping rule are in
 [`artifacts/research-playbook.md`](artifacts/research-playbook.md).
 
+The nine synthetic worlds are now executable and certified with:
+
+```bash
+make brand-research-fixtures
+```
+
+Their builders live in `scripts/brand_ontology_fixtures.py`; they exercise perspective separation,
+bitemporal history, shared identity, adaptive representation, portfolio scope, evidence conflict,
+causal guardrails and representation conflicts. Fixture certification remains separate from Cognee
+projection certification.
+
 Start with:
 
 - [`AGENT_INDEX.md`](AGENT_INDEX.md) for routing;

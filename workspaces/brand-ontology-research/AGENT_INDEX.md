@@ -6,6 +6,7 @@
 - `source_of_truth`: `artifacts/research-protocol.md`
 - `anchor corpus`: `artifacts/source-catalog.yaml` + `artifacts/evidence-notes.yaml`
 - `candidate layer`: `artifacts/candidate-definitions.yaml`
+- `executable fixtures`: `scripts/brand_ontology_fixtures.py`
 - `constitution`: `docs/plans/2026-08-20-brand-ontology-constitution-v0.1-design.md`
 - `Cognee dataset`: `testflight_brand_ontology_research` (pack-only until certification)
 
@@ -18,6 +19,9 @@ The initial population is a 24-source Tier A anchor corpus. Use `artifacts/resea
 for search order, batch sequencing, diversity checks and stopping rules. Source metadata and
 bounded evidence notes are canonical within this research workspace; external full text remains
 outside the repository unless licensed.
+
+The nine synthetic worlds are executable certification fixtures. They test semantic boundaries;
+they do not create accepted Brand-world facts.
 
 ## Routing
 
