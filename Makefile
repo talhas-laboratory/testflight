@@ -15,7 +15,7 @@ setup-server-reasoning-operators:
 	./scripts/setup_server_reasoning_operators.sh
 
 setup-server-brand-research:
-	./scripts/setup_server_brand_research.sh
+	./scripts/setup_server_brand_research.sh $(ARGS)
 
 run-deepseek-harness:
 	./scripts/run_deepseek_harness.sh

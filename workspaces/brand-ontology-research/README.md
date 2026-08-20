@@ -46,7 +46,7 @@ make brand-research-projection
 ```
 
 It currently produces 11 bounded research documents from the tracked pack. On the server, use
-`make setup-server-brand-research -- --dry-run` after the isolated Cognee environment exists. The
+`make setup-server-brand-research ARGS="--dry-run"` after the isolated Cognee environment exists. The
 `--populate` mode is intentionally gated until projection retrieval is separately certified and
 the workspace manifest is explicitly authorized.
 
