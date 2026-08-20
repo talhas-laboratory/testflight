@@ -49,6 +49,8 @@ else
 fi
 
 "$venv_python" - <<'PY'
+from pathlib import Path
+
 from testflight_adapter_cognee import CogneeAdapter
 from testflight_brand import load_brand_ontology
 from testflight_core import HealthState
@@ -62,7 +64,7 @@ SemanticEntity(
     canonical_label="Health check",
     definition_version="0.1.0",
 )
-load_brand_ontology()
+load_brand_ontology(Path.cwd())
 
 report = CogneeAdapter().health()
 print(f"cognee adapter: {report.state} — {report.message}")
