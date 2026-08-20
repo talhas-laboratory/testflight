@@ -11,6 +11,13 @@
   "evidence_span_count": 24,
   "projection_status": "dry_run_validated",
   "projection_gate": "blocked_until_projection_certification_and_authorization",
+  "reasoning_operators": [
+    "world://operator/guardrail/workspace-isolation@1",
+    "world://operator/guardrail/configuration-runtime@1",
+    "world://operator/guardrail/validation-persistence-conflation@1",
+    "world://operator/guardrail/evaluation-schema@1"
+  ],
+  "evaluator_result": "pass",
   "diversity_audit": {
     "research_lenses": 34,
     "methodologies": 12,
