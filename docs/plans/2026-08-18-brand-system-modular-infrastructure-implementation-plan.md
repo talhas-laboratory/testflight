@@ -5,6 +5,11 @@ Date: 2026-08-18
 Scope: provider-neutral Brand domain, evidence-preserving extraction, Cognee projection,
 LangGraph orchestration, and optional DeepSeek Harness inference
 
+> This implementation plan is refined by the
+> [Brand Ontology Constitution v0.1](2026-08-20-brand-ontology-constitution-v0.1-design.md).
+> Where the documents differ, the constitution controls ontology research and future schema work.
+> The existing Brand ontology 1.0.0 remains a prototype and migration source.
+
 ## 1. Outcome
 
 Build a modular Brand intelligence substrate in which a brand is represented as a dynamic
@@ -810,4 +815,3 @@ adapter contract tests against the pinned release rather than relying on documen
 - [Cognee custom data models and weighted edges](https://docs.cognee.ai/guides/custom-data-models)
 - [Cognee storage architecture](https://docs.cognee.ai/core-concepts/architecture)
 - [Cognee cognify API](https://docs.cognee.ai/python-api/cognify)
-
