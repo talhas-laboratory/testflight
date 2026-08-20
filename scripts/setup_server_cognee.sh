@@ -36,17 +36,33 @@ venv_python="$venv_dir/bin/python"
 if [[ -n "$uv_bin" ]]; then
   "$uv_bin" pip install --python "$venv_python" \
     --editable "$repo_root/packages/testflight-core" \
+    --editable "$repo_root/packages/testflight-semantic" \
+    --editable "$repo_root/packages/testflight-brand" \
     --editable "$repo_root/adapters/cognee[cognee]"
 else
   "$venv_python" -m pip install --disable-pip-version-check --upgrade pip
   "$venv_python" -m pip install \
     --editable "$repo_root/packages/testflight-core" \
+    --editable "$repo_root/packages/testflight-semantic" \
+    --editable "$repo_root/packages/testflight-brand" \
     --editable "$repo_root/adapters/cognee[cognee]"
 fi
 
 "$venv_python" - <<'PY'
 from testflight_adapter_cognee import CogneeAdapter
+from testflight_brand import load_brand_ontology
 from testflight_core import HealthState
+from testflight_semantic import Context, SemanticEntity
+
+Context()
+SemanticEntity(
+    entity_id="health-check:brand",
+    type_id="world://ontology/type/Brand",
+    workspace_id="health-check",
+    canonical_label="Health check",
+    definition_version="0.1.0",
+)
+load_brand_ontology()
 
 report = CogneeAdapter().health()
 print(f"cognee adapter: {report.state} — {report.message}")
