@@ -40,7 +40,7 @@ registry:
 	uv run python scripts/validate_registry.py
 
 brand-research-workspace:
-	uv run python scripts/validate_brand_ontology_workspace.py
+	python3 scripts/validate_brand_ontology_workspace.py
 
 compose-config:
 	docker compose -f infra/compose.yaml config --quiet
