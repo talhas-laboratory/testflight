@@ -19,7 +19,8 @@ def test_projection_pack_validates_without_credentials() -> None:
 
     assert validated["corpus"]["source_count"] == 24
     assert validated["fixtures"]["status"] == "certified"
-    assert len(documents) >= 10
+    assert len(documents) == 15
+    assert all("certification_cases/" not in document.source_url for document in documents)
     assert all(
         document.metadata["projection_role"] == "research_evidence_or_candidate"
         for document in documents

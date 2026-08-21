@@ -182,9 +182,13 @@ def build_documents(
 ) -> list[MaterializedDocument]:
     validated = validated or validate_pack(root)
     manifest = validated["manifest"]
+    projection_config = _read_yaml(root / WORKSPACE_RELATIVE / "AGENT_CONFIG.yaml").get(
+        "projection", {}
+    )
+    excluded_doc_types = set(projection_config.get("excluded_doc_types", []))
     documents: list[MaterializedDocument] = []
     for record in validated["registry"]["sources"]:
-        if record["doc_type"] not in CONTENT_DOC_TYPES:
+        if record["doc_type"] not in CONTENT_DOC_TYPES or record["doc_type"] in excluded_doc_types:
             continue
         documents.append(
             _render_document(

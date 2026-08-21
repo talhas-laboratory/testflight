@@ -20,9 +20,10 @@ and exclusion meaning, examples, counterexamples, allowed endpoints when relevan
 at least one competency question. Promotion is explicitly authorized and append-only.
 
 The pack is currently `pack_only_until_certified`. Do not create or edit generated `.data/` state
-as part of a source change. The projection materializer currently selects 17 bounded documents,
-including task-view routing documents but excluding navigation/configuration files. Once the pack
-passes certification, a dedicated population command may rebuild the Cognee dataset
+as part of a source change. The projection materializer currently selects 15 bounded evidence and
+task-view documents. Certification probe suites and fixture cases remain test inputs, not searchable
+evidence, and navigation/configuration files are excluded. Once the pack passes certification, a
+dedicated population command may rebuild the Cognee dataset
 `testflight_brand_ontology_research` from this Git revision.
 
 The first population slice is a 24-source Tier A anchor catalog, bounded evidence notes and

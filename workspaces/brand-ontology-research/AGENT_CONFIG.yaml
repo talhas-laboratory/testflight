@@ -64,6 +64,8 @@ projection:
   default_status: pack_only_until_certified
   staging_dataset_suffix: _staging
   certification_runner: scripts/certify_brand_research_projection.py
+  excluded_doc_types:
+    - certification
   population_requires:
     - projection_retrieval_certified
     - authorized_manifest_change
