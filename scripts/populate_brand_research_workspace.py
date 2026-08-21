@@ -177,6 +177,18 @@ def _render_document(
     return MaterializedDocument(document_id, source_url, text, enriched)
 
 
+def _cognee_data_id(dataset_name: str, document_id: UUID) -> UUID:
+    """Create a stable Cognee row id that cannot collide across datasets.
+
+    Cognee's relational ``data`` table uses globally unique ids while its
+    ingestion preflight historically looked up pinned ids without filtering
+    the dataset. Namespacing the materialized id by the target dataset keeps
+    staging, canonical, and sibling projections isolated and re-runnable.
+    """
+
+    return uuid5(NAMESPACE_URL, f"cognee:{dataset_name}:{document_id}")
+
+
 def build_documents(
     root: Path = REPO_ROOT, validated: dict[str, Any] | None = None
 ) -> list[MaterializedDocument]:
@@ -346,7 +358,7 @@ async def populate(
             data=document.text,
             label=f"brand-research:{document.metadata['unit']}",
             external_metadata=document.metadata,
-            data_id=document.document_id,
+            data_id=_cognee_data_id(dataset_name, document.document_id),
         )
         for document in documents
     ]

@@ -8,6 +8,7 @@ sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
 from certify_brand_research_projection import RetrievedItem, _evaluate_probe  # noqa: E402
 from populate_brand_research_workspace import (  # noqa: E402
+    _cognee_data_id,
     build_documents,
     validate_pack,
 )
@@ -37,6 +38,13 @@ def test_projection_document_ids_are_deterministic() -> None:
     assert [document.metadata["source_hash"] for document in first] == [
         document.metadata["source_hash"] for document in second
     ]
+
+
+def test_cognee_ids_are_stable_but_dataset_scoped() -> None:
+    document_id = build_documents()[0].document_id
+
+    assert _cognee_data_id("dataset-a", document_id) == _cognee_data_id("dataset-a", document_id)
+    assert _cognee_data_id("dataset-a", document_id) != _cognee_data_id("dataset-b", document_id)
 
 
 def test_projection_is_gated_before_cognee_population() -> None:
