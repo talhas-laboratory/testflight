@@ -24,8 +24,10 @@ The nine synthetic worlds are executable certification fixtures. They test seman
 they do not create accepted Brand-world facts.
 
 Projection preparation is handled by `scripts/populate_brand_research_workspace.py`. Use
-`--validate-only` or `--dry-run` first. Actual Cognee population is denied until projection
-retrieval is certified and the manifest grants authorization.
+`--validate-only` or `--dry-run` first. Live validation uses an isolated `*_staging` dataset and
+`scripts/certify_brand_research_projection.py`; it records retrieval and no-hit gates without
+authorizing the canonical projection. Actual Cognee population is denied until projection
+retrieval is certified and a matching authorization receipt grants permission in the manifest.
 
 ## Routing
 

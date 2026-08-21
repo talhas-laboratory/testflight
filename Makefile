@@ -1,4 +1,4 @@
-.PHONY: setup setup-server-cognee setup-server-deepseek-harness setup-server-reasoning-operators setup-server-brand-research run-deepseek-harness format lint test check registry brand-research-workspace brand-research-corpus brand-research-fixtures brand-research-projection compose-config sync-server
+.PHONY: setup setup-server-cognee setup-server-deepseek-harness setup-server-reasoning-operators setup-server-brand-research setup-server-brand-research-certification run-deepseek-harness format lint test check registry brand-research-workspace brand-research-corpus brand-research-fixtures brand-research-projection brand-research-certification compose-config sync-server
 
 setup:
 	corepack enable
@@ -16,6 +16,9 @@ setup-server-reasoning-operators:
 
 setup-server-brand-research:
 	./scripts/setup_server_brand_research.sh $(ARGS)
+
+setup-server-brand-research-certification:
+	./scripts/setup_server_brand_research_certification.sh $(ARGS)
 
 run-deepseek-harness:
 	./scripts/run_deepseek_harness.sh
@@ -59,6 +62,9 @@ brand-research-fixtures:
 
 brand-research-projection:
 	uv run python scripts/populate_brand_research_workspace.py --dry-run
+
+brand-research-certification:
+	uv run python scripts/certify_brand_research_projection.py --help
 
 compose-config:
 	docker compose -f infra/compose.yaml config --quiet

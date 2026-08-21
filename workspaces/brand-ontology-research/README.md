@@ -20,8 +20,10 @@ and exclusion meaning, examples, counterexamples, allowed endpoints when relevan
 at least one competency question. Promotion is explicitly authorized and append-only.
 
 The pack is currently `pack_only_until_certified`. Do not create or edit generated `.data/` state
-as part of a source change. Once the pack passes certification, a dedicated population command may
-rebuild the Cognee dataset `testflight_brand_ontology_research` from this Git revision.
+as part of a source change. The projection materializer currently selects 17 bounded documents,
+including task-view routing documents but excluding navigation/configuration files. Once the pack
+passes certification, a dedicated population command may rebuild the Cognee dataset
+`testflight_brand_ontology_research` from this Git revision.
 
 The first population slice is a 24-source Tier A anchor catalog, bounded evidence notes and
 proposal-only candidate definitions. Validate it with `make brand-research-corpus`. The source
@@ -45,10 +47,21 @@ The projection materializer is deterministic and credential-free in its safe mod
 make brand-research-projection
 ```
 
-It currently produces 11 bounded research documents from the tracked pack. On the server, use
-`make setup-server-brand-research ARGS="--dry-run"` after the isolated Cognee environment exists. The
-`--populate` mode is intentionally gated until projection retrieval is separately certified and
-the workspace manifest is explicitly authorized.
+On the server, use `make setup-server-brand-research ARGS="--dry-run"` after the isolated Cognee
+environment exists. To exercise the live projection without authorizing the canonical dataset,
+use an isolated staging dataset:
+
+```bash
+make setup-server-brand-research \
+  ARGS="--staging-populate --dataset-name testflight_brand_ontology_research_staging"
+make setup-server-brand-research-certification \
+  ARGS="--dataset-name testflight_brand_ontology_research_staging"
+```
+
+The certification command runs exact-artifact, intent, adversarial, no-hit, and bounded path
+probes. It writes a redacted report under `.data/brand-research/`. The `--populate` mode remains
+gated until that report passes, a tracked authorization receipt matches the exact source hashes,
+and the workspace manifest explicitly grants `projection_certified` status.
 
 Start with:
 

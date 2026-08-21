@@ -31,7 +31,10 @@ CONTENT_DOC_TYPES = {
     "fixture_catalog",
     "certification",
     "contract",
+    "task_view",
 }
+DEFAULT_STAGING_SUFFIX = "_staging"
+AUTHORIZATION_RECEIPT = Path("certification_cases/projection-certification.json")
 
 
 @dataclass(frozen=True, slots=True)
@@ -81,8 +84,6 @@ def validate_pack(root: Path = REPO_ROOT) -> dict[str, Any]:
     fixtures = validate_fixtures()
     if manifest["id"] != registry["workspace_id"]:
         raise ValueError("workspace and resource registry identities differ")
-    if manifest["cognee"]["population_status"] == "projection_certified":
-        raise ValueError("projection_certified is reserved for an authorized release decision")
     return {
         "workspace": workspace,
         "manifest": manifest,
@@ -90,6 +91,62 @@ def validate_pack(root: Path = REPO_ROOT) -> dict[str, Any]:
         "corpus": corpus,
         "fixtures": fixtures,
     }
+
+
+def _authorization_receipt(root: Path) -> dict[str, Any]:
+    """Load the tracked projection authorization receipt, if one exists."""
+
+    path = root / WORKSPACE_RELATIVE / AUTHORIZATION_RECEIPT
+    if not path.is_file():
+        raise RuntimeError(
+            "projection population is authorized only by a tracked certification receipt: "
+            f"{AUTHORIZATION_RECEIPT}"
+        )
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        raise RuntimeError(f"invalid projection authorization receipt: {path}") from error
+    if not isinstance(value, dict):
+        raise RuntimeError("projection authorization receipt must contain a JSON object")
+    return value
+
+
+def _require_authorized_release(
+    *,
+    root: Path,
+    validated: dict[str, Any],
+    documents: list[MaterializedDocument],
+    dataset_name: str,
+) -> dict[str, Any]:
+    """Require a receipt that matches the exact materialized source set."""
+
+    manifest = validated["manifest"]
+    if manifest["cognee"]["population_status"] != "projection_certified":
+        raise RuntimeError(
+            "Cognee population is gated: certify projection retrieval and change "
+            "population_status explicitly"
+        )
+    receipt = _authorization_receipt(root)
+    if receipt.get("status") != "pass" or receipt.get("authorized") is not True:
+        raise RuntimeError("projection authorization receipt is not a passing authorized release")
+    if receipt.get("workspace_id") != manifest["id"]:
+        raise RuntimeError("projection authorization receipt workspace does not match the manifest")
+    if receipt.get("dataset_name") != dataset_name:
+        raise RuntimeError("projection authorization receipt dataset does not match the target")
+    expected_documents = {
+        (str(document.document_id), document.source_url, document.metadata["source_hash"])
+        for document in documents
+    }
+    certified_documents = {
+        (str(item.get("document_id")), item.get("source_url"), item.get("source_hash"))
+        for item in receipt.get("documents", [])
+        if isinstance(item, dict)
+    }
+    if certified_documents != expected_documents:
+        raise RuntimeError(
+            "projection authorization receipt does not match the current source pack"
+        )
+    return receipt
 
 
 def _render_document(
@@ -218,13 +275,23 @@ def _llm_configs(credential: str) -> tuple[Any, Any]:
 
 
 async def populate(
-    *, root: Path, documents: list[MaterializedDocument], dataset_name: str
+    *,
+    root: Path,
+    documents: list[MaterializedDocument],
+    dataset_name: str,
+    staging: bool = False,
 ) -> dict[str, Any]:
     validated = validate_pack(root)
-    if validated["manifest"]["cognee"]["population_status"] != "projection_certified":
-        raise RuntimeError(
-            "Cognee population is gated: certify projection retrieval and change "
-            "population_status explicitly"
+    if staging:
+        if not dataset_name.endswith(DEFAULT_STAGING_SUFFIX):
+            raise ValueError(f"staging population dataset must end with {DEFAULT_STAGING_SUFFIX!r}")
+        authorization = {"mode": "staging", "authorized": False}
+    else:
+        authorization = _require_authorized_release(
+            root=root,
+            validated=validated,
+            documents=documents,
+            dataset_name=dataset_name,
         )
     credential = _credential(root)
     import cognee
@@ -264,6 +331,8 @@ async def populate(
     return {
         "add_result_type": type(add_result).__name__,
         "cognify_result_type": type(cognify_result).__name__,
+        "mode": "staging" if staging else "authorized",
+        "authorization": authorization,
     }
 
 
@@ -275,20 +344,37 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--validate-only", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--populate", action="store_true")
+    parser.add_argument(
+        "--staging-populate",
+        action="store_true",
+        help="populate an isolated *_staging dataset without changing the manifest status",
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = _parse_args()
-    if sum((args.validate_only, args.dry_run, args.populate)) > 1:
-        raise SystemExit("choose only one of --validate-only, --dry-run or --populate")
+    if sum((args.validate_only, args.dry_run, args.populate, args.staging_populate)) > 1:
+        raise SystemExit(
+            "choose only one of --validate-only, --dry-run, --populate or --staging-populate"
+        )
     root = args.root.resolve()
     validated = validate_pack(root)
     documents = build_documents(root, validated)
-    dataset_name = args.dataset_name or validated["manifest"]["cognee"]["dataset_name"]
+    default_dataset = validated["manifest"]["cognee"]["dataset_name"]
+    dataset_name = args.dataset_name or (
+        f"{default_dataset}{DEFAULT_STAGING_SUFFIX}" if args.staging_populate else default_dataset
+    )
     if args.populate:
-        details = asyncio.run(populate(root=root, documents=documents, dataset_name=dataset_name))
+        details = asyncio.run(
+            populate(root=root, documents=documents, dataset_name=dataset_name, staging=False)
+        )
         status = "populated"
+    elif args.staging_populate:
+        details = asyncio.run(
+            populate(root=root, documents=documents, dataset_name=dataset_name, staging=True)
+        )
+        status = "staging_populated"
     elif args.dry_run:
         details = {"would_add": len(documents), "would_cognify": True, "credentials_read": False}
         status = "dry_run"

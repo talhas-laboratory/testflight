@@ -62,6 +62,8 @@ refresh:
 projection:
   safe_modes: [validate-only, dry-run]
   default_status: pack_only_until_certified
+  staging_dataset_suffix: _staging
+  certification_runner: scripts/certify_brand_research_projection.py
   population_requires:
     - projection_retrieval_certified
     - authorized_manifest_change
