@@ -252,11 +252,15 @@ async def certify(*, root: Path, dataset_name: str, run_fallback: bool = True) -
     if not isinstance(probes, list) or not probes:
         raise ValueError("probe suite must be a non-empty list")
 
+    llm_config = None
+    embedding_config = None
+    if run_fallback or any(probe["case_type"] == "pathing" for probe in probes):
+        llm_config, embedding_config = _llm_configs(_credential(root))
+        _configure_runtime_environment(llm_config, embedding_config)
+
     import cognee
     from cognee.modules.search.types import SearchType
 
-    llm_config = None
-    embedding_config = None
     results: list[dict[str, Any]] = []
     fallback_count = 0
     graph_probe_count = 0
@@ -270,10 +274,12 @@ async def certify(*, root: Path, dataset_name: str, run_fallback: bool = True) -
         )
         lexical_hit = _lexical_hit(probe["query"], items)
         fallback_used = False
-        if run_fallback and probe["case_type"] != "no_hit" and not lexical_hit:
-            if llm_config is None:
-                llm_config, embedding_config = _llm_configs(_credential(root))
-                _configure_runtime_environment(llm_config, embedding_config)
+        if (
+            run_fallback
+            and probe["case_type"] != "no_hit"
+            and not lexical_hit
+            and llm_config is not None
+        ):
             items = await _search(
                 cognee=cognee,
                 search_type=SearchType.HYBRID_COMPLETION,
@@ -287,9 +293,6 @@ async def certify(*, root: Path, dataset_name: str, run_fallback: bool = True) -
 
         graph_parameters = None
         if probe["case_type"] == "pathing":
-            if llm_config is None:
-                llm_config, embedding_config = _llm_configs(_credential(root))
-                _configure_runtime_environment(llm_config, embedding_config)
             graph_parameters = {
                 "search_type": SearchType.GRAPH_COMPLETION.value,
                 "neighborhood_depth": 2,

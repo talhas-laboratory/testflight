@@ -250,24 +250,45 @@ def _credential(root: Path) -> str:
 
 
 def _llm_configs(credential: str) -> tuple[Any, Any]:
+    endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
+    llm_provider = os.getenv("TESTFLIGHT_COGNEE_LLM_PROVIDER", "custom")
+    llm_model = os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "openrouter/deepseek/deepseek-chat")
+    embedding_provider = os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_PROVIDER", "custom")
+    embedding_model = os.getenv(
+        "TESTFLIGHT_COGNEE_EMBEDDING_MODEL", "openai/text-embedding-3-small"
+    )
+    embedding_endpoint = os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_ENDPOINT", endpoint)
+
+    # Cognee initializes global settings while its package is first imported. Set the standard
+    # variables before importing its config classes so startup checks use the explicit endpoint.
+    os.environ.update(
+        {
+            "LLM_PROVIDER": llm_provider,
+            "LLM_MODEL": llm_model,
+            "LLM_ENDPOINT": endpoint,
+            "LLM_API_KEY": credential,
+            "EMBEDDING_PROVIDER": embedding_provider,
+            "EMBEDDING_MODEL": embedding_model,
+            "EMBEDDING_ENDPOINT": embedding_endpoint,
+            "EMBEDDING_API_KEY": credential,
+        }
+    )
+
     from cognee.infrastructure.databases.vector.embeddings.config import EmbeddingConfig
     from cognee.infrastructure.llm.config import LLMConfig
 
-    endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
     llm_kwargs = {
-        "llm_provider": os.getenv("TESTFLIGHT_COGNEE_LLM_PROVIDER", "custom"),
-        "llm_model": os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "openrouter/deepseek/deepseek-chat"),
+        "llm_provider": llm_provider,
+        "llm_model": llm_model,
         "llm_endpoint": endpoint,
         "llm_temperature": 0.0,
         "llm_" + "api_" + "key": credential,
     }
     llm = LLMConfig(**llm_kwargs)
     embedding_kwargs = {
-        "embedding_provider": os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_PROVIDER", "custom"),
-        "embedding_model": os.getenv(
-            "TESTFLIGHT_COGNEE_EMBEDDING_MODEL", "openai/text-embedding-3-small"
-        ),
-        "embedding_endpoint": os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_ENDPOINT", endpoint),
+        "embedding_provider": embedding_provider,
+        "embedding_model": embedding_model,
+        "embedding_endpoint": embedding_endpoint,
         "embedding_" + "api_" + "key": credential,
     }
     embedding = EmbeddingConfig(**embedding_kwargs)
