@@ -332,6 +332,8 @@ async def populate(
             dataset_name=dataset_name,
         )
     credential = _credential(root)
+    llm_config, embedding_config = _llm_configs(credential)
+    _configure_runtime_environment(llm_config, embedding_config)
     import cognee
     from cognee.tasks.ingestion.data_item import DataItem
 
@@ -344,8 +346,6 @@ async def populate(
         )
         for document in documents
     ]
-    llm_config, embedding_config = _llm_configs(credential)
-    _configure_runtime_environment(llm_config, embedding_config)
     add_result = await cognee.add(
         items,
         dataset_name=dataset_name,
