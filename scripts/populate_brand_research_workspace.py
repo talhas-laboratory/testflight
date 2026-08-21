@@ -255,15 +255,15 @@ def _llm_configs(credential: str) -> tuple[Any, Any]:
 
     endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
     llm_kwargs = {
-        "llm_provider": os.getenv("TESTFLIGHT_COGNEE_LLM_PROVIDER", "openai"),
-        "llm_model": os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "openai/deepseek/deepseek-chat"),
+        "llm_provider": os.getenv("TESTFLIGHT_COGNEE_LLM_PROVIDER", "custom"),
+        "llm_model": os.getenv("TESTFLIGHT_COGNEE_LLM_MODEL", "openrouter/deepseek/deepseek-chat"),
         "llm_endpoint": endpoint,
         "llm_temperature": 0.0,
         "llm_" + "api_" + "key": credential,
     }
     llm = LLMConfig(**llm_kwargs)
     embedding_kwargs = {
-        "embedding_provider": os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_PROVIDER", "openai"),
+        "embedding_provider": os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_PROVIDER", "custom"),
         "embedding_model": os.getenv(
             "TESTFLIGHT_COGNEE_EMBEDDING_MODEL", "openai/text-embedding-3-small"
         ),
@@ -272,6 +272,23 @@ def _llm_configs(credential: str) -> tuple[Any, Any]:
     }
     embedding = EmbeddingConfig(**embedding_kwargs)
     return llm, embedding
+
+
+def _configure_runtime_environment(llm_config: Any, embedding_config: Any) -> None:
+    """Align Cognee's global startup checks with the explicit per-call configs."""
+
+    os.environ.update(
+        {
+            "LLM_PROVIDER": llm_config.llm_provider,
+            "LLM_MODEL": llm_config.llm_model,
+            "LLM_ENDPOINT": llm_config.llm_endpoint,
+            "LLM_API_KEY": llm_config.llm_api_key or "",
+            "EMBEDDING_PROVIDER": embedding_config.embedding_provider or "",
+            "EMBEDDING_MODEL": embedding_config.embedding_model or "",
+            "EMBEDDING_ENDPOINT": embedding_config.embedding_endpoint or "",
+            "EMBEDDING_API_KEY": embedding_config.embedding_api_key or "",
+        }
+    )
 
 
 async def populate(
@@ -307,6 +324,7 @@ async def populate(
         for document in documents
     ]
     llm_config, embedding_config = _llm_configs(credential)
+    _configure_runtime_environment(llm_config, embedding_config)
     add_result = await cognee.add(
         items,
         dataset_name=dataset_name,

@@ -16,6 +16,7 @@ from populate_brand_research_workspace import (
     DEFAULT_STAGING_SUFFIX,
     REPO_ROOT,
     WORKSPACE_RELATIVE,
+    _configure_runtime_environment,
     _credential,
     _llm_configs,
     build_documents,
@@ -272,6 +273,7 @@ async def certify(*, root: Path, dataset_name: str, run_fallback: bool = True) -
         if run_fallback and probe["case_type"] != "no_hit" and not lexical_hit:
             if llm_config is None:
                 llm_config, embedding_config = _llm_configs(_credential(root))
+                _configure_runtime_environment(llm_config, embedding_config)
             items = await _search(
                 cognee=cognee,
                 search_type=SearchType.HYBRID_COMPLETION,
@@ -287,6 +289,7 @@ async def certify(*, root: Path, dataset_name: str, run_fallback: bool = True) -
         if probe["case_type"] == "pathing":
             if llm_config is None:
                 llm_config, embedding_config = _llm_configs(_credential(root))
+                _configure_runtime_environment(llm_config, embedding_config)
             graph_parameters = {
                 "search_type": SearchType.GRAPH_COMPLETION.value,
                 "neighborhood_depth": 2,
