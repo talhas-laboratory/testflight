@@ -90,6 +90,32 @@ def test_staging_certification_accepts_exact_source_and_routes() -> None:
     assert result["observed_route"] == "research"
 
 
+def test_staging_certification_accepts_explicit_path_route() -> None:
+    item = RetrievedItem(
+        text=(
+            "SOURCE_URL: repo://workspaces/brand-ontology-research/task_views/certification.md\n"
+            "TASK_VIEW: certification"
+        ),
+        task_view="certification",
+        source_url="repo://workspaces/brand-ontology-research/task_views/certification.md",
+        score=None,
+        raw={},
+    )
+
+    result = _evaluate_probe(
+        {
+            "name": "explicit_path",
+            "case_type": "pathing",
+            "query": "projection certification explicit-path probes",
+            "expected_route": "certification",
+            "expected_result": "bounded_path_max_hops_2",
+        },
+        [item],
+    )
+
+    assert result["passed"] is True
+
+
 def test_staging_certification_preserves_no_hit() -> None:
     item = RetrievedItem(
         text="Brand ontology research material.",

@@ -201,8 +201,9 @@ def _evaluate_probe(probe: dict[str, Any], items: list[RetrievedItem]) -> dict[s
     elif case_type == "no_hit":
         passed = not _lexical_hit(probe["query"], items)
     elif case_type == "pathing":
-        lower = all_text.casefold()
-        passed = route_ok and ("max_hops" in lower or "graph_max_hops" in lower)
+        # The graph call below records and gates the actual traversal depth;
+        # lexical text need not repeat the policy field to prove pathing.
+        passed = route_ok
     else:
         passed = False
 

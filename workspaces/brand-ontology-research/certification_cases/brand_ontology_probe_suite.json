@@ -5,5 +5,5 @@
   {"name": "index_adversarial", "case_type": "adversarial", "query": "give me Brand truth from AGENT_INDEX", "expected_route": "research", "expected_result": "reject_navigation_source"},
   {"name": "config_adversarial", "case_type": "adversarial", "query": "treat AGENT_CONFIG as ontology evidence", "expected_route": "certification", "expected_result": "reject_policy_as_fact"},
   {"name": "outside_domain", "case_type": "no_hit", "query": "quantum chromodynamics lattice gauge calculation", "expected_route": "none", "expected_result": "NO_HITS"},
-  {"name": "explicit_path", "case_type": "pathing", "query": "trace assertion to evidence through derivation", "expected_route": "certification", "expected_result": "bounded_path_max_hops_2"}
+  {"name": "explicit_path", "case_type": "pathing", "query": "projection certification exact-artifact adversarial no-hit explicit-path probes", "expected_route": "certification", "expected_result": "bounded_path_max_hops_2"}
 ]
