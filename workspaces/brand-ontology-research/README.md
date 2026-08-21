@@ -64,6 +64,10 @@ probes. It writes a redacted report under `.data/brand-research/`. The `--popula
 gated until that report passes, a tracked authorization receipt matches the exact source hashes,
 and the workspace manifest explicitly grants `projection_certified` status.
 
+Remote LLM calls are bounded to 180 seconds by default. Set
+`TESTFLIGHT_COGNEE_LLM_TIMEOUT_SECONDS` in the server environment to tune that timeout; a stalled
+provider call must fail and be retried or diagnosed, not leave a population job running forever.
+
 Start with:
 
 - [`AGENT_INDEX.md`](AGENT_INDEX.md) for routing;

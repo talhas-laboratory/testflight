@@ -9,6 +9,7 @@ sys.path.insert(0, str(REPO_ROOT / "scripts"))
 from certify_brand_research_projection import RetrievedItem, _evaluate_probe  # noqa: E402
 from populate_brand_research_workspace import (  # noqa: E402
     _cognee_data_id,
+    _llm_timeout_seconds,
     build_documents,
     validate_pack,
 )
@@ -45,6 +46,14 @@ def test_cognee_ids_are_stable_but_dataset_scoped() -> None:
 
     assert _cognee_data_id("dataset-a", document_id) == _cognee_data_id("dataset-a", document_id)
     assert _cognee_data_id("dataset-a", document_id) != _cognee_data_id("dataset-b", document_id)
+
+
+def test_llm_timeout_is_positive_and_configurable(monkeypatch) -> None:
+    monkeypatch.delenv("TESTFLIGHT_COGNEE_LLM_TIMEOUT_SECONDS", raising=False)
+    assert _llm_timeout_seconds() == 180.0
+
+    monkeypatch.setenv("TESTFLIGHT_COGNEE_LLM_TIMEOUT_SECONDS", "45")
+    assert _llm_timeout_seconds() == 45.0
 
 
 def test_projection_is_gated_before_cognee_population() -> None:

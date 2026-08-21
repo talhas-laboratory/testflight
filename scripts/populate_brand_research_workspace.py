@@ -265,6 +265,19 @@ def _credential(root: Path) -> str:
     return credential
 
 
+def _llm_timeout_seconds() -> float:
+    """Return a positive provider timeout, keeping remote jobs bounded."""
+
+    raw = os.getenv("TESTFLIGHT_COGNEE_LLM_TIMEOUT_SECONDS", "180")
+    try:
+        timeout = float(raw)
+    except ValueError as error:
+        raise ValueError("TESTFLIGHT_COGNEE_LLM_TIMEOUT_SECONDS must be numeric") from error
+    if timeout <= 0:
+        raise ValueError("TESTFLIGHT_COGNEE_LLM_TIMEOUT_SECONDS must be greater than zero")
+    return timeout
+
+
 def _llm_configs(credential: str) -> tuple[Any, Any]:
     endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
     llm_provider = os.getenv("TESTFLIGHT_COGNEE_LLM_PROVIDER", "custom")
@@ -298,6 +311,7 @@ def _llm_configs(credential: str) -> tuple[Any, Any]:
         "llm_model": llm_model,
         "llm_endpoint": endpoint,
         "llm_temperature": 0.0,
+        "llm_args": {"timeout": _llm_timeout_seconds()},
         "llm_" + "api_" + "key": credential,
     }
     llm = LLMConfig(**llm_kwargs)
