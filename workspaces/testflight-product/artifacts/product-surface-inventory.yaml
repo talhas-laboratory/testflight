@@ -1,0 +1,30 @@
+version: 1
+workspace_id: world://workspace/testflight-product
+status: active
+surfaces:
+  - id: surface:brand-intake
+    name: Brand Intake
+    kind: product_surface
+    role: Guided founder-facing capture, clarification, and provisional Brand World review.
+    implementation_ref: repo://apps/brand-intake-web
+    lifecycle: experience_prototype
+  - id: surface:brand-lab
+    name: Brand Lab
+    kind: product_surface
+    role: Read-only exploration and diagnostics for Brand World records.
+    implementation_ref: repo://apps/brand-lab
+    lifecycle: local_application
+  - id: surface:creative-studio
+    name: Creative Studio
+    kind: product_surface
+    role: Write-capable creative reference, analysis, review, and artifact handoff.
+    implementation_ref: repo://apps/creative-studio
+    lifecycle: local_application
+shared_experience_invariants:
+  - explicit_workspace_and_project_scope
+  - visible_state_authority_and_provenance
+  - proposal_review_and_promotion_are_distinct
+  - honest_hold_partial_and_no_hit_states
+  - keyboard_and_reduced_motion_support
+  - semantic_design_tokens
+

@@ -1,0 +1,71 @@
+workspace:
+  id: world://workspace/brand/hellobiotic-research
+  version: 1
+  status: active_research
+  name: Biotic / Hellobiotic Brand Research Sandbox
+  mission: Provide an isolated, source-grounded public research workspace for workflow-aware
+    Brand context retrieval.
+  brand_id: world://brand/hellobiotic
+  subject_scope: Publicly documented Biotic / Hellobiotic brand and product ecosystem
+    only.
+  ontology:
+    source: ../../domains/brand/ontology/brand-system.yaml
+    version: 1.0.0
+    policies:
+    - ../../domains/brand/policies/identity-resolution-v1.yaml
+    - ../../domains/brand/policies/assertion-acceptance-v1.yaml
+    - ../../domains/brand/policies/relationship-weight-v1.yaml
+  source_of_truth:
+    evidence: artifacts/evidence-notes.yaml
+    proposals: artifacts/entity-inventory.yaml
+    relationships: artifacts/relationship-inventory.yaml
+    world_modeling: artifacts/world-modeling.yaml
+  cognee:
+    dataset_name: testflight_brand_hellobiotic_research_staging
+    runtime_root: /home/talha/testflight/.data/cognee
+    population_status: not_populated
+    canonical: false
+  storage:
+    runtime_root: /home/talha/testflight/.data/brand-workspaces/hellobiotic-research
+    evidence_root: /home/talha/testflight/.data/brand-workspaces/hellobiotic-research/evidence
+    semantic_repository: /home/talha/testflight/.data/brand-workspaces/hellobiotic-research/semantic.sqlite3
+  topology:
+    parent: hellobiotic-research
+    children:
+    - id: research
+      path: task_views/research.md
+      purpose: locate and register public evidence
+    - id: entity
+      path: task_views/entity.md
+      purpose: retrieve scoped entity proposals
+    - id: relationship
+      path: task_views/relationship.md
+      purpose: retrieve bounded relationship paths
+    - id: asset-context
+      path: task_views/asset-context.md
+      purpose: compile workflow context
+    - id: world-modeling
+      path: artifacts/world-modeling.yaml
+      purpose: compile branch-aware agent world views
+    - id: visual-language
+      path: visual-language/AGENT_INDEX.md
+      purpose: resolve versioned public visual references
+  scope:
+    includes:
+    - public identity, products, experience, expression, and evidence
+    - versioned public visual-language observations
+    - proposal-only hypotheses and experiment plans
+    excludes:
+    - confidential strategy, customers, and internal guidelines
+    - medical efficacy conclusions beyond documented source wording
+    - accepted canonical facts
+    - generated indexes and secrets
+  policy:
+    evidence_strictness: citation_required
+    uncertainty_policy: branch
+    mutation: proposal_only
+    action: deny_unless_authorized
+    no_hit: valid
+    graph_max_hops: 2
+    retrieval_order: bm25_then_bounded_hybrid_same_child
+    source_refresh_days: 90

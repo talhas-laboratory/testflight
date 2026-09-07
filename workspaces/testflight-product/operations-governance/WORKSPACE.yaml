@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/testflight-product/operations-governance
+parent: world://workspace/testflight-product
+type: child-knowledge-container
+label: Operations and governance
+mission: Maintain roles, delivery, policies, controls, risks, compliance, and incident knowledge.
+dataset_name: testflight_testflight_product_operations_governance_staging
+route: operations-governance
+status: candidate
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes: [roles, responsibilities, delivery, policy, control, permission, risk, compliance, incident, operating_rhythm]
+  excludes: [implicit_authority, secret_values, policy_as_execution_proof]
+

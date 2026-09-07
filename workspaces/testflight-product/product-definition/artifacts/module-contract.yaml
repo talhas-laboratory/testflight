@@ -1,0 +1,23 @@
+version: 1
+workspace_id: world://workspace/testflight-product/product-definition
+module_id: product-definition
+status: active
+owns:
+  entity_types: [product, offer, product_surface, product_capability, portfolio, workflow, requirement, outcome, roadmap_item]
+  event_types: [product_launch, release, lifecycle_transition]
+  state_types: [product_state, surface_state, roadmap_state]
+  claim_types: [product_principle, product_hypothesis, product_direction, requirement_proposal, roadmap_proposal]
+relations: [composed_of, exposes, serves, enables, measured_by, precedes, supersedes]
+initial_product:
+  id: product:testflight-integration-laboratory
+  name: Testflight integration laboratory
+  character: editorial_intelligence_with_operational_clarity
+  surfaces: [surface:brand-intake, surface:brand-lab, surface:creative-studio]
+product_direction_branches:
+  - product:founder-brand-world
+  - offer:campaign-decision-intelligence
+resolution_status: unresolved
+handoffs:
+  decisions: world://workspace/testflight-product/product-decisions
+  implementation: world://workspace/testflight-product/architecture
+  experience: world://workspace/testflight-product/experience-design

@@ -1,0 +1,21 @@
+version: 1
+workspace_id: world://workspace/testflight-product/customers-market
+module_id: customers-market
+status: active
+owns:
+  entity_types: [actor, role, organization, customer, user, segment, need, journey, competitor, market]
+  event_types: [interview, interaction, purchase, churn, research_session]
+  state_types: [customer_state, journey_state, market_state]
+  claim_types: [observation, participant_statement, interpretation, need_hypothesis, segment_hypothesis, market_hypothesis]
+relations: [belongs_to, serves, experiences, needs, uses, purchases, compares_with, evidenced_by]
+evidence_ladder:
+  - observed_behavior
+  - participant_statement
+  - researcher_interpretation
+  - hypothesis
+  - accepted_product_decision
+invariants:
+  - participant_statement_is_not_observed_behavior
+  - segment_is_not_person
+  - reachability_is_not_consent
+  - product_intent_is_not_customer_evidence

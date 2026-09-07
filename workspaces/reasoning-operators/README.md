@@ -1,6 +1,7 @@
 # Reasoning-operator workspace
 
-This is the container pack for the 16 reasoning guardrail operators. The
+This is the container pack for the 16 reasoning guardrail operators and 8
+Creative Field transformation contracts. The
 canonical contracts live in [`../../reasoning/operators/`](../../reasoning/operators/);
 this workspace references them instead of copying them.
 

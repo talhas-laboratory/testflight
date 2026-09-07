@@ -1,0 +1,78 @@
+operator:
+  id: world://operator/creative/reference-interpretation
+  version: 1
+  kind: transformational
+  category: creative_reference_interpretation
+  purpose: Convert reviewed observations and explicit annotations into alternative, evidence-linked interpretations and transfer instructions.
+  accepts:
+    - observed features and board relations
+    - user annotations and project purpose
+    - optional existing field context
+  requires_context:
+    - source evidence and licence boundaries
+    - project authority and target scope
+    - interpretation dimensions and uncertainty policy
+    - guardrail operator results
+  preconditions:
+    - distinguish user intention from model hypothesis
+    - verify each proposed transfer has a source contribution
+    - check outliers are retained rather than silently averaged away
+  parameters:
+    abstraction_level: system
+    depth: exhaustive
+    context_lens: strategic
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: conceptual
+  procedure:
+    - step: frame
+      action: State the interpretation question and target entity or project scope.
+    - step: propose
+      action: Generate one or more interpretations from observations, annotations and relations.
+    - step: counter
+      action: Generate anti-transfer instructions and alternatives for plausible competing readings.
+    - step: weigh
+      action: Assign bounded contribution weights with evidence references and uncertainty labels.
+    - step: return
+      action: Return a proposal-only interpretation with questions, alternatives and derivation metadata.
+  returns:
+    - field: interpretation
+      semantics: a hypothesis about role, meaning or transferable direction
+      authority: interpretation proposal
+    - field: contributions
+      semantics: per-dimension carry, avoid or contextual transfer instructions
+      authority: project-scoped proposal
+    - field: alternatives
+      semantics: competing hypotheses that remain live until review
+      authority: uncertainty branch
+    - field: anti_transfer
+      semantics: explicit boundaries preventing literal copying or unwanted associations
+      authority: safety and brand review
+  invariants:
+    - hypothesis never becomes accepted field state in this operator
+    - outlier, tension and disagreement remain addressable
+    - evidence, authority and uncertainty are carried per contribution
+  forbidden_shortcuts:
+    - collapse a reference into a single style label
+    - treat model confidence as truth or approval
+    - copy protected content as a generation instruction
+  hold_when:
+    - no evidence supports the proposed contribution
+    - competing readings change the requested action materially
+    - user annotation conflicts with project authority
+  failure_modes:
+    - unsupported_interpretation
+    - outlier_erasure
+    - literal_reference_copying
+    - authority_conflict
+  evaluators:
+    - id: interpretation-evidence
+      check: Each contribution and anti-transfer instruction cites observations, annotations or source records.
+      pass_condition: evidence coverage is complete or the result is held.
+    - id: interpretation-alternatives
+      check: Materially different readings are represented as alternatives.
+      pass_condition: no material ambiguity is silently collapsed.
+  evidence:
+    mindscape_operator_refs: [O-03, O-06, O-08]
+    source_basis: [reasoning/README.md, domains/creative-field/manifest.yaml]

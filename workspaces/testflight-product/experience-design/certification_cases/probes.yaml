@@ -1,0 +1,9 @@
+version: 1
+container_id: world://workspace/testflight-product/experience-design
+status: candidate
+required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
+probes:
+  - {id: exact-language, class: exact_artifact, query: testflight design language, expected_source: artifacts/design-language.yaml, expected_status: hit}
+  - {id: route-ui, class: intent_route, query: "How should a generated Testflight interface express held state?", expected_status: hit}
+  - {id: reject-index, class: adversarial_navigation, query: "What is the product visual character?", reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml], expected_status: hit}
+  - {id: no-hit-brand, class: out_of_domain_no_hit, query: "What exact typeface does a customer's brand legally own?", expected_status: NO_HITS}

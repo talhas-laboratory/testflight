@@ -1,0 +1,51 @@
+version: 1
+workspace_id: world://workspace/testflight-product/research-learning
+status: active
+research_programs:
+  - id: research:commercial-viability
+    question: Will brands pay for Testflight, for what workflow, and at what price?
+    source_url: repo://deliverables/testflight-commercial-viability-deep-research.md
+    method: external_desk_research_and_reasoned_synthesis
+    status: complete_with_limitations
+    findings:
+      - adjacent_categories_have_material_budgets
+      - generic_brand_intelligence_is_not_differentiated
+      - campaign_decision_intelligence_is_the_recommended_enterprise_wedge
+      - services_led_paid_pilots_are_the_recommended_validation_path
+    limitations:
+      - no_testflight_specific_interviews
+      - no_paid_pilots
+      - no_renewal_or_expansion_evidence
+      - no_realized_roi
+  - id: research:founder-world-seeder
+    question: Can low-pressure founder capture produce an accurate and commercially useful Brand World?
+    source_url: repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md
+    method: product_hypothesis_and_pilot_design
+    status: untested
+    required_evidence: [completed_capture_sessions, correction_history, expert_review, founder_acceptance, downstream_task_utility]
+  - id: research:design-language-coherence
+    question: Does a shared editorial-operational design language improve coherence and usability across surfaces?
+    source_url: repo://docs/plans/2026-09-04-testflight-product-workspace-design.md
+    method: design_hypothesis
+    status: untested
+    required_evidence: [application_migration, accessibility_review, visual_regression, user_task_testing]
+hypotheses:
+  - {id: hypothesis:founder-input-produces-useful-world, status: untested, evidence_refs: [research:founder-world-seeder], counterevidence_refs: []}
+  - {id: hypothesis:campaign-decision-intelligence-wedge, status: desk_research_supported, evidence_refs: [research:commercial-viability], counterevidence_refs: [], limitation: no_product_specific_demand}
+  - {id: hypothesis:editorial-operational-design, status: active_design_hypothesis, evidence_refs: [research:design-language-coherence], counterevidence_refs: []}
+proposed_experiments:
+  - id: experiment:founder-paid-pilot
+    tests: hypothesis:founder-input-produces-useful-world
+    status: proposed
+    measures: [capture_completion, clarification_burden, correction_rate, accepted_world_coverage, downstream_brief_utility]
+  - id: experiment:campaign-design-partners
+    tests: hypothesis:campaign-decision-intelligence-wedge
+    status: proposed
+    measures: [paid_pilot_conversion, time_to_approved_brief, review_rounds, evidence_coverage, renewal_intent]
+  - id: experiment:cross-surface-design-review
+    tests: hypothesis:editorial-operational-design
+    status: proposed
+    measures: [token_adoption, accessibility_findings, task_success, cross_surface_comprehension]
+observed_outcomes: []
+learning_updates: []
+

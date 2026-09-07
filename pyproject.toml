@@ -17,12 +17,20 @@ package = false
 [tool.uv.workspace]
 members = [
   "apps/brand-lab",
+  "apps/creative-studio",
+  "apps/workflow-runtime",
   "packages/testflight-core",
   "packages/testflight-semantic",
   "packages/testflight-brand",
+  "packages/testflight-creative-field",
+  "packages/testflight-content",
+  "packages/testflight-workflows",
   "adapters/cognee",
+  "adapters/creative-connectors",
   "adapters/langgraph",
+  "adapters/mcp-workflows",
   "adapters/sqlite-semantic",
+  "adapters/sqlite-workflow-runtime",
 ]
 
 [tool.pytest.ini_options]

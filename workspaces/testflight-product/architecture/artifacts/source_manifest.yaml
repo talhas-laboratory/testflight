@@ -1,0 +1,10 @@
+version: 1
+container_id: world://workspace/testflight-product/architecture
+sources:
+  - repo://workspaces/testflight-product/architecture/artifacts/module-contract.yaml
+  - repo://workspaces/testflight-product/architecture/artifacts/system-inventory.yaml
+  - repo://workspaces/testflight-product/architecture/artifacts/dependency-map.yaml
+  - repo://AGENT_INDEX.md
+  - repo://README.md
+  - repo://upstreams/registry.yaml
+  - repo://infra/compose.yaml

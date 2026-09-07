@@ -1,0 +1,38 @@
+version: 1
+workspace_id: world://workspace/testflight-product/architecture
+status: active
+applications:
+  - {id: app:brand-intake-web, surface_id: surface:brand-intake, path: apps/brand-intake-web, runtime: static_browser, lifecycle: experience_prototype, write_authority: browser_local_only}
+  - {id: app:brand-lab, surface_id: surface:brand-lab, path: apps/brand-lab, runtime: python_local_http, lifecycle: implemented_local, write_authority: read_only}
+  - {id: app:creative-studio, surface_id: surface:creative-studio, path: apps/creative-studio, runtime: python_local_http, lifecycle: implemented_local, write_authority: project_scoped_commands}
+  - {id: app:workflow-runtime, path: apps/workflow-runtime, runtime: python_asgi_mcp_langgraph, lifecycle: executable_foundation, write_authority: workflow_scoped_authority}
+packages:
+  - {id: package:testflight-core, path: packages/testflight-core, owns: [adapter_descriptor, capability, health_contract]}
+  - {id: package:testflight-semantic, path: packages/testflight-semantic, owns: [semantic_kernel, evidence, identity, context, time, provenance, authority, branches, representation, dependencies, federation, world_views, learning]}
+  - {id: package:testflight-brand, path: packages/testflight-brand, owns: [brand_system, brand_ontology, brand_assertions, brand_states, brand_modules]}
+  - {id: package:testflight-creative-field, path: packages/testflight-creative-field, owns: [creative_records, lifecycle, bindings, orchestration, projection, evaluation]}
+  - {id: package:testflight-content, path: packages/testflight-content, owns: [normalized_content_records, perceptual_observation, occurrences, patterns, interpretation, transformation]}
+  - {id: package:testflight-context-intelligence, path: packages/testflight-context-intelligence, owns: [context_request, retrieval_filtering, world_view_resolution, visual_language_resolution, context_packet, trace]}
+  - {id: package:testflight-operator-runtime, path: packages/testflight-operator-runtime, owns: [operator_contract, provider_preflight, execution, receipts, local_http_transport]}
+  - {id: package:testflight-workflows, path: packages/testflight-workflows, owns: [workflow_contract, access_envelope, authority_bundle, step_graph, instruction_contract, prompt_contract, reference_execution, agent_catalog]}
+  - {id: package:testflight-design-language, path: packages/testflight-design-language, owns: [product_design_tokens, generation_contract]}
+adapters:
+  - {id: adapter:cognee, path: adapters/cognee, upstream_id: cognee, status: implemented_boundary, owns: [semantic_projection, brand_projection, creative_field_projection, read_bridge]}
+  - {id: adapter:langgraph, path: adapters/langgraph, upstream_id: langgraph, status: implemented_boundary, owns: [workflow_graph_translation, orchestration_scheduling, checkpoint_seam]}
+  - {id: adapter:mcp-workflows, path: adapters/mcp-workflows, upstream_id: model-context-protocol-python-sdk, status: implemented_boundary, owns: [agent_tool_projection, streamable_http, workflow_rest_api]}
+  - {id: adapter:deepseek-harness, path: adapters/deepseek-harness, upstream_id: deepseek-harness, status: implemented_boundary, owns: [launcher_profile, upstream_probe]}
+  - {id: adapter:deepseek-context-intelligence, path: adapters/deepseek-harness-context-intelligence, upstream_id: deepseek-harness, status: implemented_plugin_boundary, owns: [context_injection, compile_context_tool, trace_inspection]}
+  - {id: adapter:sqlite-semantic, path: adapters/sqlite-semantic, status: implemented_owned_adapter, owns: [semantic_repository, creative_repository, content_addressed_blob_store]}
+  - {id: adapter:sqlite-workflow-runtime, path: adapters/sqlite-workflow-runtime, status: implemented_owned_adapter, owns: [workflow_run_store, workflow_idempotency_store]}
+  - {id: adapter:creative-connectors, path: adapters/creative-connectors, status: implemented_owned_adapter, owns: [text_target, image_target, normalized_output, invocation_receipt]}
+upstreams:
+  - {id: upstream:cognee, release: 1.5.0, runtime: python, integration: package, registry_ref: repo://upstreams/registry.yaml}
+  - {id: upstream:deepseek-harness, release: 0.1.0-rc.7, runtime: node, integration: plugin, registry_ref: repo://upstreams/registry.yaml}
+  - {id: upstream:langgraph, release: 1.2.11, runtime: python, integration: package, registry_ref: repo://upstreams/registry.yaml}
+  - {id: upstream:model-context-protocol-python-sdk, release: 2.1.1, runtime: python, integration: package, registry_ref: repo://upstreams/registry.yaml}
+runtime_boundaries:
+  - {id: runtime:operator-http, visibility: private_local, endpoint_default: "127.0.0.1:8781", canonical: false, owner: package:testflight-operator-runtime}
+  - {id: runtime:workflow-api, visibility: authenticated_local, endpoint_default: "127.0.0.1:8782", canonical: false, owner: app:workflow-runtime}
+  - {id: runtime:sqlite-canonical, visibility: local_workspace_scoped, canonical: true_for_accepted_records, owner: adapter:sqlite-semantic}
+  - {id: runtime:cognee-projection, visibility: isolated_dataset, canonical: false, owner: adapter:cognee}
+  - {id: runtime:compose-workspace, visibility: local_development, canonical: false, source_ref: repo://infra/compose.yaml}

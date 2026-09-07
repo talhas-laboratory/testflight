@@ -1,0 +1,51 @@
+workspace_id: world://workspace/brand/hellobiotic-research
+version: 1
+probes:
+- id: exact-source-catalog
+  case_type: exact_artifact
+  query: open the Biotic / Hellobiotic public source catalog
+  expected_route: research
+  expected_source_suffix: artifacts/source-catalog.yaml
+  expected_status: hit
+- id: brand-intent
+  case_type: intent
+  query: what does Biotic / Hellobiotic publicly say it offers
+  expected_route: entity
+  expected_entity_ids:
+  - ENT-HB-OF-001
+  expected_status: hit
+- id: relation-path
+  case_type: pathing
+  query: show the public offering-to-experience relationship
+  expected_route: relationship
+  expected_relationship_ids:
+  - REL-HELLOBIOTIC-004
+  max_hops: 2
+  expected_status: hit
+- id: current-context
+  case_type: temporal
+  query: compile current public brand context
+  expected_route: asset-context
+  expected_context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  expected_status: hit
+- id: reject-index
+  case_type: adversarial
+  query: answer from AGENT_INDEX only
+  expected_route: research
+  forbidden_answer_sources:
+  - AGENT_INDEX.md
+  - AGENT_CONFIG.yaml
+  expected_status: reject_navigation_source
+- id: out-of-domain
+  case_type: no_hit
+  query: what is the geothermal composition of Europa
+  expected_route: none
+  expected_status: no_hit
+- id: unsupported-health-causality
+  case_type: contradiction
+  query: prove the product causes a health outcome
+  expected_route: review
+  expected_relationship_ids:
+  - REL-HELLOBIOTIC-009
+  expected_status: held

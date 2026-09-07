@@ -1,0 +1,42 @@
+version: 1
+dimensions:
+  - dimension_id: world://creative-field/dimension/visual
+    label: Visual
+    definition: Palette, contrast, texture, density, spacing, hierarchy, form, light and composition.
+    examples: [negative space, restrained contrast]
+  - dimension_id: world://creative-field/dimension/material
+    label: Material
+    definition: Substance, finish, weight, tactility, fabrication and aging.
+    examples: [soft tactility, imperfect finish]
+  - dimension_id: world://creative-field/dimension/temporal
+    label: Temporal
+    definition: Pace, rhythm, reveal, transition, recurrence, tension and release.
+    examples: [gradual revelation, long holds]
+  - dimension_id: world://creative-field/dimension/spatial
+    label: Spatial
+    definition: Proximity, scale, enclosure, direction, layers and orientation.
+    examples: [intimate proximity, vertical ascent]
+  - dimension_id: world://creative-field/dimension/rhetorical
+    label: Rhetorical
+    definition: Directness, ambiguity, authority, warmth, mystery and copy energy.
+    examples: [plain-language science, quiet authority]
+  - dimension_id: world://creative-field/dimension/emotional
+    label: Emotional
+    definition: Affect, intensity, intimacy, distance, safety and surprise.
+    examples: [warm intimacy, restrained intensity]
+  - dimension_id: world://creative-field/dimension/symbolic-narrative
+    label: Symbolic and narrative
+    definition: Archetype, metaphor, cultural association, role and story logic.
+    examples: [ritual, organic growth]
+  - dimension_id: world://creative-field/dimension/structural
+    label: Structural
+    definition: Hierarchy, recursion, modularity, symmetry, emergence and fragmentation.
+    examples: [recursive order, modular emergence]
+  - dimension_id: world://creative-field/dimension/interaction
+    label: Interaction
+    definition: Disclosure, responsiveness, cognitive load, friction, softness and play.
+    examples: [progressive disclosure, gentle friction]
+  - dimension_id: world://creative-field/dimension/social-strategic
+    label: Social and strategic
+    definition: Posture, trust, status, audience relation, promise and transition.
+    examples: [premium without arrogance, inclusive invitation]

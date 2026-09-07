@@ -13,7 +13,7 @@ def test_brand_ontology_research_pack_has_question_and_fixture_coverage() -> Non
     result = validate_workspace()
 
     assert len(result["questions"]) == 30
-    assert len(result["worlds"]) == 9
+    assert len(result["worlds"]) == 11
     assert {case["case_type"] for case in result["probes"]} >= {
         "exact_artifact",
         "intent",

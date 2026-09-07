@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/creative/project-binding
+  version: 1
+  kind: control
+  category: creative_project_binding
+  purpose: Bind a reviewed field version to explicit project entities, world context and authority without making taste global.
+  accepts:
+    - project binding request
+    - reviewed CreativeFieldVersion
+    - target entity ids, branch and context
+  requires_context:
+    - workspace and project privacy policy
+    - authority grant and branch policy
+    - target entity identity and relation scope
+    - existing bindings and precedence rules
+  preconditions:
+    - verify all target entities belong to the project scope
+    - verify field version is accepted and not superseded
+    - check no global promotion is implied by the request
+  parameters:
+    abstraction_level: system
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: ask
+    proof_demand: operational
+  procedure:
+    - step: resolve
+      action: Resolve project, target entities, branch and world context by stable identity.
+    - step: authorize
+      action: Validate authority grant, privacy policy and lifecycle state.
+    - step: constrain
+      action: Set binding scope, artifact/channel selectors, precedence and expiry explicitly.
+    - step: detect
+      action: Detect conflicting or broader bindings and return them as reviewable conflicts.
+    - step: return
+      action: Return an active ProjectBinding or FieldBinding proposal with no global side effect.
+  returns:
+    - field: binding
+      semantics: explicit project-scoped relation between field version and world entities
+      authority: binding authority grant
+    - field: conflicts
+      semantics: overlapping, broader or contradictory bindings
+      authority: scope evaluator
+    - field: disclosure
+      semantics: privacy and evidence-use constraints inherited by downstream requests
+      authority: project policy
+  invariants:
+    - project binding does not mutate the world model
+    - scope and authority are explicit and inspectable
+    - global taste and client-local taste remain distinct
+  forbidden_shortcuts:
+    - attach a field to every brand or workspace entity by default
+    - infer target entity identity from a name match alone
+    - bypass privacy or authority checks for convenience
+  hold_when:
+    - target identity is unresolved
+    - binding scope overlaps with a higher-precedence incompatible binding
+    - requested promotion exceeds project authority
+  failure_modes:
+    - identity_ambiguity
+    - scope_breach
+    - authority_missing
+    - binding_conflict
+  evaluators:
+    - id: binding-scope
+      check: Every target, branch and context is explicit and project-scoped.
+      pass_condition: no implicit global target exists.
+    - id: binding-authority
+      check: The binding carries an authority grant and privacy policy.
+      pass_condition: downstream use can be audited.
+  evidence:
+    mindscape_operator_refs: [O-01, O-04, O-07]
+    source_basis: [reasoning/README.md, domains/creative-field/manifest.yaml]

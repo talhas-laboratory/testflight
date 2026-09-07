@@ -1,0 +1,28 @@
+version: 1
+workspace_id: world://workspace/testflight-product/product-definition
+status: active
+roadmaps:
+  - id: roadmap:founder-brand-world
+    source_url: repo://docs/plans/2026-09-04-founder-brand-world-build-order.md
+    authority: proposed_build_order
+    stages:
+      - {id: stage:0, name: Freeze pilot contract and fixture, status: planned}
+      - {id: stage:1, name: Local walking skeleton, status: planned}
+      - {id: stage:2, name: Trustworthy text capture, status: prototype_partial}
+      - {id: stage:3, name: Attachments and voice capture, status: prototype_simulated}
+      - {id: stage:4, name: Processing worker and normalized evidence, status: planned}
+      - {id: stage:5, name: Brand interpretation and provisional World, status: planned_with_existing_foundation}
+      - {id: stage:6, name: Coverage assessment and clarification loop, status: prototype_only}
+      - {id: stage:7, name: Expert review workspace, status: prototype_only}
+      - {id: stage:8, name: Controlled canonical handoff, status: planned_with_existing_foundation}
+      - {id: stage:9, name: Managed EU deployment and pilot operations, status: planned}
+      - {id: stage:10, name: Pilot rehearsal and paid founder test, status: planned}
+  - id: roadmap:multimodal-content-world-compilation
+    source_url: repo://docs/workboards/multimodal-content-world-compilation/TASKS.md
+    authority: implementation_workboard
+    status_summary: {done: 3, ready: 1, backlog: 6}
+  - id: roadmap:creative-field
+    source_url: repo://docs/workboards/moodboard-creative-field-implementation/TASKS.md
+    authority: implementation_workboard
+    status_summary: {done: 25, review: 1}
+

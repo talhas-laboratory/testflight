@@ -1,0 +1,13 @@
+version: 1
+container_id: world://workspace/testflight-product/product-decisions
+sources:
+  - repo://workspaces/testflight-product/product-decisions/artifacts/module-contract.yaml
+  - repo://workspaces/testflight-product/product-decisions/artifacts/decision-catalog.yaml
+  - repo://docs/decisions/0001-upstream-integration-policy.md
+  - repo://docs/decisions/0002-github-is-canonical.md
+  - repo://docs/decisions/0003-brand-canonical-model-and-cognee-projection.md
+  - repo://docs/decisions/0004-brand-ontology-constitution.md
+  - repo://docs/decisions/0005-moodboard-creative-field-profile.md
+  - repo://docs/decisions/0006-content-substrate-and-world-compilation.md
+  - repo://docs/workboards/moodboard-creative-field-implementation/DECISIONS.md
+  - repo://docs/plans/2026-09-04-testflight-product-workspace-design.md

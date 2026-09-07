@@ -1,0 +1,23 @@
+version: 1
+id: world://brand/visual-reference-kind-registry
+purpose: >-
+  Extensible payload-kind registry for modular visual references. A registered kind may be
+  validated and compiled into an agent packet; an unknown kind is preserved but not actionable.
+kinds:
+  - {id: color.palette, label: Color palette, payload_fields: [colors, relationships]}
+  - {id: typography.family, label: Typography family, payload_fields: [family, roles]}
+  - {id: typography.role, label: Typography role, payload_fields: [role, hierarchy]}
+  - {id: layout.grid, label: Layout grid, payload_fields: [columns, gutter, margins]}
+  - {id: layout.composition, label: Layout composition, payload_fields: [principles]}
+  - {id: imagery.photography, label: Photography direction, payload_fields: [subject, treatment, light]
+    }
+  - {id: imagery.illustration, label: Illustration direction, payload_fields: [style, treatment]}
+  - {id: imagery.art_direction, label: Art direction, payload_fields: [observation, scope]}
+  - {id: expression.contextual_adaptation, label: Contextual expression, payload_fields: [observation, scope]}
+  - {id: expression.voice, label: Verbal voice, payload_fields: [principles, examples]}
+  - {id: symbol.graphic_device, label: Graphic device, payload_fields: [observation, safeUse]}
+  - {id: motion.principle, label: Motion principle, payload_fields: [principles, reducedMotion]}
+  - {id: ui.pattern, label: UI pattern, payload_fields: [surfaces, behavior, safeUse]}
+  - {id: constraint.required, label: Required constraint, payload_fields: [rule, rationale]}
+  - {id: constraint.prohibited, label: Prohibited constraint, payload_fields: [rule, rationale]}
+  - {id: reference.example, label: Reference example, payload_fields: [description, assetRef]}

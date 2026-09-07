@@ -7,5 +7,7 @@
   {"case_type": "synthetic_world", "id": "SW-006", "slug": "evidence-conflict", "fixture_builder": "evidence_conflict", "expected": ["conflict_preserved", "weak_evidence_held", "no_silent_winner"]},
   {"case_type": "synthetic_world", "id": "SW-007", "slug": "bitemporal-reconstruction", "fixture_builder": "bitemporal_reconstruction", "expected": ["utc_half_open_time", "knowledge_history", "snapshot_replay"]},
   {"case_type": "synthetic_world", "id": "SW-008", "slug": "causal-guardrails", "fixture_builder": "causal_guardrails", "expected": ["causal_gate", "alternatives_preserved", "sequence_not_cause"]},
-  {"case_type": "synthetic_world", "id": "SW-009", "slug": "shared-representation-products", "fixture_builder": "shared_representation_products", "expected": ["shared_identity", "adaptive_binding", "equal_authority_conflict_explicit"]}
+  {"case_type": "synthetic_world", "id": "SW-009", "slug": "shared-representation-products", "fixture_builder": "shared_representation_products", "expected": ["shared_identity", "adaptive_binding", "equal_authority_conflict_explicit"]},
+  {"case_type": "synthetic_world", "id": "SW-010", "slug": "conditional-icp-to-asset-chain", "fixture_builder": "conditional_icp_to_asset_chain", "expected": ["decision_lineage", "conditional_dependency", "child_first_federation", "no_automatic_rewrite"]},
+  {"case_type": "synthetic_world", "id": "SW-011", "slug": "branch-perspective-state-frame", "fixture_builder": "branch_perspective_state_frame", "expected": ["state_claim_separation", "branch_overlay", "perspective_non_interference", "nary_frame"]}
 ]

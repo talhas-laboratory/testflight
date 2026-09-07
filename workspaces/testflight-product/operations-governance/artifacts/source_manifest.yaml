@@ -1,0 +1,9 @@
+version: 1
+container_id: world://workspace/testflight-product/operations-governance
+sources:
+  - repo://workspaces/testflight-product/operations-governance/artifacts/module-contract.yaml
+  - repo://workspaces/testflight-product/operations-governance/artifacts/operating-model.yaml
+  - repo://workspaces/testflight-product/operations-governance/artifacts/risk-register.yaml
+  - repo://AGENTS.md
+  - repo://Makefile
+  - repo://deliverables/testflight-commercial-viability-deep-research.md

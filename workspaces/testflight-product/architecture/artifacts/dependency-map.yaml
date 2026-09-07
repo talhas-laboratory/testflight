@@ -1,0 +1,30 @@
+version: 1
+workspace_id: world://workspace/testflight-product/architecture
+status: active
+dependencies:
+  - {subject_id: app:brand-intake-web, relation: implements_surface, object_id: surface:brand-intake, mode: direct_static}
+  - {subject_id: app:brand-lab, relation: depends_on, object_id: package:testflight-brand, mode: owned_package}
+  - {subject_id: app:brand-lab, relation: depends_on, object_id: package:testflight-semantic, mode: owned_package}
+  - {subject_id: app:creative-studio, relation: depends_on, object_id: package:testflight-creative-field, mode: owned_package}
+  - {subject_id: app:creative-studio, relation: persists_through, object_id: adapter:sqlite-semantic, mode: adapter}
+  - {subject_id: app:creative-studio, relation: executes_through, object_id: runtime:operator-http, mode: private_http}
+  - {subject_id: app:creative-studio, relation: invokes_through, object_id: adapter:creative-connectors, mode: adapter}
+  - {subject_id: app:workflow-runtime, relation: depends_on, object_id: package:testflight-workflows, mode: owned_package}
+  - {subject_id: app:workflow-runtime, relation: executes_through, object_id: adapter:langgraph, mode: orchestration_adapter}
+  - {subject_id: app:workflow-runtime, relation: invokes_through, object_id: runtime:operator-http, mode: private_prompt_execution}
+  - {subject_id: app:workflow-runtime, relation: serves_through, object_id: adapter:mcp-workflows, mode: transport_adapter}
+  - {subject_id: app:workflow-runtime, relation: persists_through, object_id: adapter:sqlite-workflow-runtime, mode: adapter}
+  - {subject_id: package:testflight-creative-field, relation: depends_on, object_id: package:testflight-semantic, mode: owned_package}
+  - {subject_id: package:testflight-context-intelligence, relation: resolves, object_id: capability:brand-world, mode: provider_neutral_port}
+  - {subject_id: adapter:langgraph, relation: adapts, object_id: package:testflight-workflows, mode: orchestration_adapter}
+  - {subject_id: adapter:deepseek-context-intelligence, relation: adapts, object_id: package:testflight-context-intelligence, mode: cordis_plugin}
+  - {subject_id: adapter:cognee, relation: adapts, object_id: upstream:cognee, mode: optional_package}
+  - {subject_id: adapter:deepseek-harness, relation: adapts, object_id: upstream:deepseek-harness, mode: pinned_plugin}
+  - {subject_id: adapter:langgraph, relation: adapts, object_id: upstream:langgraph, mode: optional_package}
+boundary_invariants:
+  - upstream_imports_remain_in_adapters
+  - canonical_semantics_remain_provider_neutral
+  - generated_indexes_are_rebuildable
+  - configuration_does_not_prove_runtime_state
+  - private_http_runtime_is_not_public_api
+  - product_capability_is_not_implementation_component

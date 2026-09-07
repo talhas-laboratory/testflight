@@ -1,0 +1,94 @@
+version: 1
+workspace_id: world://workspace/brand/nike-research
+contexts:
+  - id: CTX-NIKE-GLOBAL-CURRENT
+    brand_id: world://brand/nike
+    branch_id: research-main
+    valid_time: {from: 2026-06-30, through: 2026-08-25}
+    geography: global
+    perspective_scope: [intended, reported, observed, inferred]
+    purpose: Current global Nike direction at the research cutoff.
+  - id: CTX-NIKE-FY2026
+    brand_id: world://brand/nike
+    branch_id: research-main
+    valid_time: {from: 2025-06-01, through: 2026-05-31}
+    geography: global
+    perspective_scope: [reported, observed]
+    purpose: Nike fiscal 2026 regulated reporting context.
+  - id: CTX-NIKE-GLOBAL-HISTORICAL
+    brand_id: world://brand/nike
+    branch_id: research-main
+    valid_time: {from: 1971-01-01, through: 2025-10-02}
+    geography: global
+    perspective_scope: [reported, intended]
+    purpose: Historical identity and expression lineage.
+  - id: CTX-NIKE-YOUNG-ATHLETES-2025
+    brand_id: world://brand/nike
+    audience_ids: [world://audience/nike/young-athletes]
+    campaign_or_occasion_ids: [world://event/nike/why-do-it-2025]
+    channel_ids: [film, social, digital]
+    branch_id: research-main
+    valid_time: {from: 2025-09-04, through: null}
+    geography: global
+    perspective_scope: [intended]
+    purpose: Why Do It campaign and young-athlete positioning.
+  - id: CTX-NIKE-WOMEN-SPORT-2025
+    brand_id: world://brand/nike
+    audience_ids: [world://audience/nike/women-athletes]
+    campaign_or_occasion_ids: [world://event/nike/so-win-2025]
+    channel_ids: [broadcast, film, photography, social]
+    branch_id: research-main
+    valid_time: {from: 2025-02-09, through: null}
+    geography: global
+    perspective_scope: [intended]
+    purpose: So Win campaign and women-athlete expression.
+  - id: CTX-NIKE-FOOTBALL-2026
+    brand_id: world://brand/nike
+    audience_ids:
+      - world://audience/nike/football-players
+      - world://audience/nike/football-fans
+    campaign_or_occasion_ids:
+      - world://event/nike/rip-the-script-2026
+      - world://event/nike/football-retail-activation-2026
+    channel_ids: [film, social, retail, community, product]
+    branch_id: research-main
+    valid_time: {from: 2026-05-21, through: 2026-07-31}
+    geography: global_with_local_city_activations
+    perspective_scope: [intended, reported]
+    purpose: Nike Football's 2026 campaign, product, culture, and experience system.
+  - id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    brand_id: world://brand/nike
+    audience_ids: [world://audience/nike/members]
+    channel_ids: [nike-app, snkrs, nike-run-club, nike-training-club, nike-com, store]
+    branch_id: research-main
+    valid_time: {from: null, through: 2026-08-25}
+    geography: availability_varies
+    perspective_scope: [intended, reported]
+    purpose: Nike Membership and linked digital and physical experiences.
+  - id: CTX-NIKE-RUNNING-2026
+    brand_id: world://brand/nike
+    audience_ids:
+      - world://audience/nike/performance-athletes
+      - world://audience/nike/everyday-athletes
+    channel_ids: [product, nike-run-club, retail, digital]
+    artifact_type_ids: [running-footwear, product-story]
+    branch_id: research-main
+    valid_time: {from: 2025-12-02, through: 2026-08-25}
+    geography: global
+    perspective_scope: [intended, reported]
+    purpose: Current Nike Running product system and athlete scope.
+  - id: CTX-NIKE-PERCEPTION-2025-2026
+    brand_id: world://brand/nike
+    branch_id: research-main
+    valid_time: {from: 2025-01-01, through: 2026-08-25}
+    geography: multi_market_global
+    perspective_scope: [observed, reported]
+    purpose: Independent brand valuation and perception measurements.
+  - id: CTX-NIKE-COMPETITORS-2025-2026
+    brand_id: world://brand/nike
+    branch_id: research-main
+    valid_time: {from: 2025-01-01, through: 2026-08-25}
+    geography: global
+    perspective_scope: [reported]
+    purpose: Competitors named by Nike and bounded self-reported competitor positioning.
+

@@ -9,6 +9,14 @@ from .models import (
     BrandStateSnapshot,
     BrandSystem,
 )
+from .modules import (
+    BrandOntologyModule,
+    BrandOntologyRelease,
+    ModuleRelationshipDefinition,
+    ModuleTypeDefinition,
+    OntologyModuleSource,
+    load_brand_ontology_release,
+)
 from .ontology import (
     BrandOntology,
     ComponentTypeDefinition,
@@ -27,12 +35,18 @@ __all__ = [
     "BrandOntology",
     "BrandStateSnapshot",
     "BrandSystem",
+    "BrandOntologyModule",
+    "BrandOntologyRelease",
     "ComponentTypeDefinition",
     "OntologySource",
+    "OntologyModuleSource",
     "RelationshipTypeDefinition",
     "RelationshipWeightDimensions",
     "RelationshipWeightPolicy",
+    "ModuleRelationshipDefinition",
+    "ModuleTypeDefinition",
     "load_brand_fixture",
     "load_brand_ontology",
+    "load_brand_ontology_release",
     "validate_brand_fixture",
 ]

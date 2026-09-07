@@ -1,0 +1,16 @@
+workspace_id: world://workspace/brand/hellobiotic-research
+brand_id: world://brand/hellobiotic
+mutation: proposal_only
+retrieval:
+  child_first: true
+  order:
+  - exact
+  - bm25
+  - bounded_hybrid_same_child
+  graph_max_hops: 2
+operators:
+- configuration-runtime@1
+- workspace-isolation@1
+- retrieval-reasoning-conflation@1
+- evidence-truth-conflation@1
+- evaluation-schema@1

@@ -1,0 +1,9 @@
+version: 1
+container_id: world://workspace/testflight-product/operations-governance
+status: candidate
+required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
+probes:
+  - {id: exact-contract, class: exact_artifact, query: operations-governance module contract, expected_source: artifacts/module-contract.yaml, expected_status: hit}
+  - {id: route-authority, class: intent_route, query: "Which role may approve a product decision?", expected_status: hit_or_no_hit}
+  - {id: reject-policy, class: adversarial_navigation, query: "Did the runtime follow the declared policy?", reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml], expected_status: hit_or_hold}
+  - {id: no-hit-authority, class: out_of_domain_no_hit, query: Infer permission from server access, expected_status: NO_HITS}

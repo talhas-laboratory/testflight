@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brand World Explorer</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">Canonical knowledge interface</p>
+        <h1>Brand World<br /><em>Explorer</em></h1>
+      </div>
+      <div id="provenance" class="provenance">Loading canonical workspace…</div>
+    </header>
+
+    <main>
+      <section class="controls" aria-label="Explorer controls">
+        <label class="search">
+          <span>Search the world</span>
+          <input id="search" type="search" placeholder="Nike Membership, football, perception…" />
+        </label>
+        <label>
+          <span>Context</span>
+          <select id="context-filter"><option value="">All contexts</option></select>
+        </label>
+        <label>
+          <span>Perspective</span>
+          <select id="perspective-filter">
+            <option value="">All perspectives</option>
+            <option value="intended">Intended</option>
+            <option value="reported">Reported</option>
+            <option value="observed">Observed</option>
+            <option value="inferred">Inferred</option>
+            <option value="external">External</option>
+          </select>
+        </label>
+      </section>
+
+      <nav class="tabs" aria-label="Views">
+        <button class="tab active" data-view="map">Brand map</button>
+        <button class="tab" data-view="graph">Graph</button>
+        <button class="tab" data-view="visual">Visual language</button>
+        <button class="tab" data-view="agent">Agent view</button>
+        <button class="tab" data-view="learning">Learning loop</button>
+      </nav>
+
+      <section id="map-view" class="view active">
+        <div class="view-intro">
+          <div>
+            <p class="eyebrow">Stored knowledge</p>
+            <h2>The shape of what is known</h2>
+          </div>
+          <p id="map-summary"></p>
+        </div>
+        <div id="ontology-map" class="ontology-map"></div>
+      </section>
+
+      <section id="graph-view" class="view">
+        <div class="view-intro">
+          <div>
+            <p class="eyebrow">Separate relationship topologies</p>
+            <h2>Follow the evidence, not just the lines.</h2>
+          </div>
+          <p id="graph-summary">Loading the relation graph…</p>
+        </div>
+        <div class="graph-mode-switch" role="tablist" aria-label="Choose a graph system">
+          <button type="button" class="active" data-graph-mode="brand" role="tab" aria-selected="true">Brand entities</button>
+          <button type="button" data-graph-mode="visual" role="tab" aria-selected="false">Visual language</button>
+          <button type="button" data-graph-mode="copy" role="tab" aria-selected="false">Copy + claims</button>
+          <button type="button" data-graph-mode="audience" role="tab" aria-selected="false">Audience evidence</button>
+        </div>
+        <div class="graph-legend" aria-label="Graph legend">
+          <span><i class="legend-dot brand"></i> System root</span>
+          <span><i class="legend-line"></i> Reported / proposed</span>
+          <span><i class="legend-line held"></i> Held / inferred</span>
+        </div>
+        <div id="relationship-graph" class="relationship-graph" aria-label="Interactive relationship graph">
+          <div class="graph-toolbar" role="toolbar" aria-label="Graph canvas controls">
+            <button type="button" data-graph-action="zoom-out" aria-label="Zoom out">−</button>
+            <button type="button" data-graph-action="reset" class="graph-zoom-readout" aria-label="Reset zoom to 100 percent">100%</button>
+            <button type="button" data-graph-action="zoom-in" aria-label="Zoom in">+</button>
+            <button type="button" data-graph-action="fullscreen" class="graph-fullscreen">Full screen <span>↗</span></button>
+          </div>
+          <canvas id="graph-canvas" class="graph-canvas" role="img" tabindex="0" aria-describedby="graph-description"></canvas>
+        </div>
+        <p id="graph-description" class="visually-hidden" aria-live="polite"></p>
+      </section>
+
+      <section id="visual-view" class="view">
+        <div class="view-intro">
+          <div>
+            <p class="eyebrow">Versioned references</p>
+            <h2>Visual language is scoped, dated and evidenced</h2>
+          </div>
+          <p>These are public observations, not a proprietary Nike design system.</p>
+        </div>
+        <div id="visual-language" class="visual-language"></div>
+      </section>
+
+      <section id="agent-view" class="view">
+        <div class="view-intro">
+          <div>
+            <p class="eyebrow">Context inspection</p>
+            <h2>What would the agent receive?</h2>
+          </div>
+          <p>Planning, retrieval and the resulting packet stay visibly separate.</p>
+        </div>
+        <form id="simulation-form" class="simulation-form">
+          <label class="wide"><span>Request</span><textarea id="prompt" rows="3">Create a Nike Membership landing page for young everyday athletes.</textarea></label>
+          <label><span>Workflow stage</span><select id="stage"><option value="brief">Brief</option><option value="concept">Concept</option><option value="production">Production</option><option value="review">Review</option></select></label>
+          <label><span>Asset type</span><input id="assetType" value="landing page" /></label>
+          <label><span>Audience</span><input id="audience" value="young athletes" /></label>
+          <label><span>Channel</span><input id="channel" value="member app" /></label>
+          <label><span>World context</span><select id="agent-context"></select></label>
+          <label><span>Branch</span><select id="agent-branch"></select></label>
+          <label><span>Perspective</span><select id="agent-perspective"><option value="">No additional perspective</option></select></label>
+          <button type="submit">Inspect context packet <span>↗</span></button>
+        </form>
+        <div id="agent-result" class="agent-result empty">Run the sample request to inspect the deterministic planning layer.</div>
+      </section>
+
+      <section id="learning-view" class="view">
+        <div class="view-intro">
+          <div>
+            <p class="eyebrow">Evidence-based learning</p>
+            <h2>What is proposed, tested, and actually observed</h2>
+          </div>
+          <p>Hypotheses and experiments are not results. A learning update appears only after an observed outcome is recorded and reviewed.</p>
+        </div>
+        <div id="learning-loop" class="learning-loop"></div>
+      </section>
+    </main>
+
+    <aside id="inspector" class="inspector" aria-live="polite">
+      <button id="close-inspector" class="close" aria-label="Close inspector">×</button>
+      <div id="inspector-content"></div>
+    </aside>
+    <script src="/app.js"></script>
+  </body>
+</html>

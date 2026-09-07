@@ -1,0 +1,102 @@
+version: 1
+workspace_id: world://workspace/testflight-product
+status: active
+sources:
+  - id: source:repository-readme
+    source_url: repo://README.md
+    authority: repository_project_definition
+    epistemic_status: reported
+    valid_time: current_repository_revision
+    supports: [current_integration_laboratory_identity, repository_structure, engineering_principles]
+  - id: source:integration-laboratory-design
+    source_url: repo://docs/plans/2026-08-18-integration-laboratory-design.md
+    authority: accepted_design_context
+    epistemic_status: normative
+    valid_time: 2026-08-18/open
+    supports: [integration_architecture, adapter_boundaries, operational_posture]
+  - id: source:founder-product-overview
+    source_url: repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md
+    authority: product_proposal
+    epistemic_status: proposed
+    valid_time: 2026-09-04/open
+    supports: [founder_brand_world, world_seeder_pilot, founder_journey, proposed_product_modules]
+  - id: source:founder-build-order
+    source_url: repo://docs/plans/2026-09-04-founder-brand-world-build-order.md
+    authority: implementation_plan
+    epistemic_status: proposed
+    valid_time: 2026-09-04/open
+    supports: [founder_pilot_roadmap, readiness_gates]
+  - id: source:commercial-viability-research
+    source_url: repo://deliverables/testflight-commercial-viability-deep-research.md
+    authority: research_synthesis
+    epistemic_status: inferred
+    valid_time: 2026-09-04/open
+    supports: [campaign_decision_intelligence_hypothesis, target_market_hypotheses, pricing_hypotheses, enterprise_requirements]
+    limitations: [no_testflight_specific_willingness_to_pay, no_paid_pilot_outcomes, public_pricing_is_incomplete]
+  - id: source:adr-catalog
+    source_url: repo://docs/decisions
+    authority: accepted_architecture_decisions
+    epistemic_status: normative
+    valid_time: repository_history
+    supports: [architecture_decisions]
+  - id: source:creative-field-workboard
+    source_url: repo://docs/workboards/moodboard-creative-field-implementation
+    authority: implementation_record
+    epistemic_status: reported
+    valid_time: 2026-09-03/open
+    supports: [creative_field_decisions, creative_field_delivery_state]
+  - id: source:content-workboard
+    source_url: repo://docs/workboards/multimodal-content-world-compilation
+    authority: implementation_record
+    epistemic_status: reported
+    valid_time: 2026-09-04/open
+    supports: [content_substrate_delivery_state]
+  - id: source:code-packages
+    source_url: repo://packages
+    authority: implementation_evidence
+    epistemic_status: observed
+    valid_time: current_repository_revision
+    supports: [implemented_packages, domain_contracts]
+  - id: source:code-apps
+    source_url: repo://apps
+    authority: implementation_evidence
+    epistemic_status: observed
+    valid_time: current_repository_revision
+    supports: [implemented_product_surfaces]
+  - id: source:code-adapters
+    source_url: repo://adapters
+    authority: implementation_evidence
+    epistemic_status: observed
+    valid_time: current_repository_revision
+    supports: [implemented_integration_boundaries]
+  - id: source:upstream-registry
+    source_url: repo://upstreams/registry.yaml
+    authority: canonical_dependency_registry
+    epistemic_status: observed
+    valid_time: current_repository_revision
+    supports: [registered_external_dependencies]
+  - id: source:brand-intake-prototype
+    source_url: repo://apps/brand-intake-web/README.md
+    authority: application_documentation
+    epistemic_status: observed
+    valid_time: current_repository_revision
+    supports: [brand_intake_surface, prototype_limitations]
+  - id: source:creative-studio-docs
+    source_url: repo://apps/creative-studio/README.md
+    authority: application_documentation
+    epistemic_status: observed
+    valid_time: current_repository_revision
+    supports: [creative_studio_surface, creative_workflows]
+  - id: source:brand-lab-implementation
+    source_url: repo://apps/brand-lab
+    authority: implementation_evidence
+    epistemic_status: observed
+    valid_time: current_repository_revision
+    supports: [brand_lab_surface]
+  - id: source:product-workspace-decision
+    source_url: repo://docs/plans/2026-09-04-testflight-product-workspace-design.md
+    authority: user_accepted_product_infrastructure_decision
+    epistemic_status: normative
+    valid_time: 2026-09-04/open
+    supports: [product_workspace, design_language, modular_topology]
+

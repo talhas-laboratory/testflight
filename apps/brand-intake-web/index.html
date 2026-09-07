@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#ece8de" />
+    <meta name="description" content="Testflight founder Brand World intake prototype" />
+    <title>Testflight · Founder notebook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="paper-noise" aria-hidden="true"></div>
+    <div class="prototype-bar">
+      <span><i></i> Experience prototype</span>
+      <nav aria-label="Prototype views">
+        <button class="view-switch active" data-view="capture" type="button">Notebook</button>
+        <button class="view-switch" data-view="clarify" type="button">Clarify</button>
+        <button class="view-switch" data-view="review" type="button">Review</button>
+      </nav>
+    </div>
+
+    <main class="app-frame">
+      <aside class="day-rail" aria-label="Capture progress">
+        <a class="wordmark" href="#" aria-label="Testflight home">T<span>/</span>F</a>
+        <div class="day-line" aria-hidden="true"><span></span></div>
+        <ol>
+          <li class="current"><b>1</b><span>Today</span></li>
+          <li><b>2</b><span>Tomorrow</span></li>
+          <li><b>3</b><span>Then</span></li>
+        </ol>
+        <button class="privacy-button" id="privacy-button" type="button" aria-label="Open privacy note">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 10V7.6A4.5 4.5 0 0 1 12 3a4.5 4.5 0 0 1 4.5 4.6V10m-11 0h13v11h-13z" /></svg>
+          <span>Private</span>
+        </button>
+      </aside>
+
+      <section class="experience">
+        <section class="screen active" id="capture-screen" data-screen="capture" aria-labelledby="capture-title">
+          <header class="screen-header reveal-1">
+            <div>
+              <p class="eyebrow">Day one · your own words</p>
+              <h1 id="capture-title">What comes to mind<br />when you think of <em>the Brand?</em></h1>
+            </div>
+            <div class="session-clock"><span>Session</span><strong id="session-time">00:00</strong><small>No timer. Stop whenever.</small></div>
+          </header>
+
+          <div class="capture-layout reveal-2">
+            <div class="notebook-wrap">
+              <label class="sr-only" for="brand-note">Write your thoughts about the Brand</label>
+              <textarea id="brand-note" spellcheck="true" placeholder="Start anywhere. A customer, a memory, a frustration, a phrase you keep returning to…"></textarea>
+              <div class="margin-note" aria-hidden="true">raw / unfinished / yours</div>
+              <div class="notebook-footer">
+                <span id="save-state"><i></i> Ready</span>
+                <span id="word-count">0 words</span>
+              </div>
+            </div>
+
+            <aside class="gentle-prompts">
+              <p class="eyebrow">If you want a nudge</p>
+              <button class="prompt" type="button" data-prompt="The people who understand us immediately tend to…">Who gets it immediately?</button>
+              <button class="prompt" type="button" data-prompt="The thing I wish people understood about us is…">What is often misunderstood?</button>
+              <button class="prompt" type="button" data-prompt="We would never want to become…">What should the Brand never become?</button>
+              <p class="prompt-note">Ignore these if they get in the way. There is no right order.</p>
+            </aside>
+          </div>
+
+          <footer class="capture-tools reveal-3">
+            <div class="input-tools">
+              <button class="round-tool record-tool" id="record-button" type="button" aria-pressed="false">
+                <span class="record-dot"></span><b>Speak</b><small id="record-time">voice note</small>
+              </button>
+              <button class="round-tool" id="attachment-button" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 12.5 14 7a3 3 0 0 1 4.2 4.2l-7 7a4.5 4.5 0 0 1-6.4-6.4l7.4-7.4" /></svg>
+                <b>Add</b><small>file or image</small>
+              </button>
+              <input id="attachment-input" type="file" accept="image/*,.pdf,.doc,.docx,.ppt,.pptx" multiple hidden />
+            </div>
+            <div class="attachment-list" id="attachment-list" aria-live="polite"></div>
+            <button class="finish-button" id="finish-button" type="button"><span>Enough for today</span><i>→</i></button>
+          </footer>
+        </section>
+
+        <section class="screen" id="clarify-screen" data-screen="clarify" aria-labelledby="clarify-title">
+          <header class="quiet-header">
+            <div><p class="eyebrow">A few things worth understanding</p><h2 id="clarify-title">We listened.<br /><em>Now we get precise.</em></h2></div>
+            <div class="question-count"><strong id="question-number">01</strong><span>/ 04</span></div>
+          </header>
+
+          <article class="question-stage">
+            <div class="question-context">
+              <p class="eyebrow">One small distinction</p>
+              <blockquote id="source-quote">“People come to us because the alternatives make them feel like they are already behind.”</blockquote>
+              <button class="source-link" id="source-link" type="button">From your note on day one <span>↗</span></button>
+            </div>
+            <div class="question-main">
+              <h3 id="question-text">When customers feel “behind,” what do they believe they should already know or be able to do?</h3>
+              <label class="sr-only" for="clarify-answer">Your answer</label>
+              <textarea id="clarify-answer" placeholder="Answer however it comes. A sentence is enough."></textarea>
+              <div class="answer-actions">
+                <button class="voice-answer" id="voice-answer" type="button"><span></span> Answer by voice</button>
+                <div>
+                  <button class="text-button" id="skip-question" type="button">I don’t know</button>
+                  <button class="next-button" id="next-question" type="button">Keep this answer <span>→</span></button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <p class="clarify-footnote">You can change any answer later. Uncertainty is useful information too.</p>
+        </section>
+
+        <section class="screen" id="review-screen" data-screen="review" aria-labelledby="review-title">
+          <header class="review-header">
+            <div><p class="eyebrow">Founder Brand World · first reading</p><h2 id="review-title">This is what<br /><em>we heard.</em></h2></div>
+            <p>Not a verdict. A map for the conversation you and your Testflight expert will have together.</p>
+          </header>
+
+          <div class="world-preview">
+            <div class="world-column identity-column">
+              <p class="column-label">The centre</p>
+              <button class="world-fragment selected" data-evidence="centre" type="button"><span>Underlying belief</span><strong>People move forward when complexity stops making them feel inadequate.</strong><small>4 source moments · founder belief</small></button>
+              <button class="world-fragment" data-evidence="difference" type="button"><span>Difference</span><strong>Guidance without the performance of expertise.</strong><small>3 source moments · needs review</small></button>
+            </div>
+
+            <div class="world-connection" aria-hidden="true"><span></span><i>shapes</i><span></span></div>
+
+            <div class="world-column audience-column">
+              <p class="column-label">The people</p>
+              <button class="world-fragment accent" data-evidence="audience" type="button"><span>Primary audience · proposed</span><strong>Capable beginners who distrust cultures of mastery.</strong><small>6 source moments · one open question</small></button>
+              <div class="open-tension"><span>Open tension</span><p>Is “beginner” a life stage, a mindset, or a moment that repeats?</p></div>
+            </div>
+
+            <aside class="evidence-drawer" id="evidence-drawer" aria-live="polite">
+              <div><p class="eyebrow">Why this is here</p><span class="evidence-status">Proposed · not accepted</span></div>
+              <h3 id="evidence-title">People move forward when complexity stops making them feel inadequate.</h3>
+              <div id="evidence-quotes">
+                <blockquote>“We make the first step feel like it belongs to you.” <cite>Day 1 · written note</cite></blockquote>
+                <blockquote>“The category loves expertise more than it loves people.” <cite>Day 2 · voice note</cite></blockquote>
+              </div>
+              <button class="review-action" type="button">Open in expert review <span>↗</span></button>
+            </aside>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="privacy-dialog">
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Close privacy note">×</button>
+      <p class="eyebrow">Private by design</p>
+      <h2>Your rough thoughts stay rough.</h2>
+      <p>This prototype stores the notebook text only in this browser. In the product, original input remains separate from every interpretation and nothing becomes accepted Brand knowledge without review.</p>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+version: 1
+workspace_id: world://workspace/brand/hellobiotic-research
+purpose: Compile the smallest evidence-backed public context packet for a brand workflow.
+interpretation_contract:
+  required_inputs:
+  - workflow_stage
+  - asset_type
+  - objective
+  - audience
+  - channel
+  - geography
+  - occasion
+  - valid_time
+  missing_material_input_outcome: ask
+  ambiguous_scope_outcome: branch
+  unsupported_scope_outcome: no_hit
+  never_infer:
+  - medical efficacy
+  - internal approval
+  - validated customer behavior
+  - causal effectiveness
+packet_contract:
+  maximum_graph_hops: 2
+  preserve_perspective_labels: true
+  preserve_held_hypotheses: true
+stage_recipes:
+- stage: brief
+  goal: Turn the request into a bounded public-evidence brief.
+  always_include:
+    entity_ids:
+    - ENT-HB-ID-001
+    - ENT-HB-OF-001
+    context_ids:
+    - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  reasoning_instructions:
+  - Preserve source wording, evidence tier, scope, and time.
+  - Do not turn brand claims into independent health, audience, or performance facts.
+  - Return partial or ask when proprietary standards or validated customer data are
+    necessary.
+- stage: concept
+  goal: Develop concepts without treating public observations as a complete brand
+    system.
+  always_include:
+    entity_ids:
+    - ENT-HB-ID-001
+    - ENT-HB-OF-001
+    context_ids:
+    - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  reasoning_instructions:
+  - Preserve source wording, evidence tier, scope, and time.
+  - Do not turn brand claims into independent health, audience, or performance facts.
+  - Return partial or ask when proprietary standards or validated customer data are
+    necessary.
+- stage: production
+  goal: Translate an approved concept while holding missing internal standards.
+  always_include:
+    entity_ids:
+    - ENT-HB-ID-001
+    - ENT-HB-OF-001
+    context_ids:
+    - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  reasoning_instructions:
+  - Preserve source wording, evidence tier, scope, and time.
+  - Do not turn brand claims into independent health, audience, or performance facts.
+  - Return partial or ask when proprietary standards or validated customer data are
+    necessary.
+- stage: review
+  goal: Check source grounding, scope, and unsupported claims.
+  always_include:
+    entity_ids:
+    - ENT-HB-ID-001
+    - ENT-HB-OF-001
+    context_ids:
+    - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  reasoning_instructions:
+  - Preserve source wording, evidence tier, scope, and time.
+  - Do not turn brand claims into independent health, audience, or performance facts.
+  - Return partial or ask when proprietary standards or validated customer data are
+    necessary.
+- stage: post_publication_learning
+  goal: Record only authorized outcomes and avoid causal claims without a test.
+  always_include:
+    entity_ids:
+    - ENT-HB-ID-001
+    - ENT-HB-OF-001
+    context_ids:
+    - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  reasoning_instructions:
+  - Preserve source wording, evidence tier, scope, and time.
+  - Do not turn brand claims into independent health, audience, or performance facts.
+  - Return partial or ask when proprietary standards or validated customer data are
+    necessary.

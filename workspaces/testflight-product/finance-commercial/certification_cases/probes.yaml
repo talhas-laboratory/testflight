@@ -1,0 +1,9 @@
+version: 1
+container_id: world://workspace/testflight-product/finance-commercial
+status: candidate
+required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
+probes:
+  - {id: exact-contract, class: exact_artifact, query: finance-commercial module contract, expected_source: artifacts/module-contract.yaml, expected_status: hit}
+  - {id: route-pricing, class: intent_route, query: "Which pricing assumptions are accepted?", expected_status: hit_or_no_hit}
+  - {id: reject-config, class: adversarial_navigation, query: "What revenue was actually recognized?", reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml], expected_status: hit_or_no_hit}
+  - {id: no-hit-forecast, class: out_of_domain_no_hit, query: Present an unsupported forecast as actual revenue, expected_status: NO_HITS}

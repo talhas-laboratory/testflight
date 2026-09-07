@@ -1,0 +1,23 @@
+version: 1
+workspace_id: world://workspace/testflight-product/customers-market
+status: partial
+actual_customers: []
+actual_interviews: []
+proposed_roles:
+  - {id: role:founder-participant, context: offer:world-seeder-pilot, authority: source_author_of_founder_evidence, status: proposed}
+  - {id: role:testflight-expert, context: offer:world-seeder-pilot, authority: integration_and_review, status: proposed}
+  - {id: role:brand-operations-champion, context: offer:campaign-decision-intelligence, authority: workflow_champion, status: research_hypothesis}
+  - {id: role:economic-buyer, examples: [CMO, VP_Brand, VP_Marketing_Operations], status: research_hypothesis}
+  - {id: role:enterprise-approver, examples: [IT_security, legal_compliance, privacy, procurement], status: research_hypothesis}
+segments:
+  - {id: segment:founder-led-brand-pilot, status: product_hypothesis, source_url: repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md}
+  - {id: segment:midmarket-enterprise-brand-operations, status: desk_research_hypothesis, source_url: repo://deliverables/testflight-commercial-viability-deep-research.md}
+  - {id: segment:regulated-marketing-teams, status: desk_research_hypothesis, source_url: repo://deliverables/testflight-commercial-viability-deep-research.md}
+needs:
+  - {id: need:low_pressure_brand_externalization, segment_id: segment:founder-led-brand-pilot, status: proposed}
+  - {id: need:durable_attributed_brand_map, segment_id: segment:founder-led-brand-pilot, status: proposed}
+  - {id: need:approved_campaign_context, segment_id: segment:midmarket-enterprise-brand-operations, status: research_inferred}
+  - {id: need:decision_lineage_across_tools, segment_id: segment:midmarket-enterprise-brand-operations, status: research_inferred}
+  - {id: need:governed_ai_context, segment_id: segment:regulated-marketing-teams, status: research_inferred}
+validation_gaps: [consented_interviews, observed_workflows, current_spend, purchase_authority, switching_constraints, paid_commitment]
+

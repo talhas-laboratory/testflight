@@ -1,0 +1,11 @@
+version: 1
+container_id: world://workspace/testflight-product/experience-design
+parent_workspace_id: world://workspace/testflight-product
+dataset_name: testflight_testflight_product_experience_design_staging
+route: experience-design
+status: candidate
+retrieval: {container_ids: [world://workspace/testflight-product/experience-design], primary: bm25, fallback: bounded_same_child_hybrid, graph_max_hops: 2, out_of_domain: NO_HITS, reject_navigation_as_answer: true}
+generation: {active_revision: testflight-design-language@0.1.0, semantic_tokens_required: true, accessibility_review_required: true, raw_value_exceptions_require_decision: true}
+metadata_contract: {required: [module, unit, task_view, tool, doc_type, evidence_tier, experience_type, difficulty, canonical, last_verified_at, source_url]}
+quality_gates: {top_1_precision_min: 0.90, routing_error_max: 0.03, query_failure_max: 0.005, no_hit_correctness: 1.0}
+

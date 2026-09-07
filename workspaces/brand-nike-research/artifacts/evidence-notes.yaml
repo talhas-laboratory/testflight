@@ -1,0 +1,234 @@
+version: 1
+workspace_id: world://workspace/brand/nike-research
+recorded_time: 2026-08-25
+notes:
+  - id: EVID-NIKE-001
+    source_id: SRC-NIKE-001
+    evidence_excerpt: "BRING INSPIRATION AND INNOVATION TO EVERY ATHLETE* IN THE WORLD"
+    paraphrased_findings:
+      - Nike presents this as its mission and defines athlete broadly through bodily participation.
+      - Nike links the mission to innovation, access, youth sport, sustainability, and responsible supply chains.
+    actor_authority: nike_corporate_self_description
+    perspective: intended
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-GLOBAL-CURRENT]
+    limitations:
+      - Establishes Nike's intended identity, not whether every stakeholder experiences it that way.
+  - id: EVID-NIKE-002
+    source_id: SRC-NIKE-002
+    evidence_excerpt: "leading with sport, creating innovative, “must-have” products, building deep personal consumer connections with our brands"
+    paraphrased_findings:
+      - The regulated filing describes footwear, apparel, equipment, accessories, services, digital platforms, retail stores, and wholesale as the business boundary.
+      - Nike reports a strategy centered on sport, product innovation, consumer connection, and digital and retail experiences.
+      - Nike names adidas, Anta, ASICS, Deckers, Li Ning, lululemon, New Balance, On, Puma, Under Armour, and V.F. Corporation among competitors.
+      - The filing reports geographic operations across North America, EMEA, Greater China, and APLA.
+      - NIKE Brand includes Jordan Brand products for reporting, while Converse remains separately reported.
+    actor_authority: regulated_company_filing
+    perspective: reported
+    epistemic_status: observed
+    context_ids: [CTX-NIKE-FY2026, CTX-NIKE-GLOBAL-CURRENT]
+    limitations:
+      - Strategy language is management's representation and forward-looking elements remain uncertain.
+  - id: EVID-NIKE-003
+    source_id: SRC-NIKE-003
+    evidence_excerpt: "lay the groundwork for our Sport Offense across our team culture, innovative product, brand strength"
+    paraphrased_findings:
+      - Nike reported fiscal 2026 revenue of 46.4 billion dollars and described structural work supporting long-term growth.
+      - Management identified performance product progress while acknowledging continuing top-line headwinds.
+      - Nike reported lower direct and digital revenue alongside wholesale growth, making channel health a current strategic context.
+    actor_authority: official_results_release
+    perspective: reported
+    epistemic_status: observed
+    context_ids: [CTX-NIKE-FY2026]
+    limitations:
+      - Financial results do not independently establish consumer sentiment or creative effectiveness.
+  - id: EVID-NIKE-004
+    source_id: SRC-NIKE-004
+    evidence_excerpt: "The Board, which is elected by shareholders, is the ultimate decision-making body of the Company"
+    paraphrased_findings:
+      - NIKE, Inc. identifies its board, senior management, governance guidelines, committees, bylaws, and code of conduct as formal governance mechanisms.
+      - Corporate responsibility, sustainability, and governance oversight has a dedicated board committee.
+    actor_authority: official_governance_registry
+    perspective: reported
+    epistemic_status: observed
+    context_ids: [CTX-NIKE-GLOBAL-CURRENT]
+    limitations:
+      - Public governance documents do not expose internal brand approval workflows.
+  - id: EVID-NIKE-005
+    source_id: SRC-NIKE-005
+    evidence_excerpt: "Nike, Jordan and Converse brands driven by a shared purpose to leave an enduring impact"
+    paraphrased_findings:
+      - NIKE, Inc. presents Nike, Jordan, and Converse as distinct brands in one company portfolio.
+      - Elliott Hill is identified as President and CEO at the verification date.
+    actor_authority: nike_corporate_self_description
+    perspective: reported
+    epistemic_status: observed
+    context_ids: [CTX-NIKE-GLOBAL-CURRENT]
+    limitations:
+      - Shared corporate purpose does not make the three brand identities interchangeable.
+  - id: EVID-NIKE-006
+    source_id: SRC-NIKE-006
+    evidence_excerpt: "It symbolizes the best in sports."
+    paraphrased_findings:
+      - Nike's archive traces the Swoosh to Carolyn Davidson's 1971 design and describes motion and speed as early intended associations.
+      - Nike presents the mark as a persistent symbolic expression across products, apparel, campaigns, and spaces.
+    actor_authority: nike_corporate_archive
+    perspective: reported
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-GLOBAL-HISTORICAL]
+    limitations:
+      - Claims of global recognition and meaning are Nike's own historical interpretation.
+  - id: EVID-NIKE-007
+    source_id: SRC-NIKE-007
+    evidence_excerpt: "the campaign reframes greatness as a choice, not an outcome"
+    paraphrased_findings:
+      - Why Do It reintroduced Just Do It for younger athletes and framed beginning, trying, and authentic participation as meaningful.
+      - The campaign used athlete-led film and global storytelling.
+    actor_authority: nike_campaign_release
+    perspective: intended
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-YOUNG-ATHLETES-2025]
+    limitations:
+      - The release establishes campaign intent, not measured audience reception.
+  - id: EVID-NIKE-008
+    source_id: SRC-NIKE-008
+    evidence_excerpt: "There's nothing wrong with wanting to be the best."
+    paraphrased_findings:
+      - So Win centered women athletes and challenged limiting expectations about how women may compete, lead, and express confidence.
+      - It included film, photography, athlete extensions, and social content.
+    actor_authority: nike_campaign_release
+    perspective: intended
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-WOMEN-SPORT-2025]
+    limitations:
+      - The release does not by itself prove impact on women athletes or broader audiences.
+  - id: EVID-NIKE-009
+    source_id: SRC-NIKE-009
+    evidence_excerpt: "Courage over convention. Instinct over instruction. Creativity over everything."
+    paraphrased_findings:
+      - Rip the Script positioned Nike Football around creative, instinctive, joyful play and participation across sport, entertainment, music, fashion, and community.
+      - The campaign connected storytelling with federation kits, football boots, community platforms, youth players, and localized culture.
+    actor_authority: nike_campaign_release
+    perspective: intended
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-FOOTBALL-2026]
+    limitations:
+      - Campaign claims describe intended positioning rather than independent audience perception.
+  - id: EVID-NIKE-010
+    source_id: SRC-NIKE-010
+    evidence_excerpt: "Get guidance from our expert trainers, access to member-only experiences"
+    paraphrased_findings:
+      - Nike Membership bundles product access, rewards, expert guidance, events, shipping, returns, customization, and sport services.
+      - Membership is presented as free and connects physical and digital touchpoints.
+    actor_authority: nike_service_documentation
+    perspective: intended
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT]
+    limitations:
+      - Benefits and availability can vary by geography and account eligibility.
+  - id: EVID-NIKE-011
+    source_id: SRC-NIKE-011
+    evidence_excerpt: "The Nike App is your personal guide based on your likes and interests."
+    paraphrased_findings:
+      - Nike distinguishes the general Nike App from SNKRS, which focuses on exclusive sneaker releases, calendars, draws, and reservations.
+      - Nike also links members to Nike Run Club and Nike Training Club for movement guidance.
+    actor_authority: nike_service_documentation
+    perspective: intended
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT]
+    limitations:
+      - Describes designed functionality rather than measured usability or satisfaction.
+  - id: EVID-NIKE-012
+    source_id: SRC-NIKE-012
+    evidence_excerpt: "partner-led experiences, product storytelling, on-site personalization and community events"
+    paraphrased_findings:
+      - Nike described football activations across owned and partner retail, neighborhood gatherings, product drops, and more than five thousand retail locations.
+      - The experiences were designed to reflect local city character and connect fans with the game.
+    actor_authority: nike_experience_release
+    perspective: intended
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-FOOTBALL-2026]
+    limitations:
+      - Scale and design intent do not establish participant outcomes.
+  - id: EVID-NIKE-013
+    source_id: SRC-NIKE-013
+    evidence_excerpt: "serve the needs of all athletes no matter where and how they choose to run"
+    paraphrased_findings:
+      - Nike organizes running footwear around race, road, trail, and track needs, with responsiveness, cushioning, support, and speed as benefit dimensions.
+      - The collection included current Pegasus, trail, and prototype racing products at the verification date.
+    actor_authority: nike_product_collection
+    perspective: intended
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-RUNNING-2026]
+    limitations:
+      - Performance claims require product-specific testing before being treated as observed outcomes.
+  - id: EVID-NIKE-014
+    source_id: SRC-NIKE-014
+    evidence_excerpt: "Brand value has dropped by 26% from 2024"
+    paraphrased_findings:
+      - Interbrand reported a 2025 Nike brand valuation of 33.7 billion dollars and a material year-over-year decline.
+    actor_authority: independent_brand_valuation
+    perspective: observed
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-PERCEPTION-2025-2026]
+    limitations:
+      - Brand valuation is methodology-dependent and is not identical to awareness, preference, revenue, or cultural relevance.
+  - id: EVID-NIKE-015
+    source_id: SRC-NIKE-015
+    evidence_excerpt: "35.3 for adidas versus 34.5 for Nike"
+    paraphrased_findings:
+      - YouGov reported adidas fifth and Nike sixth in its 2026 global ranking, separated by less than one point on its composite Index score.
+      - The comparison describes small differences across tracked perception measures rather than a universal brand hierarchy.
+    actor_authority: independent_brand_tracking
+    perspective: observed
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-PERCEPTION-2025-2026]
+    limitations:
+      - Results depend on YouGov's panel, markets, dates, and composite scoring methodology.
+  - id: EVID-NIKE-016
+    source_id: SRC-NIKE-016
+    evidence_excerpt: "new brand narrative – ‘You Got This.’"
+    paraphrased_findings:
+      - adidas describes a global-with-local-mindset strategy combining performance and lifestyle, locally relevant products, retail partnerships, and brand heat.
+      - Its current narrative emphasizes joy in sport and reducing pressure, especially for younger consumers.
+    actor_authority: competitor_regulated_self_report
+    perspective: reported
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-COMPETITORS-2025-2026]
+    limitations:
+      - Establishes adidas positioning claims, not independent proof of consumer reception or Nike weakness.
+  - id: EVID-NIKE-017
+    source_id: SRC-NIKE-017
+    evidence_excerpt: "to be the most premium global sportswear brand"
+    paraphrased_findings:
+      - On states a premium global sportswear ambition and emphasizes performance, design, innovation, and selective growth.
+    actor_authority: competitor_regulated_self_report
+    perspective: reported
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-COMPETITORS-2025-2026]
+    limitations:
+      - Establishes On's intended positioning only.
+  - id: EVID-NIKE-018
+    source_id: SRC-NIKE-018
+    evidence_excerpt: "focus on better positioning its various product icons"
+    paraphrased_findings:
+      - PUMA's 2025 report describes a renewed focus on product icons within its product and brand work.
+    actor_authority: competitor_regulated_self_report
+    perspective: reported
+    epistemic_status: reported
+    context_ids: [CTX-NIKE-COMPETITORS-2025-2026]
+    limitations:
+      - This bounded note does not characterize PUMA's complete strategy or market performance.
+  - id: EVID-NIKE-019
+    source_id: SRC-NIKE-019
+    evidence_excerpt: "more speed, simplicity, and precision"
+    paraphrased_findings:
+      - Nike described the 2026 operating changes as part of the final stretch of Win Now and as preparation for longer-term growth.
+      - The changes included technology consolidation, automation, supplier collaboration, and workforce reductions.
+    actor_authority: nike_governance_event_release
+    perspective: reported
+    epistemic_status: observed
+    context_ids: [CTX-NIKE-GLOBAL-CURRENT]
+    limitations:
+      - The announcement establishes organizational action and intent, not the eventual outcome.
+

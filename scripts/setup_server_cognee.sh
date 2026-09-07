@@ -38,6 +38,7 @@ if [[ -n "$uv_bin" ]]; then
     --editable "$repo_root/packages/testflight-core" \
     --editable "$repo_root/packages/testflight-semantic" \
     --editable "$repo_root/packages/testflight-brand" \
+    --editable "$repo_root/packages/testflight-creative-field" \
     --editable "$repo_root/adapters/cognee[cognee]"
 else
   "$venv_python" -m pip install --disable-pip-version-check --upgrade pip
@@ -45,6 +46,7 @@ else
     --editable "$repo_root/packages/testflight-core" \
     --editable "$repo_root/packages/testflight-semantic" \
     --editable "$repo_root/packages/testflight-brand" \
+    --editable "$repo_root/packages/testflight-creative-field" \
     --editable "$repo_root/adapters/cognee[cognee]"
 fi
 

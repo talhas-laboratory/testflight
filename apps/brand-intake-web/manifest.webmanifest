@@ -1,0 +1,17 @@
+{
+  "name": "Testflight Founder Notebook",
+  "short_name": "Testflight",
+  "description": "A quiet place to externalize and clarify a founder's Brand World.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ece8de",
+  "theme_color": "#ece8de",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

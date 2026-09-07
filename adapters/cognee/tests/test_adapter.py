@@ -1,5 +1,6 @@
 import asyncio
 from datetime import UTC, datetime
+from pathlib import Path
 
 from testflight_adapter_cognee import (
     CogneeAdapter,
@@ -16,9 +17,201 @@ from testflight_adapter_cognee import (
     validate_extraction,
 )
 from testflight_adapter_cognee.brand_projection import brand_assertion_custom_edges
+from testflight_adapter_cognee.context_retrieval_bridge import (
+    exact_creative_field_items,
+    exact_entity_items,
+    exact_visual_language_items,
+    normalize_items,
+)
+from testflight_adapter_cognee.world_view_bridge import resolve_world_view
 from testflight_brand import BrandAssertion
 from testflight_core import Capability, HealthState
 from testflight_semantic import EpistemicStatus, Perspective
+
+
+def test_context_retrieval_bridge_preserves_scope_and_source() -> None:
+    items = normalize_items(
+        [
+            {
+                "text": "WORKSPACE_ID: workspace-a\nBRAND_ID: brand-a\nSOURCE_URL: repo://evidence.md\nSOURCE_BEGIN\nEvidence\nSOURCE_END",
+                "metadata": {"task_view": "asset-context", "doc_type": "evidence"},
+            }
+        ]
+    )
+    assert items[0]["workspaceId"] == "workspace-a"
+    assert items[0]["brandId"] == "brand-a"
+    assert items[0]["sourceUrl"] == "repo://evidence.md"
+    assert items[0]["taskView"] == "asset-context"
+
+
+def test_context_retrieval_bridge_preserves_branch_and_perspective_metadata() -> None:
+    items = normalize_items(
+        [
+            {
+                "text": "Evidence",
+                "metadata": {
+                    "source_url": "repo://evidence.md",
+                    "branch_id": "branch:confidence",
+                    "perspective_ids": ["perspective:customer"],
+                },
+            }
+        ]
+    )
+
+    assert items[0]["branchId"] == "branch:confidence"
+    assert items[0]["perspectiveIds"] == ["perspective:customer"]
+
+
+def test_context_retrieval_bridge_normalizes_one_perspective_id_to_an_array() -> None:
+    items = normalize_items(
+        [
+            {
+                "text": "Evidence",
+                "metadata": {
+                    "source_url": "repo://evidence.md",
+                    "perspective_ids": "perspective:customer",
+                },
+            }
+        ]
+    )
+
+    assert items[0]["perspectiveIds"] == ["perspective:customer"]
+
+
+def test_world_view_bridge_returns_only_selected_canonical_records() -> None:
+    root = Path(__file__).resolve().parents[3]
+    result = resolve_world_view(
+        {
+            "workspaceId": "world://workspace/brand/nike-research",
+            "contextId": "CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT",
+            "branchId": "BR-NIKE-MEMBER-DISCOVERY-LENS-001",
+            "taskType": "brief",
+            "perspectiveIds": ["PERS-NIKE-MEMBER-PROSPECTIVE-001"],
+            "permittedRecordIds": [],
+        },
+        root / "workspaces/brand-nike-research/artifacts/world-modeling.yaml",
+    )
+
+    assert result["status"] == "hit"
+    assert result["records"]["states"][0]["stateId"] == "STATE-NIKE-MEMBERSHIP-SERVICE-001"
+    assert (
+        result["records"]["perspectives"][0]["perspectiveId"] == "PERS-NIKE-MEMBER-PROSPECTIVE-001"
+    )
+    assert (
+        result["records"]["relationshipFrames"][0]["frameId"]
+        == "FRAME-NIKE-MEMBER-APP-DISCOVERY-001"
+    )
+    assert result["records"]["evidenceLinks"][0]["linkId"] == "EVIDLINK-NIKE-MEMBER-001"
+    assert (
+        result["records"]["hypotheses"][0]["hypothesisId"] == "HYP-NIKE-MEMBER-BENEFIT-CLARITY-001"
+    )
+    assert (
+        result["records"]["experiments"][0]["experimentId"] == "EXP-NIKE-MEMBER-BENEFIT-CLARITY-001"
+    )
+
+
+def test_world_view_bridge_selects_a_context_from_declared_request_scope() -> None:
+    root = Path(__file__).resolve().parents[3]
+    result = resolve_world_view(
+        {
+            "workspaceId": "world://workspace/brand/nike-research",
+            "taskType": "brief",
+            "audience": "prospective members",
+            "channel": "Nike App",
+            "validTime": "2026-08-25",
+            "perspectiveIds": [],
+            "permittedRecordIds": [],
+        },
+        root / "workspaces/brand-nike-research/artifacts/world-modeling.yaml",
+    )
+
+    assert result["status"] == "hit"
+    assert result["contextId"] == "CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT"
+    assert result["branchId"] == "research-main"
+    assert result["records"]["states"][0]["stateId"] == "STATE-NIKE-MEMBERSHIP-SERVICE-001"
+    assert result["records"]["perspectives"] == []
+
+
+def test_context_retrieval_bridge_returns_exact_entities_not_mentions() -> None:
+    text = """WORKSPACE_ID: world://workspace/brand/example
+BRAND_ID: world://brand/example
+SOURCE_URL: repo://entity-inventory.yaml
+DOC_TYPE: entity_inventory
+TASK_VIEW: entity
+PROMOTION_STATUS: proposal_only
+SOURCE_BEGIN
+version: 1
+entities:
+  - {id: ENT-EXAMPLE-001, entity_type: identity, label: Exact entity}
+  - {id: ENT-EXAMPLE-002, entity_type: identity, label: Mere neighbor}
+SOURCE_END
+"""
+    items = exact_entity_items(
+        [{"id": "chunk", "text": text, "sourceUrl": "repo://entity-inventory.yaml"}],
+        ["ENT-EXAMPLE-001"],
+    )
+    assert len(items) == 1
+    assert items[0]["entityIds"] == ["ENT-EXAMPLE-001"]
+    assert "ENT-EXAMPLE-002" not in items[0]["text"]
+    assert items[0]["retrievalKind"] == "exact_entity"
+    assert items[0]["taskView"] == "entity"
+
+
+def test_context_retrieval_bridge_returns_exact_visual_reference_not_neighbor() -> None:
+    text = """WORKSPACE_ID: world://workspace/brand/example
+BRAND_ID: world://brand/example
+SOURCE_URL: repo://visual-language/manifest.json
+DOC_TYPE: visual_language_manifest
+TASK_VIEW: visual-language
+PROMOTION_STATUS: proposal_only
+SOURCE_BEGIN
+{"version":1,"workspaceId":"world://workspace/brand/example","brandId":"world://brand/example","profiles":[],"revisions":[],"references":[
+  {"id":"VR-1","kind":"color.palette","label":"Exact palette"},
+  {"id":"VR-2","kind":"typography.role","label":"Neighbor type"}
+],"bindings":[]}
+SOURCE_END
+"""
+    items = exact_visual_language_items(
+        [{"id": "chunk", "text": text, "sourceUrl": "repo://visual-language/manifest.json"}],
+        [],
+        [],
+        ["VR-1"],
+    )
+    assert len(items) == 1
+    assert items[0]["referenceId"] == "VR-1"
+    assert "VR-2" not in items[0]["text"]
+    assert items[0]["retrievalKind"] == "visual_reference"
+
+
+def test_context_retrieval_bridge_returns_exact_creative_field_record_in_project_scope() -> None:
+    items = normalize_items(
+        [
+            {
+                "text": (
+                    "WORKSPACE_ID: child/creative-field\n"
+                    "PROJECT_ID: project:one\n"
+                    "RECORD_ID: field:one@1\n"
+                    "RECORD_TYPE: CreativeFieldVersion\n"
+                    "SOURCE_URL: creative://project:one/CreativeFieldVersion/field:one@1\n"
+                    "SOURCE_BEGIN\nfield\nSOURCE_END"
+                )
+            },
+            {
+                "text": (
+                    "WORKSPACE_ID: child/creative-field\n"
+                    "PROJECT_ID: project:one\n"
+                    "RECORD_ID: field:one@10\n"
+                    "RECORD_TYPE: CreativeFieldVersion\n"
+                    "SOURCE_URL: creative://project:one/CreativeFieldVersion/field:one@10\n"
+                    "SOURCE_BEGIN\nneighbor\nSOURCE_END"
+                )
+            },
+        ]
+    )
+    exact = exact_creative_field_items(items, ["field:one@1"], project_id="project:one")
+    assert len(exact) == 1
+    assert exact[0]["recordId"] == "field:one@1"
+    assert exact[0]["retrievalKind"] == "exact_creative_field"
 
 
 def test_descriptor_and_dependency_free_probe() -> None:

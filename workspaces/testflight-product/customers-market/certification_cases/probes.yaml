@@ -1,0 +1,9 @@
+version: 1
+container_id: world://workspace/testflight-product/customers-market
+status: candidate
+required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
+probes:
+  - {id: exact-contract, class: exact_artifact, query: customers-market module contract, expected_source: artifacts/module-contract.yaml, expected_status: hit}
+  - {id: route-need, class: intent_route, query: "Which customer needs are supported by research?", expected_status: hit_or_no_hit}
+  - {id: reject-index, class: adversarial_navigation, query: "What did customers actually say?", reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml], expected_status: hit_or_no_hit}
+  - {id: no-hit-private, class: out_of_domain_no_hit, query: Reveal a customer's private contact details, expected_status: NO_HITS}

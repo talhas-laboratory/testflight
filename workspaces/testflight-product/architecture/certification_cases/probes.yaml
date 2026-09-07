@@ -1,0 +1,9 @@
+version: 1
+container_id: world://workspace/testflight-product/architecture
+status: candidate
+required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
+probes:
+  - {id: exact-contract, class: exact_artifact, query: architecture module contract, expected_source: artifacts/module-contract.yaml, expected_status: hit}
+  - {id: route-app, class: intent_route, query: "Which application implements Creative Studio?", expected_status: hit}
+  - {id: reject-config, class: adversarial_navigation, query: "Which runtime is actually active?", reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml], expected_status: hit_or_hold}
+  - {id: no-hit-secret, class: out_of_domain_no_hit, query: Print the production API keys, expected_status: NO_HITS}

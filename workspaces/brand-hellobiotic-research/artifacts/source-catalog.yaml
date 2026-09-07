@@ -1,0 +1,60 @@
+version: 1
+workspace_id: world://workspace/brand/hellobiotic-research
+status: bounded_public_research_corpus
+last_verified_at: '2026-08-31'
+source_policy:
+  full_text_storage: prohibited
+  bounded_excerpt_required: true
+  primary_source_for_self_claims: true
+  independent_source_for_perception: true
+sources:
+- id: SRC-HB-001
+  title: Biotic / Hellobiotic home page
+  publisher: hellobiotic
+  source_type: official_storefront
+  authority_tier: A
+  evidence_tier: T1
+  canonical_url: https://www.hellobiotic.com/
+  valid_time: current_at_2026-08-31
+  permitted_use: public_identity_product_and_expression_observation
+  status: verified
+- id: SRC-HB-002
+  title: Brightening Probiotic Deodorant product page
+  publisher: hellobiotic
+  source_type: official_product_page
+  authority_tier: A
+  evidence_tier: T1
+  canonical_url: https://www.hellobiotic.com/products/brightening-probiotic-deodorant-1
+  valid_time: current_at_2026-08-31
+  permitted_use: documented_product_features_ingredients_and_purchase_options
+  status: verified
+- id: SRC-HB-003
+  title: Our Story
+  publisher: hellobiotic
+  source_type: official_brand_story
+  authority_tier: A
+  evidence_tier: T1
+  canonical_url: https://www.hellobiotic.com/pages/story
+  valid_time: current_at_2026-08-31
+  permitted_use: founder_reported_origin_and_intended_brand_scope
+  status: verified
+- id: SRC-HB-004
+  title: FAQs
+  publisher: hellobiotic
+  source_type: official_faq
+  authority_tier: A
+  evidence_tier: T1
+  canonical_url: https://www.hellobiotic.com/pages/faqs
+  valid_time: current_at_2026-08-31
+  permitted_use: documented_product_boundaries_and_transition_guidance
+  status: verified
+- id: SRC-HB-005
+  title: Daily Sunshine Pre+Probiotic Powder product page
+  publisher: hellobiotic
+  source_type: official_product_page
+  authority_tier: A
+  evidence_tier: T1
+  canonical_url: https://www.hellobiotic.com/products/daily-sunshine-probiotic-powder
+  valid_time: current_at_2026-08-31
+  permitted_use: documented_product_features_only
+  status: verified

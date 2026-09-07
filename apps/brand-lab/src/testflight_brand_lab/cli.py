@@ -1,10 +1,13 @@
 """Minimal composition-root CLI for Brand workspaces."""
 
 import argparse
+import json
 import shutil
 from pathlib import Path
 
 from testflight_brand import load_brand_fixture, load_brand_ontology, validate_brand_fixture
+
+from testflight_brand_lab.explorer import build_snapshot, serve_explorer
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -27,6 +30,31 @@ def _parser() -> argparse.ArgumentParser:
     init.add_argument("slug")
     init.add_argument("--output", type=Path, required=True)
     init.add_argument("--template", type=Path, default=None)
+
+    snapshot = commands.add_parser(
+        "snapshot", help="compile a canonical workspace into a Brand World Explorer snapshot"
+    )
+    snapshot.add_argument("--root", type=Path, default=Path.cwd())
+    snapshot.add_argument(
+        "--workspace",
+        type=Path,
+        default=Path("workspaces/brand-nike-research"),
+        help="workspace path, relative to --root unless absolute",
+    )
+    snapshot.add_argument("--output", type=Path, required=True)
+
+    explorer = commands.add_parser(
+        "explorer", help="serve the local read-only Brand World Explorer"
+    )
+    explorer.add_argument("--root", type=Path, default=Path.cwd())
+    explorer.add_argument(
+        "--workspace",
+        type=Path,
+        default=Path("workspaces/brand-nike-research"),
+        help="workspace path, relative to --root unless absolute",
+    )
+    explorer.add_argument("--host", default="127.0.0.1")
+    explorer.add_argument("--port", type=int, default=8787)
     return parser
 
 
@@ -75,6 +103,21 @@ def main(argv: list[str] | None = None) -> int:
             f"components={len(fixture.components)} assertions={len(fixture.assertions)} "
             f"ontology_sources={len(sources)}"
         )
+        return 0
+    if args.command == "snapshot":
+        workspace = args.workspace if args.workspace.is_absolute() else args.root / args.workspace
+        snapshot = build_snapshot(workspace)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(snapshot, indent=2) + "\n")
+        print(
+            f"snapshot: workspace={snapshot['workspace']['id']} "
+            f"entities={len(snapshot['entities'])} "
+            f"diagnostics={len(snapshot['diagnostics'])} output={args.output}"
+        )
+        return 0
+    if args.command == "explorer":
+        workspace = args.workspace if args.workspace.is_absolute() else args.root / args.workspace
+        serve_explorer(workspace, args.host, args.port)
         return 0
     return _init_workspace(args.slug, args.output, args.template)
 

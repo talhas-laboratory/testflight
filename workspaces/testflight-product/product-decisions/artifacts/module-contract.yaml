@@ -1,0 +1,24 @@
+version: 1
+workspace_id: world://workspace/testflight-product/product-decisions
+module_id: product-decisions
+status: active
+record_types:
+  proposal: {semantic_type: claim, required: [id, question, proposal, alternatives, evidence_refs, affected_module_ids, author, created_at]}
+  decision: {semantic_type: event, required: [id, proposal_id, disposition, authority, decided_at, rationale, evaluator_results]}
+  decision_state: {semantic_type: state, allowed: [proposed, held, accepted, rejected, superseded]}
+  authority_grant: {semantic_type: entity, required: [id, actor_id, scope, valid_time]}
+  decision_collection: {semantic_type: projection, required: [id, source_url, scope, record_ids]}
+lifecycle:
+  - propose
+  - evaluate
+  - authorize
+  - accept_or_reject
+  - project_to_affected_modules
+  - observe
+  - supersede_when_changed
+invariants:
+  - proposal_is_not_decision
+  - acceptance_requires_authority
+  - supersession_preserves_history
+  - affected_modules_are_explicit
+  - evaluation_dimensions_remain_separate

@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/testflight-product/experience-design
+parent: world://workspace/testflight-product
+type: child-knowledge-container
+label: Experience design
+mission: Maintain Testflight user-facing language, aesthetics, tokens, patterns, components, and accessibility.
+dataset_name: testflight_testflight_product_experience_design_staging
+route: experience-design
+status: candidate
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes: [design_language, content_language, aesthetics, tokens, patterns, components, accessibility, responsive_behavior]
+  excludes: [customer_brand_truth, copied_reference_style, unlicensed_assets]
+

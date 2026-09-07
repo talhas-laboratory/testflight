@@ -1,0 +1,8 @@
+version: 1
+container_id: world://workspace/testflight-product/customers-market
+sources:
+  - repo://workspaces/testflight-product/customers-market/artifacts/module-contract.yaml
+  - repo://workspaces/testflight-product/customers-market/artifacts/actor-market-inventory.yaml
+  - repo://workspaces/testflight-product/customers-market/artifacts/journey-inventory.yaml
+  - repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md
+  - repo://deliverables/testflight-commercial-viability-deep-research.md

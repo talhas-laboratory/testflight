@@ -1,0 +1,73 @@
+version: 1
+workspace_id: world://workspace/testflight-product
+status: active
+context_compiler:
+  route_smallest_child_first: true
+  preserve:
+    - source_evidence
+    - authority
+    - workspace_scope
+    - module_scope
+    - valid_time
+    - relations
+    - branches
+    - uncertainty
+    - derivation
+  disclose_omissions: true
+retrieval:
+  container_ids:
+    - world://workspace/testflight-product
+  primary: bm25
+  fallback: bounded_same_child_hybrid
+  graph:
+    enabled_for_explicit_path_queries_only: true
+    max_hops: 2
+  reject_navigation_as_answer: true
+  reject_configuration_as_answer: true
+  out_of_domain: NO_HITS
+mutation:
+  mode: proposal_only
+  derivation_required: true
+  append_only_evidence: true
+  optimistic_concurrency: true
+promotion:
+  requires:
+    - authorized_decision
+    - affected_module_ids
+    - source_lineage
+    - evaluator_results
+workspace_boundaries:
+  default_crossing: denied
+  allowed_crossing: explicit_authorized_bridge
+  customer_brand_evidence_import: denied_without_source_and_scope
+  product_presentation_rules_export: allowed_with_design_revision
+metadata_contract:
+  required:
+    - module
+    - unit
+    - task_view
+    - tool
+    - doc_type
+    - evidence_tier
+    - experience_type
+    - difficulty
+    - canonical
+    - last_verified_at
+    - source_url
+quality_gates:
+  metadata_completeness: 1.0
+  source_resolution: 1.0
+  top_1_precision_min: 0.90
+  routing_error_max: 0.03
+  query_failure_max: 0.005
+  no_hit_correctness: 1.0
+  unauthorized_crossing_count: 0
+refresh:
+  trigger_on:
+    - accepted_decision
+    - source_hash_change
+    - module_registration_change
+    - workspace_policy_change
+    - design_language_revision_change
+  rebuild_derived_state: true
+

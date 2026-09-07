@@ -1,0 +1,78 @@
+operator:
+  id: world://operator/creative/field-synthesis
+  version: 1
+  kind: transformational
+  category: creative_field_synthesis
+  purpose: Synthesize accepted or review-ready reference interpretations into a multidimensional Creative Field proposal.
+  accepts:
+    - reference interpretations and contributions
+    - project purpose and dimension registry
+    - prior field version for semantic diff
+  requires_context:
+    - project scope, branch and authority
+    - evidence coverage and unresolved questions
+    - known and unknown dimension handling
+    - synthesis operator configuration
+  preconditions:
+    - ensure all source contributions are proposal or accepted records
+    - preserve sparse dimensions and meaningful contradictions
+    - compute a semantic diff against the prior field when supplied
+  parameters:
+    abstraction_level: world
+    depth: exhaustive
+    context_lens: strategic
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: end_to_end
+  procedure:
+    - step: inventory
+      action: Inventory contributions by dimension, authority, evidence coverage and polarity.
+    - step: synthesize
+      action: Form principles, tensions and exclusions while retaining contribution lineage.
+    - step: test
+      action: Detect conflicts, missing dimensions, outliers and unsupported generalization.
+    - step: compare
+      action: Compare with the prior field version and describe additions, removals and changed meanings.
+    - step: return
+      action: Return a CreativeFieldProposal with proposal status and no activation side effect.
+  returns:
+    - field: proposal
+      semantics: multidimensional field hypothesis with principles, tensions and exclusions
+      authority: project-scoped proposal
+    - field: semantic_diff
+      semantics: explicit change set against prior field state
+      authority: derivation comparison
+    - field: evidence_coverage
+      semantics: contribution and dimension coverage with unsupported gaps visible
+      authority: evaluator output
+    - field: conflicts_and_missing_dimensions
+      semantics: unresolved issues that block or qualify activation
+      authority: review gate
+  invariants:
+    - field proposal is distinct from accepted field version
+    - no dimension is silently dropped because evidence is sparse
+    - every principle, tension and exclusion retains source contribution ids
+  forbidden_shortcuts:
+    - average away an outlier without recording the decision
+    - promote unknown dimensions into the canonical registry automatically
+    - infer a universal brand rule from one reference
+  hold_when:
+    - evidence coverage is insufficient for a requested dimension
+    - conflicts materially change field behavior
+    - proposed generalization exceeds project authority
+  failure_modes:
+    - unsupported_generalization
+    - dimension_gap
+    - conflict_suppression
+    - proposal_activation_leak
+  evaluators:
+    - id: field-lineage
+      check: Every synthesized statement has source contribution ids and a derivation identity.
+      pass_condition: lineage coverage is complete.
+    - id: field-diff
+      check: Changes from a prior version distinguish additions, removals and semantic changes.
+      pass_condition: diff is explicit or prior state is declared unavailable.
+  evidence:
+    mindscape_operator_refs: [O-03, O-05, O-06]
+    source_basis: [reasoning/README.md, domains/creative-field/manifest.yaml]

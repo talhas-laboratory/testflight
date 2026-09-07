@@ -1,0 +1,97 @@
+workspace_id: world://workspace/brand/nike-research
+version: 1
+context_compiler:
+  minimize_tokens: true
+  preserve:
+    - workspace_id
+    - brand_id
+    - ontology_type
+    - entity_id
+    - assertion_or_relation_id
+    - source_id
+    - source_url
+    - evidence_excerpt
+    - actor_authority
+    - perspective
+    - epistemic_status
+    - valid_time
+    - recorded_time
+    - context_ids
+    - relation_type
+    - contradiction_ids
+    - limitations
+    - derivation_id
+    - branch_id
+    - perspective_ids
+    - state_id
+    - relationship_frame_id
+    - evidence_link_ids
+    - hypothesis_id
+    - experiment_id
+    - outcome_id
+    - learning_id
+  disclose_omissions: true
+retrieval_defaults:
+  container_ids:
+    - world://workspace/brand/nike-research
+  route_smallest_child_first: true
+  primary: bm25
+  fallback: bounded_hybrid_same_child
+  graph:
+    enabled_for_explicit_path_queries_only: true
+    max_hops: 2
+  no_hit_is_valid: true
+retrieval_acceptance_policy:
+  reject_index_as_answer: true
+  reject_config_as_answer: true
+  require_explicit_dataset_scope: true
+  require_source_anchor: true
+  forbid_out_of_domain_hybrid_fallback: true
+metadata_contract:
+  required:
+    - module
+    - unit
+    - task_view
+    - tool
+    - doc_type
+    - evidence_tier
+    - experience_type
+    - difficulty
+    - canonical
+    - last_verified_at
+    - source_url
+mutation:
+  mode: proposal_only
+  append_only_evidence: true
+  derivation_required: true
+  canonical_commit: prohibited
+action:
+  mode: deny_unless_authorized
+quality:
+  entity_type_coverage: 1.0
+  relationship_type_coverage: 1.0
+  evidence_resolution: 1.0
+  top1_precision_target: 0.90
+  routing_error_target: 0.03
+  no_hit_correctness: 1.0
+certification_policy:
+  required_probe_classes:
+    - exact_artifact
+    - intent
+    - adversarial
+    - no_hit
+    - pathing
+    - temporal
+    - contradiction
+  block_projection_on_failure: true
+refresh:
+  cadence_days: 90
+  trigger_on:
+    - source_hash_change
+    - ontology_version_change
+    - workspace_policy_change
+    - material_strategy_event
+    - new_annual_report
+    - independent_perception_update
+    - world_model_change
+  rebuild_derived_state: true

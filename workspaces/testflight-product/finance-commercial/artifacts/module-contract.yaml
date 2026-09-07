@@ -1,0 +1,17 @@
+version: 1
+workspace_id: world://workspace/testflight-product/finance-commercial
+module_id: finance-commercial
+status: active
+owns:
+  entity_types: [price, commercial_package, account, contract, budget, metric, value_model]
+  event_types: [transaction, invoice, payment, budget_approval]
+  state_types: [financial_state, budget_state, contract_state]
+  claim_types: [financial_observation, assumption, forecast, scenario, pricing_hypothesis, value_hypothesis]
+relations: [priced_as, incurs, generates, allocated_to, forecast_for, measured_by, contracted_with]
+required_dimensions: [currency, period, scenario, source, epistemic_status]
+invariants:
+  - forecast_is_not_actual
+  - price_is_not_revenue
+  - revenue_is_not_cash
+  - cost_is_not_budget
+  - scenario_is_not_decision

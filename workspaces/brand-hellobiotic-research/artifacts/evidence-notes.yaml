@@ -1,0 +1,81 @@
+version: 1
+workspace_id: world://workspace/brand/hellobiotic-research
+recorded_time: '2026-08-31'
+notes:
+- id: EVID-HB-001
+  source_id: SRC-HB-001
+  evidence_excerpt: Meet your microbiome-friendly deodorant.
+  paraphrased_findings:
+  - The storefront frames the core product around microbiome-friendly deodorant and
+    whole-body care.
+  - The site presents no-aluminum, no-baking-soda, no-parabens, cruelty-free, and
+    unisex attributes as its own claims.
+  actor_authority: hellobiotic_self_description
+  perspective: intended
+  epistemic_status: reported
+  limitations:
+  - Brand-authored public claims do not independently establish health, safety, efficacy,
+    or customer outcomes.
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+- id: EVID-HB-002
+  source_id: SRC-HB-002
+  evidence_excerpt: Instead of masking odor, it supports your underarm microbiome
+    to neutralize stink-causing bacteria at the source.
+  paraphrased_findings:
+  - The product page describes a 99% natural, aluminum-free, baking-soda-free deodorant
+    with prebiotic and probiotic ingredients.
+  - The page offers 2 oz, 0.6 oz, and duo formats plus subscription frequency options.
+  actor_authority: hellobiotic_product_description
+  perspective: intended
+  epistemic_status: reported
+  limitations:
+  - Product-page language is not an independent clinical efficacy or regulatory assessment.
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+- id: EVID-HB-003
+  source_id: SRC-HB-003
+  evidence_excerpt: Founded by two adventurous best friends.
+  paraphrased_findings:
+  - The founders Sadaf and Leila describe a six-year development process and a desire
+    for a natural, effective deodorant.
+  - The story says the brand aims to work for people across age, body type, and sex.
+  actor_authority: founder_reported_story
+  perspective: intended
+  epistemic_status: reported
+  limitations:
+  - Founder story is a self-description and does not establish product outcomes for
+    every person.
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+- id: EVID-HB-004
+  source_id: SRC-HB-004
+  evidence_excerpt: It is not an antiperspirant.
+  paraphrased_findings:
+  - The FAQ distinguishes the deodorant from antiperspirants and says a transition
+    period may occur when changing products.
+  - The FAQ describes packaging choices and product claims from the brand perspective.
+  actor_authority: hellobiotic_faq
+  perspective: intended
+  epistemic_status: reported
+  limitations:
+  - FAQ explanations and health-adjacent statements require qualified review before
+    use as medical or safety advice.
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+- id: EVID-HB-005
+  source_id: SRC-HB-005
+  evidence_excerpt: A pre+probiotic supplement formulated to support the essential
+    gut microbiome.
+  paraphrased_findings:
+  - The site presents Daily Sunshine as a separate pre+probiotic powder product with
+    digestion, mood, and stress-related support claims.
+  - The page identifies non-GMO, gluten-free, and vegan claims.
+  actor_authority: hellobiotic_product_description
+  perspective: intended
+  epistemic_status: reported
+  limitations:
+  - Supplement claims are brand-authored product statements and need regulatory and
+    scientific review before health messaging or advice.
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT

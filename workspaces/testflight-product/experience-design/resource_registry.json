@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "containerId": "world://workspace/testflight-product/experience-design",
+  "resources": [
+    {"module":"experience-design","unit":"module-contract","task_view":"bootstrap","tool":"testflight","doc_type":"contract","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/experience-design/artifacts/module-contract.yaml"},
+    {"module":"experience-design","unit":"design-language","task_view":"none","tool":"testflight","doc_type":"design_contract","evidence_tier":"T1","experience_type":"canonical","difficulty":"advanced","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/experience-design/artifacts/design-language.yaml"},
+    {"module":"experience-design","unit":"surface-pattern-inventory","task_view":"eval","tool":"testflight","doc_type":"experience_inventory","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/experience-design/artifacts/surface-pattern-inventory.yaml"},
+    {"module":"experience-design","unit":"implementation-projection","task_view":"deploy","tool":"testflight","doc_type":"implementation","evidence_tier":"T1","experience_type":"canonical","difficulty":"advanced","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://packages/testflight-design-language/README.md"},
+    {"module":"experience-design","unit":"brand-intake-interface","task_view":"none","tool":"testflight","doc_type":"interface_source","evidence_tier":"T1","experience_type":"implementation","difficulty":"advanced","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://apps/brand-intake-web/index.html"},
+    {"module":"experience-design","unit":"brand-lab-interface","task_view":"none","tool":"testflight","doc_type":"interface_source","evidence_tier":"T1","experience_type":"implementation","difficulty":"advanced","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://apps/brand-lab/src/testflight_brand_lab/static/index.html"},
+    {"module":"experience-design","unit":"creative-studio-interface","task_view":"none","tool":"testflight","doc_type":"interface_source","evidence_tier":"T1","experience_type":"implementation","difficulty":"advanced","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://apps/creative-studio/src/testflight_creative_studio/static/index.html"}
+  ]
+}

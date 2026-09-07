@@ -1,0 +1,14 @@
+module_id: world://ontology/module/brand/campaign
+version: 2.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand/core, world://ontology/module/brand/strategy]
+competency_questions:
+  - Can a campaign strategy be traced to a positioning decision under a specific objective and time?
+evidence_basis: [research:creative-strategy, research:customer-journey]
+entity_types:
+  - {id: world://ontology/brand/type/Campaign, label: Campaign, definition: "A temporally bounded coordinated marketing initiative.", examples: ["Autumn Nike App acquisition"], counterexamples: ["The Nike brand as a whole."]}
+  - {id: world://ontology/brand/type/CampaignStrategy, label: Campaign strategy, definition: "A selected approach for a campaign to achieve an objective through defined audiences and channels.", examples: ["Confidence-first new-runner acquisition"], counterexamples: ["A single ad file."]}
+  - {id: world://ontology/brand/type/CreativeBrief, label: Creative brief, definition: "A bounded translation of campaign strategy into requirements for creative work.", examples: ["New-runner Instagram brief"], counterexamples: ["A finished advertisement."]}
+relationship_types:
+  - {id: world://ontology/brand/relation/implements, label: implements, definition: "A campaign strategy implements a positioning or strategic objective.", family: strategic, source_type_ids: [world://ontology/brand/type/CampaignStrategy], target_type_ids: [world://ontology/brand/type/Positioning, world://ontology/brand/type/StrategicObjective], examples: ["Campaign strategy implements positioning."], counterexamples: ["A positioning automatically creates a campaign."]}
+  - {id: world://ontology/brand/relation/operationalizes, label: operationalizes, definition: "A creative brief operationalizes a campaign strategy into bounded creative requirements.", family: strategic, source_type_ids: [world://ontology/brand/type/CreativeBrief], target_type_ids: [world://ontology/brand/type/CampaignStrategy], examples: ["Brief operationalizes strategy."], counterexamples: ["Brief proves campaign effectiveness."]}

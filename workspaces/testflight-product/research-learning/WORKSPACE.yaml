@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/testflight-product/research-learning
+parent: world://workspace/testflight-product
+type: child-knowledge-container
+label: Research and learning
+mission: Maintain cross-product evidence, questions, hypotheses, experiments, evaluations, outcomes, and learning updates.
+dataset_name: testflight_testflight_product_research_learning_staging
+route: research-learning
+status: candidate
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes: [sources, research_questions, hypotheses, experiments, metrics, evaluations, outcomes, learning_updates]
+  excludes: [unsupported_causal_claims, research_as_automatic_decision, generated_output_as_observed_outcome]
+

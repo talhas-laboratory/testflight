@@ -1,0 +1,10 @@
+version: 1
+container_id: world://workspace/testflight-product/experience-design
+sources:
+  - repo://workspaces/testflight-product/experience-design/artifacts/module-contract.yaml
+  - repo://workspaces/testflight-product/experience-design/artifacts/design-language.yaml
+  - repo://workspaces/testflight-product/experience-design/artifacts/surface-pattern-inventory.yaml
+  - repo://packages/testflight-design-language/README.md
+  - repo://apps/brand-intake-web/index.html
+  - repo://apps/brand-lab/src/testflight_brand_lab/static/index.html
+  - repo://apps/creative-studio/src/testflight_creative_studio/static/index.html

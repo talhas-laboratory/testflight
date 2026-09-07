@@ -1,0 +1,7 @@
+interface:
+  display_name: "Child Container Creator"
+  short_description: "Scaffold isolated child knowledge containers"
+  default_prompt: "Use $child-container-creator to create and validate a child knowledge container for this workspace."
+policy:
+  allow_implicit_invocation: true
+

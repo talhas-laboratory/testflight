@@ -103,6 +103,46 @@ operators:
     category: evaluation_schema
     kind: control
     mindscape_operator_refs: [O-09, O-12]
+  - id: world://operator/creative/observation-extraction
+    file: creative-observation-extraction.yaml
+    category: creative_observation_extraction
+    kind: transformational
+    mindscape_operator_refs: [O-06, O-08]
+  - id: world://operator/creative/reference-interpretation
+    file: creative-reference-interpretation.yaml
+    category: creative_reference_interpretation
+    kind: transformational
+    mindscape_operator_refs: [O-03, O-06, O-08]
+  - id: world://operator/creative/field-synthesis
+    file: creative-field-synthesis.yaml
+    category: creative_field_synthesis
+    kind: transformational
+    mindscape_operator_refs: [O-03, O-05, O-06]
+  - id: world://operator/creative/review-versioning
+    file: creative-review-versioning.yaml
+    category: creative_review_versioning
+    kind: transformational
+    mindscape_operator_refs: [O-06, O-10, O-12]
+  - id: world://operator/creative/project-binding
+    file: creative-project-binding.yaml
+    category: creative_project_binding
+    kind: control
+    mindscape_operator_refs: [O-01, O-04, O-07]
+  - id: world://operator/creative/field-projection
+    file: creative-field-projection.yaml
+    category: creative_field_projection
+    kind: transformational
+    mindscape_operator_refs: [O-04, O-05, O-12]
+  - id: world://operator/creative/connector-packet
+    file: creative-connector-packet.yaml
+    category: creative_connector_packet
+    kind: transformational
+    mindscape_operator_refs: [O-07, O-09, O-12]
+  - id: world://operator/creative/output-evaluation
+    file: creative-output-evaluation.yaml
+    category: creative_output_evaluation
+    kind: transformational
+    mindscape_operator_refs: [O-06, O-09, O-12]
 
 routes:
   extraction:

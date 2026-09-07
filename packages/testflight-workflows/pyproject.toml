@@ -1,0 +1,13 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testflight-workflows"
+version = "0.1.0"
+description = "Provider-neutral declarative workflow contracts and execution kernel for Testflight"
+requires-python = ">=3.12,<3.14"
+dependencies = ["pydantic>=2.10,<3", "pyyaml>=6.0,<7"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testflight_workflows"]

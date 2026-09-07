@@ -1,0 +1,12 @@
+id: world://ontology/brand-system-v2
+version: 2.0.0-candidate
+status: candidate
+modules:
+  - modules/core.yaml
+  - modules/audience.yaml
+  - modules/offering.yaml
+  - modules/strategy.yaml
+  - modules/campaign.yaml
+  - modules/creative.yaml
+  - modules/measurement.yaml
+  - modules/world-modeling.yaml

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testflight-workflow-runtime"
+version = "0.1.0"
+description = "Shared authenticated composition root for declarative Testflight workflows"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "testflight-adapter-langgraph[langgraph]",
+  "testflight-adapter-mcp-workflows",
+  "testflight-adapter-sqlite-workflow-runtime",
+  "testflight-workflows",
+]
+
+[project.scripts]
+workflow-runtime = "testflight_workflow_runtime.main:main"
+
+[tool.uv.sources]
+testflight-adapter-langgraph = { workspace = true }
+testflight-adapter-mcp-workflows = { workspace = true }
+testflight-adapter-sqlite-workflow-runtime = { workspace = true }
+testflight-workflows = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testflight_workflow_runtime"]

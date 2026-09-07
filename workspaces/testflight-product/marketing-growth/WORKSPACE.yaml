@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/testflight-product/marketing-growth
+parent: world://workspace/testflight-product
+type: child-knowledge-container
+label: Marketing and growth
+mission: Maintain positioning, narrative, messaging, campaigns, channels, acquisition, and retention knowledge.
+dataset_name: testflight_testflight_product_marketing_growth_staging
+route: marketing-growth
+status: candidate
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes: [positioning, audience, narrative, messaging, campaign, channel, acquisition, activation, retention, growth_experiment]
+  excludes: [unsupported_product_claims, invented_performance, customer_brand_assets_without_rights]
+

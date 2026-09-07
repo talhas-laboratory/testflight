@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creative Studio · Moodboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <header class="topbar">
+      <a class="mark" href="/">FIELD<span>/</span>WORK</a>
+      <div class="scope"><span class="dot"></span><strong id="project-name">Creative project</strong><small id="project-scope">Loading project scope…</small></div>
+      <div class="topbar-actions"><span id="studio-status" class="studio-status" role="status" aria-live="polite"></span><button class="ghost" id="reset">Reset board</button></div>
+    </header>
+    <main>
+      <section class="hero">
+        <div><p class="kicker">Moodboard → Creative Field</p><h1>Make the<br /><em>invisible</em> useful.</h1></div>
+        <p class="hero-copy">Drop references into a project-scoped field. Observations, interpretations and approvals stay distinct so the system can find direction without turning taste into an untraceable prompt.</p>
+      </section>
+      <section class="workspace">
+        <aside class="sidebar">
+          <div class="section-label"><span>01</span> Capture</div>
+          <div id="dropzone" class="dropzone" tabindex="0"><input id="file-input" type="file" multiple hidden /><span class="drop-icon">＋</span><strong>Drop references</strong><small>Images, text, audio, video, links</small><label class="rights-check"><input id="rights" type="checkbox" /> I have permission for analysis and generation</label><button class="action" id="browse">Browse files <span>↗</span></button></div>
+          <div class="note"><span class="note-tag">Boundary</span><p>Originals are retained by content hash. Meaning starts as a proposal and needs review.</p></div>
+          <div class="section-label"><span>02</span> Board signal</div>
+          <div class="stat-row"><span>References</span><strong id="reference-count">0</strong></div>
+          <div class="stat-row"><span>Annotations</span><strong id="annotation-count">0</strong></div>
+          <div class="stat-row"><span>Revision</span><strong id="revision-count">0</strong></div>
+        </aside>
+        <section class="board-wrap">
+          <div class="board-head"><div><p class="kicker">Project moodboard</p><h2 id="board-name">Untitled moodboard</h2></div><span class="status-pill" id="board-status">DRAFT</span></div>
+          <div class="canvas-tools" aria-label="Moodboard controls"><span class="canvas-mode">Spatial canvas</span><button class="ghost" id="new-cluster" type="button">New cluster</button><button class="ghost" id="layout-board" type="button">Tidy ungrouped</button><small>Drag references to arrange · select one to annotate or group it</small></div>
+          <div id="board" class="board" aria-live="polite"></div>
+        </section>
+        <aside class="field-panel">
+          <div class="section-label"><span>03</span> Creative Field</div>
+          <div id="field-status" class="field-status"><span class="pulse"></span><div><strong>Awaiting synthesis</strong><small>Reviewed meaning will appear here.</small></div></div>
+          <div class="field-block"><p class="field-label">Principles</p><div id="principles" class="empty-state">No accepted principles yet.</div></div>
+          <div class="field-block"><p class="field-label">Tensions</p><div id="tensions" class="empty-state">Tensions stay visible; they are never averaged away.</div></div>
+          <div class="field-block"><p class="field-label">Exclusions</p><div id="exclusions" class="empty-state">No exclusions recorded yet.</div></div>
+          <div class="field-block"><p class="field-label">Projection readiness</p><div class="readiness"><span id="readiness-bar"></span></div><small id="readiness-text">Add and review references to unlock a projection.</small></div>
+          <div class="field-actions"><button class="action" id="analyze-field" type="button">Analyze board <span>↗</span></button><button class="ghost" id="accept-field" type="button">Accept field</button><button class="ghost" id="hold-field" type="button">Hold</button><button class="ghost" id="revise-field" type="button">Request revision</button></div>
+        </aside>
+      </section>
+      <section class="artifact-console" id="artifact-console" aria-labelledby="artifact-title" hidden>
+        <div class="artifact-intro"><p class="kicker">05 · Artifact bridge</p><h2 id="artifact-title">Carry the field<br /><em>into the world.</em></h2><p>Choose the exact Brand context and target capability. Every downstream action remains scoped, reviewable and receipt-bearing.</p></div>
+        <form id="projection-form" class="handoff-form">
+          <div class="section-label"><span>Context</span><small>required for projection</small></div>
+          <label>Workspace ID<input id="workspace-id" required placeholder="world://workspace/brand/client" /></label>
+          <label>Context ID<input id="context-id" required placeholder="context:campaign" /></label>
+          <label>Branch ID<input id="branch-id" value="branch:main" required /></label>
+          <label>Target entity IDs<input id="target-entity-ids" required placeholder="brand:id, offering:id" /></label>
+          <label>Privacy policy ID<input id="privacy-policy-id" required placeholder="policy:project" /></label>
+          <label>Authority grant ID<input id="authority-grant-id" required placeholder="authority:project" /></label>
+          <label>Artifact type<input id="artifact-type" value="hero-image" required /></label>
+          <label>Modality<select id="modality"><option value="image">Image</option><option value="text">Text</option></select></label>
+          <label>Target<input id="target" value="image-provider" required /></label>
+          <label>Channel<input id="channel" placeholder="website" /></label>
+          <label>Lens<input id="lens" value="hero-image" required /></label>
+          <label>Disclosure manifest ID<input id="disclosure-manifest-id" required placeholder="disclosure:project" /></label>
+          <button class="action" type="submit">Compile context <span>↗</span></button>
+        </form>
+        <div class="generation-console">
+          <div class="section-label"><span>Target run</span><small>capability + receipts</small></div>
+          <label>Target adapter ID<input id="target-adapter-id" value="target:image:local" /></label>
+          <label>Grounding asset IDs<input id="grounding-asset-ids" placeholder="asset:one, asset:two" /></label>
+          <label>Permitted asset IDs<input id="permitted-asset-ids" placeholder="asset:one, asset:two" /></label>
+          <div class="target-note">The target manifest is built from the fields above. A missing adapter or authority remains a visible hold.</div>
+          <div class="generation-actions"><button class="ghost" id="prepare-generation" type="button">Prepare packet</button><button class="action" id="invoke-generation" type="button">Run target <span>↗</span></button><button class="ghost" id="evaluate-output" type="button">Evaluate output</button></div>
+          <div id="artifact-result" class="artifact-result" role="status" aria-live="polite">No artifact handoff yet.</div>
+        </div>
+      </section>
+      <button class="project-drawer" id="toggle-artifact" type="button" aria-expanded="false">Open artifact workflow <span>↗</span></button>
+      <section class="inspector" id="inspector" hidden>
+        <div class="inspector-head"><div><p class="kicker">Reference inspector</p><h2 id="inspector-title">Reference</h2></div><button class="close" id="close-inspector">×</button></div>
+        <div class="inspector-grid"><div><p class="field-label">Observed / proposed</p><div id="inspector-meta" class="meta-list"></div><label class="cluster-control" for="reference-cluster">Spatial cluster<select id="reference-cluster"></select></label></div><form id="annotation-form"><label for="annotation">What should carry forward?</label><textarea id="annotation" rows="4" placeholder="e.g. Keep the quiet confidence, not the literal composition."></textarea><label for="anti">What must not transfer?</label><textarea id="anti" rows="3" placeholder="e.g. Do not reproduce the object or logo."></textarea><button class="action" type="submit">Save annotation <span>↗</span></button></form></div>
+      </section>
+      <section class="workflow-strip"><div><p class="kicker">Artifact workflow</p><h2>Every handoff leaves a receipt.</h2></div><div class="steps"><span class="done"><b>01</b> Source</span><i>→</i><span class="active"><b>02</b> Observe</span><i>→</i><span><b>03</b> Interpret</span><i>→</i><span><b>04</b> Review</span><i>→</i><span><b>05</b> Project</span></div></section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

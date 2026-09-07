@@ -1,0 +1,16 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testflight-adapter-creative-connectors"
+version = "0.1.0"
+description = "Capability-honest text and image target adapters for Creative Field packets"
+requires-python = ">=3.12,<3.14"
+dependencies = ["testflight-creative-field"]
+
+[tool.uv.sources]
+testflight-creative-field = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testflight_adapter_creative_connectors"]

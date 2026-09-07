@@ -1,0 +1,17 @@
+version: 1
+workspace_id: world://workspace/testflight-product/operations-governance
+module_id: operations-governance
+status: active
+owns:
+  entity_types: [role, team, policy, control, process, work_item, service, risk, permission]
+  event_types: [authorization, execution, review, incident, remediation]
+  state_types: [operating_state, control_state, risk_state, incident_state]
+  claim_types: [policy_statement, risk_assessment, incident_observation, compliance_finding]
+relations: [responsible_for, accountable_for, governed_by, authorized_by, mitigates, violates, verifies]
+action_lifecycle: [propose, authorize, execute, observe, verify]
+invariants:
+  - role_is_not_person
+  - access_is_not_permission
+  - policy_is_not_execution_evidence
+  - control_presence_is_not_control_effectiveness
+  - incident_sequence_is_not_causality

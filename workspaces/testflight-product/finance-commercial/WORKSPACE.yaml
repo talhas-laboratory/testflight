@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/testflight-product/finance-commercial
+parent: world://workspace/testflight-product
+type: child-knowledge-container
+label: Finance and commercial
+mission: Maintain pricing, revenue, cost, budget, forecast, transaction, and unit-economics knowledge.
+dataset_name: testflight_testflight_product_finance_commercial_staging
+route: finance-commercial
+status: candidate
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes: [pricing, packaging, revenue, cost, budget, forecast, transaction, contract, unit_economics]
+  excludes: [credentials, unscoped_personal_financial_data, unlabeled_forecasts, invented_actuals]
+

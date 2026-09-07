@@ -14,29 +14,55 @@ from testflight_semantic import (
     Assertion,
     AssertionStatus,
     BindingMode,
+    BranchDelta,
+    BranchDeltaKind,
+    BranchKind,
+    BranchStatus,
     ChangeType,
     ComplianceStatus,
     Context,
+    DecisionRecord,
+    DecisionStatus,
     Deontic,
+    DependencyCandidate,
     DependencyEdge,
     DependencyEffect,
     DependencyRule,
+    DerivationRecord,
+    DerivationResult,
     EntityLifecycle,
     Event,
     EvidenceEnvelope,
+    EvidenceLink,
+    EvidenceRole,
+    FederationBridge,
+    FederationPlan,
+    FederationPlanStatus,
+    FederationRegistry,
     FreshnessState,
     FreshnessStatus,
     IdentityScope,
+    KnowledgeContainer,
     Perspective,
+    PerspectiveProfile,
+    RelationshipFrame,
     RepresentationBinding,
     RepresentationEvaluation,
     RepresentationProfile,
     RepresentationRule,
+    RoleBinding,
     SemanticEntity,
     StalenessMarker,
+    StateSnapshot,
+    StateStatus,
+    StateValue,
     TemporalInterval,
     ValidationMethod,
+    WorldBranch,
+    evaluate_dependency_rule,
+    resolve_branch_records,
     resolve_profile_order,
+    validate_derivation_graph,
 )
 
 WORKSPACE_ID = "world://workspace/brand-ontology-research"
@@ -51,6 +77,17 @@ TYPE = {
     "positioning": "world://ontology/type/Positioning",
     "artifact": "world://ontology/type/Artifact",
     "message": "world://ontology/type/MessagingArtifact",
+    "observation": "world://ontology/brand/type/ResearchObservation",
+    "insight": "world://ontology/brand/type/CustomerInsight",
+    "segment": "world://ontology/brand/type/AudienceSegment",
+    "icp": "world://ontology/brand/type/IdealCustomerProfile",
+    "need": "world://ontology/brand/type/Need",
+    "product_definition": "world://ontology/brand/type/ProductDefinition",
+    "campaign_strategy": "world://ontology/brand/type/CampaignStrategy",
+    "brief": "world://ontology/brand/type/CreativeBrief",
+    "creative_direction": "world://ontology/brand/type/CreativeDirection",
+    "asset": "world://ontology/brand/type/Asset",
+    "channel": "world://ontology/brand/type/Channel",
 }
 
 
@@ -147,6 +184,12 @@ class FixtureWorld:
         values: list[str] = []
         for item in self.objects:
             for field_name in (
+                "decision_id",
+                "state_id",
+                "perspective_id",
+                "frame_id",
+                "link_id",
+                "delta_id",
                 "assertion_id",
                 "event_id",
                 "source_id",
@@ -156,6 +199,7 @@ class FixtureWorld:
                 "marker_id",
                 "manifestation_id",
                 "context_id",
+                "branch_id",
                 "entity_id",
                 "rule_id",
             ):
@@ -765,6 +809,455 @@ def shared_representation_products() -> FixtureWorld:
     )
 
 
+def conditional_icp_to_asset_chain() -> FixtureWorld:
+    """Prove a bounded decision path without claiming automatic causation."""
+
+    context = _context(
+        "conditional-icp-to-asset",
+        brand_id="brand:aurora",
+        offering_id="offering:aurora:app",
+        audience_ids=("audience:aurora:first-time-runners",),
+        channel_ids=("channel:instagram",),
+        campaign_or_occasion_ids=("campaign:aurora:fall-2026",),
+        valid_time=_interval("2026-09-01T00:00:00Z", "2026-12-01T00:00:00Z"),
+        dimensions={"market": "DE", "journey_stage": "consideration"},
+    )
+    other_audience_context = _context(
+        "conditional-icp-to-asset-other-audience",
+        brand_id="brand:aurora",
+        offering_id="offering:aurora:app",
+        audience_ids=("audience:aurora:experienced-runners",),
+        channel_ids=("channel:instagram",),
+        dimensions={"market": "DE", "journey_stage": "consideration"},
+    )
+    observation = _entity(
+        "observation:aurora:new-runners", "observation", "New-runner interview finding"
+    )
+    insight = _entity("insight:aurora:new-runners", "insight", "First runs need reassurance")
+    segment = _entity(
+        "audience:aurora:first-time-runners", "segment", "First-time everyday runners"
+    )
+    icp = _entity("icp:aurora:first-time-runners", "icp", "Nike App first-time runner ICP")
+    need = _entity("need:aurora:confidence", "need", "Confidence to begin a running routine")
+    product = _entity(
+        "product-definition:aurora:app:new-runners",
+        "product_definition",
+        "Guided first-run product definition",
+    )
+    positioning = _entity(
+        "positioning:aurora:app:first-run", "positioning", "Confident first-run companion"
+    )
+    campaign = _entity(
+        "campaign-strategy:aurora:fall-2026", "campaign_strategy", "Confidence-first acquisition"
+    )
+    brief = _entity(
+        "brief:aurora:instagram:first-run", "brief", "Instagram first-run creative brief"
+    )
+    direction = _entity(
+        "creative-direction:aurora:first-step",
+        "creative_direction",
+        "Reassuring first-step direction",
+    )
+    asset = _entity("asset:aurora:instagram:first-run", "asset", "Instagram first-run video")
+    channel = _entity("channel:instagram", "channel", "Instagram")
+    assertions = (
+        _assertion(
+            "assertion:sw010:observation-supports-insight",
+            observation.entity_id,
+            "supports",
+            context,
+            object_id=insight.entity_id,
+            evidence=("evidence:sw010:interviews",),
+        ),
+        _assertion(
+            "assertion:sw010:segment-has-need",
+            segment.entity_id,
+            "has-need",
+            context,
+            object_id=need.entity_id,
+            evidence=("evidence:sw010:interviews",),
+        ),
+        _assertion(
+            "assertion:sw010:icp-represents-segment",
+            icp.entity_id,
+            "represents",
+            context,
+            object_id=segment.entity_id,
+            perspective=Perspective.INTENDED,
+            status=AssertionStatus.ACCEPTED,
+            evidence=("evidence:sw010:icp-decision",),
+        ),
+        _assertion(
+            "assertion:sw010:product-designed-for-icp",
+            product.entity_id,
+            "designed-for",
+            context,
+            object_id=icp.entity_id,
+            perspective=Perspective.INTENDED,
+            status=AssertionStatus.ACCEPTED,
+            evidence=("evidence:sw010:product-decision",),
+        ),
+        _assertion(
+            "assertion:sw010:positioning-positions-product",
+            positioning.entity_id,
+            "positions",
+            context,
+            object_id=product.entity_id,
+            perspective=Perspective.INTENDED,
+            status=AssertionStatus.ACCEPTED,
+            evidence=("evidence:sw010:positioning-decision",),
+        ),
+        _assertion(
+            "assertion:sw010:campaign-implements-positioning",
+            campaign.entity_id,
+            "implements",
+            context,
+            object_id=positioning.entity_id,
+            perspective=Perspective.INTENDED,
+            status=AssertionStatus.ACCEPTED,
+            evidence=("evidence:sw010:campaign-decision",),
+        ),
+        _assertion(
+            "assertion:sw010:brief-operationalizes-campaign",
+            brief.entity_id,
+            "operationalizes",
+            context,
+            object_id=campaign.entity_id,
+            perspective=Perspective.INTENDED,
+            status=AssertionStatus.ACCEPTED,
+            evidence=("evidence:sw010:brief",),
+        ),
+        _assertion(
+            "assertion:sw010:direction-governs-asset",
+            direction.entity_id,
+            "governs",
+            context,
+            object_id=asset.entity_id,
+            perspective=Perspective.INTENDED,
+            status=AssertionStatus.ACCEPTED,
+            evidence=("evidence:sw010:creative-review",),
+        ),
+        _assertion(
+            "assertion:sw010:asset-promotes-offering",
+            asset.entity_id,
+            "promotes",
+            context,
+            object_id="offering:aurora:app",
+            perspective=Perspective.INTENDED,
+            status=AssertionStatus.ACCEPTED,
+            evidence=("evidence:sw010:brief",),
+        ),
+        _assertion(
+            "assertion:sw010:asset-distributed-via-channel",
+            asset.entity_id,
+            "distributed-via",
+            context,
+            object_id=channel.entity_id,
+            perspective=Perspective.INTENDED,
+            status=AssertionStatus.ACCEPTED,
+            evidence=("evidence:sw010:media-plan",),
+        ),
+    )
+    decision = DecisionRecord(
+        decision_id="decision:aurora:positioning:first-run",
+        workspace_id=WORKSPACE_ID,
+        decision_type_id="world://ontology/brand/type/StrategyDecision",
+        context_id=context.context_id,
+        input_ids=(observation.entity_id, insight.entity_id, product.entity_id),
+        selected_option_id=positioning.entity_id,
+        rejected_option_ids=("positioning:aurora:app:performance-first",),
+        rationale=(
+            "The selected positioning addresses the evidenced confidence need for the scoped ICP."
+        ),
+        authority_grant_id="grant:aurora:strategy",
+        derivation_id="derivation:sw010:context-chain",
+        decided_at=_dt("2026-08-31T00:00:00Z"),
+        status=DecisionStatus.ACCEPTED,
+    )
+    dependency_rule = DependencyRule(
+        rule_id="dependency:sw010:icp-to-asset",
+        version=V,
+        upstream_selector={"entity_type": TYPE["icp"]},
+        downstream_selector={
+            "entity_type": TYPE["asset"],
+            "relation_path": ("designed-for", "implements", "operationalizes", "governs"),
+        },
+        trigger_change_types=(ChangeType.ENTITY_REVISION,),
+        effect=DependencyEffect.POTENTIALLY_STALE,
+        max_depth=4,
+    )
+    dependency_edges = evaluate_dependency_rule(
+        dependency_rule,
+        upstream=DependencyCandidate(
+            record_id=icp.entity_id,
+            entity_id=icp.entity_id,
+            entity_type=icp.type_id,
+            context=context,
+        ),
+        downstream=(
+            DependencyCandidate(
+                record_id=asset.entity_id,
+                entity_id=asset.entity_id,
+                entity_type=asset.type_id,
+                context=context,
+                relation_path=("designed-for", "implements", "operationalizes", "governs"),
+            ),
+            DependencyCandidate(
+                record_id="asset:aurora:instagram:experienced",
+                entity_id="asset:aurora:instagram:experienced",
+                entity_type=asset.type_id,
+                context=other_audience_context,
+                relation_path=("designed-for", "implements", "operationalizes", "governs"),
+            ),
+        ),
+        change_type=ChangeType.ENTITY_REVISION,
+        created_at=_dt("2026-08-31T00:00:00Z"),
+        derivation_id="derivation:sw010:context-chain",
+    )
+    marker = StalenessMarker(
+        marker_id="marker:sw010:asset-review",
+        downstream_id=asset.entity_id,
+        state=FreshnessState.POTENTIALLY_STALE,
+        cause_ids=(icp.entity_id,),
+        rule_id=dependency_rule.rule_id,
+        rule_version=dependency_rule.version,
+        created_at=_dt("2026-08-31T00:00:00Z"),
+        review_note="ICP revision requires review; it does not rewrite the asset.",
+        derivation_id="derivation:sw010:context-chain",
+    )
+    profile = RepresentationProfile(
+        profile_id="profile:aurora:first-run-instagram",
+        version=V,
+        rule_ids=("rule:aurora:first-run-tone",),
+    )
+    binding = RepresentationBinding(
+        binding_id="binding:aurora:first-run-asset",
+        entity_id=asset.entity_id,
+        profile_id=profile.profile_id,
+        profile_version=profile.version,
+        context_id=context.context_id,
+        mode=BindingMode.ADAPTIVE,
+    )
+    parent = KnowledgeContainer(
+        workspace_id=WORKSPACE_ID,
+        route="brand/aurora",
+        dataset_name="Aurora brand world",
+        owns_entity_ids=("brand:aurora", "offering:aurora:app"),
+    )
+    child = KnowledgeContainer(
+        workspace_id=f"{WORKSPACE_ID}/offering/app",
+        parent_workspace_id=WORKSPACE_ID,
+        route="brand/aurora/offering/app",
+        dataset_name="Aurora App world",
+        augments_entity_ids=("offering:aurora:app", product.entity_id, asset.entity_id),
+    )
+    plan = FederationRegistry(
+        containers=(parent, child),
+        bridges=(
+            FederationBridge(
+                bridge_id="bridge:sw010:app-to-brand",
+                source_workspace_id=child.workspace_id,
+                target_workspace_id=parent.workspace_id,
+                subject_id="offering:aurora:app",
+                predicate_id="world://ontology/federation/augments",
+                object_id="brand:aurora",
+                context_id=context.context_id,
+                evidence_refs=("evidence:sw010:container-registration",),
+                allow_traversal=True,
+            ),
+        ),
+    ).plan_child_first(
+        root_workspace_id=WORKSPACE_ID,
+        entity_ids=("offering:aurora:app",),
+        permitted_workspace_ids=frozenset((WORKSPACE_ID, child.workspace_id)),
+    )
+    derivation = DerivationRecord(
+        derivation_id="derivation:sw010:context-chain",
+        output_ids=(
+            decision.decision_id,
+            *(edge.edge_id for edge in dependency_edges),
+            marker.marker_id,
+        ),
+        input_ids=("evidence:sw010:interviews",),
+        operation_id="fixture:conditional-brand-chain",
+        actor_id="fixture-author",
+        ontology_version="2.0.0-candidate",
+        policy_versions=("dependency-rule:0.1.0", "federation:0.1.0"),
+        reasoning_operators=(
+            "world://operator/guardrail/sequence-causality-conflation@1",
+            "world://operator/guardrail/workspace-isolation@1",
+            "world://operator/guardrail/version-state-conflation@1",
+        ),
+        occurred_at="2026-08-31T00:00:00Z",
+        result=DerivationResult.PROPOSED,
+    )
+    return FixtureWorld(
+        "SW-010",
+        "conditional-icp-to-asset-chain",
+        (
+            "decision_lineage",
+            "conditional_dependency",
+            "child_first_federation",
+            "no_automatic_rewrite",
+        ),
+        (
+            observation,
+            insight,
+            segment,
+            icp,
+            need,
+            product,
+            positioning,
+            campaign,
+            brief,
+            direction,
+            asset,
+            channel,
+            context,
+            other_audience_context,
+            _evidence("evidence:sw010:interviews", "sw010"),
+            *assertions,
+            decision,
+            dependency_rule,
+            *dependency_edges,
+            marker,
+            derivation,
+            profile,
+            binding,
+            parent,
+            child,
+            plan,
+        ),
+        ("Synthetic candidate demonstrating bounded ICP-to-asset traceability.",),
+    )
+
+
+def branch_perspective_state_frame() -> FixtureWorld:
+    """Prove the first missing layers compose without becoming one record type."""
+
+    context = _context(
+        "branch-perspective-state-frame",
+        brand_id="brand:aurora",
+        offering_id="offering:aurora:app",
+        audience_ids=("audience:aurora:first-time-runners",),
+        channel_ids=("channel:instagram",),
+        dimensions={"market": "DE"},
+    )
+    state = StateSnapshot(
+        state_id="state:aurora:onboarding-completion",
+        subject_ids=("offering:aurora:app",),
+        state_type_id="world://ontology/brand/type/StateSnapshot",
+        context_id=context.context_id,
+        values=(
+            StateValue(
+                key="completion_rate",
+                value=0.42,
+                unit_id="unit:ratio",
+                measurement_method_id="method:fixture-analytics",
+            ),
+        ),
+        source_assertion_ids=("assertion:sw011:completion-measurement",),
+        evidence_link_ids=("evidence-link:sw011:support", "evidence-link:sw011:qualifies"),
+        status=StateStatus.SUPPORTED,
+        derivation_id="derivation:sw011:state",
+    )
+    evidence_support = EvidenceLink(
+        link_id="evidence-link:sw011:support",
+        evidence_id="evidence:sw011:analytics",
+        target_id=state.state_id,
+        role=EvidenceRole.SUPPORTS,
+        context_id=context.context_id,
+    )
+    evidence_qualifies = EvidenceLink(
+        link_id="evidence-link:sw011:qualifies",
+        evidence_id="evidence:sw011:method",
+        target_id=state.state_id,
+        role=EvidenceRole.QUALIFIES,
+        context_id=context.context_id,
+        note="Completion is a product metric, not proof of customer motivation.",
+    )
+    main = WorldBranch(
+        branch_id="branch:aurora:main",
+        workspace_id=WORKSPACE_ID,
+        branch_kind=BranchKind.INTERPRETATION,
+        label="Aurora accepted working view",
+        created_by="fixture-author",
+        created_at="2026-08-31T00:00:00Z",
+        status=BranchStatus.ACTIVE,
+    )
+    scenario = WorldBranch(
+        branch_id="branch:aurora:confidence-first",
+        workspace_id=WORKSPACE_ID,
+        parent_branch_id=main.branch_id,
+        branch_kind=BranchKind.SCENARIO,
+        label="Confidence-first acquisition scenario",
+        assumption_ids=("assumption:aurora:reassurance-matters",),
+        created_by="fixture-author",
+        created_at="2026-08-31T00:00:00Z",
+        status=BranchStatus.ACTIVE,
+    )
+    deltas = (
+        BranchDelta(
+            delta_id="delta:sw011:exclude-performance",
+            branch_id=scenario.branch_id,
+            kind=BranchDeltaKind.EXCLUDE,
+            target_record_id="positioning:aurora:performance-first",
+            rationale="Scenario preserves an alternative without deleting it from the main branch.",
+        ),
+        BranchDelta(
+            delta_id="delta:sw011:add-confidence",
+            branch_id=scenario.branch_id,
+            kind=BranchDeltaKind.ADD,
+            target_record_id="positioning:aurora:confidence-first",
+            rationale="Scenario-specific positioning candidate.",
+        ),
+    )
+    perspective = PerspectiveProfile(
+        perspective_id="perspective:aurora:first-time-runner",
+        holder_id="audience:aurora:first-time-runners",
+        perspective_type_id="world://ontology/brand/type/PerspectiveProfile",
+        context_id=context.context_id,
+        goals=("Start a running routine without feeling intimidated.",),
+        accessible_record_selectors=("offering:aurora:app", "channel:instagram"),
+        known_limitations=("Cannot access internal strategy, budget, or approval records.",),
+        derivation_id="derivation:sw011:perspective",
+    )
+    frame = RelationshipFrame(
+        frame_id="frame:aurora:app-de-instagram-acquisition",
+        frame_type_id="world://ontology/brand/type/RelationshipFrame",
+        context_id=context.context_id,
+        role_bindings=(
+            RoleBinding(role_id="offering", record_ids=("offering:aurora:app",)),
+            RoleBinding(role_id="audience", record_ids=("audience:aurora:first-time-runners",)),
+            RoleBinding(role_id="channel", record_ids=("channel:instagram",)),
+            RoleBinding(role_id="market", value="DE"),
+            RoleBinding(role_id="budget", value={"amount": 200000, "currency": "EUR"}),
+        ),
+        assertion_ids=("assertion:sw011:campaign-targeting",),
+        status="proposed",
+        evidence_link_ids=(evidence_support.link_id,),
+        derivation_id="derivation:sw011:frame",
+    )
+    return FixtureWorld(
+        "SW-011",
+        "branch-perspective-state-frame",
+        ("state_claim_separation", "branch_overlay", "perspective_non_interference", "nary_frame"),
+        (
+            context,
+            state,
+            evidence_support,
+            evidence_qualifies,
+            main,
+            scenario,
+            *deltas,
+            perspective,
+            frame,
+            _evidence("evidence:sw011:analytics", "sw011"),
+            _evidence("evidence:sw011:method", "sw011"),
+        ),
+    )
+
+
 def all_fixture_worlds() -> tuple[FixtureWorld, ...]:
     return (
         intended_observed_brand(),
@@ -776,6 +1269,8 @@ def all_fixture_worlds() -> tuple[FixtureWorld, ...]:
         bitemporal_reconstruction(),
         causal_guardrails(),
         shared_representation_products(),
+        conditional_icp_to_asset_chain(),
+        branch_perspective_state_frame(),
     )
 
 
@@ -935,6 +1430,52 @@ def validate_fixture(world: FixtureWorld) -> None:
         )
         assert evaluation.compliance is ComplianceStatus.UNASSESSABLE
         assert "equal-authority-visual-rules" in evaluation.findings
+    elif world.slug == "conditional-icp-to-asset-chain":
+        assertions = _assertions(world)
+        predicates = {assertion.predicate_id.rsplit("/", 1)[-1] for assertion in assertions}
+        assert {"designed-for", "implements", "operationalizes", "governs"} <= predicates
+        decision = next(item for item in world.objects if isinstance(item, DecisionRecord))
+        assert decision.selected_option_id == "positioning:aurora:app:first-run"
+        assert decision.status is DecisionStatus.ACCEPTED
+        edges = [item for item in world.objects if isinstance(item, DependencyEdge)]
+        assert len(edges) == 1
+        assert edges[0].downstream_id == "asset:aurora:instagram:first-run"
+        marker = next(item for item in world.objects if isinstance(item, StalenessMarker))
+        assert marker.state is FreshnessState.POTENTIALLY_STALE
+        assert "does not rewrite" in (marker.review_note or "")
+        binding = next(item for item in world.objects if isinstance(item, RepresentationBinding))
+        assert binding.entity_id == "asset:aurora:instagram:first-run"
+        plan = next(item for item in world.objects if isinstance(item, FederationPlan))
+        assert plan.status is FederationPlanStatus.HIT
+        assert plan.primary_workspace_id == f"{WORKSPACE_ID}/offering/app"
+        assert plan.supplemental_workspace_ids == (WORKSPACE_ID,)
+        derivation = next(item for item in world.objects if isinstance(item, DerivationRecord))
+        assert derivation.result is DerivationResult.PROPOSED
+        validate_derivation_graph((derivation,), source_ids=frozenset(derivation.input_ids))
+    elif world.slug == "branch-perspective-state-frame":
+        state = next(item for item in world.objects if isinstance(item, StateSnapshot))
+        assert state.source_assertion_ids == ("assertion:sw011:completion-measurement",)
+        links = [item for item in world.objects if isinstance(item, EvidenceLink)]
+        assert {link.role for link in links} == {EvidenceRole.SUPPORTS, EvidenceRole.QUALIFIES}
+        branches = tuple(item for item in world.objects if isinstance(item, WorldBranch))
+        deltas = tuple(item for item in world.objects if isinstance(item, BranchDelta))
+        resolved = resolve_branch_records(
+            branch_id="branch:aurora:confidence-first",
+            branches=branches,
+            deltas=deltas,
+            base_record_ids=("positioning:aurora:performance-first", "offering:aurora:app"),
+        )
+        assert resolved == ("offering:aurora:app", "positioning:aurora:confidence-first")
+        perspective = next(item for item in world.objects if isinstance(item, PerspectiveProfile))
+        assert perspective.holder_id == "audience:aurora:first-time-runners"
+        frame = next(item for item in world.objects if isinstance(item, RelationshipFrame))
+        assert {binding.role_id for binding in frame.role_bindings} == {
+            "offering",
+            "audience",
+            "channel",
+            "market",
+            "budget",
+        }
     else:
         raise AssertionError(f"unknown fixture world: {world.slug}")
 
@@ -950,6 +1491,8 @@ __all__ = [
     "FixtureWorld",
     "WORKSPACE_ID",
     "all_fixture_worlds",
+    "conditional_icp_to_asset_chain",
+    "branch_perspective_state_frame",
     "snapshot_at",
     "validate_all_fixture_worlds",
     "validate_fixture",

@@ -1,0 +1,155 @@
+version: 1
+workspace_id: world://workspace/brand/nike-research
+purpose: >-
+  Canonical, proposal-only semantic overlays for compiling bounded agent world
+  views. These records organize existing public Nike research; they do not add
+  proprietary Nike knowledge or claim internal decision authority.
+
+evidence_links:
+  - link_id: EVIDLINK-NIKE-MEMBER-001
+    evidence_id: EVID-NIKE-010
+    target_id: STATE-NIKE-MEMBERSHIP-SERVICE-001
+    role: supports
+    context_id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+    note: Supports the published membership-benefit portion of the modeled service state.
+  - link_id: EVIDLINK-NIKE-MEMBER-002
+    evidence_id: EVID-NIKE-011
+    target_id: FRAME-NIKE-MEMBER-APP-DISCOVERY-001
+    role: supports
+    context_id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+    note: Supports the published Nike App discovery and guidance portion of the frame.
+  - link_id: EVIDLINK-NIKE-MEMBER-003
+    evidence_id: EVID-NIKE-011
+    target_id: STATE-NIKE-MEMBERSHIP-SERVICE-001
+    role: qualifies
+    context_id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+    note: App personalization is described as interest-based; it does not establish individual-level outcomes.
+  - link_id: EVIDLINK-NIKE-MEMBER-004
+    evidence_id: EVID-NIKE-010
+    target_id: HYP-NIKE-MEMBER-BENEFIT-CLARITY-001
+    role: mentions
+    context_id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+    note: Establishes documented benefits as an input to the hypothesis, not that benefit framing causes a conversion outcome.
+
+states:
+  - state_id: STATE-NIKE-MEMBERSHIP-SERVICE-001
+    version: 1
+    subject_ids: [ENT-NIKE-OF-005, ENT-NIKE-OF-006]
+    state_type_id: world://ontology/brand/state/member-service-surface
+    context_id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    values:
+      - key: documented_service_components
+        value: [product_access, rewards, experiences, guidance, connected_services]
+    source_assertion_ids: [REL-NIKE-016, REL-NIKE-017]
+    evidence_link_ids: [EVIDLINK-NIKE-MEMBER-001, EVIDLINK-NIKE-MEMBER-003]
+    status: supported
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+
+perspectives:
+  - perspective_id: PERS-NIKE-MEMBER-PROSPECTIVE-001
+    holder_id: ENT-NIKE-EN-017
+    perspective_type_id: world://ontology/brand/perspective/prospective-member
+    context_id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    goals:
+      - Understand the practical membership value before joining or engaging.
+      - Discover relevant products, guidance, stories, and experiences.
+    accessible_record_selectors: [ENT-NIKE-OF-005, ENT-NIKE-OF-006, ENT-NIKE-XP-003, ENT-NIKE-XP-004]
+    salience_rules:
+      - Prioritize clearly documented member benefits and app discovery features.
+      - Do not imply a benefit, experience, or personalization outcome that the public evidence does not state.
+    known_limitations:
+      - Does not establish an individual member's preferences, eligibility, or access in a specific market.
+      - Does not provide Nike's private UX, legal, accessibility, or approval requirements.
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+
+relationship_frames:
+  - frame_id: FRAME-NIKE-MEMBER-APP-DISCOVERY-001
+    frame_type_id: world://ontology/brand/frame/member-service-discovery
+    context_id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    role_bindings:
+      - role_id: membership_layer
+        record_ids: [ENT-NIKE-OF-005]
+      - role_id: app_service
+        record_ids: [ENT-NIKE-OF-006]
+      - role_id: member_audience
+        record_ids: [ENT-NIKE-EN-017]
+      - role_id: member_benefits_experience
+        record_ids: [ENT-NIKE-XP-003]
+      - role_id: personalized_discovery_experience
+        record_ids: [ENT-NIKE-XP-004]
+    assertion_ids: [REL-NIKE-016, REL-NIKE-017]
+    status: supported
+    evidence_link_ids: [EVIDLINK-NIKE-MEMBER-002]
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+
+hypotheses:
+  - hypothesis_id: HYP-NIKE-MEMBER-BENEFIT-CLARITY-001
+    branch_id: BR-NIKE-MEMBER-DISCOVERY-LENS-001
+    context_id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    input_ids: [FRAME-NIKE-MEMBER-APP-DISCOVERY-001, STATE-NIKE-MEMBERSHIP-SERVICE-001]
+    proposition: Clearer framing of documented Nike Membership benefits may increase qualified membership starts in a defined prospective-member population.
+    mechanism_description: A prospective member can more easily connect published access, rewards, experiences, and guidance to their own needs.
+    input_evidence_link_ids: [EVIDLINK-NIKE-MEMBER-004]
+    supporting_evidence_link_ids: []
+    assumption_ids: [PERS-NIKE-MEMBER-PROSPECTIVE-001]
+    falsification_conditions:
+      - A permitted controlled test shows no improvement or worse qualified membership starts against the declared comparison.
+      - The proposed population does not find the clarified benefits materially more understandable in validated research.
+    status: testable
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+
+experiments:
+  - experiment_id: EXP-NIKE-MEMBER-BENEFIT-CLARITY-001
+    hypothesis_ids: [HYP-NIKE-MEMBER-BENEFIT-CLARITY-001]
+    branch_id: BR-NIKE-MEMBER-DISCOVERY-LENS-001
+    context_id: CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT
+    intervention: Present a clear, evidence-backed explanation of documented membership benefits before Nike App discovery.
+    comparison_or_control: Use the approved current member-discovery sequence or another explicitly documented control.
+    population_selector: Eligible prospective members in a market where the test is authorized.
+    assignment_method: Determine and record the permitted assignment method before approval.
+    metric_ids: [METRIC-NIKE-QUALIFIED-MEMBERSHIP-STARTS]
+    success_thresholds:
+      - metric_id: METRIC-NIKE-QUALIFIED-MEMBERSHIP-STARTS
+        comparator: greater_than
+        value: 0
+        unit_id: unit:percentage-points
+    guardrail_metric_ids: [METRIC-NIKE-MEMBER-EXPERIENCE-QUALITY]
+    time_window:
+      from_time: '2026-09-01T00:00:00Z'
+      to_time: '2026-09-30T00:00:00Z'
+    sample_requirements: Define a permitted sample-size and stopping-rule calculation before approval.
+    risk_and_ethics_constraints:
+      - Use only consented data and an authorized market, product, and channel.
+      - Do not represent the test as an approved Nike initiative in this public research workspace.
+    status: draft
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+
+observed_outcomes: []
+learning_updates: []
+
+branches:
+  - branch_id: research-main
+    workspace_id: world://workspace/brand/nike-research
+    branch_kind: interpretation
+    label: Source-grounded research view
+    created_by: testflight-brand-research
+    created_at: '2026-08-25T00:00:00Z'
+    status: active
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+  - branch_id: BR-NIKE-MEMBER-DISCOVERY-LENS-001
+    workspace_id: world://workspace/brand/nike-research
+    parent_branch_id: research-main
+    branch_kind: interpretation
+    label: Prospective member discovery lens
+    assumption_ids: [PERS-NIKE-MEMBER-PROSPECTIVE-001]
+    created_by: testflight-brand-research
+    created_at: '2026-08-25T00:00:00Z'
+    status: active
+    derivation_id: DERIV-NIKE-WORLD-MODEL-001
+
+branch_deltas: []
+conflicts: []

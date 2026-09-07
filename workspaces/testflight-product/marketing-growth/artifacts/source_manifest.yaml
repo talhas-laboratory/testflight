@@ -1,0 +1,7 @@
+version: 1
+container_id: world://workspace/testflight-product/marketing-growth
+sources:
+  - repo://workspaces/testflight-product/marketing-growth/artifacts/module-contract.yaml
+  - repo://workspaces/testflight-product/marketing-growth/artifacts/positioning-offer-inventory.yaml
+  - repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md
+  - repo://deliverables/testflight-commercial-viability-deep-research.md

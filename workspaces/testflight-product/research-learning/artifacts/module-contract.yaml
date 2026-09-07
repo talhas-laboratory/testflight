@@ -1,0 +1,19 @@
+version: 1
+workspace_id: world://workspace/testflight-product/research-learning
+module_id: research-learning
+status: active
+owns:
+  entity_types: [source, research_question, hypothesis, experiment, metric, evaluation, outcome, learning_update]
+  event_types: [research_activity, experiment_run, evaluation_run, review]
+  state_types: [hypothesis_state, experiment_state, outcome_state, learning_state]
+  claim_types: [observation, reported_finding, inference, hypothesis, evaluation_finding, causal_claim]
+relations: [supports, contradicts, tests, measures, observes, evaluates, updates, supersedes]
+lifecycle: [question, source, synthesis, hypothesis, experiment, observation, evaluation, review, learning_update]
+invariants:
+  - source_is_not_claim
+  - synthesis_is_not_accepted_product_truth
+  - hypothesis_is_not_outcome
+  - correlation_is_not_causality
+  - proposed_threshold_is_not_observed_benchmark
+  - generated_output_cannot_validate_itself
+

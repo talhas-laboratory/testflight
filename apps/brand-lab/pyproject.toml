@@ -18,3 +18,6 @@ testflight-semantic = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/testflight_brand_lab"]
+
+[tool.hatch.build]
+include = ["src/testflight_brand_lab/static/**"]

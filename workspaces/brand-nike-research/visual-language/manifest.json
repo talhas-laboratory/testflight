@@ -1,0 +1,323 @@
+{
+  "version": 1,
+  "workspaceId": "world://workspace/brand/nike-research",
+  "brandId": "world://brand/nike",
+  "profiles": [
+    {
+      "id": "VL-NIKE-PUBLIC-EXPRESSION",
+      "label": "Nike public expression observations",
+      "description": "Scoped observations of public Nike symbolic and storytelling expression; not a proprietary design system.",
+      "status": "observed"
+    },
+    {
+      "id": "VL-NIKE-MEMBER-DIGITAL",
+      "label": "Nike Membership digital expression observations",
+      "description": "Publicly documented patterns around Nike Membership, Nike App, and SNKRS entry points.",
+      "status": "observed"
+    }
+  ],
+  "references": [
+    {
+      "id": "VR-NIKE-SYMBOL-MOTION-001",
+      "revision": 1,
+      "kind": "symbol.graphic_device",
+      "schemaVersion": 1,
+      "label": "Swoosh symbolic motion association",
+      "payload": {
+        "observation": "Nike's archive associates its primary symbol with motion, speed, sport, innovation, and possibility.",
+        "safeUse": "symbolic reference only; do not infer a complete logo-usage system"
+      },
+      "assetRefs": [],
+      "authority": "official_public",
+      "epistemicStatus": "reported",
+      "status": "observed",
+      "sourceIds": ["SRC-NIKE-006"],
+      "evidenceIds": ["EVID-NIKE-006"],
+      "validFrom": "2025-10-02",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "rights": {
+        "permittedUse": "analysis_and_reference",
+        "generationUse": "inspiration_only"
+      },
+      "limitations": [
+        "Nike-authored historical interpretation; not an independent recognition study."
+      ],
+      "slot": "expression.symbolic"
+    },
+    {
+      "id": "VR-NIKE-ATHLETE-STORY-001",
+      "revision": 1,
+      "kind": "imagery.art_direction",
+      "schemaVersion": 1,
+      "label": "Athlete-led storytelling observation",
+      "payload": {
+        "observation": "Public Nike campaign releases use athletes and their voices as a central storytelling mechanism.",
+        "observedChannels": ["film", "photography", "social"],
+        "scope": "cross-campaign observation, not a universal production rule"
+      },
+      "assetRefs": [],
+      "authority": "observed_public",
+      "epistemicStatus": "inferred",
+      "status": "observed",
+      "sourceIds": ["SRC-NIKE-007", "SRC-NIKE-008", "SRC-NIKE-009"],
+      "evidenceIds": ["EVID-NIKE-007", "EVID-NIKE-008", "EVID-NIKE-009"],
+      "validFrom": "2025-02-09",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "rights": {
+        "permittedUse": "analysis_and_reference",
+        "generationUse": "inspiration_only"
+      },
+      "limitations": [
+        "Cross-campaign synthesis; public releases do not establish an approved imagery policy."
+      ],
+      "slot": "imagery.storytelling"
+    },
+    {
+      "id": "VR-NIKE-LOCAL-CULTURE-001",
+      "revision": 1,
+      "kind": "expression.contextual_adaptation",
+      "schemaVersion": 1,
+      "label": "Local sport-culture adaptation observation",
+      "payload": {
+        "observation": "Public football expression adapts through city, community, athlete, federation, and cultural context while retaining a global sport identity.",
+        "scope": "football expression context; do not universalize to every Nike asset"
+      },
+      "assetRefs": [],
+      "authority": "observed_public",
+      "epistemicStatus": "inferred",
+      "status": "observed",
+      "sourceIds": ["SRC-NIKE-009", "SRC-NIKE-012"],
+      "evidenceIds": ["EVID-NIKE-009", "EVID-NIKE-012"],
+      "validFrom": "2026-06-04",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "rights": {
+        "permittedUse": "analysis_and_reference",
+        "generationUse": "inspiration_only"
+      },
+      "limitations": [
+        "Scoped to public football expression and experience releases."
+      ],
+      "slot": "expression.local_context"
+    },
+    {
+      "id": "VR-NIKE-MEMBER-ENTRY-001",
+      "revision": 1,
+      "kind": "ui.pattern",
+      "schemaVersion": 1,
+      "label": "Connected membership entry points",
+      "payload": {
+        "surfaces": ["Nike App", "SNKRS", "nike.com"],
+        "observation": "Public service documentation describes distinct digital surfaces with different member functions within a wider ecosystem.",
+        "safeUse": "explain relationships and entry points; do not invent account or entitlement behavior"
+      },
+      "assetRefs": [],
+      "authority": "official_public",
+      "epistemicStatus": "reported",
+      "status": "observed",
+      "sourceIds": ["SRC-NIKE-010", "SRC-NIKE-011"],
+      "evidenceIds": ["EVID-NIKE-010", "EVID-NIKE-011"],
+      "validFrom": "2026-08-25",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "rights": {
+        "permittedUse": "analysis_and_reference",
+        "generationUse": "inspiration_only"
+      },
+      "limitations": [
+        "Public service documentation does not establish a proprietary UI component library."
+      ],
+      "slot": "digital.entry_points"
+    }
+  ],
+  "revisions": [
+    {
+      "id": "VL-NIKE-PUBLIC-EXPRESSION@1",
+      "profileId": "VL-NIKE-PUBLIC-EXPRESSION",
+      "revision": 1,
+      "branch": "main",
+      "parentRevisionIds": [],
+      "modules": [
+        {
+          "slot": "expression.symbolic",
+          "referenceId": "VR-NIKE-SYMBOL-MOTION-001",
+          "mode": "extend"
+        },
+        {
+          "slot": "imagery.storytelling",
+          "referenceId": "VR-NIKE-ATHLETE-STORY-001",
+          "mode": "extend"
+        }
+      ],
+      "authority": "observed_public",
+      "epistemicStatus": "inferred",
+      "status": "observed",
+      "validFrom": "2025-10-02",
+      "validUntil": "2026-06-03",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "sourceIds": ["SRC-NIKE-006", "SRC-NIKE-007", "SRC-NIKE-008"],
+      "evidenceIds": ["EVID-NIKE-006", "EVID-NIKE-007", "EVID-NIKE-008"],
+      "limitations": [
+        "This is a dated public observation profile, not a complete or authorized global language."
+      ],
+      "gaps": [
+        "color palette",
+        "typography family and hierarchy",
+        "layout grid",
+        "motion system",
+        "accessibility standard",
+        "approval rules"
+      ]
+    },
+    {
+      "id": "VL-NIKE-PUBLIC-EXPRESSION@2",
+      "profileId": "VL-NIKE-PUBLIC-EXPRESSION",
+      "revision": 2,
+      "branch": "main",
+      "parentRevisionIds": ["VL-NIKE-PUBLIC-EXPRESSION@1"],
+      "modules": [
+        {
+          "slot": "expression.symbolic",
+          "referenceId": "VR-NIKE-SYMBOL-MOTION-001",
+          "mode": "extend"
+        },
+        {
+          "slot": "imagery.storytelling",
+          "referenceId": "VR-NIKE-ATHLETE-STORY-001",
+          "mode": "extend"
+        },
+        {
+          "slot": "expression.local_context",
+          "referenceId": "VR-NIKE-LOCAL-CULTURE-001",
+          "mode": "extend"
+        }
+      ],
+      "authority": "observed_public",
+      "epistemicStatus": "inferred",
+      "status": "observed",
+      "validFrom": "2026-06-04",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "sourceIds": [
+        "SRC-NIKE-006",
+        "SRC-NIKE-007",
+        "SRC-NIKE-009",
+        "SRC-NIKE-012"
+      ],
+      "evidenceIds": [
+        "EVID-NIKE-006",
+        "EVID-NIKE-007",
+        "EVID-NIKE-009",
+        "EVID-NIKE-012"
+      ],
+      "limitations": [
+        "The local-context module is scoped to public football expression and must not be treated as universal Nike voice."
+      ],
+      "gaps": [
+        "color palette",
+        "typography family and hierarchy",
+        "layout grid",
+        "motion system",
+        "accessibility standard",
+        "approval rules"
+      ]
+    },
+    {
+      "id": "VL-NIKE-MEMBER-DIGITAL@1",
+      "profileId": "VL-NIKE-MEMBER-DIGITAL",
+      "revision": 1,
+      "branch": "main",
+      "parentRevisionIds": [],
+      "modules": [
+        {
+          "slot": "digital.entry_points",
+          "referenceId": "VR-NIKE-MEMBER-ENTRY-001",
+          "mode": "replace"
+        },
+        {
+          "slot": "imagery.storytelling",
+          "referenceId": "VR-NIKE-ATHLETE-STORY-001",
+          "mode": "extend"
+        }
+      ],
+      "authority": "official_public",
+      "epistemicStatus": "reported",
+      "status": "observed",
+      "validFrom": "2026-08-25",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "sourceIds": ["SRC-NIKE-010", "SRC-NIKE-011", "SRC-NIKE-007"],
+      "evidenceIds": ["EVID-NIKE-010", "EVID-NIKE-011", "EVID-NIKE-007"],
+      "limitations": [
+        "This profile describes public service and storytelling observations; it does not provide Nike's internal digital design system."
+      ],
+      "gaps": [
+        "color palette",
+        "typography family and hierarchy",
+        "layout grid",
+        "component states",
+        "motion system",
+        "accessibility standard",
+        "approval rules"
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "id": "BIND-NIKE-PUBLIC-EXPRESSION-2025",
+      "profileId": "VL-NIKE-PUBLIC-EXPRESSION",
+      "revisionId": "VL-NIKE-PUBLIC-EXPRESSION@1",
+      "scope": { "brandId": "world://brand/nike" },
+      "priority": 10,
+      "status": "observed",
+      "validFrom": "2025-10-02",
+      "validUntil": "2026-06-03",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "sourceIds": ["SRC-NIKE-006", "SRC-NIKE-007"],
+      "evidenceIds": ["EVID-NIKE-006", "EVID-NIKE-007"],
+      "limitations": ["Public observation only."]
+    },
+    {
+      "id": "BIND-NIKE-PUBLIC-EXPRESSION-2026",
+      "profileId": "VL-NIKE-PUBLIC-EXPRESSION",
+      "revisionId": "VL-NIKE-PUBLIC-EXPRESSION@2",
+      "scope": { "brandId": "world://brand/nike" },
+      "priority": 10,
+      "status": "observed",
+      "validFrom": "2026-06-04",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "sourceIds": ["SRC-NIKE-006", "SRC-NIKE-009", "SRC-NIKE-012"],
+      "evidenceIds": ["EVID-NIKE-006", "EVID-NIKE-009", "EVID-NIKE-012"],
+      "limitations": [
+        "Public observation only; local football expression is not universal."
+      ]
+    },
+    {
+      "id": "BIND-NIKE-MEMBER-DIGITAL-2026",
+      "profileId": "VL-NIKE-MEMBER-DIGITAL",
+      "revisionId": "VL-NIKE-MEMBER-DIGITAL@1",
+      "scope": {
+        "brandId": "world://brand/nike",
+        "offerId": "OFFER-NIKE-MEMBERSHIP",
+        "audienceSegmentIds": ["SEG-NIKE-MEMBERS"],
+        "channel": "nike.com",
+        "geography": "global"
+      },
+      "priority": 50,
+      "status": "observed",
+      "validFrom": "2026-08-25",
+      "recordedAt": "2026-08-27T00:00:00Z",
+      "lastVerifiedAt": "2026-08-25",
+      "sourceIds": ["SRC-NIKE-010", "SRC-NIKE-011"],
+      "evidenceIds": ["EVID-NIKE-010", "EVID-NIKE-011"],
+      "limitations": [
+        "Audience and offer selectors are bounded research context, not validated commercial segmentation or internal product governance."
+      ]
+    }
+  ]
+}

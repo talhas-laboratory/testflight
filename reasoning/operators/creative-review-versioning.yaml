@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/creative/review-versioning
+  version: 1
+  kind: transformational
+  category: creative_review_versioning
+  purpose: Apply explicit human review to a Creative Field proposal and produce an immutable version or a held correction branch.
+  accepts:
+    - CreativeFieldProposal
+    - ReviewDecision records and reviewer authority
+    - prior field versions and dependency manifest
+  requires_context:
+    - project and branch scope
+    - reviewer identity and authority grant
+    - evidence, conflicts and semantic diff
+    - requested lifecycle transition
+  preconditions:
+    - verify the reviewer can approve the target project and field
+    - verify proposal inputs have not changed since derivation
+    - verify rejected or modified elements remain in lineage
+  parameters:
+    abstraction_level: system
+    depth: working
+    context_lens: ethical
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: hold
+    proof_demand: operational
+  procedure:
+    - step: authorize
+      action: Check reviewer authority, project scope and requested lifecycle transition.
+    - step: reconcile
+      action: Apply accept, modify, reject, split, merge or defer decisions without deleting prior proposals.
+    - step: validate
+      action: Re-run lineage, conflict and dependency checks over the resulting candidate.
+    - step: version
+      action: Assign a new immutable version id and record parent versions, review ids and dependencies.
+    - step: return
+      action: Return an accepted version or a held correction proposal with explicit residual questions.
+  returns:
+    - field: field_version_or_hold
+      semantics: immutable accepted version or explicit held correction result
+      authority: reviewer grant and lifecycle gate
+    - field: review_lineage
+      semantics: decisions, actors, rationales and parent relationships
+      authority: governance record
+    - field: residual_conflicts
+      semantics: unresolved conflicts that remain outside the version
+      authority: validation evaluator
+  invariants:
+    - review never mutates or erases prior proposals or versions
+    - accepted state requires explicit authority
+    - version identity and dependency lineage remain stable
+  forbidden_shortcuts:
+    - auto-accept model output because a schema validates
+    - overwrite a version in place
+    - treat a local override as a canonical field edit
+  hold_when:
+    - reviewer authority is missing or ambiguous
+    - proposal derivation inputs are stale
+    - unresolved conflicts affect generation behavior
+  failure_modes:
+    - authority_missing
+    - stale_proposal
+    - lineage_loss
+    - invalid_lifecycle_transition
+  evaluators:
+    - id: review-authority
+      check: The approving decision has a valid actor and authority grant for the project.
+      pass_condition: authority is explicit and in scope.
+    - id: version-immutability
+      check: The new version has a new identity and preserves parent and review references.
+      pass_condition: no prior version payload is overwritten.
+  evidence:
+    mindscape_operator_refs: [O-06, O-10, O-12]
+    source_basis: [reasoning/README.md, domains/creative-field/manifest.yaml]

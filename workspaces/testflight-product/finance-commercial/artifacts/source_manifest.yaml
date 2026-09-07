@@ -1,0 +1,6 @@
+version: 1
+container_id: world://workspace/testflight-product/finance-commercial
+sources:
+  - repo://workspaces/testflight-product/finance-commercial/artifacts/module-contract.yaml
+  - repo://workspaces/testflight-product/finance-commercial/artifacts/commercial-hypotheses.yaml
+  - repo://deliverables/testflight-commercial-viability-deep-research.md

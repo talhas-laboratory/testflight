@@ -1,0 +1,39 @@
+version: 1
+workspace_id: world://workspace/testflight-product/experience-design
+status: active
+surfaces:
+  - id: surface:brand-intake
+    source_refs: [repo://apps/brand-intake-web/index.html, repo://apps/brand-intake-web/styles.css, repo://apps/brand-intake-web/app.js]
+    lifecycle: experience_prototype
+    views: [notebook, clarification, provisional_world_review, privacy_dialog]
+    patterns: [three_day_progress, optional_prompts, simulated_voice, browser_local_draft, one_question_at_a_time, evidence_drawer]
+    observed_character: warm_editorial_guided
+    limitations: [no_backend, no_real_audio, browser_only_attachments, local_storage_only]
+  - id: surface:brand-lab
+    source_refs: [repo://apps/brand-lab/src/testflight_brand_lab/static/index.html, repo://apps/brand-lab/src/testflight_brand_lab/static/styles.css, repo://apps/brand-lab/src/testflight_brand_lab/static/app.js]
+    lifecycle: implemented_local_read_only
+    views: [brand_map, relationship_graph, visual_language, agent_context, learning_loop, inspector]
+    patterns: [search_and_filter, topology_switch, evidence_inspection, context_simulation, hypothesis_outcome_separation]
+    observed_character: editorial_analytical_dense
+  - id: surface:creative-studio
+    source_refs: [repo://apps/creative-studio/src/testflight_creative_studio/static/index.html, repo://apps/creative-studio/src/testflight_creative_studio/static/styles.css, repo://apps/creative-studio/src/testflight_creative_studio/static/app.js]
+    lifecycle: implemented_local_write_capable
+    views: [reference_capture, spatial_canvas, field_review, artifact_bridge, reference_inspector, workflow_receipts]
+    patterns: [rights_gate, project_scope_header, durable_spatial_curation, annotation, explicit_analysis, authority_gated_acceptance, target_preflight, receipt_strip]
+    observed_character: editorial_operational_expressive
+shared_observed_patterns:
+  - editorial_display_typography
+  - warm_neutral_canvas
+  - monospace_metadata_and_status
+  - explicit_state_and_scope
+  - evidence_and_proposal_separation
+  - side_inspection_panels
+  - restrained_borders_and_spatial_composition
+drift_from_active_token_projection:
+  status: open
+  findings:
+    - existing_apps_do_not_import_packages/testflight-design-language/tokens.css
+    - existing_surfaces_use_distinct_accent_palettes_including_blue_coral_and_lime
+    - shared_patterns_are_conceptually_aligned_but_not_mechanically_enforced
+  remediation: migrate_each_surface_through_visual_regression_and_accessibility_review
+

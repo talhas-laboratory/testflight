@@ -21,6 +21,9 @@ start with boundary, ontology, local/global, configuration/runtime, and
 evaluation/schema. For persistence, start with identity/provenance,
 validation/persistence, retry/idempotency, and workspace isolation. For
 retrieval, start with retrieval/reasoning, local/global, and evidence/truth.
+For Creative Field work, route observation, reference interpretation, field
+synthesis, review/versioning, binding, projection, connector packets and output
+evaluation to the corresponding `world://operator/creative/*` contract.
 
 ## Source rules
 

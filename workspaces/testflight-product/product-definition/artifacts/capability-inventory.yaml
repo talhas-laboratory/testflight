@@ -1,0 +1,25 @@
+version: 1
+workspace_id: world://workspace/testflight-product/product-definition
+status: active
+capabilities:
+  - {id: capability:adapter-laboratory, implementation_status: implemented, implementation_refs: [repo://adapters, repo://upstreams/registry.yaml]}
+  - {id: capability:semantic-kernel, implementation_status: implemented, implementation_refs: [repo://packages/testflight-semantic]}
+  - {id: capability:brand-world, implementation_status: implemented_foundation, implementation_refs: [repo://packages/testflight-brand, repo://domains/brand]}
+  - {id: capability:workspace-federation, implementation_status: implemented_foundation, implementation_refs: [repo://packages/testflight-semantic/src/testflight_semantic/federation.py, repo://workspaces]}
+  - {id: capability:context-compilation, implementation_status: implemented, implementation_refs: [repo://packages/testflight-context-intelligence, repo://adapters/deepseek-harness-context-intelligence]}
+  - {id: capability:visual-language-resolution, implementation_status: implemented, implementation_refs: [repo://packages/testflight-context-intelligence/src/visual-language.ts]}
+  - {id: capability:creative-field, implementation_status: implemented_vertical_slice, implementation_refs: [repo://packages/testflight-creative-field, repo://apps/creative-studio]}
+  - {id: capability:artifact-handoff, implementation_status: implemented_vertical_slice, implementation_refs: [repo://adapters/creative-connectors, repo://apps/creative-studio]}
+  - {id: capability:multimodal-content-substrate, implementation_status: contracts_and_fixtures_only, implementation_refs: [repo://packages/testflight-content, repo://docs/workboards/multimodal-content-world-compilation]}
+  - {id: capability:operator-runtime, implementation_status: implemented_private_runtime, implementation_refs: [repo://packages/testflight-operator-runtime]}
+  - {id: capability:founder-capture, implementation_status: experience_prototype_only, implementation_refs: [repo://apps/brand-intake-web]}
+missing_product_capabilities:
+  - {id: capability:authenticated-product-api, required_by: product:founder-brand-world, status: planned}
+  - {id: capability:durable-operational-store, required_by: product:founder-brand-world, status: planned}
+  - {id: capability:background-ingestion, required_by: product:founder-brand-world, status: planned}
+  - {id: capability:clarification-planning, required_by: product:founder-brand-world, status: planned}
+  - {id: capability:expert-provisional-world-review, required_by: product:founder-brand-world, status: planned}
+  - {id: capability:enterprise-identity-and-access, required_by: offer:campaign-decision-intelligence, status: research_requirement}
+  - {id: capability:connector-ecosystem, required_by: offer:campaign-decision-intelligence, status: research_requirement}
+  - {id: capability:value-telemetry, required_by: [offer:world-seeder-pilot, offer:campaign-decision-intelligence], status: planned}
+

@@ -1,0 +1,19 @@
+version: 1
+workspace_id: world://workspace/testflight-product/operations-governance
+status: active
+risks:
+  - {id: risk:product-direction-ambiguity, severity: high, status: open, evidence: [repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md, repo://deliverables/testflight-commercial-viability-deep-research.md], mitigation: run_bounded_discovery_and_paid_pilot_decision_gate}
+  - {id: risk:prototype-product-gap, severity: high, status: open, evidence: [repo://apps/brand-intake-web/README.md], mitigation: follow_founder_build_order_without_treating_prototype_as_production}
+  - {id: risk:enterprise-readiness-gap, severity: high, status: open, evidence: [repo://deliverables/testflight-commercial-viability-deep-research.md], mitigation: defer_enterprise_claims_until_identity_security_audit_residency_and_support_are_evidenced}
+  - {id: risk:design-system-drift, severity: medium, status: open, evidence: [repo://workspaces/testflight-product/experience-design/artifacts/surface-pattern-inventory.yaml], mitigation: migrate_surfaces_to_shared_tokens_with_visual_and_accessibility_tests}
+  - {id: risk:knowledge-workspace-staleness, severity: medium, status: controlled, evidence: [repo://workspaces/testflight-product/AGENT_CONFIG.yaml], mitigation: validate_source_hashes_and_recertify_on_repository_or_decision_change}
+  - {id: risk:customer-product-evidence-leak, severity: high, status: controlled_by_policy, evidence: [repo://reasoning/operators/workspace-isolation.yaml], mitigation: explicit_authorized_bridge_and_scoped_cache_identity}
+  - {id: risk:research-overclaim, severity: high, status: controlled_by_policy, evidence: [repo://reasoning/operators/evidence-truth-conflation.yaml], mitigation: retain_epistemic_status_limitations_and_no_hit}
+  - {id: risk:external-provider-disclosure, severity: high, status: controlled_in_vertical_slice, evidence: [repo://packages/testflight-operator-runtime/README.md, repo://packages/testflight-creative-field/README.md], mitigation: preflight_minimum_disclosure_authority_and_receipts}
+controls:
+  - {id: control:secret-hygiene, evidence: repo://scripts/check_secrets.py, effectiveness: tested_in_make_check}
+  - {id: control:upstream-registry, evidence: repo://scripts/validate_registry.py, effectiveness: tested_in_make_check}
+  - {id: control:workspace-isolation, evidence: repo://scripts/validate_testflight_product_workspace.py, effectiveness: structurally_tested}
+  - {id: control:reasoning-operators, evidence: repo://scripts/validate_reasoning_operators.py, effectiveness: structurally_tested}
+  - {id: control:full-repository-check, evidence: repo://Makefile, effectiveness: passing_at_population_time}
+

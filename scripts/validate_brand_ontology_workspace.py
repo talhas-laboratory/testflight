@@ -36,6 +36,8 @@ REQUIRED_WORLDS = {
     "bitemporal-reconstruction",
     "causal-guardrails",
     "shared-representation-products",
+    "conditional-icp-to-asset-chain",
+    "branch-perspective-state-frame",
 }
 
 

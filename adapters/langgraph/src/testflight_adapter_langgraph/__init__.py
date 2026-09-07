@@ -4,6 +4,8 @@ from importlib.util import find_spec
 
 from testflight_core import AdapterDescriptor, Capability, HealthReport, HealthState
 
+from .workflow import LangGraphWorkflowCompiler, LangGraphWorkflowEngine, StepRunner
+
 
 class LangGraphAdapter:
     """Owns all LangGraph-specific behavior exposed to Testflight."""
@@ -23,4 +25,9 @@ class LangGraphAdapter:
         return HealthReport(HealthState.AVAILABLE, "LangGraph is importable.")
 
 
-__all__ = ["LangGraphAdapter"]
+__all__ = [
+    "LangGraphAdapter",
+    "LangGraphWorkflowCompiler",
+    "LangGraphWorkflowEngine",
+    "StepRunner",
+]

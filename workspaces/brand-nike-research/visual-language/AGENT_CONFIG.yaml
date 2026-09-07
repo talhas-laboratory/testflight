@@ -1,0 +1,45 @@
+workspace_id: world://workspace/brand/nike-research
+brand_id: world://brand/nike
+container_id: world://workspace/brand/nike-research/visual-language
+dataset_name: testflight_brand_nike_visual_language_staging
+version: 1
+mission: >-
+  Resolve the smallest evidence-backed visual-language profile and reusable reference modules for
+  a scoped Nike asset request while preserving version, time, authority, rights, and uncertainty.
+scope:
+  includes:
+    - public expression observations
+    - versioned visual-language profile manifests
+    - audience, offer, channel, geography, campaign, and product overlays
+    - asset metadata and rights constraints
+  excludes:
+    - confidential Nike design standards
+    - unlicensed full source assets
+    - canonical Nike brand mutations
+retrieval:
+  primary: exact_metadata
+  lexical: bm25
+  fallback: bounded_hybrid_same_child
+  graph_enabled_for_explicit_path_queries_only: true
+  max_hops: 2
+  no_hit_is_valid: true
+resolution:
+  require_brand_scope: true
+  require_valid_time_for_historical_queries: true
+  never_select_version_by_embedding_similarity: true
+  precedence: [global, product, offer, campaign, audience, channel, geography, occasion]
+policy:
+  evidence_strictness: citation_required
+  mutation: proposal_only
+  action: deny_unless_authorized
+  unknown_reference_kind: preserve_but_not_actionable
+quality:
+  deterministic_resolution: true
+  evidence_resolution: 1.0
+  no_hit_correctness: 1.0
+refresh:
+  cadence_days: 90
+  rebuild_on:
+    - manifest_hash_change
+    - source_hash_change
+    - ontology_version_change

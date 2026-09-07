@@ -20,7 +20,7 @@ for search order, batch sequencing, diversity checks and stopping rules. Source 
 bounded evidence notes are canonical within this research workspace; external full text remains
 outside the repository unless licensed.
 
-The nine synthetic worlds are executable certification fixtures. They test semantic boundaries;
+The eleven synthetic worlds are executable certification fixtures. They test semantic boundaries;
 they do not create accepted Brand-world facts.
 
 Projection preparation is handled by `scripts/populate_brand_research_workspace.py`. Use

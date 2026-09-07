@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/testflight-product/architecture
+parent: world://workspace/testflight-product
+type: child-knowledge-container
+label: Architecture
+mission: Maintain Testflight system, application, package, interface, data, deployment, and dependency boundaries.
+dataset_name: testflight_testflight_product_architecture_staging
+route: architecture
+status: candidate
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes: [systems, applications, packages, adapters, interfaces, data, deployment, dependencies, runtime_boundaries]
+  excludes: [secret_values, unverified_runtime_claims, product_strategy_as_implementation]
+

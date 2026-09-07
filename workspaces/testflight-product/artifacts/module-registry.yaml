@@ -1,0 +1,46 @@
+version: 1
+workspace_id: world://workspace/testflight-product
+modules:
+  - id: product-definition
+    label: Product definition
+    owns: [identity, principles, portfolio, capabilities, surfaces, roadmap]
+    child_workspace_id: world://workspace/testflight-product/product-definition
+  - id: product-decisions
+    label: Product decisions
+    owns: [proposals, decisions, alternatives, authority, supersession]
+    child_workspace_id: world://workspace/testflight-product/product-decisions
+  - id: experience-design
+    label: Experience design
+    owns: [design_language, content_language, tokens, patterns, components, accessibility]
+    child_workspace_id: world://workspace/testflight-product/experience-design
+  - id: architecture
+    label: Architecture
+    owns: [systems, applications, packages, interfaces, data, deployment, dependencies]
+    child_workspace_id: world://workspace/testflight-product/architecture
+  - id: customers-market
+    label: Customers and market
+    owns: [actors, customers, segments, needs, journeys, feedback, market]
+    child_workspace_id: world://workspace/testflight-product/customers-market
+  - id: marketing-growth
+    label: Marketing and growth
+    owns: [positioning, narrative, messaging, campaigns, channels, acquisition, retention]
+    child_workspace_id: world://workspace/testflight-product/marketing-growth
+  - id: finance-commercial
+    label: Finance and commercial
+    owns: [pricing, revenue, costs, budgets, forecasts, transactions, unit_economics]
+    child_workspace_id: world://workspace/testflight-product/finance-commercial
+  - id: operations-governance
+    label: Operations and governance
+    owns: [roles, delivery, policies, controls, risk, compliance, incidents]
+    child_workspace_id: world://workspace/testflight-product/operations-governance
+  - id: research-learning
+    label: Research and learning
+    owns: [sources, research_questions, hypotheses, experiments, metrics, evaluations, outcomes, learning_updates]
+    child_workspace_id: world://workspace/testflight-product/research-learning
+cross_cutting_concerns:
+  - evidence_and_provenance
+  - identity_and_time
+  - permissions_and_disclosure
+  - decisions_and_derivation
+  - measurement_and_learning
+  - language_and_accessibility

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "containerId": "world://workspace/testflight-product/operations-governance",
+  "resources": [
+    {"module":"operations-governance","unit":"module-contract","task_view":"bootstrap","tool":"testflight","doc_type":"contract","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/operations-governance/artifacts/module-contract.yaml"},
+    {"module":"operations-governance","unit":"operating-model","task_view":"deploy","tool":"testflight","doc_type":"operating_model","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/operations-governance/artifacts/operating-model.yaml"},
+    {"module":"operations-governance","unit":"risk-register","task_view":"eval","tool":"testflight","doc_type":"risk_register","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/operations-governance/artifacts/risk-register.yaml"},
+    {"module":"operations-governance","unit":"working-agreements","task_view":"none","tool":"testflight","doc_type":"policy","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://AGENTS.md"},
+    {"module":"operations-governance","unit":"quality-automation","task_view":"deploy","tool":"testflight","doc_type":"runtime_config","evidence_tier":"T1","experience_type":"implementation","difficulty":"advanced","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://Makefile"},
+    {"module":"operations-governance","unit":"enterprise-requirements-research","task_view":"eval","tool":"testflight","doc_type":"research_report","evidence_tier":"T2","experience_type":"field_research","difficulty":"expert","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://deliverables/testflight-commercial-viability-deep-research.md"}
+  ]
+}

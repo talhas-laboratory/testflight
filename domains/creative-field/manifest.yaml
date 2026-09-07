@@ -1,0 +1,9 @@
+id: world://ontology/creative-field
+version: 1.0.0-candidate
+status: candidate
+dimension_registry: dimensions.yaml
+modules:
+  - project-and-board
+  - observation-and-interpretation
+  - field-and-projection
+  - connector-and-evaluation

@@ -1,0 +1,16 @@
+version: 1
+workspace_id: world://workspace/testflight-product/experience-design
+module_id: experience-design
+status: active
+owns:
+  entity_types: [design_system, product_surface, screen, design_component, interaction_pattern, content_pattern, token_set]
+  event_types: [design_review, usability_test, revision_promotion]
+  state_types: [design_revision_state, surface_adoption_state, component_state, interaction_state]
+  claim_types: [design_principle, usability_observation, accessibility_finding]
+relations: [expressed_through, composed_of, applies_to, adapts_for, supersedes, evidenced_by]
+implementation_projection: repo://packages/testflight-design-language
+invariants:
+  - product_language_is_not_customer_brand_language
+  - semantic_token_is_not_raw_implementation_value
+  - reference_is_not_rights_grant
+  - aesthetic_preference_is_not_usability_evidence

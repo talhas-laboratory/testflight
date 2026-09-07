@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/testflight-product/customers-market
+parent: world://workspace/testflight-product
+type: child-knowledge-container
+label: Customers and market
+mission: Maintain grounded customer, user, segment, need, journey, feedback, and market knowledge.
+dataset_name: testflight_testflight_product_customers_market_staging
+route: customers-market
+status: candidate
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes: [actors, organizations, customers, users, segments, needs, journeys, feedback, market, competitors]
+  excludes: [unconsented_personal_data, inferred_sensitive_traits, unsupported_market_claims]
+

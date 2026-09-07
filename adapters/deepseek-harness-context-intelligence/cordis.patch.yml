@@ -1,0 +1,12 @@
+- insert:
+    - id: testflight-context-intelligence
+      name: "@testflight/dsh-context-intelligence"
+      config:
+        repositoryRoot: !!js process.env.TESTFLIGHT_REPOSITORY_ROOT ?? process.cwd()
+        configPath: !!js process.env.TESTFLIGHT_CONTEXT_CONFIG ?? 'workspaces/brand-nike-research/INTELLIGENCE.json'
+        pythonCommand: !!js process.env.TESTFLIGHT_CONTEXT_PYTHON ?? '.venv-cognee/bin/python'
+        traceDirectory: !!js process.env.TESTFLIGHT_CONTEXT_TRACE_DIR ?? '.data/context-intelligence/traces'
+        traceMaxRuns: !!js Number(process.env.TESTFLIGHT_CONTEXT_TRACE_MAX_RUNS ?? 200)
+        traceMaxAgeDays: !!js Number(process.env.TESTFLIGHT_CONTEXT_TRACE_MAX_AGE_DAYS ?? 30)
+        visualLanguageManifestPath: !!js process.env.TESTFLIGHT_VISUAL_LANGUAGE_MANIFEST ?? ''
+        autoActivate: true

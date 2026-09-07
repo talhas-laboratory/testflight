@@ -31,3 +31,11 @@ request:
 ```sh
 TESTFLIGHT_DSH_MODEL=your-openrouter-model ./scripts/run_deepseek_harness.sh --dump-config
 ```
+
+## Context intelligence
+
+Run `make setup-server-context-intelligence` after Cognee and the Nike staging workspace are
+available. This builds and installs the local Cordis plugin into the selected Harness profile. The
+tracked patch then enables both automatic brand-workflow context injection and the explicit
+`compile_context` tool. The context intelligence model is configured separately with
+`TESTFLIGHT_INTELLIGENCE_MODEL`; the launcher never substitutes the main Harness model.

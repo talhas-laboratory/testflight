@@ -1,0 +1,108 @@
+version: 1
+workspace_id: world://workspace/brand/hellobiotic-research
+brand_id: world://brand/hellobiotic
+ontology_version: 1.0.0
+mutation_status: proposal_only
+entities:
+- id: ENT-HB-ID-001
+  entity_type: identity
+  label: Microbiome-friendly whole-body care intention
+  description: The public storefront frames Biotic around microbiome-friendly deodorant
+    and full-spectrum care.
+  evidence_ids:
+  - EVID-HB-001
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  status: proposed
+  perspective: reported
+  epistemic_status: reported
+- id: ENT-HB-EX-001
+  entity_type: expression
+  label: Playful body-positive verbal expression
+  description: Public copy uses informal body language such as pit-care and Hello
+    everyBODY.
+  evidence_ids:
+  - EVID-HB-001
+  epistemic_status: observed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  status: proposed
+  perspective: reported
+- id: ENT-HB-OF-001
+  entity_type: offering
+  label: Brightening Probiotic Deodorant
+  description: A publicly listed deodorant with documented formats and subscription
+    options.
+  evidence_ids:
+  - EVID-HB-002
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  status: proposed
+  perspective: reported
+  epistemic_status: reported
+- id: ENT-HB-XP-001
+  entity_type: experience
+  label: Direct product education and purchase journey
+  description: The storefront and product pages combine education, ingredients, purchase
+    choices, and FAQ guidance.
+  evidence_ids:
+  - EVID-HB-001
+  - EVID-HB-002
+  - EVID-HB-004
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  status: proposed
+  perspective: reported
+  epistemic_status: reported
+- id: ENT-HB-PE-001
+  entity_type: perception
+  label: Public testimonial layer
+  description: The storefront displays customer testimonials; these are reported site
+    content, not representative outcome research.
+  evidence_ids:
+  - EVID-HB-001
+  epistemic_status: observed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  status: proposed
+  perspective: reported
+- id: ENT-HB-GV-001
+  entity_type: governance
+  label: Founder-reported brand stewardship
+  description: The public story identifies Sadaf and Leila as founders; it does not
+    expose approval or governance procedures.
+  evidence_ids:
+  - EVID-HB-003
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  status: proposed
+  perspective: reported
+  epistemic_status: reported
+- id: ENT-HB-EN-001
+  entity_type: environment
+  label: People evaluating natural deodorant alternatives
+  description: A bounded public audience environment inferred from product and FAQ
+    framing, not a validated ICP.
+  evidence_ids:
+  - EVID-HB-002
+  - EVID-HB-004
+  perspective: inferred
+  epistemic_status: inferred
+  limitations:
+  - No internal segmentation or independent audience study is available.
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  status: proposed
+- id: ENT-HB-EV-001
+  entity_type: event
+  label: Public product ecosystem snapshot
+  description: The verified storefront publicly lists deodorant and Daily Sunshine
+    powder products at the research cutoff.
+  evidence_ids:
+  - EVID-HB-001
+  - EVID-HB-005
+  epistemic_status: observed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  status: proposed
+  perspective: reported

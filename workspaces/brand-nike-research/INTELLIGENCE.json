@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "workspaceId": "world://workspace/brand/nike-research",
+  "brandId": "world://brand/nike",
+  "datasetName": "testflight_brand_nike_research_staging",
+  "subjectScope": "NIKE Brand within NIKE, Inc.; Jordan Brand and Converse remain distinct related brands.",
+  "retrieval": {
+    "topK": 12,
+    "maximumQueries": 3,
+    "navigationSourcePatterns": [
+      "agent_index",
+      "agent_config",
+      "workspace.yaml"
+    ]
+  },
+  "visualLanguage": {
+    "enabled": true,
+    "route": "visual-language",
+    "workflowStages": ["brief", "concept", "production", "review"],
+    "manifestPath": "workspaces/brand-nike-research/visual-language/manifest.json",
+    "datasetName": "testflight_brand_nike_visual_language_staging",
+    "audienceSegmentAliases": [
+      { "id": "SEG-NIKE-MEMBERS", "includesAny": ["member", "members"] }
+    ],
+    "offerAliases": [
+      {
+        "id": "OFFER-NIKE-MEMBERSHIP",
+        "includesAny": ["membership", "member experience"]
+      }
+    ]
+  },
+  "worldView": {
+    "enabled": true,
+    "manifestPath": "workspaces/brand-nike-research/artifacts/world-modeling.yaml"
+  },
+  "activation": {
+    "actionTerms": [
+      "create",
+      "make",
+      "write",
+      "design",
+      "adapt",
+      "review",
+      "evaluate",
+      "position",
+      "brief",
+      "concept"
+    ],
+    "domainTerms": [
+      "nike",
+      "brand",
+      "campaign",
+      "asset",
+      "audience",
+      "positioning",
+      "creative",
+      "landing page",
+      "advertisement"
+    ]
+  },
+  "workflows": [
+    {
+      "stage": "brief",
+      "goal": "Turn the request into a bounded, evidence-backed creative problem.",
+      "route": "asset-context",
+      "requiredInputs": [
+        "assetType",
+        "objective",
+        "audience",
+        "channel",
+        "geography",
+        "occasion",
+        "validTime"
+      ],
+      "queryHints": [
+        "current Nike identity audience environment perception",
+        "current competitor positioning and constraints"
+      ],
+      "reasoningInstructions": [
+        "Separate Nike's intended identity from independent perception evidence.",
+        "State audience, occasion, channel, geography, and time boundaries explicitly.",
+        "Convert evidence into objectives and constraints; do not imitate a campaign unless reuse is authorized.",
+        "Ask only for missing inputs that materially change the brief."
+      ],
+      "entitySelection": {
+        "always": [
+          "ENT-NIKE-ID-001",
+          "ENT-NIKE-ID-002",
+          "ENT-NIKE-ID-003",
+          "ENT-NIKE-ID-005"
+        ],
+        "conditions": [
+          {
+            "field": "prompt",
+            "includesAny": ["football"],
+            "entityIds": [
+              "ENT-NIKE-EX-005",
+              "ENT-NIKE-OF-011",
+              "ENT-NIKE-EN-015",
+              "ENT-NIKE-EN-016"
+            ]
+          },
+          {
+            "field": "prompt",
+            "includesAny": ["running", "runner"],
+            "entityIds": [
+              "ENT-NIKE-OF-010",
+              "ENT-NIKE-EN-011",
+              "ENT-NIKE-EN-012"
+            ]
+          },
+          {
+            "field": "audience",
+            "includesAny": ["young athlete"],
+            "entityIds": ["ENT-NIKE-EX-003", "ENT-NIKE-EN-013"]
+          },
+          {
+            "field": "audience",
+            "includesAny": ["women athlete", "female athlete"],
+            "entityIds": ["ENT-NIKE-EX-004", "ENT-NIKE-EN-014"]
+          },
+          {
+            "field": "audience",
+            "includesAny": ["member"],
+            "entityIds": [
+              "ENT-NIKE-OF-005",
+              "ENT-NIKE-OF-006",
+              "ENT-NIKE-OF-007",
+              "ENT-NIKE-EN-017"
+            ]
+          },
+          {
+            "field": "channel",
+            "includesAny": ["app", "member"],
+            "entityIds": [
+              "ENT-NIKE-OF-005",
+              "ENT-NIKE-OF-006",
+              "ENT-NIKE-OF-007",
+              "ENT-NIKE-EN-017"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "concept",
+      "goal": "Generate and compare creative territories consistent with an approved brief.",
+      "route": "asset-context",
+      "requiredInputs": ["assetType", "objective", "audience", "channel"],
+      "queryHints": [
+        "Nike identity expression audience needs",
+        "current campaign-specific expression and perception tensions"
+      ],
+      "reasoningInstructions": [
+        "Derive multiple territories from identity and audience needs, not surface copying.",
+        "Label intended influence separately from observed effectiveness.",
+        "Preserve campaign-specific boundaries; do not universalize football or youth expression."
+      ],
+      "entitySelection": {
+        "always": [
+          "ENT-NIKE-EX-001",
+          "ENT-NIKE-EX-002",
+          "ENT-NIKE-EX-006",
+          "ENT-NIKE-EX-007"
+        ],
+        "conditions": [
+          {
+            "field": "prompt",
+            "includesAny": ["youth", "young athlete"],
+            "entityIds": ["ENT-NIKE-EX-003"]
+          },
+          {
+            "field": "prompt",
+            "includesAny": ["women", "female athlete"],
+            "entityIds": ["ENT-NIKE-EX-004"]
+          },
+          {
+            "field": "prompt",
+            "includesAny": ["football"],
+            "entityIds": ["ENT-NIKE-EX-005", "ENT-NIKE-EX-007"]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "production",
+      "goal": "Translate an approved concept into channel-appropriate execution requirements.",
+      "route": "asset-context",
+      "requiredInputs": [
+        "assetType",
+        "objective",
+        "audience",
+        "channel",
+        "geography"
+      ],
+      "queryHints": [
+        "Nike channel experience governance production constraints"
+      ],
+      "reasoningInstructions": [
+        "Convert the concept into channel behavior, hierarchy, content, and interaction requirements.",
+        "Public research does not replace proprietary design, trademark, accessibility, or approval standards.",
+        "Require authorized internal standards before final production or publication."
+      ],
+      "entitySelection": {
+        "always": ["ENT-NIKE-GV-001", "ENT-NIKE-GV-006"],
+        "conditions": [
+          {
+            "field": "channel",
+            "includesAny": ["retail", "store"],
+            "entityIds": ["ENT-NIKE-XP-001", "ENT-NIKE-XP-007"]
+          },
+          {
+            "field": "channel",
+            "includesAny": ["nike app"],
+            "entityIds": ["ENT-NIKE-OF-006", "ENT-NIKE-XP-004"]
+          },
+          {
+            "field": "channel",
+            "includesAny": ["snkrs"],
+            "entityIds": ["ENT-NIKE-OF-007", "ENT-NIKE-XP-005"]
+          },
+          {
+            "field": "channel",
+            "includesAny": ["training", "running app"],
+            "entityIds": [
+              "ENT-NIKE-OF-008",
+              "ENT-NIKE-OF-009",
+              "ENT-NIKE-XP-006"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "review",
+      "goal": "Check strategic fit, evidence use, scope, and unsupported claims.",
+      "route": "review",
+      "requiredInputs": ["assetType", "objective", "audience", "channel"],
+      "queryHints": [
+        "Nike current identity perception contradictions governance",
+        "campaign and channel scope limitations"
+      ],
+      "reasoningInstructions": [
+        "Trace every strategic claim to evidence and preserve perspective and date.",
+        "Reject global conclusions drawn from campaign-specific or channel-specific sources.",
+        "Treat held relationships as hypotheses, never facts.",
+        "Return partial when strategic review is possible but legal or proprietary review is not."
+      ],
+      "entitySelection": {
+        "always": [
+          "ENT-NIKE-PE-001",
+          "ENT-NIKE-PE-002",
+          "ENT-NIKE-PE-003",
+          "ENT-NIKE-PE-004",
+          "ENT-NIKE-PE-007"
+        ],
+        "conditions": []
+      }
+    },
+    {
+      "stage": "post_publication_learning",
+      "goal": "Integrate measured outcomes without confusing them with intent.",
+      "route": "review",
+      "requiredInputs": [
+        "objective",
+        "audience",
+        "channel",
+        "geography",
+        "validTime"
+      ],
+      "queryHints": ["Nike observed outcomes perception baseline comparator"],
+      "reasoningInstructions": [
+        "Store outcomes as observed evidence with valid and recorded times.",
+        "Compare only compatible measures and populations.",
+        "Do not assert feedback into identity without a decision record."
+      ]
+    }
+  ],
+  "sections": [
+    "identity",
+    "audience_and_environment",
+    "expression",
+    "offerings_and_experiences",
+    "perception_and_competition",
+    "governance_and_constraints",
+    "events",
+    "relationships",
+    "evidence"
+  ],
+  "operators": [
+    "world://operator/guardrail/boundary-conflation@1",
+    "world://operator/guardrail/configuration-runtime@1",
+    "world://operator/guardrail/retrieval-reasoning-conflation@1",
+    "world://operator/guardrail/evidence-truth-conflation@1",
+    "world://operator/guardrail/identity-provenance-conflation@1",
+    "world://operator/guardrail/workspace-isolation@1",
+    "world://operator/guardrail/evaluation-schema@1"
+  ]
+}

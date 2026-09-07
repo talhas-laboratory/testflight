@@ -1,0 +1,20 @@
+version: 1
+workspace_id: world://workspace/testflight-product/architecture
+module_id: architecture
+status: active
+owns:
+  entity_types: [system, application, package, adapter, upstream, interface, data_store, runtime_boundary, deployment_target]
+  event_types: [deployment, migration, runtime_execution, failure]
+  state_types: [declared_configuration, effective_configuration, health_state, release_state]
+  claim_types: [architecture_decision, runtime_observation, dependency_assumption, implementation_status]
+relations: [contains, depends_on, calls, reads_from, writes_to, adapts, deploys_to, implements]
+known_applications:
+  - {id: app:brand-intake-web, path: apps/brand-intake-web, surface_id: surface:brand-intake}
+  - {id: app:brand-lab, path: apps/brand-lab, surface_id: surface:brand-lab}
+  - {id: app:creative-studio, path: apps/creative-studio, surface_id: surface:creative-studio}
+invariants:
+  - product_capability_is_not_application
+  - application_is_not_package
+  - declared_configuration_is_not_effective_runtime
+  - reachability_is_not_permission
+  - external_dependencies_are_registered

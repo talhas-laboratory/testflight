@@ -21,6 +21,18 @@ EXPECTED = {
     "SW-007": {"utc_half_open_time", "knowledge_history", "snapshot_replay"},
     "SW-008": {"causal_gate", "alternatives_preserved", "sequence_not_cause"},
     "SW-009": {"shared_identity", "adaptive_binding", "equal_authority_conflict_explicit"},
+    "SW-010": {
+        "decision_lineage",
+        "conditional_dependency",
+        "child_first_federation",
+        "no_automatic_rewrite",
+    },
+    "SW-011": {
+        "state_claim_separation",
+        "branch_overlay",
+        "perspective_non_interference",
+        "nary_frame",
+    },
 }
 
 

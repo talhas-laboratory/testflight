@@ -1,0 +1,193 @@
+version: 1
+workspace_id: world://workspace/brand/hellobiotic-research
+brand_id: world://brand/hellobiotic
+ontology_version: 1.0.0
+mutation_status: proposal_only
+relationships:
+- id: REL-HELLOBIOTIC-001
+  relationship_type: has_component
+  source_id: world://brand/hellobiotic
+  target_id: ENT-HB-ID-001
+  assertion: Public research models has component between world://brand/hellobiotic
+    and ENT-HB-ID-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-002
+  relationship_type: expressed_through
+  source_id: world://brand/hellobiotic
+  target_id: ENT-HB-EX-001
+  assertion: Public research models expressed through between world://brand/hellobiotic
+    and ENT-HB-EX-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-003
+  relationship_type: offers
+  source_id: world://brand/hellobiotic
+  target_id: ENT-HB-OF-001
+  assertion: Public research models offers between world://brand/hellobiotic and ENT-HB-OF-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-004
+  relationship_type: experienced_through
+  source_id: ENT-HB-OF-001
+  target_id: ENT-HB-XP-001
+  assertion: Public research models experienced through between ENT-HB-OF-001 and
+    ENT-HB-XP-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-005
+  relationship_type: perceived_by
+  source_id: world://brand/hellobiotic
+  target_id: ENT-HB-EN-001
+  assertion: Public research models perceived by between world://brand/hellobiotic
+    and ENT-HB-EN-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-006
+  relationship_type: governed_by
+  source_id: world://brand/hellobiotic
+  target_id: ENT-HB-GV-001
+  assertion: Public research models governed by between world://brand/hellobiotic
+    and ENT-HB-GV-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-007
+  relationship_type: situated_in
+  source_id: world://brand/hellobiotic
+  target_id: ENT-HB-EN-001
+  assertion: Public research models situated in between world://brand/hellobiotic
+    and ENT-HB-EN-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-008
+  relationship_type: evolves_through
+  source_id: world://brand/hellobiotic
+  target_id: ENT-HB-EV-001
+  assertion: Public research models evolves through between world://brand/hellobiotic
+    and ENT-HB-EV-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-009
+  relationship_type: shapes
+  source_id: ENT-HB-OF-001
+  target_id: ENT-HB-PE-001
+  assertion: Public research models shapes between ENT-HB-OF-001 and ENT-HB-PE-001.
+  perspective: inferred
+  epistemic_status: inferred
+  status: held
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+  limitations:
+  - This is a testable modeling relation; public evidence does not establish causal
+    effect or internal decision use.
+- id: REL-HELLOBIOTIC-010
+  relationship_type: updates
+  source_id: ENT-HB-EV-001
+  target_id: ENT-HB-ID-001
+  assertion: Public research models updates between ENT-HB-EV-001 and ENT-HB-ID-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-011
+  relationship_type: feeds_back_into
+  source_id: ENT-HB-PE-001
+  target_id: ENT-HB-ID-001
+  assertion: Public research models feeds back into between ENT-HB-PE-001 and ENT-HB-ID-001.
+  perspective: inferred
+  epistemic_status: inferred
+  status: held
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+  limitations:
+  - This is a testable modeling relation; public evidence does not establish causal
+    effect or internal decision use.
+- id: REL-HELLOBIOTIC-012
+  relationship_type: supports
+  source_id: ENT-HB-OF-001
+  target_id: ENT-HB-ID-001
+  assertion: Public research models supports between ENT-HB-OF-001 and ENT-HB-ID-001.
+  perspective: reported
+  epistemic_status: reported
+  status: proposed
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+- id: REL-HELLOBIOTIC-013
+  relationship_type: contradicts
+  source_id: ENT-HB-OF-001
+  target_id: ENT-HB-PE-001
+  assertion: Public research models contradicts between ENT-HB-OF-001 and ENT-HB-PE-001.
+  perspective: inferred
+  epistemic_status: inferred
+  status: held
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+  limitations:
+  - This is a testable modeling relation; public evidence does not establish causal
+    effect or internal decision use.
+- id: REL-HELLOBIOTIC-014
+  relationship_type: influences
+  source_id: ENT-HB-OF-001
+  target_id: ENT-HB-EN-001
+  assertion: Public research models influences between ENT-HB-OF-001 and ENT-HB-EN-001.
+  perspective: inferred
+  epistemic_status: inferred
+  status: held
+  context_ids:
+  - CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  evidence_ids:
+  - EVID-HB-001
+  limitations:
+  - This is a testable modeling relation; public evidence does not establish causal
+    effect or internal decision use.

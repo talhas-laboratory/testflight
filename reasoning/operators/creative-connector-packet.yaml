@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/creative/connector-packet
+  version: 1
+  kind: transformational
+  category: creative_connector_packet
+  purpose: Compile a field projection into a target-capability-aware generation packet while preserving disclosure and limitations.
+  accepts:
+    - FieldProjection
+    - TargetCapabilityManifest
+    - permitted grounding assets and disclosure policy
+  requires_context:
+    - target adapter version and supported modalities
+    - privacy, rights and disclosure manifest
+    - projection assumptions, omissions and controls
+    - authorization for external generation
+  preconditions:
+    - validate target capabilities against requested controls and modality
+    - exclude assets not cleared for the target operation
+    - separate semantic direction from provider-specific syntax
+  parameters:
+    abstraction_level: implementation
+    depth: working
+    context_lens: operational
+    output_mode: machine_readable
+    evidence_strictness: citation_required
+    uncertainty_policy: hold
+    proof_demand: end_to_end
+  procedure:
+    - step: negotiate
+      action: Compare projection requirements with the target capability manifest.
+    - step: constrain
+      action: Remove or translate unsupported controls and record each limitation.
+    - step: disclose
+      action: Apply rights, privacy and grounding disclosure rules to every sent asset.
+    - step: authorize
+      action: Verify external-generation authority before emitting an actionable packet.
+    - step: return
+      action: Return a GenerationPacket or a held capability-degraded result.
+  returns:
+    - field: generation_packet
+      semantics: provider-neutral controls plus adapter-specific compilation metadata
+      authority: projection and target manifest
+    - field: capability_limitations
+      semantics: unsupported or degraded controls that affect expected output
+      authority: target adapter
+    - field: disclosure_manifest_id
+      semantics: auditable rights and privacy disclosure applied to the request
+      authority: policy engine
+  invariants:
+    - target capability limits never silently disappear
+    - protected source assets are not sent without permission
+    - packet remains traceable to projection and adapter version
+  forbidden_shortcuts:
+    - claim a provider supports a control it does not expose
+    - send reference media because it is visually useful but uncleared
+    - treat provider syntax as the Creative Field itself
+  hold_when:
+    - required capability is unavailable
+    - disclosure or rights permission is missing
+    - external action is not authorized
+  failure_modes:
+    - capability_degradation
+    - disclosure_gap
+    - unauthorized_external_action
+    - adapter_drift
+  evaluators:
+    - id: capability-honesty
+      check: Every requested control is accepted, translated or listed as limited.
+      pass_condition: no unsupported control is represented as active.
+    - id: packet-disclosure
+      check: Every grounding asset and external action has a disclosure and permission record.
+      pass_condition: target packet is auditable.
+  evidence:
+    mindscape_operator_refs: [O-07, O-09, O-12]
+    source_basis: [reasoning/README.md, domains/creative-field/manifest.yaml]

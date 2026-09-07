@@ -14,8 +14,8 @@ from validate_brand_ontology_fixtures import validate_fixtures  # noqa: E402
 def test_all_synthetic_worlds_are_executable() -> None:
     worlds = validate_all_fixture_worlds()
 
-    assert len(worlds) == 9
-    assert {world.world_id for world in worlds} == {f"SW-{index:03d}" for index in range(1, 10)}
+    assert len(worlds) == 11
+    assert {world.world_id for world in worlds} == {f"SW-{index:03d}" for index in range(1, 12)}
     assert all(world.objects for world in worlds)
 
 
@@ -23,7 +23,7 @@ def test_fixture_catalog_and_invariants_are_certified() -> None:
     result = validate_fixtures()
 
     assert result["status"] == "certified"
-    assert result["world_count"] == 9
+    assert result["world_count"] == 11
 
 
 def test_bitemporal_fixture_replays_knowledge_history() -> None:

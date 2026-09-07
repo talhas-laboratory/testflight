@@ -1,0 +1,56 @@
+- generic [ref=e1]:
+  - navigation "Prototype views" [ref=e5]:
+    - button "Notebook" [active] [ref=e6] [cursor=pointer]
+    - button "Clarify" [ref=e7] [cursor=pointer]
+    - button "Review" [ref=e8] [cursor=pointer]
+  - main [ref=e9]:
+    - complementary "Capture progress" [ref=e10]:
+      - link "Testflight home" [ref=e11] [cursor=pointer]:
+        - /url: "#"
+        - text: T/F
+      - list [ref=e14]:
+        - listitem [ref=e15]:
+          - generic [ref=e16]: "1"
+        - listitem [ref=e18]:
+          - generic [ref=e19]: "2"
+        - listitem [ref=e21]:
+          - generic [ref=e22]: "3"
+      - button "Open privacy note" [ref=e24] [cursor=pointer]
+    - region [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - paragraph [ref=e32]: Day one · your own words
+          - heading [level=1] [ref=e33]:
+            - text: What comes to mindwhen you think of
+            - emphasis [ref=e34]: the Brand?
+        - generic [ref=e35]:
+          - generic [ref=e36]: Session
+          - strong [ref=e37]: 00:53
+          - generic [ref=e38]: No timer. Stop whenever.
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]: Write your thoughts about the Brand
+          - textbox "Write your thoughts about the Brand" [ref=e42]:
+            - /placeholder: Start anywhere. A customer, a memory, a frustration, a phrase you keep returning to…
+            - text: The Brand should make capable people feel welcome before they know the language. We are calm, useful and never performative. The thing I wish people understood about us is…
+          - generic [ref=e44]:
+            - generic [ref=e45]: Saved in this browser
+            - generic [ref=e47]: 29 words
+        - complementary [ref=e48]:
+          - paragraph [ref=e49]: If you want a nudge
+          - button "Who gets it immediately?" [ref=e50] [cursor=pointer]
+          - button "What is often misunderstood?" [ref=e51] [cursor=pointer]
+          - button "What should the Brand never become?" [ref=e52] [cursor=pointer]
+          - paragraph [ref=e53]: Ignore these if they get in the way. There is no right order.
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - button "Speak voice note" [ref=e56] [cursor=pointer]:
+            - generic [ref=e58]: Speak
+            - generic [ref=e59]: voice note
+          - button "Add file or image" [ref=e60] [cursor=pointer]:
+            - generic [ref=e63]: Add
+            - generic [ref=e64]: file or image
+        - button "Enough for today →" [ref=e65] [cursor=pointer]:
+          - generic [ref=e66]: Enough for today
+          - generic [ref=e67]: →
+  - status

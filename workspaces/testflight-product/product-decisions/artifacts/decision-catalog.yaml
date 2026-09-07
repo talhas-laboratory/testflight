@@ -1,0 +1,46 @@
+version: 1
+workspace_id: world://workspace/testflight-product/product-decisions
+status: active
+repository_decisions:
+  - {id: decision:adr-0001, title: Integrate upstreams through owned adapters, status: accepted, source_url: repo://docs/decisions/0001-upstream-integration-policy.md}
+  - {id: decision:adr-0002, title: GitHub is the canonical code remote, status: accepted, source_url: repo://docs/decisions/0002-github-is-canonical.md}
+  - {id: decision:adr-0003, title: Keep Brand semantics canonical and project to Cognee, status: accepted, source_url: repo://docs/decisions/0003-brand-canonical-model-and-cognee-projection.md}
+  - {id: decision:adr-0004, title: Establish the Brand Ontology Constitution v0.1, status: accepted_for_research_and_implementation_planning, source_url: repo://docs/decisions/0004-brand-ontology-constitution.md}
+  - {id: decision:adr-0005, title: Add the Moodboard and Creative Field application profile, status: accepted_for_vertical_slice, source_url: repo://docs/decisions/0005-moodboard-creative-field-profile.md}
+  - {id: decision:adr-0006, title: Add a multimodal Content substrate and explicit World compilation boundary, status: accepted_for_phased_implementation, source_url: repo://docs/decisions/0006-content-substrate-and-world-compilation.md}
+  - {id: decision:product-workspace-v1, title: Create the isolated modular Testflight Product workspace and design language, status: accepted, source_url: repo://docs/plans/2026-09-04-testflight-product-workspace-design.md}
+creative_field_local_decisions:
+  source_url: repo://docs/workboards/moodboard-creative-field-implementation/DECISIONS.md
+  scope: creative_field_vertical_slice
+  records:
+    - {id: decision:creative-field:D-001, title: Application profile over the existing kernel, status: accepted_for_implementation_planning}
+    - {id: decision:creative-field:D-002, title: Three-object separation, status: accepted}
+    - {id: decision:creative-field:D-003, title: Project-scoped by default, status: accepted}
+    - {id: decision:creative-field:D-004, title: Connections are first-class contracts, status: accepted}
+    - {id: decision:creative-field:D-005, title: Canonical local state and rebuildable indexes, status: accepted}
+    - {id: decision:creative-field:D-006, title: Provider-neutral operator contracts, status: accepted}
+    - {id: decision:creative-field:D-007, title: Narrow first vertical slice, status: accepted}
+    - {id: decision:creative-field:D-008, title: Project Creative Field into an isolated child container, status: accepted}
+    - {id: decision:creative-field:D-009, title: Treat Creative Studio UI as a durable command boundary, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-010, title: Keep orchestration provider-neutral and proposal-only, status: accepted_for_implementation}
+    - {id: decision:creative-field:D-011, title: Use a bounded local HTTP boundary for the first runtime bridge, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-012, title: Keep the first executable creative pack conservative, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-013, title: Persist analysis runs as canonical replay records, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-014, title: Acceptance must target a proposal and carry authority, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-015, title: Artifact projection consumes an explicit bounded World packet, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-016, title: Invocation is an explicit receipt-bearing boundary, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-017, title: Evaluation is a proposal-only downstream operator, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-018, title: Load semantic contracts at provider boundary and keep entity binding separate, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-019, title: Expose artifact handoff as explicit UI commands, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-020, title: Keep HTTP canonical while supporting a safe file preview, status: accepted_and_implemented}
+    - {id: decision:creative-field:D-021, title: Make spatial curation durable but never semantic by implication, status: accepted_and_implemented}
+open_product_decisions:
+  - id: decision-needed:initial-commercial-wedge
+    question: Is the first commercial wedge World Seeder for founder-led brands or Campaign Decision Intelligence for brand operations?
+    status: unresolved
+    evidence_needed: [customer_discovery, paid_pilot_commitments, delivery_cost, time_to_value]
+  - id: decision-needed:production-application-platform
+    question: When should the Brand Intake prototype become the proposed Ionic and FastAPI product?
+    status: unresolved
+    evidence_needed: [pilot_contract, fixture, stage_zero_gate]
+

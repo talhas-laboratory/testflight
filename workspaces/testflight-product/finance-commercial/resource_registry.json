@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "containerId": "world://workspace/testflight-product/finance-commercial",
+  "resources": [
+    {"module":"finance-commercial","unit":"module-contract","task_view":"bootstrap","tool":"testflight","doc_type":"contract","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/finance-commercial/artifacts/module-contract.yaml"},
+    {"module":"finance-commercial","unit":"commercial-hypotheses","task_view":"bootstrap","tool":"testflight","doc_type":"commercial_model","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/finance-commercial/artifacts/commercial-hypotheses.yaml"},
+    {"module":"finance-commercial","unit":"commercial-research","task_view":"eval","tool":"testflight","doc_type":"research_report","evidence_tier":"T2","experience_type":"field_research","difficulty":"expert","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://deliverables/testflight-commercial-viability-deep-research.md"}
+  ]
+}

@@ -1,0 +1,47 @@
+version: 0.1.0
+id: testflight-design-language
+workspace_id: world://workspace/testflight-product/experience-design
+status: active
+character: editorial_intelligence_with_operational_clarity
+promise: Make complex creative and semantic work feel calm, legible, and governable.
+principles:
+  - id: evidence_before_decoration
+    rule: Visual emphasis follows meaning, evidence, state, and authority.
+  - id: calm_density
+    rule: Support sophisticated work through hierarchy and progressive disclosure, not visual noise.
+  - id: spatial_thought
+    rule: Use composition, proximity, and whitespace to reveal relationships.
+  - id: state_is_visible
+    rule: Proposals, accepted records, holds, errors, and generated outputs must look distinguishable.
+  - id: humane_precision
+    rule: Language is direct and exact without becoming mechanical or punitive.
+  - id: expression_within_structure
+    rule: Each surface may tune warmth and density while retaining the shared grammar.
+surface_expression:
+  brand_intake: {warmth: high, density: low, guidance: high, expressive_range: restrained}
+  brand_lab: {warmth: medium, density: high, guidance: medium, expressive_range: restrained}
+  creative_studio: {warmth: medium, density: medium, guidance: medium, expressive_range: expansive}
+visual_language:
+  color: quiet_neutral_field_with_ink_text_and_precise_semantic_accents
+  typography: editorial_display_with_high_legibility_interface_text
+  shape: softly_structured_surfaces_with_crisp_internal_alignment
+  depth: borders_and_tonal_layers_before_shadows
+  imagery: evidence_bearing_and_spatially_composed_not_decorative_filler
+  motion: restrained_state_explanation_not_spectacle
+content_language:
+  voice: [clear, observant, grounded, calm, candid]
+  avoid: [inflated_claims, fake_certainty, anthropomorphic_system_claims, vague_success_language]
+  statuses: [draft, proposed, held, partial, accepted, rejected, superseded, failed]
+interaction_invariants:
+  - scope_and_identity_are_visible
+  - destructive_actions_require_clear_consequence_language
+  - keyboard_navigation_is_complete
+  - focus_is_visible
+  - reduced_motion_is_respected
+  - empty_loading_error_hold_and_no_hit_states_are_designed
+  - promotion_and_generation_actions_show_authority_requirements
+tokens_projection: repo://packages/testflight-design-language/tokens.json
+change_policy:
+  material_change_requires: [proposal, affected_surfaces, accessibility_evaluation, decision]
+  supersession: append_only
+

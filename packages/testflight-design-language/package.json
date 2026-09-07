@@ -1,0 +1,26 @@
+{
+  "name": "@testflight/design-language",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./tokens.json": "./tokens.json",
+    "./contract": "./generation-contract.md"
+  },
+  "files": [
+    "tokens.css",
+    "tokens.json",
+    "generation-contract.md",
+    "README.md"
+  ],
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "format": "prettier --write .",
+    "test": "node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
+

@@ -1,0 +1,19 @@
+module_id: world://ontology/module/brand/audience
+version: 2.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand/core]
+competency_questions:
+  - Can a research-backed segment be kept distinct from an ICP and a persona model?
+  - Can a product be connected to a segment need under a bounded context?
+evidence_basis: [research:market-segmentation, research:customer-experience]
+entity_types:
+  - {id: world://ontology/brand/type/AudienceSegment, label: Audience segment, definition: "A research-bounded population sharing a relevant need, behavior, or condition.", examples: ["First-time everyday runners"], counterexamples: ["A fictional persona quote."]}
+  - {id: world://ontology/brand/type/IdealCustomerProfile, label: Ideal customer profile, definition: "A strategic model selecting a desirable audience segment for an offering or initiative.", examples: ["Nike App new-runner ICP"], counterexamples: ["All observed Nike App users."]}
+  - {id: world://ontology/brand/type/PersonaModel, label: Persona model, definition: "A scoped working representation of an audience segment, not direct population evidence.", examples: ["New runner persona"], counterexamples: ["A research sample."]}
+  - {id: world://ontology/brand/type/Need, label: Need, definition: "A desired progress, problem, or constraint experienced by an audience in context.", examples: ["Confidence beginning a running routine"], counterexamples: ["An advertising placement."]}
+  - {id: world://ontology/brand/type/ResearchObservation, label: Research observation, definition: "A bounded recorded finding from a source or measurement process.", examples: ["Interview finding"], counterexamples: ["An accepted targeting decision."]}
+  - {id: world://ontology/brand/type/CustomerInsight, label: Customer insight, definition: "An interpreted, evidence-backed explanation of a relevant audience condition.", examples: ["New runners need reassurance before committing"], counterexamples: ["An ungrounded creative idea."]}
+relationship_types:
+  - {id: world://ontology/brand/relation/supports, label: supports, definition: "A research observation supplies evidence for an insight or audience proposition.", family: evidence, source_type_ids: [world://ontology/brand/type/ResearchObservation], target_type_ids: [world://ontology/brand/type/CustomerInsight, world://ontology/brand/type/AudienceSegment], examples: ["Observation supports new-runner insight."], counterexamples: ["Insight proves an observation."]}
+  - {id: world://ontology/brand/relation/has-need, label: has need, definition: "An audience segment has a need within the assertion context.", family: experience, source_type_ids: [world://ontology/brand/type/AudienceSegment], target_type_ids: [world://ontology/brand/type/Need], examples: ["New runners have a confidence need."], counterexamples: ["A need is a channel."]}
+  - {id: world://ontology/brand/relation/represents, label: represents, definition: "An ICP or persona model represents an audience segment for a stated purpose.", family: strategic, source_type_ids: [world://ontology/brand/type/IdealCustomerProfile, world://ontology/brand/type/PersonaModel], target_type_ids: [world://ontology/brand/type/AudienceSegment], examples: ["ICP represents new runners."], counterexamples: ["A segment is identical to every persona."]}

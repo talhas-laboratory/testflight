@@ -1,0 +1,82 @@
+workspace:
+  id: world://workspace/brand/nike-research
+  version: 1
+  status: active_research
+  name: Nike Brand Research Sandbox
+  mission: >-
+    Provide an isolated, source-grounded research workspace for testing the Testflight Brand
+    ontology and workflow-aware context retrieval against the publicly documented Nike Brand.
+  brand_id: world://brand/nike
+  subject_scope: NIKE Brand within NIKE, Inc.; Jordan Brand and Converse remain distinct related brands.
+  ontology:
+    source: ../../domains/brand/ontology/brand-system.yaml
+    version: 1.0.0
+    policies:
+      - ../../domains/brand/policies/identity-resolution-v1.yaml
+      - ../../domains/brand/policies/assertion-acceptance-v1.yaml
+      - ../../domains/brand/policies/relationship-weight-v1.yaml
+  source_of_truth:
+    evidence: artifacts/evidence-notes.yaml
+    proposals: artifacts/entity-inventory.yaml
+    relationships: artifacts/relationship-inventory.yaml
+    world_modeling: artifacts/world-modeling.yaml
+  cognee:
+    dataset_name: testflight_brand_nike_research_staging
+    runtime_root: /home/talha/testflight/.data/cognee
+    population_status: staging_populated_2026-08-25
+    canonical: false
+  storage:
+    runtime_root: /home/talha/testflight/.data/brand-workspaces/nike-research
+    evidence_root: /home/talha/testflight/.data/brand-workspaces/nike-research/evidence
+    semantic_repository: /home/talha/testflight/.data/brand-workspaces/nike-research/semantic.sqlite3
+  topology:
+    parent: nike-research
+    children:
+      - id: research
+        path: task_views/research.md
+        purpose: locate and register public evidence
+      - id: entity
+        path: task_views/entity.md
+        purpose: retrieve scoped entity proposals by ontology type
+      - id: relationship
+        path: task_views/relationship.md
+        purpose: retrieve evidence-backed Brand relations and explicit paths
+      - id: asset-context
+        path: task_views/asset-context.md
+        purpose: compile workflow-stage context for asset creation
+      - id: review
+        path: task_views/review.md
+        purpose: inspect conflicts, time, perspective, and limitations
+      - id: world-modeling
+        path: artifacts/world-modeling.yaml
+        purpose: compile bounded branch-aware and perspective-aware agent world views
+      - id: maintenance
+        path: task_views/maintenance.md
+        purpose: refresh sources and rebuild the isolated projection
+      - id: visual-language
+        path: visual-language/AGENT_INDEX.md
+        purpose: resolve versioned, modular visual-language references by scope and time
+  scope:
+    includes:
+      - public Nike identity, expression, offering, experience, perception, governance, environment, and event proposals
+      - public evidence metadata and bounded evidence excerpts
+      - current and historical context profiles
+      - competitor positioning reported by competitors or regulated filings
+      - workflow-aware context requirements for creating assets
+      - retrieval probes and derivation receipts
+    excludes:
+      - confidential Nike strategy, customer data, or internal brand guidelines
+      - claims that public evidence cannot establish
+      - accepted canonical facts about Nike
+      - autonomous writes to canonical Brand state
+      - full copyrighted source documents
+      - secrets, databases, model weights, or generated indexes in Git
+  policy:
+    evidence_strictness: citation_required
+    uncertainty_policy: branch
+    mutation: proposal_only
+    action: deny_unless_authorized
+    no_hit: valid
+    graph_max_hops: 2
+    retrieval_order: bm25_then_bounded_hybrid_same_child
+    source_refresh_days: 90

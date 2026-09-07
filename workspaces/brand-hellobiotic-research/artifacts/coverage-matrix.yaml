@@ -1,0 +1,82 @@
+version: 1
+workspace_id: world://workspace/brand/hellobiotic-research
+research_cutoff: '2026-08-31'
+entity_coverage:
+  identity:
+    count: 1
+    status: public_seeded
+  expression:
+    count: 1
+    status: public_seeded
+  offering:
+    count: 1
+    status: public_seeded
+  experience:
+    count: 1
+    status: public_seeded
+  perception:
+    count: 1
+    status: public_seeded
+  governance:
+    count: 1
+    status: public_seeded
+  environment:
+    count: 1
+    status: public_seeded
+  event:
+    count: 1
+    status: public_seeded
+relationship_coverage:
+  has_component:
+    count: 1
+    status: public_seeded
+  expressed_through:
+    count: 1
+    status: public_seeded
+  offers:
+    count: 1
+    status: public_seeded
+  experienced_through:
+    count: 1
+    status: public_seeded
+  perceived_by:
+    count: 1
+    status: public_seeded
+  governed_by:
+    count: 1
+    status: public_seeded
+  situated_in:
+    count: 1
+    status: public_seeded
+  evolves_through:
+    count: 1
+    status: public_seeded
+  shapes:
+    count: 1
+    status: held_pending_specific_evidence
+  updates:
+    count: 1
+    status: public_seeded
+  feeds_back_into:
+    count: 1
+    status: held_pending_specific_evidence
+  supports:
+    count: 1
+    status: public_seeded
+  contradicts:
+    count: 1
+    status: held_pending_specific_evidence
+  influences:
+    count: 1
+    status: held_pending_specific_evidence
+known_gaps:
+- id: GAP-HELLOBIOTIC-001
+  area: proprietary_brand_standards
+  consequence: Public materials do not establish approved design, legal, regulatory,
+    or production rules.
+  required_source: authorized_internal_standard
+- id: GAP-HELLOBIOTIC-002
+  area: validated_customer_segments_and_outcomes
+  consequence: The public site does not establish ICPs, purchase behavior, clinical
+    outcomes, or campaign effectiveness.
+  required_source: authorized_customer_research_or_outcome_data

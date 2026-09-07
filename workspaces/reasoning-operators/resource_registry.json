@@ -149,6 +149,14 @@
     {"category": "workspace_isolation", "source_url": "repo://reasoning/operators/workspace-isolation.yaml"},
     {"category": "retry_idempotency", "source_url": "repo://reasoning/operators/retry-idempotency.yaml"},
     {"category": "configuration_runtime", "source_url": "repo://reasoning/operators/configuration-runtime.yaml"},
-    {"category": "evaluation_schema", "source_url": "repo://reasoning/operators/evaluation-schema.yaml"}
+    {"category": "evaluation_schema", "source_url": "repo://reasoning/operators/evaluation-schema.yaml"},
+    {"category": "creative_observation_extraction", "source_url": "repo://reasoning/operators/creative-observation-extraction.yaml"},
+    {"category": "creative_reference_interpretation", "source_url": "repo://reasoning/operators/creative-reference-interpretation.yaml"},
+    {"category": "creative_field_synthesis", "source_url": "repo://reasoning/operators/creative-field-synthesis.yaml"},
+    {"category": "creative_review_versioning", "source_url": "repo://reasoning/operators/creative-review-versioning.yaml"},
+    {"category": "creative_project_binding", "source_url": "repo://reasoning/operators/creative-project-binding.yaml"},
+    {"category": "creative_field_projection", "source_url": "repo://reasoning/operators/creative-field-projection.yaml"},
+    {"category": "creative_connector_packet", "source_url": "repo://reasoning/operators/creative-connector-packet.yaml"},
+    {"category": "creative_output_evaluation", "source_url": "repo://reasoning/operators/creative-output-evaluation.yaml"}
   ]
 }

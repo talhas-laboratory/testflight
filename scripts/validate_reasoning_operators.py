@@ -54,6 +54,14 @@ EXPECTED_CATEGORIES = {
     "retry_idempotency",
     "configuration_runtime",
     "evaluation_schema",
+    "creative_observation_extraction",
+    "creative_reference_interpretation",
+    "creative_field_synthesis",
+    "creative_review_versioning",
+    "creative_project_binding",
+    "creative_field_projection",
+    "creative_connector_packet",
+    "creative_output_evaluation",
 }
 
 

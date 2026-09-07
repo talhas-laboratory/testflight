@@ -1,4 +1,6 @@
 packages:
-  - "adapters/deepseek-harness"
+  - "adapters/deepseek-harness*"
   - "apps/*"
   - "packages/*"
+allowBuilds:
+  esbuild: set this to true or false

@@ -1,0 +1,56 @@
+{
+  "workspace_id": "world://workspace/brand/nike-research",
+  "brand_id": "world://brand/nike",
+  "research_cutoff": "2026-08-25",
+  "status": "staging_populated_and_smoke_tested",
+  "canonical": false,
+  "promotion_status": "proposal_only",
+  "population": {
+    "dataset_name": "testflight_brand_nike_research_staging",
+    "runtime": "home-server Cognee 1.5.0",
+    "document_count": 8,
+    "receipt_path": "/home/talha/testflight/.data/brand-research/nike-population-report.json",
+    "result": "pass"
+  },
+  "local_validation": {
+    "result": "pass",
+    "source_count": 19,
+    "evidence_note_count": 19,
+    "context_count": 10,
+    "entity_count": 75,
+    "entity_type_count": 8,
+    "relationship_count": 42,
+    "relationship_type_count": 14,
+    "held_relationship_count": 5,
+    "workflow_stage_count": 5,
+    "probe_contract_count": 12,
+    "test": "tests/test_concrete_brand_workspace.py"
+  },
+  "runtime_smoke_tests": [
+    {
+      "query": "ENT-NIKE-ID-001 Inspiration and innovation mission",
+      "expected_task_view": "entity",
+      "expected_source": "repo://workspaces/brand-nike-research/artifacts/entity-inventory.yaml",
+      "result": "pass"
+    },
+    {
+      "query": "stage brief compile context Nike running asset",
+      "expected_task_view": "asset-context",
+      "expected_source": "repo://workspaces/brand-nike-research/artifacts/asset-workflow-context.yaml",
+      "result": "pass"
+    }
+  ],
+  "operator_evaluations": [
+    {"operator": "workspace-isolation@1", "result": "pass", "evidence": "non-canonical proposal-only workspace and uniquely named staging dataset"},
+    {"operator": "identity-provenance-conflation@1", "result": "pass", "evidence": "Nike Brand, NIKE Inc., Jordan, Converse, sources, and assertions remain distinct"},
+    {"operator": "evidence-truth-conflation@1", "result": "pass", "evidence": "actor authority, perspective, epistemic status, limitations, and held claims are preserved"},
+    {"operator": "retrieval-reasoning-conflation@1", "result": "pass", "evidence": "workflow packet separates retrieved records from reasoning instructions"},
+    {"operator": "validation-persistence-conflation@1", "result": "pass", "evidence": "reference and ontology validation passed before staging population"},
+    {"operator": "version-state-conflation@1", "result": "pass", "evidence": "research cutoff and valid-time context profiles are explicit"}
+  ],
+  "remaining_gates": [
+    "Run the full twelve-case runtime retrieval certification suite before declaring production retrieval quality.",
+    "Obtain authorized internal standards before using the workspace for final legal, trademark, design-system, or publication approval.",
+    "Require an explicit promotion review before any canonical Brand mutation."
+  ]
+}

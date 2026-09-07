@@ -11,6 +11,17 @@ from .brand_projection import (
     brand_records_to_datapoints,
     brand_system_to_datapoint,
 )
+from .creative_field_projection import (
+    CreativeFieldProjectionManifest,
+    CreativeProjectionDocument,
+    bounded_creative_field_traversal,
+    build_creative_field_projection,
+    compare_projection_drift,
+    creative_field_projection_to_datapoints,
+    populate_creative_field_projection,
+    read_projection_manifest,
+    write_projection_manifest,
+)
 from .datapoints import (
     entity_occurrence_to_datapoint,
     relationship_custom_edges,
@@ -55,6 +66,15 @@ __all__ = [
     "brand_component_to_datapoint",
     "brand_records_to_datapoints",
     "brand_system_to_datapoint",
+    "CreativeFieldProjectionManifest",
+    "CreativeProjectionDocument",
+    "bounded_creative_field_traversal",
+    "build_creative_field_projection",
+    "compare_projection_drift",
+    "creative_field_projection_to_datapoints",
+    "populate_creative_field_projection",
+    "read_projection_manifest",
+    "write_projection_manifest",
     "DefinitionExample",
     "EntityDefinition",
     "EntityMatch",

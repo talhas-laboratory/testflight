@@ -1,6 +1,16 @@
 """Provider-neutral semantic contracts for Testflight."""
 
 from .assertions import AssertionProposal, EpistemicStatus, Perspective
+from .branches import (
+    BranchConflict,
+    BranchDelta,
+    BranchDeltaKind,
+    BranchKind,
+    BranchStatus,
+    MergeAssessment,
+    WorldBranch,
+    resolve_branch_records,
+)
 from .classification import (
     CandidateKind,
     CandidateSignals,
@@ -9,18 +19,31 @@ from .classification import (
     classify_candidate,
 )
 from .context import Context
+from .decisions import DecisionRecord, DecisionStatus
 from .definitions import DefinitionExample, EntityDefinition, RelationshipDefinition
 from .dependencies import (
     ChangeType,
+    DependencyCandidate,
     DependencyEdge,
     DependencyEffect,
     DependencyRule,
     FreshnessState,
     StalenessMarker,
+    contexts_overlap,
+    evaluate_dependency_rule,
     selector_matches,
 )
 from .evidence import EvidenceEnvelope, EvidenceSpan
+from .evidence_links import EvidenceLink, EvidenceRole
 from .extractor import SemanticExtractor, StructuredOutputCall
+from .federation import (
+    ContainerStatus,
+    FederationBridge,
+    FederationPlan,
+    FederationPlanStatus,
+    FederationRegistry,
+    KnowledgeContainer,
+)
 from .governance import AuthorityGrant, Capability
 from .identity import CanonicalEntity, ReferentHypothesis
 from .kernel import (
@@ -35,7 +58,20 @@ from .kernel import (
     SemanticEntity,
     context_for_assertion,
 )
+from .learning import (
+    ExperimentPlan,
+    ExperimentStatus,
+    HypothesisRecord,
+    HypothesisStatus,
+    LearningDisposition,
+    LearningUpdate,
+    MetricThreshold,
+    ObservedOutcome,
+    OutcomeStatus,
+    ReviewStatus,
+)
 from .models import EntityMatch, ExtractionResult, MatchType, RelationshipMatch
+from .perspectives import PerspectiveProfile
 from .ports import (
     AssertionRepository,
     EvidenceRepository,
@@ -45,6 +81,7 @@ from .ports import (
 )
 from .prompt import compile_extraction_prompt
 from .provenance import DerivationRecord, DerivationResult, validate_derivation_graph
+from .relationship_frames import RelationshipFrame, RoleBinding
 from .representation import (
     BindingMode,
     ComplianceStatus,
@@ -57,6 +94,7 @@ from .representation import (
     ValidationMethod,
     resolve_profile_order,
 )
+from .states import StateSnapshot, StateStatus, StateValue
 from .time import BoundSemantics, TemporalInterval, TimePrecision
 from .validation import (
     EntityOccurrence,
@@ -64,6 +102,12 @@ from .validation import (
     ValidationRejection,
     ValidationResult,
     validate_extraction,
+)
+from .world_views import (
+    ResolvedWorldView,
+    WorldViewRequest,
+    WorldViewStatus,
+    compile_world_view,
 )
 
 __all__ = [
@@ -82,11 +126,15 @@ __all__ = [
     "ClassificationResult",
     "ClassificationStatus",
     "ComplianceStatus",
+    "ContainerStatus",
     "Context",
+    "DecisionRecord",
+    "DecisionStatus",
     "DefinitionKind",
     "DefinitionStatus",
     "DefinitionExample",
     "DependencyEffect",
+    "DependencyCandidate",
     "DependencyEdge",
     "DependencyRule",
     "DerivationRecord",
@@ -101,12 +149,27 @@ __all__ = [
     "EvidenceRepository",
     "EvidenceSpan",
     "ExtractionResult",
+    "FederationBridge",
+    "FederationPlan",
+    "FederationPlanStatus",
+    "FederationRegistry",
     "Event",
     "FreshnessState",
     "FreshnessStatus",
     "IdentityScope",
+    "ExperimentPlan",
+    "ExperimentStatus",
+    "HypothesisRecord",
+    "HypothesisStatus",
+    "LearningDisposition",
+    "LearningUpdate",
     "MatchType",
+    "MetricThreshold",
+    "KnowledgeContainer",
     "OntologyDefinition",
+    "ObservedOutcome",
+    "OutcomeStatus",
+    "ReviewStatus",
     "Perspective",
     "ProjectionCallable",
     "ReferentHypothesis",
@@ -131,8 +194,30 @@ __all__ = [
     "classify_candidate",
     "compile_extraction_prompt",
     "context_for_assertion",
+    "contexts_overlap",
+    "evaluate_dependency_rule",
     "selector_matches",
     "validate_derivation_graph",
     "validate_extraction",
     "resolve_profile_order",
+    "BranchConflict",
+    "BranchDelta",
+    "BranchDeltaKind",
+    "BranchKind",
+    "BranchStatus",
+    "EvidenceLink",
+    "EvidenceRole",
+    "MergeAssessment",
+    "PerspectiveProfile",
+    "RelationshipFrame",
+    "RoleBinding",
+    "StateSnapshot",
+    "StateStatus",
+    "StateValue",
+    "WorldBranch",
+    "resolve_branch_records",
+    "ResolvedWorldView",
+    "WorldViewRequest",
+    "WorldViewStatus",
+    "compile_world_view",
 ]

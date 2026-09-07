@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "containerId": "world://workspace/testflight-product/research-learning",
+  "resources": [
+    {"module":"research-learning","unit":"module-contract","task_view":"bootstrap","tool":"testflight","doc_type":"contract","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/research-learning/artifacts/module-contract.yaml"},
+    {"module":"research-learning","unit":"research-catalog","task_view":"eval","tool":"testflight","doc_type":"research_catalog","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/research-learning/artifacts/research-catalog.yaml"},
+    {"module":"research-learning","unit":"commercial-viability-research","task_view":"eval","tool":"testflight","doc_type":"research_report","evidence_tier":"T2","experience_type":"field_research","difficulty":"expert","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://deliverables/testflight-commercial-viability-deep-research.md"},
+    {"module":"research-learning","unit":"founder-product-hypothesis","task_view":"eval","tool":"testflight","doc_type":"product_proposal","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md"}
+  ]
+}
+

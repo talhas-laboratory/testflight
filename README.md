@@ -18,6 +18,9 @@ reusable packages or independently deployable services.
 
 ## Repository map
 
+Agents and maintainers should start with [`AGENT_INDEX.md`](AGENT_INDEX.md) for a complete map of
+module ownership, usage, connection paths, and creation routes.
+
 | Path | Purpose |
 | --- | --- |
 | `apps/` | Runnable experiments and future products |
@@ -93,4 +96,5 @@ dataset is never treated as the source of truth. See the [Brand workspace operat
 - LangGraph: optional Python orchestration adapter with lazy dependency loading.
 - DeepSeek Harness: isolated Node integration boundary and pinned CLI probe.
 
-No integration is coupled to another yet.
+Integrations are composed only through the stable package and adapter boundaries documented in
+[`AGENT_INDEX.md`](AGENT_INDEX.md); upstream-specific imports remain isolated in their adapters.

@@ -1,0 +1,15 @@
+module_id: world://ontology/module/brand/creative
+version: 2.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand/core, world://ontology/module/brand/campaign]
+competency_questions:
+  - Can an ad asset be traced to its governing creative direction and delivery channel?
+evidence_basis: [research:creative-strategy, research:customer-experience]
+entity_types:
+  - {id: world://ontology/brand/type/CreativeDirection, label: Creative direction, definition: "A selected expressive approach governing one or more assets in context.", examples: ["Reassuring first-step direction"], counterexamples: ["A performance result."]}
+  - {id: world://ontology/brand/type/Asset, label: Asset, definition: "A concrete communication or experience artifact delivered in a bounded channel and context.", examples: ["Instagram runner ad"], counterexamples: ["A campaign strategy."]}
+  - {id: world://ontology/brand/type/MessageStrategy, label: Message strategy, definition: "A selected content emphasis and claim posture for communication.", examples: ["Progress begins with one run"], counterexamples: ["A typography token."]}
+relationship_types:
+  - {id: world://ontology/brand/relation/governs, label: governs, definition: "A creative direction governs the representation of an asset in context.", family: expression, source_type_ids: [world://ontology/brand/type/CreativeDirection], target_type_ids: [world://ontology/brand/type/Asset], examples: ["Creative direction governs an Instagram ad."], counterexamples: ["An asset globally redefines creative direction."]}
+  - {id: world://ontology/brand/relation/promotes, label: promotes, definition: "An asset promotes an offering, product definition, or campaign in context.", family: expression, source_type_ids: [world://ontology/brand/type/Asset], target_type_ids: [world://ontology/brand/type/Offering, world://ontology/brand/type/ProductDefinition, world://ontology/brand/type/Campaign], examples: ["Ad promotes Nike App."], counterexamples: ["An offering is itself an ad asset."]}
+  - {id: world://ontology/brand/relation/distributed-via, label: distributed via, definition: "An asset is delivered through a channel.", family: experience, source_type_ids: [world://ontology/brand/type/Asset], target_type_ids: [world://ontology/brand/type/Channel], examples: ["Ad is distributed via Instagram."], counterexamples: ["Instagram governs all ad creative."]}

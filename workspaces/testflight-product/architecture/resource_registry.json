@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "containerId": "world://workspace/testflight-product/architecture",
+  "resources": [
+    {"module":"architecture","unit":"module-contract","task_view":"bootstrap","tool":"testflight","doc_type":"contract","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/architecture/artifacts/module-contract.yaml"},
+    {"module":"architecture","unit":"system-inventory","task_view":"bootstrap","tool":"testflight","doc_type":"system_inventory","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/architecture/artifacts/system-inventory.yaml"},
+    {"module":"architecture","unit":"dependency-map","task_view":"debug","tool":"testflight","doc_type":"dependency_map","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://workspaces/testflight-product/architecture/artifacts/dependency-map.yaml"},
+    {"module":"architecture","unit":"agent-index","task_view":"bootstrap","tool":"testflight","doc_type":"navigation_index","evidence_tier":"T1","experience_type":"implementation","difficulty":"advanced","canonical":false,"last_verified_at":"2026-09-07","source_url":"repo://AGENT_INDEX.md"},
+    {"module":"architecture","unit":"repository-map","task_view":"none","tool":"testflight","doc_type":"project_definition","evidence_tier":"T1","experience_type":"implementation","difficulty":"advanced","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://README.md"},
+    {"module":"architecture","unit":"upstream-registry","task_view":"deploy","tool":"testflight","doc_type":"dependency_registry","evidence_tier":"T1","experience_type":"canonical","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-04","source_url":"repo://upstreams/registry.yaml"},
+    {"module":"architecture","unit":"compose-workspace","task_view":"deploy","tool":"testflight","doc_type":"runtime_config","evidence_tier":"T1","experience_type":"implementation","difficulty":"advanced","canonical":false,"last_verified_at":"2026-09-04","source_url":"repo://infra/compose.yaml"}
+  ]
+}

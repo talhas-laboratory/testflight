@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testflight-creative-studio"
+version = "0.1.0"
+description = "Write-capable Creative Studio composition root"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "testflight-adapter-cognee",
+  "testflight-adapter-creative-connectors",
+  "testflight-adapter-sqlite-semantic",
+  "testflight-creative-field",
+]
+
+[project.scripts]
+creative-studio = "testflight_creative_studio.server:main"
+
+[tool.uv.sources]
+testflight-adapter-cognee = { workspace = true }
+testflight-adapter-creative-connectors = { workspace = true }
+testflight-adapter-sqlite-semantic = { workspace = true }
+testflight-creative-field = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testflight_creative_studio"]
+
+[tool.hatch.build]
+include = ["src/testflight_creative_studio/static/**"]

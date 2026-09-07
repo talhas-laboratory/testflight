@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A proposal-only editorial landing-page concept for a Nike Member experience."
+    />
+    <title>Member Pathways — Concept Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #141515;
+        --paper: #ece9e1;
+        --acid: #d4ff3f;
+        --sun: #ff6c46;
+        --mist: #b7b6ad;
+        --line: rgba(20, 21, 21, 0.2);
+        --serif: "Instrument Serif", Georgia, serif;
+        --sans: "Manrope", "Trebuchet MS", sans-serif;
+        --mono: "DM Mono", monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: var(--sans);
+      }
+      button,
+      a {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .shell {
+        max-width: 1440px;
+        margin: 0 auto;
+        overflow: clip;
+      }
+
+      .notice {
+        background: var(--ink);
+        color: var(--paper);
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 10px 34px;
+        font: 11px/1.25 var(--mono);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .notice span:last-child {
+        color: var(--acid);
+      }
+
+      nav {
+        min-height: 84px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 34px;
+        border-bottom: 1px solid var(--line);
+      }
+      .wordmark {
+        font-weight: 800;
+        letter-spacing: -0.09em;
+        font-size: 28px;
+      }
+      .nav-meta {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        font: 11px var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .menu {
+        border: 0;
+        background: none;
+        color: inherit;
+        padding: 9px 0;
+        font: inherit;
+        text-transform: inherit;
+        letter-spacing: inherit;
+      }
+      .dot {
+        width: 9px;
+        height: 9px;
+        display: inline-block;
+        background: var(--sun);
+        border-radius: 99px;
+        margin-right: 7px;
+      }
+
+      .hero {
+        min-height: 680px;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        padding: 58px 34px 34px;
+        isolation: isolate;
+      }
+      .hero-copy {
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .eyebrow {
+        font: 11px var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      h1 {
+        font: 400 clamp(74px, 10.4vw, 152px) / 0.79 var(--serif);
+        letter-spacing: -0.07em;
+        max-width: 760px;
+        margin: 34px 0;
+      }
+      h1 em {
+        color: var(--sun);
+      }
+      .hero-bottom {
+        max-width: 430px;
+        margin-bottom: 10px;
+      }
+      .hero-bottom p {
+        margin: 0 0 24px;
+        font-size: 17px;
+        line-height: 1.5;
+      }
+      .cta {
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: var(--paper);
+        padding: 16px 20px;
+        display: inline-flex;
+        gap: 30px;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        transition:
+          transform 0.2s,
+          background 0.2s,
+          color 0.2s;
+      }
+      .cta:hover,
+      .cta:focus-visible {
+        background: var(--acid);
+        color: var(--ink);
+        transform: translate(-3px, -3px);
+        box-shadow: 4px 4px 0 var(--ink);
+        outline: none;
+      }
+      .arrow {
+        font-size: 20px;
+        line-height: 0;
+      }
+
+      .hero-art {
+        position: relative;
+        min-height: 520px;
+        overflow: hidden;
+        background: var(--acid);
+      }
+      .orbit {
+        position: absolute;
+        width: 112%;
+        aspect-ratio: 1;
+        border: 32px solid var(--ink);
+        border-radius: 50%;
+        top: 13%;
+        left: -20%;
+        transform: rotate(-23deg);
+      }
+      .orbit::after {
+        content: "";
+        position: absolute;
+        inset: 16%;
+        border: 2px solid var(--sun);
+        border-radius: 50%;
+      }
+      .runner {
+        position: absolute;
+        width: 160px;
+        height: 310px;
+        background: var(--ink);
+        right: 21%;
+        top: 23%;
+        clip-path: polygon(
+          44% 0,
+          63% 0,
+          73% 22%,
+          100% 42%,
+          92% 52%,
+          65% 40%,
+          59% 59%,
+          88% 100%,
+          68% 100%,
+          43% 68%,
+          28% 100%,
+          7% 100%,
+          29% 58%,
+          15% 37%,
+          26% 27%,
+          37% 39%,
+          45% 21%
+        );
+        animation: stride 4.2s ease-in-out infinite;
+      }
+      .hero-tag {
+        position: absolute;
+        right: 24px;
+        bottom: 22px;
+        padding: 9px 11px;
+        background: var(--paper);
+        font: 10px var(--mono);
+        text-transform: uppercase;
+      }
+      .vertical {
+        position: absolute;
+        right: -24px;
+        top: 41%;
+        transform: rotate(90deg);
+        font: 11px var(--mono);
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      @keyframes stride {
+        50% {
+          transform: translate(8px, -12px) rotate(-2deg);
+        }
+      }
+
+      .marquee {
+        border-block: 1px solid var(--line);
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 16px 0;
+        font: 500 14px var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .marquee-track {
+        display: inline-block;
+        animation: scroll 26s linear infinite;
+      }
+      .marquee b {
+        color: var(--sun);
+        font-size: 18px;
+        margin: 0 18px;
+      }
+      @keyframes scroll {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      section {
+        padding: 112px 34px;
+      }
+      .section-label {
+        font: 11px var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 48px;
+      }
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+      }
+      h2 {
+        font: 400 clamp(49px, 6vw, 88px) / 0.9 var(--serif);
+        letter-spacing: -0.06em;
+        max-width: 680px;
+        margin: 0;
+      }
+      .intro-copy {
+        max-width: 530px;
+        align-self: end;
+        font-size: 19px;
+        line-height: 1.55;
+      }
+
+      .routes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--line);
+        margin-top: 70px;
+      }
+      .route {
+        min-height: 350px;
+        padding: 22px;
+        border-right: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: background 0.3s;
+      }
+      .route:first-child {
+        border-left: 1px solid var(--line);
+      }
+      .route:hover {
+        background: #dedbd2;
+      }
+      .route-num {
+        font: 12px var(--mono);
+      }
+      .route h3 {
+        font: 400 50px/0.9 var(--serif);
+        letter-spacing: -0.055em;
+        margin: 0;
+      }
+      .route p {
+        max-width: 260px;
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .route:nth-child(2) h3 {
+        color: var(--sun);
+      }
+
+      .membership {
+        background: var(--ink);
+        color: var(--paper);
+        display: grid;
+        grid-template-columns: 1.18fr 0.82fr;
+        gap: 50px;
+      }
+      .membership h2 {
+        max-width: 660px;
+      }
+      .membership h2 em {
+        color: var(--acid);
+      }
+      .benefits {
+        border-top: 1px solid rgba(236, 233, 225, 0.28);
+      }
+      .benefit {
+        display: grid;
+        grid-template-columns: 55px 1fr;
+        gap: 16px;
+        padding: 23px 0;
+        border-bottom: 1px solid rgba(236, 233, 225, 0.28);
+      }
+      .benefit-num {
+        color: var(--acid);
+        font: 11px var(--mono);
+      }
+      .benefit strong {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 7px;
+      }
+      .benefit p {
+        color: #c3c0b9;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .ecosystem {
+        padding-bottom: 0;
+      }
+      .ecosystem-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        align-items: end;
+      }
+      .tab-list {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .tab {
+        border: 1px solid var(--line);
+        background: transparent;
+        padding: 10px 13px;
+        font: 11px var(--mono);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .tab[aria-selected="true"] {
+        background: var(--ink);
+        color: var(--paper);
+        border-color: var(--ink);
+      }
+      .panel {
+        min-height: 410px;
+        margin-top: 45px;
+        background: var(--sun);
+        padding: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+      .panel-kicker {
+        font: 11px var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .panel-text {
+        align-self: end;
+      }
+      .panel h3 {
+        font: 400 clamp(55px, 7vw, 96px) / 0.82 var(--serif);
+        letter-spacing: -0.07em;
+        margin: 0 0 25px;
+      }
+      .panel p {
+        max-width: 390px;
+        line-height: 1.55;
+        margin: 0;
+      }
+      .panel-art {
+        border: 1px solid rgba(20, 21, 21, 0.28);
+        position: relative;
+        overflow: hidden;
+      }
+      .panel-art::before,
+      .panel-art::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: 38px solid var(--ink);
+      }
+      .panel-art::before {
+        width: 350px;
+        height: 350px;
+        top: -145px;
+        right: -90px;
+      }
+      .panel-art::after {
+        width: 260px;
+        height: 260px;
+        bottom: -105px;
+        left: -90px;
+        border-color: var(--acid);
+      }
+
+      .split-cta {
+        padding-top: 112px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .path {
+        min-height: 390px;
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .path:first-child {
+        background: var(--acid);
+      }
+      .path:last-child {
+        background: var(--mist);
+      }
+      .path h3 {
+        font: 400 clamp(48px, 5vw, 76px) / 0.85 var(--serif);
+        letter-spacing: -0.06em;
+        margin: 0;
+        max-width: 450px;
+      }
+      .text-link {
+        display: inline-flex;
+        width: fit-content;
+        gap: 14px;
+        font: 11px var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding-bottom: 6px;
+        border-bottom: 1px solid currentColor;
+      }
+
+      footer {
+        padding: 22px 34px;
+        background: var(--ink);
+        color: var(--paper);
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        font: 10px/1.45 var(--mono);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      footer p {
+        max-width: 710px;
+        margin: 0;
+      }
+
+      dialog {
+        border: 0;
+        max-width: 440px;
+        width: calc(100% - 32px);
+        background: var(--paper);
+        color: var(--ink);
+        padding: 32px;
+        box-shadow: 10px 10px 0 var(--sun);
+      }
+      dialog::backdrop {
+        background: rgba(20, 21, 21, 0.72);
+      }
+      dialog h2 {
+        font-size: 55px;
+        margin-bottom: 18px;
+      }
+      dialog p {
+        line-height: 1.55;
+      }
+      .close {
+        margin-top: 14px;
+        border: 1px solid var(--ink);
+        background: transparent;
+        padding: 10px 14px;
+        font: 11px var(--mono);
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 760px) {
+        .notice {
+          padding: 10px 18px;
+        }
+        .notice span:last-child {
+          display: none;
+        }
+        nav {
+          padding: 0 18px;
+          min-height: 70px;
+        }
+        .nav-meta a {
+          display: none;
+        }
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          padding: 34px 18px 18px;
+          gap: 50px;
+        }
+        h1 {
+          font-size: clamp(70px, 22vw, 120px);
+        }
+        .hero-art {
+          min-height: 380px;
+        }
+        section {
+          padding: 76px 18px;
+        }
+        .intro-grid,
+        .membership,
+        .panel,
+        .split-cta {
+          grid-template-columns: 1fr;
+        }
+        .routes {
+          grid-template-columns: 1fr;
+          margin-top: 48px;
+        }
+        .route,
+        .route:first-child {
+          min-height: 250px;
+          border-left: 1px solid var(--line);
+          border-bottom: 1px solid var(--line);
+        }
+        .ecosystem-top {
+          align-items: start;
+          flex-direction: column;
+        }
+        .panel {
+          min-height: 600px;
+        }
+        .panel-art {
+          min-height: 220px;
+        }
+        footer {
+          padding: 20px 18px;
+          flex-direction: column;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="notice">
+        <span>Member pathways / concept 01</span
+        ><span>Proposal only — not an official Nike asset</span>
+      </div>
+      <nav aria-label="Main navigation">
+        <a class="wordmark" href="#top" aria-label="Member Pathways home">MP</a>
+        <div class="nav-meta">
+          <a href="#membership">Why membership</a
+          ><a href="#ecosystem">The ecosystem</a
+          ><button class="menu" type="button" data-open-dialog>
+            <span class="dot"></span>Join the path
+          </button>
+        </div>
+      </nav>
+
+      <header class="hero" id="top">
+        <div class="hero-copy">
+          <div>
+            <p class="eyebrow">A member experience that keeps pace</p>
+            <h1>Your sport<br />has more<br /><em>places</em> to go.</h1>
+          </div>
+          <div class="hero-bottom">
+            <p>
+              Membership is a way into more movement: products, stories,
+              guidance, and experiences shaped around what you want to do next.
+            </p>
+            <button class="cta" type="button" data-open-dialog>
+              Explore membership <span class="arrow">↗</span>
+            </button>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Abstract moving figure illustration">
+          <div class="orbit"></div>
+          <div class="runner"></div>
+          <div class="vertical">Keep moving / keep finding</div>
+          <div class="hero-tag">01 / Open access</div>
+        </div>
+      </header>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          More ways in <b>✳</b> More reasons to move <b>✳</b> More ways in
+          <b>✳</b> More reasons to move <b>✳</b> More ways in <b>✳</b> More
+          reasons to move <b>✳</b>
+        </div>
+      </div>
+
+      <section>
+        <p class="section-label">01 / Membership is a starting line</p>
+        <div class="intro-grid">
+          <h2>Not one destination. A better way to find your next one.</h2>
+          <p class="intro-copy">
+            Whether you are already moving or looking for the first signal to
+            begin, membership brings useful access, personal guidance, and sport
+            experiences into one connected place.
+          </p>
+        </div>
+        <div class="routes">
+          <article class="route">
+            <span class="route-num">01</span>
+            <h3>Find your<br />way in.</h3>
+            <p>
+              Discover a starting point built around your interests, your pace,
+              and the sport that brings you back.
+            </p>
+          </article>
+          <article class="route">
+            <span class="route-num">02</span>
+            <h3>Make it<br />yours.</h3>
+            <p>
+              Turn intent into momentum with product access, stories, advice,
+              and reasons to keep exploring.
+            </p>
+          </article>
+          <article class="route">
+            <span class="route-num">03</span>
+            <h3>Keep<br />going.</h3>
+            <p>
+              Move between experiences without losing the thread: commerce,
+              community, guidance, and play.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="membership" id="membership">
+        <div>
+          <p class="section-label">02 / The value of joining</p>
+          <h2>A little more <em>room</em> to move.</h2>
+        </div>
+        <div class="benefits">
+          <article class="benefit">
+            <span class="benefit-num">01</span>
+            <div>
+              <strong>Access that opens up</strong>
+              <p>
+                Discover products, rewards, and experiences in a membership
+                layer designed to make the next step easier.
+              </p>
+            </div>
+          </article>
+          <article class="benefit">
+            <span class="benefit-num">02</span>
+            <div>
+              <strong>Guidance that meets you there</strong>
+              <p>
+                Explore stories, advice, and experiences that can adapt around
+                what interests you.
+              </p>
+            </div>
+          </article>
+          <article class="benefit">
+            <span class="benefit-num">03</span>
+            <div>
+              <strong>One connected rhythm</strong>
+              <p>
+                Move between commerce, services, and experiences without
+                treating each one as a separate journey.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="ecosystem" id="ecosystem">
+        <div class="ecosystem-top">
+          <div>
+            <p class="section-label">03 / A connected ecosystem</p>
+            <h2>Same energy.<br />Different entry points.</h2>
+          </div>
+          <div
+            class="tab-list"
+            role="tablist"
+            aria-label="Explore membership surfaces"
+          >
+            <button
+              class="tab"
+              role="tab"
+              aria-selected="true"
+              aria-controls="app-panel"
+              id="app-tab"
+              data-panel="app"
+            >
+              Nike App</button
+            ><button
+              class="tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="app-panel"
+              id="snkrs-tab"
+              data-panel="snkrs"
+            >
+              SNKRS</button
+            ><button
+              class="tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="app-panel"
+              id="web-tab"
+              data-panel="web"
+            >
+              nike.com
+            </button>
+          </div>
+        </div>
+        <div
+          class="panel"
+          id="app-panel"
+          role="tabpanel"
+          aria-labelledby="app-tab"
+        >
+          <p class="panel-kicker" id="panel-kicker">Your everyday signal</p>
+          <div class="panel-text">
+            <h3 id="panel-title">Nike App</h3>
+            <p id="panel-copy">
+              A personalized place to discover products, rewards, stories,
+              advice, and experiences based on your interests.
+            </p>
+          </div>
+          <div class="panel-art" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="split-cta">
+        <article class="path">
+          <p class="eyebrow">Already a member?</p>
+          <h3>Pick up<br />your pace.</h3>
+          <button class="text-link" type="button" data-open-dialog>
+            Explore your experience <span>↗</span>
+          </button>
+        </article>
+        <article class="path">
+          <p class="eyebrow">New here?</p>
+          <h3>There is room<br />for your sport.</h3>
+          <button class="text-link" type="button" data-open-dialog>
+            Start exploring <span>↗</span>
+          </button>
+        </article>
+      </section>
+
+      <footer>
+        <p>
+          Concept proposal based on public research. It is not an official Nike
+          campaign or product experience, and it does not apply proprietary Nike
+          brand standards, legal approvals, or design-system guidance.
+        </p>
+        <span>2026 / Member Pathways</span>
+      </footer>
+    </main>
+
+    <dialog id="join-dialog" aria-labelledby="dialog-title">
+      <p class="eyebrow">Concept interaction</p>
+      <h2 id="dialog-title">Your next step starts here.</h2>
+      <p>
+        This demonstration does not collect account information. In a production
+        experience, this action would hand off to an authorized membership
+        sign-up or sign-in flow.
+      </p>
+      <button class="close" type="button" data-close-dialog>Close</button>
+    </dialog>
+
+    <script>
+      const dialog = document.querySelector("#join-dialog");
+      document
+        .querySelectorAll("[data-open-dialog]")
+        .forEach((button) =>
+          button.addEventListener("click", () => dialog.showModal()),
+        );
+      document
+        .querySelector("[data-close-dialog]")
+        .addEventListener("click", () => dialog.close());
+      const content = {
+        app: {
+          kicker: "Your everyday signal",
+          title: "Nike App",
+          copy: "A personalized place to discover products, rewards, stories, advice, and experiences based on your interests.",
+          color: "#ff6c46",
+        },
+        snkrs: {
+          kicker: "A different kind of discovery",
+          title: "SNKRS",
+          copy: "A distinct member surface for discovering releases and product stories within the wider digital ecosystem.",
+          color: "#d4ff3f",
+        },
+        web: {
+          kicker: "The wider starting line",
+          title: "nike.com",
+          copy: "A clear, global entry point to explore the connected membership experience and find the path that fits you.",
+          color: "#b7b6ad",
+        },
+      };
+      const panel = document.querySelector(".panel");
+      document.querySelectorAll("[data-panel]").forEach((tab) =>
+        tab.addEventListener("click", () => {
+          const next = content[tab.dataset.panel];
+          document
+            .querySelectorAll("[data-panel]")
+            .forEach((item) => item.setAttribute("aria-selected", "false"));
+          tab.setAttribute("aria-selected", "true");
+          document.querySelector("#panel-kicker").textContent = next.kicker;
+          document.querySelector("#panel-title").textContent = next.title;
+          document.querySelector("#panel-copy").textContent = next.copy;
+          panel.style.background = next.color;
+        }),
+      );
+    </script>
+  </body>
+</html>

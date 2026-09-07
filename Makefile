@@ -1,4 +1,4 @@
-.PHONY: setup setup-server-cognee setup-server-deepseek-harness setup-server-reasoning-operators setup-server-brand-research setup-server-brand-research-certification run-deepseek-harness format lint test check registry brand-research-workspace brand-research-corpus brand-research-fixtures brand-research-projection brand-research-certification compose-config sync-server
+.PHONY: setup setup-server-cognee setup-server-deepseek-harness setup-server-context-intelligence setup-server-reasoning-operators setup-server-brand-research setup-server-brand-research-certification run-deepseek-harness build-operator-runtime serve-operator-runtime serve-workflow-runtime format lint test check registry workflows product-workspace product-workspace-projection brand-research-workspace brand-research-corpus brand-research-fixtures brand-research-projection brand-research-certification content-fixtures nike-research-workspace nike-research-projection creative-field-certification compose-config sync-server
 
 setup:
 	corepack enable
@@ -10,6 +10,9 @@ setup-server-cognee:
 
 setup-server-deepseek-harness:
 	./scripts/setup_server_deepseek_harness.sh
+
+setup-server-context-intelligence:
+	./scripts/setup_server_context_intelligence.sh
 
 setup-server-reasoning-operators:
 	./scripts/setup_server_reasoning_operators.sh
@@ -23,6 +26,15 @@ setup-server-brand-research-certification:
 run-deepseek-harness:
 	./scripts/run_deepseek_harness.sh
 
+build-operator-runtime:
+	pnpm --filter @testflight/operator-runtime build
+
+serve-operator-runtime: build-operator-runtime
+	node scripts/serve_operator_runtime.mjs
+
+serve-workflow-runtime:
+	uv run --package testflight-workflow-runtime workflow-runtime
+
 format:
 	uv run ruff format .
 	uv run ruff check --fix .
@@ -33,17 +45,29 @@ lint:
 	uv run ruff check .
 	uv run python scripts/validate_registry.py
 	uv run python scripts/validate_reasoning_operators.py
+	uv run python scripts/validate_skill_catalog.py
+	uv run --package testflight-workflows python scripts/validate_workflows.py
 	uv run python scripts/check_secrets.py
 	pnpm run check
 
 test:
-	uv run pytest
+	uv run --all-packages pytest
 	pnpm test
 
-check: lint test brand-research-workspace compose-config
+check: lint test product-workspace brand-research-workspace content-fixtures nike-research-workspace creative-field-certification compose-config
 
 registry:
 	uv run python scripts/validate_registry.py
+
+workflows:
+	uv run --package testflight-workflows python scripts/validate_workflows.py
+
+product-workspace:
+	uv run python scripts/validate_testflight_product_workspace.py
+	uv run python scripts/audit_testflight_product_routes.py --summary
+
+product-workspace-projection:
+	uv run python scripts/populate_testflight_product_workspace.py --dry-run
 
 brand-research-workspace: brand-research-corpus brand-research-fixtures
 	python3 scripts/validate_brand_ontology_workspace.py
@@ -65,6 +89,18 @@ brand-research-projection:
 
 brand-research-certification:
 	uv run python scripts/certify_brand_research_projection.py --help
+
+content-fixtures:
+	uv run python scripts/validate_multimodal_content_fixtures.py
+
+nike-research-workspace:
+	uv run python scripts/validate_concrete_brand_workspace.py
+
+nike-research-projection:
+	uv run python scripts/populate_concrete_brand_workspace.py --dry-run
+
+creative-field-certification:
+	uv run --all-packages python scripts/certify_creative_field.py --report .data/creative-field/certification.json
 
 compose-config:
 	docker compose -f infra/compose.yaml config --quiet

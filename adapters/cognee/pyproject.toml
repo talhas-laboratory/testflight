@@ -10,6 +10,7 @@ requires-python = ">=3.12,<3.14"
 dependencies = [
   "pydantic>=2.10,<3",
   "testflight-brand",
+  "testflight-creative-field",
   "testflight-core",
   "testflight-semantic",
 ]
@@ -20,6 +21,7 @@ cognee = ["cognee==1.5.0"]
 [tool.uv.sources]
 testflight-core = { workspace = true }
 testflight-brand = { workspace = true }
+testflight-creative-field = { workspace = true }
 testflight-semantic = { workspace = true }
 
 [tool.hatch.build.targets.wheel]

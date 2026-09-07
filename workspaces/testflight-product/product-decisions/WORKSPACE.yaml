@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/testflight-product/product-decisions
+parent: world://workspace/testflight-product
+type: child-knowledge-container
+label: Product decisions
+mission: Maintain proposals, decisions, alternatives, authority, and supersession for Testflight.
+dataset_name: testflight_testflight_product_product_decisions_staging
+route: product-decisions
+status: candidate
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes: [proposals, decisions, alternatives, tradeoffs, authority, reviews, supersession]
+  excludes: [silent_promotion, overwritten_history, implementation_as_decision]
+

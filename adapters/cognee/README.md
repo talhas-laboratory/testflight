@@ -71,3 +71,16 @@ Cognee's UUID-only `DataPoint.id` is derived deterministically from the workspac
 semantic ID; the original IDs remain explicit fields and edge metadata. The canonical ontology
 and policies live under `domains/brand/`, while accepted evidence and assertions live in the SQLite
 semantic repository.
+
+### Creative Field child projection
+
+`testflight_adapter_cognee.creative_field_projection` provides the same boundary for the
+project-scoped moodboard/Creative Field graph. `build_creative_field_projection` is pure and
+deterministic: it hashes canonical records, emits namespaced IDs, source-bearing documents and
+bounded relationship edges, and preserves project scope, field version, lifecycle, authority,
+evidence and license rights. It requires an explicit `*_staging` dataset so the generated graph
+cannot be mistaken for canonical state.
+
+Use `scripts/project_creative_field.py` for credential-free dry-runs, drift checks and atomic
+manifest rebuilds. `populate_creative_field_projection` is the explicit, separately authorized
+Cognee population seam; it is intentionally not called by the dry-run or certification paths.

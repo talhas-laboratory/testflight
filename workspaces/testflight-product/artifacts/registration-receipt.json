@@ -1,0 +1,141 @@
+{
+  "version": 3,
+  "receipt_id": "product-workspace-population:2026-09-07:v3",
+  "parent_workspace_id": "world://workspace/testflight-product",
+  "registered_child_workspace_ids": [
+    "world://workspace/testflight-product/product-definition",
+    "world://workspace/testflight-product/product-decisions",
+    "world://workspace/testflight-product/experience-design",
+    "world://workspace/testflight-product/architecture",
+    "world://workspace/testflight-product/customers-market",
+    "world://workspace/testflight-product/marketing-growth",
+    "world://workspace/testflight-product/finance-commercial",
+    "world://workspace/testflight-product/operations-governance",
+    "world://workspace/testflight-product/research-learning"
+  ],
+  "canonical_path": "workspaces/testflight-product",
+  "staging_datasets_are_explicit_and_isolated": true,
+  "retrieval_route": "smallest-child-first -> exact-or-bm25 -> bounded-same-child-hybrid-on-in-domain-no-hit",
+  "parent_files_updated": [
+    "AGENTS.md",
+    "AGENT_INDEX.md",
+    "workspaces/testflight-product/WORKSPACE.yaml",
+    "workspaces/testflight-product/artifacts/module-registry.yaml",
+    "workspaces/testflight-product/architecture/artifacts/source_manifest.yaml",
+    "workspaces/testflight-product/architecture/resource_registry.json"
+  ],
+  "source_registry_sha256": {
+    "parent": "f4aa2592048090b8d39daba77e1962da6bfea07921ae73e607355bc995c1daaf",
+    "product-definition": "6f8bb7ac8d7a176500a34f32cdc78630597dd693d60b9e65c38cef86c256c32f",
+    "product-decisions": "876eba15d3befa5c5e01d4cb93cb5d56938057c57edde2ee8ff49215e896f719",
+    "experience-design": "09c353037dca48b324bfb367171f00fcb6b3b2e47594d340b5f6ee6ee674a825",
+    "architecture": "1d6b23ecf15802d5de770ad964dd4f8bd85ce187ad9dc449d86d4c76130d3679",
+    "customers-market": "b53439bd5711014159e68a241a65b92f9e412b0cbba66acf63767b651ae6d2f7",
+    "marketing-growth": "d29f3b4ca87caa8abcfc0bc2540f923db2e918fc4672099ef31d2af56407451f",
+    "finance-commercial": "fa47c9d067f59db28ca4d9c09678b71141404ce134b611071bfcc631af2749c3",
+    "operations-governance": "ab5641cf8bddfc0480eb667264b76dbf12a71dfa0bc1c34f8825e4a1465fa3d9",
+    "research-learning": "840efa69517b08e318d18911c2508fdb0cd01e235448cf35e9f9729703d271bf"
+  },
+  "operator_evaluations": [
+    {
+      "operator_id": "world://operator/guardrail/workspace-isolation",
+      "operator_version": 1,
+      "status": "pass",
+      "evaluators": {
+        "boundary_containment": "pass",
+        "permission_zero_fail": "pass",
+        "cache_isolation": "pass"
+      }
+    },
+    {
+      "operator_id": "world://operator/guardrail/configuration-runtime",
+      "operator_version": 1,
+      "status": "pass",
+      "evaluators": {
+        "effective_config_match": "pass",
+        "secret_hygiene": "pass",
+        "preflight_gate": "pass"
+      }
+    },
+    {
+      "operator_id": "world://operator/guardrail/retrieval-reasoning-conflation",
+      "operator_version": 1,
+      "status": "partial",
+      "evaluators": {
+        "no_hit_correctness": "defined_not_live_certified",
+        "citation_resolution": "pass_for_canonical_sources",
+        "budget": "pass"
+      }
+    },
+    {
+      "operator_id": "world://operator/guardrail/evaluation-schema",
+      "operator_version": 1,
+      "status": "partial",
+      "evaluators": {
+        "dimension_separation": "pass",
+        "held_out_quality": "pending_live_retrieval_certification",
+        "provenance": "pass"
+      }
+    },
+    {
+      "operator_id": "world://operator/guardrail/mention-entity-conflation",
+      "operator_version": 1,
+      "status": "pass",
+      "evaluators": {
+        "span_grounding": "pass_via_source_catalog",
+        "ambiguity_recall": "pass_product_direction_remains_branched",
+        "speaker_preservation": "pass_roles_are_not_people"
+      }
+    },
+    {
+      "operator_id": "world://operator/guardrail/occurrence-canonical-conflation",
+      "operator_version": 1,
+      "status": "pass",
+      "evaluators": {
+        "recurrence_gate": "pass_unobserved_hypotheses_not_promoted",
+        "lineage_retention": "pass"
+      }
+    },
+    {
+      "operator_id": "world://operator/guardrail/evidence-truth-conflation",
+      "operator_version": 1,
+      "status": "pass",
+      "evaluators": {
+        "provenance_completeness": "pass",
+        "status_accuracy": "pass",
+        "contradiction_retention": "pass_competing_product_directions_preserved"
+      }
+    },
+    {
+      "operator_id": "world://operator/guardrail/ontology-conflation",
+      "operator_version": 1,
+      "status": "pass",
+      "evaluators": {
+        "typed_consistency": "pass",
+        "adapter_thinness": "pass"
+      }
+    }
+  ],
+  "evaluation": {
+    "schema_result": "pass",
+    "invariant_result": "pass",
+    "semantic_result": "pass_for_repository_grounded_population",
+    "usefulness_result": "pass_for_local_agent_navigation",
+    "local_route_audit": {
+      "mode": "local_lexical_route_audit",
+      "attempts": 10,
+      "routing_error": 0.0,
+      "no_hit_correctness": 1.0,
+      "live_retrieval_certified": false
+    },
+    "unresolved_risks": [
+      "child retrieval precision has not been certified against a live projection",
+      "existing applications have not yet been migrated to the shared design-token package",
+      "customer, finance, and growth modules remain partial because no interviews, contracts, usage, or observed outcomes exist",
+      "Founder Brand World and Campaign Decision Intelligence remain unresolved product-direction branches"
+    ],
+    "status": "candidate"
+  },
+  "live_population_requested": false,
+  "live_population_performed": false
+}

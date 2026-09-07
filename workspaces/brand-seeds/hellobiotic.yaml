@@ -1,0 +1,133 @@
+slug: hellobiotic
+name: Biotic / Hellobiotic
+brand_id: world://brand/hellobiotic
+base_url: https://www.hellobiotic.com/
+last_verified_at: '2026-08-31'
+sources:
+  - id: SRC-HB-001
+    title: Biotic / Hellobiotic home page
+    publisher: hellobiotic
+    source_type: official_storefront
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://www.hellobiotic.com/
+    valid_time: current_at_2026-08-31
+    permitted_use: public_identity_product_and_expression_observation
+    status: verified
+  - id: SRC-HB-002
+    title: Brightening Probiotic Deodorant product page
+    publisher: hellobiotic
+    source_type: official_product_page
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://www.hellobiotic.com/products/brightening-probiotic-deodorant-1
+    valid_time: current_at_2026-08-31
+    permitted_use: documented_product_features_ingredients_and_purchase_options
+    status: verified
+  - id: SRC-HB-003
+    title: Our Story
+    publisher: hellobiotic
+    source_type: official_brand_story
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://www.hellobiotic.com/pages/story
+    valid_time: current_at_2026-08-31
+    permitted_use: founder_reported_origin_and_intended_brand_scope
+    status: verified
+  - id: SRC-HB-004
+    title: FAQs
+    publisher: hellobiotic
+    source_type: official_faq
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://www.hellobiotic.com/pages/faqs
+    valid_time: current_at_2026-08-31
+    permitted_use: documented_product_boundaries_and_transition_guidance
+    status: verified
+  - id: SRC-HB-005
+    title: Daily Sunshine Pre+Probiotic Powder product page
+    publisher: hellobiotic
+    source_type: official_product_page
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://www.hellobiotic.com/products/daily-sunshine-probiotic-powder
+    valid_time: current_at_2026-08-31
+    permitted_use: documented_product_features_only
+    status: verified
+evidence:
+  - id: EVID-HB-001
+    source_id: SRC-HB-001
+    evidence_excerpt: 'Meet your microbiome-friendly deodorant.'
+    paraphrased_findings:
+      - The storefront frames the core product around microbiome-friendly deodorant and whole-body care.
+      - The site presents no-aluminum, no-baking-soda, no-parabens, cruelty-free, and unisex attributes as its own claims.
+    actor_authority: hellobiotic_self_description
+    perspective: intended
+    epistemic_status: reported
+    limitations:
+      - Brand-authored public claims do not independently establish health, safety, efficacy, or customer outcomes.
+  - id: EVID-HB-002
+    source_id: SRC-HB-002
+    evidence_excerpt: 'Instead of masking odor, it supports your underarm microbiome to neutralize stink-causing bacteria at the source.'
+    paraphrased_findings:
+      - The product page describes a 99% natural, aluminum-free, baking-soda-free deodorant with prebiotic and probiotic ingredients.
+      - The page offers 2 oz, 0.6 oz, and duo formats plus subscription frequency options.
+    actor_authority: hellobiotic_product_description
+    perspective: intended
+    epistemic_status: reported
+    limitations:
+      - Product-page language is not an independent clinical efficacy or regulatory assessment.
+  - id: EVID-HB-003
+    source_id: SRC-HB-003
+    evidence_excerpt: 'Founded by two adventurous best friends.'
+    paraphrased_findings:
+      - The founders Sadaf and Leila describe a six-year development process and a desire for a natural, effective deodorant.
+      - The story says the brand aims to work for people across age, body type, and sex.
+    actor_authority: founder_reported_story
+    perspective: intended
+    epistemic_status: reported
+    limitations:
+      - Founder story is a self-description and does not establish product outcomes for every person.
+  - id: EVID-HB-004
+    source_id: SRC-HB-004
+    evidence_excerpt: 'It is not an antiperspirant.'
+    paraphrased_findings:
+      - The FAQ distinguishes the deodorant from antiperspirants and says a transition period may occur when changing products.
+      - The FAQ describes packaging choices and product claims from the brand perspective.
+    actor_authority: hellobiotic_faq
+    perspective: intended
+    epistemic_status: reported
+    limitations:
+      - FAQ explanations and health-adjacent statements require qualified review before use as medical or safety advice.
+  - id: EVID-HB-005
+    source_id: SRC-HB-005
+    evidence_excerpt: 'A pre+probiotic supplement formulated to support the essential gut microbiome.'
+    paraphrased_findings:
+      - The site presents Daily Sunshine as a separate pre+probiotic powder product with digestion, mood, and stress-related support claims.
+      - The page identifies non-GMO, gluten-free, and vegan claims.
+    actor_authority: hellobiotic_product_description
+    perspective: intended
+    epistemic_status: reported
+    limitations:
+      - Supplement claims are brand-authored product statements and need regulatory and scientific review before health messaging or advice.
+contexts:
+  - id: CTX-HELLOBIOTIC-DEODORANT-CURRENT
+    brand_id: world://brand/hellobiotic
+    audience_ids: [people-evaluating-natural-deodorant-alternatives]
+    channel_ids: [website, product-page]
+    campaign_or_occasion_ids: [product-education, deodorant-consideration]
+    artifact_type_ids: [product-landing-page, product-detail-page, educational-content]
+    branch_id: research-main
+    valid_time: {from: null, through: '2026-08-31'}
+    geography: availability_not_independently_verified
+    perspective_scope: [intended, reported, observed, inferred]
+    purpose: Current public deodorant product-education context.
+entities:
+  - {id: ENT-HB-ID-001, entity_type: identity, label: Microbiome-friendly whole-body care intention, description: 'The public storefront frames Biotic around microbiome-friendly deodorant and full-spectrum care.', evidence_ids: [EVID-HB-001]}
+  - {id: ENT-HB-EX-001, entity_type: expression, label: Playful body-positive verbal expression, description: 'Public copy uses informal body language such as pit-care and Hello everyBODY.', evidence_ids: [EVID-HB-001], epistemic_status: observed}
+  - {id: ENT-HB-OF-001, entity_type: offering, label: Brightening Probiotic Deodorant, description: 'A publicly listed deodorant with documented formats and subscription options.', evidence_ids: [EVID-HB-002]}
+  - {id: ENT-HB-XP-001, entity_type: experience, label: Direct product education and purchase journey, description: 'The storefront and product pages combine education, ingredients, purchase choices, and FAQ guidance.', evidence_ids: [EVID-HB-001, EVID-HB-002, EVID-HB-004]}
+  - {id: ENT-HB-PE-001, entity_type: perception, label: Public testimonial layer, description: 'The storefront displays customer testimonials; these are reported site content, not representative outcome research.', evidence_ids: [EVID-HB-001], epistemic_status: observed}
+  - {id: ENT-HB-GV-001, entity_type: governance, label: Founder-reported brand stewardship, description: 'The public story identifies Sadaf and Leila as founders; it does not expose approval or governance procedures.', evidence_ids: [EVID-HB-003]}
+  - {id: ENT-HB-EN-001, entity_type: environment, label: People evaluating natural deodorant alternatives, description: 'A bounded public audience environment inferred from product and FAQ framing, not a validated ICP.', evidence_ids: [EVID-HB-002, EVID-HB-004], perspective: inferred, epistemic_status: inferred, limitations: ['No internal segmentation or independent audience study is available.']}
+  - {id: ENT-HB-EV-001, entity_type: event, label: Public product ecosystem snapshot, description: 'The verified storefront publicly lists deodorant and Daily Sunshine powder products at the research cutoff.', evidence_ids: [EVID-HB-001, EVID-HB-005], epistemic_status: observed}

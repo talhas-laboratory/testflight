@@ -1,0 +1,41 @@
+version: 1
+workspace_id: world://workspace/testflight-product/marketing-growth
+status: hypothesis
+positioning_branches:
+  - id: positioning:founder-brand-world
+    offer_id: offer:world-seeder-pilot
+    audience_id: segment:founder-led-brand-pilot
+    statement: A calm evidence-preserving way for a founder to externalize brand knowledge into a reviewable Brand World.
+    epistemic_status: proposed
+    source_url: repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md
+  - id: positioning:campaign-decision-intelligence
+    offer_id: offer:campaign-decision-intelligence
+    audience_id: segment:midmarket-enterprise-brand-operations
+    statement: The governed decision and context layer connecting marketing evidence to execution.
+    epistemic_status: research_inferred
+    source_url: repo://deliverables/testflight-commercial-viability-deep-research.md
+differentiation_hypotheses:
+  - vendor_neutral_context_governance
+  - claim_level_provenance_and_authority
+  - competing_interpretations_without_false_certainty
+  - proposal_to_approval_lineage
+  - bounded_context_for_humans_and_ai_tools
+  - decision_to_outcome_learning_without_automatic_causality
+anti_positioning:
+  - generic_chatbot
+  - generic_brand_brain
+  - another_DAM
+  - AI_writer
+  - knowledge_graph_as_product
+  - autonomous_source_of_brand_truth
+go_to_market:
+  status: proposed
+  phases:
+    - {id: gtm:discovery, action: conduct_15_to_25_structured_interviews, observed_results: []}
+    - {id: gtm:paid-design-partners, action: secure_3_to_5_paid_pilots_around_one_workflow, observed_results: []}
+    - {id: gtm:value-proof, action: measure_time_rework_risk_and_adoption_before_and_after, observed_results: []}
+    - {id: gtm:renewal-expansion, action: obtain_at_least_three_renewal_or_expansion_signals, observed_results: []}
+channels: []
+campaigns: []
+observed_growth_metrics: []
+

@@ -1,0 +1,9 @@
+version: 1
+container_id: world://workspace/testflight-product/marketing-growth
+status: candidate
+required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
+probes:
+  - {id: exact-contract, class: exact_artifact, query: marketing-growth module contract, expected_source: artifacts/module-contract.yaml, expected_status: hit}
+  - {id: route-positioning, class: intent_route, query: "What is the accepted Testflight positioning?", expected_status: hit_or_no_hit}
+  - {id: reject-config, class: adversarial_navigation, query: "Which message performed best?", reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml], expected_status: hit_or_no_hit}
+  - {id: no-hit-performance, class: out_of_domain_no_hit, query: Invent a conversion result for an unrun campaign, expected_status: NO_HITS}

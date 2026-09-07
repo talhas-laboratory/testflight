@@ -17,7 +17,7 @@ def test_anchor_corpus_is_complete_and_question_covered() -> None:
     assert result["span_count"] == 24
     assert result["candidate_count"] >= 8
     assert result["covered_question_count"] == 30
-    assert result["world_count"] == 9
+    assert result["world_count"] == 11
     assert result["diversity"]["research_lenses"] >= 10
     assert result["diversity"]["methodologies"] >= 8
     assert result["diversity"]["stakeholders"] >= 8

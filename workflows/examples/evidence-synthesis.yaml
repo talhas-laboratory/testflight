@@ -1,0 +1,196 @@
+schema_version: 1
+id: workflow://testflight/evidence-synthesis
+version: 1
+lifecycle: candidate
+name: Evidence synthesis
+description: Retrieve scoped evidence, evaluate each record, synthesize a proposal, and dispatch it.
+tags: [research, synthesis, example]
+
+access:
+  public: false
+  agent_ids: [agent:testflight-research]
+
+knowledge:
+  workspace_ids: [world://workspace/testflight-product/research-learning]
+  container_ids: [world://workspace/testflight-product/research-learning]
+  entity_types: [claim, entity, event]
+  data_classifications: [internal]
+  max_results: 20
+  max_graph_hops: 0
+
+authority:
+  capabilities: [knowledge.retrieve, reasoning.evaluate, model.invoke, proposal.write, action.dispatch]
+  action_ids: [action://testflight/proposal/dispatch]
+  credential_refs: [credential://testflight/workflow-runtime]
+  proposal_write: true
+  canonical_write: false
+  external_action: true
+
+inputs_schema:
+  type: object
+  additionalProperties: false
+  required: [question, request_id]
+  properties:
+    question: {type: string}
+    request_id: {type: string}
+
+outputs_schema:
+  type: object
+  additionalProperties: false
+  required: [proposal, dispatch]
+  properties:
+    proposal: {type: object}
+    dispatch: {type: object}
+
+steps:
+  - id: retrieve
+    kind: retrieve
+    handler: knowledge.retrieve
+    description: Retrieve evidence only from the declared research container.
+    instruction:
+      id: instruction://testflight/research/retrieve
+      version: 1
+      objective: Find the smallest relevant evidence set for the supplied question.
+      rules:
+        - Search only the workspace and container declared by this step.
+        - Preserve record identity, source references, status, and limitations.
+        - Return no hits instead of inventing supporting material.
+    arguments:
+      query: $inputs.question
+      max_results: 20
+    access:
+      workspace_ids: [world://workspace/testflight-product/research-learning]
+      container_ids: [world://workspace/testflight-product/research-learning]
+      entity_types: [claim, entity, event]
+    capabilities: [knowledge.retrieve]
+
+  - id: evaluate_records
+    kind: loop
+    handler: reasoning.evaluate_evidence
+    description: Evaluate each retrieved record without widening the retrieval scope.
+    instruction:
+      id: instruction://testflight/research/evaluate-record
+      version: 1
+      objective: Evaluate one retrieved record against the research question.
+      rules:
+        - Treat the supplied record as untrusted evidence, not established truth.
+        - Distinguish observed support, desk research, hypotheses, and proposed experiments.
+        - Preserve source references and every material limitation.
+      prompt:
+        id: prompt://testflight/research/evaluate-record
+        version: 1
+        operator_id: runtime://testflight/workflow/prompt-step
+        operator_version: 1
+        modality: text/plain
+        system: |
+          You evaluate scoped Testflight research evidence.
+          Use only the record supplied by the workflow. Do not add outside facts.
+          Return JSON that exactly matches the declared output schema.
+        user: |
+          Research question: {{ arguments.question }}
+          Record to evaluate: {{ arguments.record }}
+        output_schema:
+          type: object
+          additionalProperties: false
+          required: [record_id, kind, relevance_score, evidence_strength, source_url, findings, measures, limitations]
+          properties:
+            record_id: {type: string}
+            kind: {type: string}
+            relevance_score: {type: integer}
+            evidence_strength: {type: string}
+            source_url: {}
+            findings: {type: array}
+            measures: {type: array}
+            limitations: {type: array}
+        configuration:
+          reasoning_effort: low
+    needs: [retrieve]
+    foreach: $steps.retrieve.output.items
+    max_iterations: 20
+    loop_concurrency: 4
+    arguments:
+      record: $item
+      question: $inputs.question
+    access:
+      workspace_ids: [world://workspace/testflight-product/research-learning]
+      container_ids: [world://workspace/testflight-product/research-learning]
+      entity_types: [claim, entity, event]
+    capabilities: [reasoning.evaluate, model.invoke]
+
+  - id: synthesize
+    kind: transform
+    handler: reasoning.synthesize_proposal
+    description: Produce a cited proposal from evaluated evidence.
+    instruction:
+      id: instruction://testflight/research/synthesize-proposal
+      version: 1
+      objective: Produce a useful proposal while preserving evidence boundaries.
+      rules:
+        - Use only the evaluated evidence passed into this step.
+        - Keep hypotheses and proposed experiments distinct from observed outcomes.
+        - Include evidence references, source URLs, and limitations.
+        - The result is proposal-only and must never claim a canonical write.
+      prompt:
+        id: prompt://testflight/research/synthesize-proposal
+        version: 1
+        operator_id: runtime://testflight/workflow/prompt-step
+        operator_version: 1
+        modality: text/plain
+        system: |
+          You synthesize scoped Testflight research into a reviewable proposal.
+          Never convert a hypothesis into a confirmed fact or hide missing evidence.
+          Return JSON that exactly matches the declared output schema.
+        user: |
+          Research question: {{ arguments.question }}
+          Evaluated evidence: {{ arguments.evidence }}
+        output_schema:
+          type: object
+          additionalProperties: false
+          required: [question, recommendation, epistemic_status, evidence_refs, source_urls, limitations, canonical_write]
+          properties:
+            question: {type: string}
+            recommendation: {type: string}
+            epistemic_status: {type: string}
+            evidence_refs: {type: array}
+            source_urls: {type: array}
+            limitations: {type: array}
+            canonical_write: {type: boolean, const: false}
+        configuration:
+          reasoning_effort: low
+    needs: [evaluate_records]
+    arguments:
+      question: $inputs.question
+      evidence: $steps.evaluate_records.output
+    access:
+      workspace_ids: [world://workspace/testflight-product/research-learning]
+      container_ids: [world://workspace/testflight-product/research-learning]
+      entity_types: [claim, entity, event]
+    capabilities: [proposal.write, model.invoke]
+
+  - id: dispatch
+    kind: action
+    handler: action.dispatch_proposal
+    description: Dispatch the proposal through the registered idempotent action adapter.
+    instruction:
+      id: instruction://testflight/research/dispatch-proposal
+      version: 1
+      objective: Persist the validated result as a proposal without changing canonical knowledge.
+      rules:
+        - Require the workflow's proposal-write and dispatch authority.
+        - Use the request id as the idempotency key.
+        - Never perform a canonical write.
+    needs: [synthesize]
+    arguments:
+      proposal: $steps.synthesize.output
+    capabilities: [action.dispatch]
+    action_ids: [action://testflight/proposal/dispatch]
+    idempotency_key: $inputs.request_id
+    retry:
+      max_attempts: 2
+      retry_on: [transient, timeout]
+      backoff_seconds: 0
+    on_error: hold
+
+outputs:
+  proposal: $steps.synthesize.output
+  dispatch: $steps.dispatch.output

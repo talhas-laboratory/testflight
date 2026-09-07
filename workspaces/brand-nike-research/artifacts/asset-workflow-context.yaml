@@ -1,0 +1,120 @@
+version: 1
+workspace_id: world://workspace/brand/nike-research
+purpose: >-
+  Deterministically compile the smallest evidence-backed context packet needed for an agent
+  creating or reviewing a Nike asset. This is research guidance, not an official Nike brief.
+interpretation_contract:
+  required_inputs: [workflow_stage, asset_type, objective, audience, channel, geography, occasion, valid_time]
+  optional_inputs: [sport, product_or_service, campaign, constraints, success_measure]
+  missing_material_input_outcome: ask
+  ambiguous_scope_outcome: branch
+  unsupported_scope_outcome: no_hit
+  context_selection_order:
+    - resolve workspace and brand identity
+    - resolve valid time and geography
+    - select workflow stage recipe
+    - select audience and occasion context profiles
+    - retrieve exact entities and direct relationships
+    - attach source evidence, limitations, conflicts, and omissions
+    - issue stage-specific reasoning instructions
+  never_infer:
+    - confidential brand standards
+    - legal approval
+    - audience response from campaign intent
+    - causal effectiveness from temporal sequence
+
+packet_contract:
+  required_sections:
+    - task_interpretation
+    - current_identity
+    - audience_and_environment
+    - relevant_expression
+    - offering_or_experience
+    - governance_and_constraints
+    - current_events_and_perception
+    - direct_relationships
+    - reasoning_instructions
+    - citations_limitations_and_omissions
+  maximum_graph_hops: 2
+  preserve_perspective_labels: true
+  preserve_held_hypotheses: true
+  disclose_excluded_context: true
+
+stage_recipes:
+  - stage: brief
+    goal: Turn the request into a bounded, evidence-backed creative problem.
+    always_include:
+      entity_ids: [ENT-NIKE-ID-001, ENT-NIKE-ID-002, ENT-NIKE-ID-003, ENT-NIKE-ID-005]
+      context_ids: [CTX-NIKE-GLOBAL-CURRENT, CTX-NIKE-PERCEPTION-2025-2026]
+      relationship_types: [governed_by, situated_in, perceived_by, contradicts]
+    conditional_routes:
+      - {when: sport_is_football, context_ids: [CTX-NIKE-FOOTBALL-2026], entity_ids: [ENT-NIKE-EX-005, ENT-NIKE-OF-011, ENT-NIKE-EN-015, ENT-NIKE-EN-016]}
+      - {when: sport_is_running, context_ids: [CTX-NIKE-RUNNING-2026], entity_ids: [ENT-NIKE-OF-010, ENT-NIKE-EN-011, ENT-NIKE-EN-012]}
+      - {when: audience_is_young_athletes, context_ids: [CTX-NIKE-YOUNG-ATHLETES-2025], entity_ids: [ENT-NIKE-EX-003, ENT-NIKE-EN-013]}
+      - {when: audience_is_women_athletes, context_ids: [CTX-NIKE-WOMEN-SPORT-2025], entity_ids: [ENT-NIKE-EX-004, ENT-NIKE-EN-014]}
+      - {when: channel_is_member_or_app, context_ids: [CTX-NIKE-DIGITAL-MEMBERSHIP-CURRENT], entity_ids: [ENT-NIKE-OF-005, ENT-NIKE-OF-006, ENT-NIKE-OF-007, ENT-NIKE-EN-017]}
+    reasoning_instructions:
+      - Separate Nike's intended identity from independent perception evidence.
+      - State the audience, occasion, channel, geography, and time boundary explicitly.
+      - Convert evidence into objectives and constraints; do not imitate a campaign unless reuse is requested and authorized.
+      - Ask only for missing inputs that materially change the brief.
+
+  - stage: concept
+    goal: Generate and compare creative territories consistent with the brief.
+    always_include:
+      entity_ids: [ENT-NIKE-EX-001, ENT-NIKE-EX-002, ENT-NIKE-EX-006, ENT-NIKE-EX-007]
+      relationship_types: [expressed_through, influences, shapes]
+    conditional_routes:
+      - {when: use_current_youth_expression, context_ids: [CTX-NIKE-YOUNG-ATHLETES-2025], entity_ids: [ENT-NIKE-EX-003]}
+      - {when: use_current_women_sport_expression, context_ids: [CTX-NIKE-WOMEN-SPORT-2025], entity_ids: [ENT-NIKE-EX-004]}
+      - {when: use_current_football_expression, context_ids: [CTX-NIKE-FOOTBALL-2026], entity_ids: [ENT-NIKE-EX-005, ENT-NIKE-EX-007]}
+    reasoning_instructions:
+      - Derive multiple territories from identity and audience needs, not from surface copying.
+      - Label intended influence separately from observed effectiveness.
+      - Test each territory against the selected audience, channel, occasion, and current perception tension.
+      - Preserve campaign-specific boundaries; do not treat football or youth expression as universal Nike voice.
+
+  - stage: production
+    goal: Translate an approved concept into channel-appropriate execution requirements.
+    always_include:
+      entity_ids: [ENT-NIKE-GV-001, ENT-NIKE-GV-006]
+      relationship_types: [experienced_through, governed_by]
+    conditional_routes:
+      - {when: channel_is_retail, entity_ids: [ENT-NIKE-XP-001, ENT-NIKE-XP-007], evidence_ids: [EVID-NIKE-012]}
+      - {when: channel_is_nike_app, entity_ids: [ENT-NIKE-OF-006, ENT-NIKE-XP-004], evidence_ids: [EVID-NIKE-011]}
+      - {when: channel_is_snkrs, entity_ids: [ENT-NIKE-OF-007, ENT-NIKE-XP-005], evidence_ids: [EVID-NIKE-011]}
+      - {when: channel_is_training_or_running_app, entity_ids: [ENT-NIKE-OF-008, ENT-NIKE-OF-009, ENT-NIKE-XP-006], evidence_ids: [EVID-NIKE-010, EVID-NIKE-011]}
+    reasoning_instructions:
+      - Convert the concept into channel behavior, hierarchy, content, and interaction requirements.
+      - Flag that public research does not contain Nike's proprietary design system, trademark rules, accessibility standard, or approval matrix.
+      - Require authorized internal standards before final production or publication.
+
+  - stage: review
+    goal: Check strategic fit, evidence use, scope, and unsupported claims.
+    always_include:
+      context_ids: [CTX-NIKE-GLOBAL-CURRENT, CTX-NIKE-PERCEPTION-2025-2026]
+      relationship_types: [supports, contradicts, updates, shapes]
+      entity_ids: [ENT-NIKE-PE-001, ENT-NIKE-PE-002, ENT-NIKE-PE-003, ENT-NIKE-PE-004, ENT-NIKE-PE-007]
+    reasoning_instructions:
+      - Trace every strategic claim to evidence and preserve its perspective and date.
+      - Reject global conclusions drawn from a campaign-specific or channel-specific source.
+      - Treat held relationships as hypotheses, never facts.
+      - Return partial when the asset can be reviewed strategically but not legally or against proprietary standards.
+
+  - stage: post_publication_learning
+    goal: Integrate measured outcomes without confusing them with intent.
+    always_include:
+      relationship_types: [updates, feeds_back_into, contradicts]
+      context_ids: [CTX-NIKE-PERCEPTION-2025-2026]
+    required_new_evidence:
+      - measurement_method
+      - population_or_audience
+      - channel_and_geography
+      - measurement_window
+      - baseline_or_comparator
+      - source_authority
+    reasoning_instructions:
+      - Store outcomes as observed perception or event evidence with valid and recorded times.
+      - Compare outcomes only across compatible measures and populations.
+      - Do not assert feedback into identity until a decision record shows that the outcome informed a revision.
+

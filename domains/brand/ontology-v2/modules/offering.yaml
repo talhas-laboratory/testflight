@@ -1,0 +1,16 @@
+module_id: world://ontology/module/brand/offering
+version: 2.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand/core, world://ontology/module/brand/audience]
+competency_questions:
+  - Can a product definition be traced to an audience need without claiming the need caused the decision?
+evidence_basis: [research:market-orientation, research:market-segmentation]
+entity_types:
+  - {id: world://ontology/brand/type/ProductDefinition, label: Product definition, definition: "A versioned description of what an offering is intended to provide in a bounded context.", examples: ["Nike App new-runner definition"], counterexamples: ["A customer interview." ]}
+  - {id: world://ontology/brand/type/Capability, label: Capability, definition: "A durable ability an offering provides.", examples: ["Guided first-run plan"], counterexamples: ["A campaign objective."]}
+  - {id: world://ontology/brand/type/Benefit, label: Benefit, definition: "A stated value an audience may obtain from an offering capability.", examples: ["Confidence to begin"], counterexamples: ["A logo color."]}
+  - {id: world://ontology/brand/type/ValueProposition, label: Value proposition, definition: "A bounded promise connecting an offering benefit to a selected audience.", examples: ["A confident first run"], counterexamples: ["A generic company mission."]}
+relationship_types:
+  - {id: world://ontology/brand/relation/designed-for, label: designed for, definition: "A product definition is deliberately designed for an audience segment or ICP in context.", family: strategic, source_type_ids: [world://ontology/brand/type/ProductDefinition], target_type_ids: [world://ontology/brand/type/AudienceSegment, world://ontology/brand/type/IdealCustomerProfile], examples: ["Product definition is designed for new runners."], counterexamples: ["A segment designs the product itself."]}
+  - {id: world://ontology/brand/relation/satisfies, label: satisfies, definition: "A capability or benefit addresses a stated audience need.", family: experience, source_type_ids: [world://ontology/brand/type/Capability, world://ontology/brand/type/Benefit], target_type_ids: [world://ontology/brand/type/Need], examples: ["Guidance satisfies confidence need."], counterexamples: ["Need satisfies guidance."]}
+  - {id: world://ontology/brand/relation/emphasizes, label: emphasizes, definition: "A value proposition foregrounds a benefit for a defined audience and context.", family: strategic, source_type_ids: [world://ontology/brand/type/ValueProposition], target_type_ids: [world://ontology/brand/type/Benefit], examples: ["Value proposition emphasizes confidence."], counterexamples: ["A benefit changes a proposition without a decision."]}

@@ -1,0 +1,15 @@
+version: 1
+workspace_id: world://workspace/testflight-product/marketing-growth
+module_id: marketing-growth
+status: active
+owns:
+  entity_types: [offer_positioning, audience, narrative, message, campaign, channel, go_to_market_phase, funnel_stage]
+  event_types: [campaign_launch, impression, activation, conversion, retention_event]
+  state_types: [campaign_state, channel_state, funnel_state]
+  claim_types: [product_claim, message_hypothesis, channel_hypothesis, performance_observation]
+relations: [targets, communicates, distributed_through, supports, measured_by, converts_to, evidenced_by]
+invariants:
+  - message_is_not_product_truth
+  - campaign_output_is_not_performance_evidence
+  - audience_segment_is_not_individual_identity
+  - reference_rights_are_explicit

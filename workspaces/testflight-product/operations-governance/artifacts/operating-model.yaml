@@ -1,0 +1,19 @@
+version: 1
+workspace_id: world://workspace/testflight-product/operations-governance
+status: active_with_proposed_product_roles
+roles:
+  - {id: role:product-builder, kind: operational_role, responsibilities: [implementation, testing, documentation, boundary_preservation], authority: repository_change_with_user_scope}
+  - {id: role:product-agent, kind: operational_role, responsibilities: [route_product_work, preserve_provenance, propose_changes, run_quality_gates], authority: proposal_and_in_scope_implementation}
+  - {id: role:testflight-expert, kind: proposed_service_role, responsibilities: [pilot_setup, source_review, ontology_mapping, proposal_review, canonical_handoff], authority: explicit_client_and_workspace_scope}
+  - {id: role:founder-participant, kind: proposed_participant_role, responsibilities: [source_expression, clarification, review], authority: own_source_and_review_scope}
+  - {id: role:workspace-reviewer, kind: review_role, responsibilities: [accept, revise, reject, hold, branch], authority: explicit_grant_required}
+processes:
+  - {id: process:repository-quality, stages: [format, lint, registry_validation, operator_validation, secret_scan, tests, workspace_validation, compose_validation], implementation_ref: repo://Makefile}
+  - {id: process:upstream-introduction, stages: [register, isolate_adapter, health_probe, document, test], implementation_ref: repo://AGENTS.md}
+  - {id: process:semantic-promotion, stages: [evidence, proposal, evaluation, authority, acceptance, persistence, projection], implementation_ref: repo://reasoning/README.md}
+  - {id: process:product-decision, stages: [proposal, alternatives, evidence, evaluation, authority, disposition, affected_module_projection, supersession], implementation_ref: repo://workspaces/testflight-product/product-decisions/artifacts/module-contract.yaml}
+  - {id: process:workspace-population, stages: [contract, scaffold, canonical_sources, child_first_routes, probes, structural_validation, retrieval_certification, refresh], implementation_ref: repo://workspaces/testflight-product/artifacts/extension-contract.yaml}
+service_operations:
+  current: [local_development, home_server_projection_setup, private_local_operator_runtime, deterministic_validation]
+  proposed: [managed_EU_pilot, backups, monitoring, incident_response, retention_and_deletion, service_support]
+

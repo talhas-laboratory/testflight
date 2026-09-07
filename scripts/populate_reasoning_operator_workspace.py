@@ -103,10 +103,10 @@ def validate_workspace(root: Path) -> dict[str, Any]:
     catalog_path = (workspace_dir / manifest["source_of_truth"]).resolve()
     catalog = _read_yaml(catalog_path)
     entries = catalog.get("operators")
-    if not isinstance(entries, list) or len(entries) != 16:
-        raise ValueError("the workspace must expose exactly 16 catalog operators")
+    if not isinstance(entries, list) or len(entries) != 24:
+        raise ValueError("the workspace must expose exactly 24 catalog operators")
     categories = {entry.get("category") for entry in entries if isinstance(entry, dict)}
-    if len(categories) != 16:
+    if len(categories) != 24:
         raise ValueError("operator categories must be unique")
 
     operator_sources = registry.get("operator_sources")

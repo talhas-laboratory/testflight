@@ -1,0 +1,69 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]: Experience prototype
+    - navigation "Prototype views" [ref=e5]:
+      - button "Notebook" [ref=e6] [cursor=pointer]
+      - button "Clarify" [ref=e7] [cursor=pointer]
+      - button "Review" [active] [ref=e8] [cursor=pointer]
+  - main [ref=e9]:
+    - complementary "Capture progress" [ref=e10]:
+      - link "Testflight home" [ref=e11] [cursor=pointer]:
+        - /url: "#"
+        - text: T/F
+      - list [ref=e14]:
+        - listitem [ref=e15]:
+          - generic [ref=e16]: "1"
+          - generic [ref=e17]: Today
+        - listitem [ref=e18]:
+          - generic [ref=e19]: "2"
+          - generic [ref=e20]: Tomorrow
+        - listitem [ref=e21]:
+          - generic [ref=e22]: "3"
+          - generic [ref=e23]: Then
+      - button "Open privacy note" [ref=e24] [cursor=pointer]:
+        - generic [ref=e27]: Private
+    - region [ref=e94]:
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - paragraph [ref=e97]: Founder Brand World · first reading
+          - heading [level=2] [ref=e98]:
+            - text: This is what
+            - emphasis [ref=e99]: we heard.
+        - paragraph [ref=e100]: Not a verdict. A map for the conversation you and your Testflight expert will have together.
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - paragraph [ref=e103]: The centre
+          - button [ref=e104] [cursor=pointer]:
+            - text: Underlying belief
+            - strong [ref=e105]: People move forward when complexity stops making them feel inadequate.
+            - text: 4 source moments · founder belief
+          - button [ref=e106] [cursor=pointer]:
+            - text: Difference
+            - strong [ref=e107]: Guidance without the performance of expertise.
+            - text: 3 source moments · needs review
+        - generic [ref=e110]: shapes
+        - generic [ref=e112]:
+          - paragraph [ref=e113]: The people
+          - button [ref=e114] [cursor=pointer]:
+            - text: Primary audience · proposed
+            - strong [ref=e115]: Capable beginners who distrust cultures of mastery.
+            - text: 6 source moments · one open question
+          - generic [ref=e116]:
+            - text: Open tension
+            - paragraph [ref=e117]: Is “beginner” a life stage, a mindset, or a moment that repeats?
+        - complementary [ref=e118]:
+          - generic [ref=e119]:
+            - paragraph [ref=e120]: Why this is here
+            - generic [ref=e121]: Proposed · not accepted
+          - heading "People move forward when complexity stops making them feel inadequate." [level=3] [ref=e122]
+          - generic [ref=e123]:
+            - blockquote [ref=e124]:
+              - text: “We make the first step feel like it belongs to you.”
+              - generic [ref=e125]: Day 1 · written note
+            - blockquote [ref=e126]:
+              - text: “The category loves expertise more than it loves people.”
+              - generic [ref=e127]: Day 2 · voice note
+          - button "Open in expert review ↗" [ref=e128] [cursor=pointer]:
+            - text: Open in expert review
+            - generic [ref=e129]: ↗
+  - status

@@ -1,0 +1,42 @@
+version: 1
+workspace_id: world://workspace/testflight-product
+status: candidate
+probes:
+  - id: exact-product-ontology
+    class: exact_artifact
+    query: product ontology
+    route: [parent]
+    expected_source: workspaces/testflight-product/artifacts/product-ontology.yaml
+    expected_status: hit
+  - id: route-design-language
+    class: intent_route
+    query: Which spacing and interaction rules should a new user-facing app use?
+    route: [experience-design]
+    expected_status: hit
+  - id: route-pricing
+    class: intent_route
+    query: What pricing assumptions have been accepted?
+    route: [finance-commercial]
+    expected_status: hit_or_no_hit
+  - id: navigation-rejection
+    class: adversarial_navigation
+    query: What is Testflight's product character?
+    route: [experience-design]
+    reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml]
+    expected_status: hit
+  - id: customer-boundary
+    class: out_of_domain_no_hit
+    query: What is a named customer's confidential annual revenue?
+    route: [customers-market]
+    expected_status: NO_HITS
+  - id: route-research-outcomes
+    class: intent_route
+    query: Which Testflight product hypotheses have observed outcomes?
+    route: [research-learning]
+    expected_status: hit
+  - id: preserve-product-direction-branch
+    class: intent_route
+    query: What is Testflight's accepted initial commercial wedge?
+    route: [product-definition, product-decisions, research-learning]
+    expected_status: partial
+    expected_distinction: founder_world_seeder_and_campaign_decision_intelligence_remain_unresolved_alternatives

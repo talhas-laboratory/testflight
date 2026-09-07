@@ -1,0 +1,9 @@
+version: 1
+container_id: world://workspace/testflight-product/product-decisions
+status: candidate
+required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
+probes:
+  - {id: exact-contract, class: exact_artifact, query: product-decisions module contract, expected_source: artifacts/module-contract.yaml, expected_status: hit}
+  - {id: route-decision, class: intent_route, query: "Why was a product direction accepted?", expected_status: hit_or_no_hit}
+  - {id: reject-config, class: adversarial_navigation, query: "Which decisions are currently accepted?", reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml], expected_status: hit_or_no_hit}
+  - {id: no-hit, class: out_of_domain_no_hit, query: Approve this decision without an authority grant, expected_status: NO_HITS}

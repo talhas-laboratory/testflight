@@ -1,5 +1,8 @@
 # Working agreements
 
+- Start repository-wide discovery at `AGENT_INDEX.md`, then route to the smallest owning module.
+- Keep `AGENT_INDEX.md` current when adding, removing, renaming, or materially reconnecting a
+  module, application, adapter, domain, workspace, operator runtime, or workflow layer.
 - Preserve modular boundaries: upstream-specific imports stay inside their adapter.
 - Add or update `upstreams/registry.yaml` before introducing an external runtime dependency.
 - Do not commit secrets, `.env` files, databases, model weights, or generated knowledge stores.
@@ -24,3 +27,16 @@
 - For workspace/container population, read `workspaces/reasoning-operators/README.md` and keep
   `reasoning/operators/` as the source of truth; rebuild Cognee projections instead of editing
   generated `.data/` state.
+
+## Testflight product workspace
+
+- For product strategy, product decisions, user-facing experience, architecture, customers,
+  marketing, finance, or operations work, start at `workspaces/testflight-product/AGENT_INDEX.md`
+  and route to the smallest child module.
+- Keep knowledge modules, product capabilities, implementation modules, and UI components as
+  distinct semantic types. Add new product modules through
+  `workspaces/testflight-product/artifacts/extension-contract.yaml`.
+- For every user-facing application or artifact, load the active experience-design contract and
+  consume `packages/testflight-design-language`; record exceptions as product-decision proposals.
+- Never treat Testflight product language as evidence about a customer or brand workspace. Use an
+  explicit, scoped, provenance-bearing bridge for every cross-workspace transfer.

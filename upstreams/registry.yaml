@@ -20,7 +20,10 @@ upstreams:
     integration: plugin
     status: boundary
     adapter: adapters/deepseek-harness
-    notes: Developer preview; exact commit retained because breaking changes are expected.
+    notes: >-
+      Developer preview; exact commit retained because breaking changes are expected. The native
+      Cordis context-intelligence plugin is isolated under
+      adapters/deepseek-harness-context-intelligence and uses only this pinned plugin API.
 
   - id: langgraph
     repository: https://github.com/langchain-ai/langgraph
@@ -32,3 +35,14 @@ upstreams:
     status: boundary
     adapter: adapters/langgraph
     notes: Stateful orchestration library; deployment platform remains an optional later choice.
+
+  - id: model-context-protocol-python-sdk
+    repository: https://github.com/modelcontextprotocol/python-sdk
+    license: MIT
+    release: "2.1.1"
+    commit: 0921d94a74db900dccd2d534842aa7b6160542d2
+    runtime: python
+    integration: package
+    status: boundary
+    adapter: adapters/mcp-workflows
+    notes: Agent-facing workflow discovery and invocation over stdio or Streamable HTTP.

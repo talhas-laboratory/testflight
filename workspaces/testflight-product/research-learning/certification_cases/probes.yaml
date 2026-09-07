@@ -1,0 +1,10 @@
+version: 1
+container_id: world://workspace/testflight-product/research-learning
+status: candidate
+required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
+probes:
+  - {id: exact-catalog, class: exact_artifact, query: research catalog, expected_source: artifacts/research-catalog.yaml, expected_status: hit}
+  - {id: route-hypothesis, class: intent_route, query: "Which product hypotheses still lack observed outcomes?", expected_status: hit}
+  - {id: reject-index, class: adversarial_navigation, query: "Did a paid Testflight pilot prove willingness to pay?", reject_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml], expected_status: no_hit}
+  - {id: no-hit-outcome, class: out_of_domain_no_hit, query: "Report observed renewal rates for Testflight customers", expected_status: NO_HITS}
+

@@ -1,0 +1,48 @@
+version: 1
+workspace_id: world://workspace/brand/nike-research
+research_cutoff: 2026-08-25
+entity_coverage:
+  identity: {count: 8, status: populated, dominant_evidence: official_mission_strategy_and_operations}
+  expression: {count: 7, status: populated, dominant_evidence: official_archive_and_campaign_releases}
+  offering: {count: 11, status: populated, dominant_evidence: regulated_filing_product_and_service_docs}
+  experience: {count: 7, status: populated, dominant_evidence: regulated_filing_service_docs_and_activation_release}
+  perception: {count: 7, status: populated_with_limits, dominant_evidence: independent_brand_ranking_and_survey_plus_self_report}
+  governance: {count: 8, status: populated_with_limits, dominant_evidence: governance_registry_filing_and_company_release}
+  environment: {count: 18, status: populated, dominant_evidence: filing_competitor_reports_and_bounded_audience_inference}
+  event: {count: 9, status: populated, dominant_evidence: dated_results_campaign_and_operations_releases}
+relationship_coverage:
+  has_component: {count: 7, status: populated}
+  expressed_through: {count: 3, status: populated}
+  offers: {count: 3, status: populated}
+  experienced_through: {count: 5, status: populated}
+  perceived_by: {count: 2, status: populated_with_scope_limits}
+  governed_by: {count: 3, status: populated}
+  situated_in: {count: 5, status: populated}
+  evolves_through: {count: 2, status: populated}
+  shapes: {count: 2, status: held_no_outcome_evidence}
+  updates: {count: 2, status: populated_with_inference_labels}
+  feeds_back_into: {count: 1, status: held_no_decision_record}
+  supports: {count: 3, status: populated}
+  contradicts: {count: 2, status: held_metric_tensions}
+  influences: {count: 2, status: intended_influence_only}
+known_gaps:
+  - id: GAP-NIKE-001
+    area: proprietary_brand_governance
+    consequence: Public evidence cannot establish final design, legal, trademark, or brand approval requirements.
+    required_source: authorized_internal_nike_standard
+  - id: GAP-NIKE-002
+    area: detailed_ICP_economics_and_behavior
+    consequence: Audience profiles are bounded research interpretations, not validated commercial segments.
+    required_source: authorized_customer_research_or_segment_definition
+  - id: GAP-NIKE-003
+    area: campaign_effectiveness
+    consequence: Campaign intent cannot establish perception or behavior change.
+    required_source: compatible_independent_or_first_party_outcome_measurement
+  - id: GAP-NIKE-004
+    area: competitive_positioning_comparability
+    consequence: Competitor self-positioning and Nike perception scores answer different questions.
+    required_source: common_method_multi_brand_study
+  - id: GAP-NIKE-005
+    area: feedback_and_causality
+    consequence: Public temporal sequence cannot prove that external perception caused strategy changes.
+    required_source: decision_record_or_direct_executive_statement

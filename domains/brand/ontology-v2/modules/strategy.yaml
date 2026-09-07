@@ -1,0 +1,14 @@
+module_id: world://ontology/module/brand/strategy
+version: 2.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand/core, world://ontology/module/brand/audience, world://ontology/module/brand/offering]
+competency_questions:
+  - Can the system distinguish an insight from a documented targeting or positioning decision?
+evidence_basis: [research:positioning, research:market-segmentation]
+entity_types:
+  - {id: world://ontology/brand/type/Positioning, label: Positioning, definition: "A chosen market meaning for an offering relative to an audience and alternatives.", examples: ["Nike App as a confident first-run companion"], counterexamples: ["An untested audience association."]}
+  - {id: world://ontology/brand/type/StrategicObjective, label: Strategic objective, definition: "A bounded intended outcome guiding a decision or initiative.", examples: ["Increase qualified app installs"], counterexamples: ["A visual reference."]}
+  - {id: world://ontology/brand/type/StrategyDecision, label: Strategy decision, definition: "A documented authorized choice among strategic options.", examples: ["Select new runners as acquisition focus"], counterexamples: ["An evidence source."]}
+relationship_types:
+  - {id: world://ontology/brand/relation/positions, label: positions, definition: "A positioning gives an offering a chosen meaning for a segment in context.", family: strategic, source_type_ids: [world://ontology/brand/type/Positioning], target_type_ids: [world://ontology/brand/type/Offering, world://ontology/brand/type/ProductDefinition], examples: ["Positioning positions Nike App."], counterexamples: ["Offering independently proves its positioning."]}
+  - {id: world://ontology/brand/relation/for-audience, label: for audience, definition: "A positioning or objective is bounded to an audience segment or ICP.", family: context, source_type_ids: [world://ontology/brand/type/Positioning, world://ontology/brand/type/StrategicObjective], target_type_ids: [world://ontology/brand/type/AudienceSegment, world://ontology/brand/type/IdealCustomerProfile], examples: ["Positioning is for new runners."], counterexamples: ["An audience is globally targeted by default."]}

@@ -102,8 +102,8 @@ def validate_corpus(root: Path = REPO_ROOT) -> dict[str, Any]:
         raise ValueError("corpus must contain at least eight candidate definitions")
     if not isinstance(questions, list) or len(questions) != 30:
         raise ValueError("corpus must use the complete 30-question catalogue")
-    if not isinstance(worlds, list) or len(worlds) != 9:
-        raise ValueError("corpus must retain all nine synthetic worlds")
+    if not isinstance(worlds, list) or len(worlds) != 11:
+        raise ValueError("corpus must retain all eleven synthetic worlds")
 
     source_ids: set[str] = set()
     for source in sources:

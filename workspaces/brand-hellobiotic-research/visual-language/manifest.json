@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "workspaceId": "world://workspace/brand/hellobiotic-research",
+  "brandId": "world://brand/hellobiotic",
+  "profiles": [
+    {
+      "id": "VL-HELLOBIOTIC-PUBLIC",
+      "label": "Biotic / Hellobiotic public visual observations",
+      "description": "Versioned public observations, not a proprietary design system.",
+      "status": "observed"
+    }
+  ],
+  "references": [
+    {
+      "id": "VR-HELLOBIOTIC-PUBLIC-001",
+      "revision": 1,
+      "kind": "imagery.art_direction",
+      "schemaVersion": 1,
+      "label": "Public storefront visual observation",
+      "payload": {
+        "observation": "Use source-linked site imagery only as a bounded public reference; no typography, color, layout, or asset right is implied beyond the source record."
+      },
+      "assetRefs": [],
+      "authority": "observed_public",
+      "epistemicStatus": "observed",
+      "status": "observed",
+      "sourceIds": [
+        "SRC-HB-001"
+      ],
+      "evidenceIds": [
+        "EVID-HB-001"
+      ],
+      "validFrom": "2026-08-31",
+      "recordedAt": "2026-08-31T00:00:00Z",
+      "lastVerifiedAt": "2026-08-31",
+      "rights": {
+        "permittedUse": "analysis_and_reference",
+        "generationUse": "inspiration_only"
+      },
+      "limitations": [
+        "Requires approved internal assets and standards before production."
+      ],
+      "slot": "imagery.public-storefront"
+    }
+  ],
+  "revisions": [
+    {
+      "id": "VL-HELLOBIOTIC-PUBLIC@1",
+      "profileId": "VL-HELLOBIOTIC-PUBLIC",
+      "revision": 1,
+      "branch": "main",
+      "parentRevisionIds": [],
+      "modules": [
+        {
+          "slot": "imagery.public-storefront",
+          "referenceId": "VR-HELLOBIOTIC-PUBLIC-001",
+          "mode": "extend"
+        }
+      ],
+      "authority": "observed_public",
+      "epistemicStatus": "observed",
+      "status": "observed",
+      "validFrom": "2026-08-31",
+      "recordedAt": "2026-08-31T00:00:00Z",
+      "lastVerifiedAt": "2026-08-31",
+      "sourceIds": [
+        "SRC-HB-001"
+      ],
+      "evidenceIds": [
+        "EVID-HB-001"
+      ],
+      "limitations": [
+        "Public observation only."
+      ],
+      "gaps": [
+        "color palette",
+        "typography",
+        "grid",
+        "component system",
+        "motion",
+        "accessibility",
+        "approval rules"
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "id": "BIND-HELLOBIOTIC-PUBLIC-001",
+      "profileId": "VL-HELLOBIOTIC-PUBLIC",
+      "revisionId": "VL-HELLOBIOTIC-PUBLIC@1",
+      "scope": {
+        "brandId": "world://brand/hellobiotic"
+      },
+      "priority": 10,
+      "status": "observed",
+      "validFrom": "2026-08-31",
+      "recordedAt": "2026-08-31T00:00:00Z",
+      "lastVerifiedAt": "2026-08-31",
+      "sourceIds": [
+        "SRC-HB-001"
+      ],
+      "evidenceIds": [
+        "EVID-HB-001"
+      ],
+      "limitations": [
+        "Do not use as a substitute for a proprietary visual language."
+      ]
+    }
+  ]
+}

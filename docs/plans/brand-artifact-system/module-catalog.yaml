@@ -1,0 +1,116 @@
+catalog:
+  id: testflight://module-catalog/brand-artifact-system
+  version: 1
+  status: proposed
+  product_goal: >-
+    Convert attributed Brand input into reviewed World knowledge and use exact applicable versions
+    of that knowledge to create, approve, render, deliver, and learn from marketing artifacts.
+
+modules:
+  - id: intake-surfaces
+    status: new
+    solves: cold_start_and_tacit_knowledge_capture
+    owns: [chat, notes, voice, attachments, intake_session_experience]
+    outputs: [intake_session, source_envelopes, speaker_turns]
+    depends_on: [evidence-content]
+
+  - id: evidence-content
+    status: existing_extend
+    solves: provenance_rights_and_source_anchoring
+    owns: [source_envelopes, content_units, segments, observations, blobs]
+    outputs: [bounded_evidence_packet]
+    depends_on: []
+    existing_packages: [testflight-content, testflight-semantic, testflight-adapter-sqlite-semantic]
+
+  - id: elicitation-extraction
+    status: new
+    solves: guided_coverage_and_structured_proposals
+    owns: [question_planning, mention_extraction, claim_extraction, gap_detection]
+    outputs: [entity_proposals, assertion_proposals, state_proposals, follow_up_questions]
+    depends_on: [evidence-content, operator-runtime]
+
+  - id: identity-world-mapping
+    status: existing_extend
+    solves: conservative_identity_resolution_and_domain_mapping
+    owns: [referent_hypotheses, identity_links, mapping_dispositions, local_concepts]
+    outputs: [world_record_proposals, ontology_extension_proposals]
+    depends_on: [elicitation-extraction, brand-world]
+
+  - id: review-promotion
+    status: existing_pattern_generalize
+    solves: authority_and_proposal_governance
+    owns: [review_queue, decisions, accepted_versions, holds, branches]
+    outputs: [accepted_world_delta, rejected_or_held_proposals]
+    depends_on: [identity-world-mapping, brand-world]
+
+  - id: brand-world
+    status: existing
+    solves: canonical_scoped_institutional_knowledge
+    owns: [entities, states, assertions, frames, perspectives, branches, decisions, outcomes]
+    outputs: [canonical_records]
+    depends_on: [evidence-content]
+    existing_packages: [testflight-semantic, testflight-brand]
+
+  - id: applicability-resolver
+    status: existing_extend
+    solves: exact_effective_context_selection
+    owns: [selector_policy, version_precedence, branch_resolution, revision_manifest]
+    outputs: [resolved_world_view, applicability_receipt]
+    depends_on: [brand-world]
+    existing_packages: [testflight-semantic, testflight-context-intelligence]
+
+  - id: creative-field
+    status: existing
+    solves: reviewed_project_scoped_creative_direction
+    owns: [creative_field_versions, bindings, projections]
+    outputs: [field_projection]
+    depends_on: [brand-world, operator-runtime]
+    existing_packages: [testflight-creative-field]
+
+  - id: artifact-domain
+    status: new
+    solves: provider_neutral_artifact_contract_and_lifecycle
+    owns: [profiles, requests, context_manifests, proposals, versions, dependency_manifests]
+    outputs: [approved_artifact_version]
+    depends_on: [applicability-resolver, creative-field, operator-runtime]
+
+  - id: artifact-evaluation
+    status: partial_extend
+    solves: evidence_semantic_brand_channel_and_format_quality
+    owns: [evaluation_policies, findings, revision_requests, readiness]
+    outputs: [artifact_evaluation, feedback_proposals]
+    depends_on: [artifact-domain, creative-field]
+
+  - id: render-deliver
+    status: new
+    solves: usable_files_and_authorized_external_delivery
+    owns: [render_manifests, provider_translation, publication_receipts]
+    outputs: [rendered_artifacts, publication_receipts]
+    depends_on: [artifact-domain, artifact-evaluation]
+
+  - id: outcomes-learning
+    status: semantic_base_extend
+    solves: outcome_traceability_and_controlled_learning
+    owns: [measurements, observed_outcomes, learning_proposals, dependency_impacts]
+    outputs: [reviewable_learning_update]
+    depends_on: [render-deliver, brand-world]
+
+  - id: product-application
+    status: new_with_existing_ui_patterns
+    solves: coherent_non_technical_workflow
+    owns: [onboarding, review, artifact_editor, approval, delivery, value_dashboard]
+    outputs: [authorized_commands]
+    depends_on:
+      - intake-surfaces
+      - review-promotion
+      - artifact-domain
+      - artifact-evaluation
+      - render-deliver
+
+  - id: operator-runtime
+    status: existing
+    solves: provider_neutral_versioned_reasoning_execution
+    owns: [preflight, provider_routing, idempotency, receipts, typed_outcomes]
+    outputs: [operator_result, execution_receipt]
+    depends_on: []
+    existing_packages: [testflight-operator-runtime]

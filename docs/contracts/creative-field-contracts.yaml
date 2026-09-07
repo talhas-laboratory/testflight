@@ -1,0 +1,277 @@
+schema_version: 1
+profile_id: world://profile/moodboard-creative-field
+status: candidate
+purpose: >-
+  Stable public handoffs for project-scoped multimodal reference interpretation, Creative Field
+  formation, Brand-world binding, artifact projection, connector invocation and evaluation.
+defaults:
+  mutation: proposal_only
+  uncertainty: preserve_and_surface
+  evidence: append_only
+  no_hit: valid
+  action: deny_unless_authorized
+  scope: project_then_explicit_binding
+statuses:
+  artifact: [success, partial, held, unavailable, failed]
+  interpretation: [candidate, accepted, modified, rejected, superseded, stale, deferred]
+contracts:
+  - id: BoardSnapshot
+    version: 1
+    producer: creative-field.board
+    consumers: [creative-field.observation, creative-field.interpretation]
+    required:
+      - project_id
+      - moodboard_id
+      - board_revision_id
+      - reference_asset_ids
+      - placements
+      - annotation_ids
+      - scope
+      - permissions
+      - omissions
+    invariants:
+      - arrangement_is_evidence_not_meaning
+      - source_identity_is_immutable
+
+  - id: ReferenceObservationProposal
+    version: 1
+    producer: creative-field.observe-reference
+    consumers: [creative-field.interpret-reference-role]
+    required:
+      - observation_id
+      - reference_asset_id
+      - bounded_anchors
+      - observed_features
+      - method
+      - model_or_tool
+      - uncertainty
+      - source_ids
+      - derivation_id
+      - status
+    invariants:
+      - says_what_is_present_not_why_it_matters
+      - every_feature_has_an_evidence_anchor
+
+  - id: ReferenceInterpretationProposal
+    version: 1
+    producer: creative-field.interpret-reference-role
+    consumers: [creative-field.compare-references, creative-field.synthesize-creative-field, creative-studio]
+    required:
+      - interpretation_id
+      - project_id
+      - reference_asset_id
+      - proposed_role
+      - dimension_contributions
+      - carry_forward
+      - anti_transfer
+      - alternatives
+      - questions
+      - evidence_refs
+      - authority
+      - derivation_id
+      - status
+    invariants:
+      - visible_feature_and_project_meaning_are_separate
+      - user_corrections_remain_distinct_from_model_proposals
+
+  - id: CreativeFieldProposal
+    version: 1
+    producer: creative-field.synthesize-creative-field
+    consumers: [creative-field.lifecycle, creative-studio]
+    required:
+      - proposal_id
+      - project_id
+      - source_contribution_ids
+      - principles
+      - tensions
+      - exclusions
+      - dimension_states
+      - conflicts
+      - missing_dimensions
+      - semantic_diff
+      - evidence_coverage
+      - derivation_id
+      - status
+    invariants:
+      - patterns_are_not_average_style_labels
+      - outliers_and_conflicts_are_preserved
+
+  - id: CreativeFieldVersion
+    version: 1
+    producer: creative-field.lifecycle
+    consumers: [creative-field.binding, creative-field.projection, creative-field.evaluation]
+    required:
+      - field_id
+      - version_id
+      - project_id
+      - parent_version_ids
+      - principles
+      - tensions
+      - exclusions
+      - dimension_states
+      - source_contribution_ids
+      - review_record_ids
+      - dependency_manifest
+      - lifecycle_status
+    invariants:
+      - immutable_after_creation
+      - activation_is_a_binding_event
+      - every_accepted_item_has_evidence_or_explicit_user_instruction
+
+  - id: ProjectBinding
+    version: 1
+    producer: creative-field.binding
+    consumers: [creative-field.board, creative-field.request-router]
+    required:
+      - binding_id
+      - project_id
+      - workspace_id
+      - context_id
+      - target_entity_ids
+      - branch_id
+      - privacy_policy_id
+      - authority_grant_id
+    invariants:
+      - project_scope_is_explicit
+      - binding_does_not_copy_target_entities
+
+  - id: FieldBinding
+    version: 1
+    producer: creative-field.binding
+    consumers: [creative-field.request-router, creative-field.projection]
+    required:
+      - binding_id
+      - project_id
+      - field_version_id
+      - target_entity_ids
+      - context_id
+      - artifact_type_selectors
+      - channel_selectors
+      - valid_time
+      - precedence
+      - mode
+      - authority_grant_id
+    invariants:
+      - exact_field_version_is_recorded
+      - ambiguous_equal_precedence_holds
+
+  - id: CreativeRequest
+    version: 1
+    producer: creative-studio.or.workflow
+    consumers: [creative-field.request-router]
+    required:
+      - request_id
+      - project_id
+      - task_type
+      - artifact_type
+      - modality
+      - target
+      - permission_context
+      - expected_evaluation
+    invariants:
+      - request_does_not_authorize_external_action_by_itself
+
+  - id: ResolvedCreativeRequest
+    version: 1
+    producer: creative-field.request-router
+    consumers: [creative-field.projection, creative-field.connector]
+    required:
+      - request_id
+      - project_binding_id
+      - field_binding_id
+      - field_version_id
+      - world_view_request
+      - lens
+      - target_capability_manifest_id
+      - local_override
+      - ambiguity_disposition
+      - permission_context
+
+  - id: FieldProjection
+    version: 1
+    producer: creative-field.project-field
+    consumers: [creative-field.connector, creative-field.evaluation]
+    required:
+      - projection_id
+      - field_version_id
+      - request_id
+      - lens
+      - modality
+      - principles
+      - tensions
+      - exclusions
+      - grounding_reference_ids
+      - assumptions
+      - omissions
+      - sufficiency
+      - expiration
+      - derivation_id
+    invariants:
+      - target_neutral
+      - bounded_and_permission_filtered
+      - translation_preserves_relationships_not_surface_motifs
+
+  - id: CreativeContextPacket
+    version: 1
+    producer: context-intelligence.creative-composer
+    consumers: [creative-field.translate-projection, artifact-workflow]
+    required:
+      - packet_id
+      - resolved_creative_request
+      - resolved_world_view
+      - field_projection
+      - applicable_visual_language
+      - conflicts
+      - omissions
+      - citations
+      - disclosure_manifest
+      - derivation_receipt
+    invariants:
+      - world_evidence_and_field_semantics_remain_separate
+      - packet_is_smaller_than_unbounded_workspace_dump
+
+  - id: TargetCapabilityManifest
+    version: 1
+    producer: creative-field.connector
+    consumers: [creative-field.translate-projection, governance]
+    required: [target_id, adapter_version, accepted_modalities, controls, input_limits, privacy_policy]
+
+  - id: GenerationPacket
+    version: 1
+    producer: creative-field.translate-projection
+    consumers: [creative-field.connector, creative-field.evaluation]
+    required:
+      - packet_id
+      - projection_id
+      - target_capability_manifest_id
+      - controls_sent
+      - grounding_assets_sent
+      - capability_limitations
+      - disclosure_manifest
+      - expected_output
+      - adapter_version
+    invariants:
+      - only_supported_controls_are_sent
+      - packet_cannot_promote_world_or_field_state
+
+  - id: CreativeEvaluation
+    version: 1
+    producer: creative-field.evaluate-creative-output
+    consumers: [creative-field.feedback, creative-studio]
+    required:
+      - evaluation_id
+      - output_id
+      - request_id
+      - field_version_id
+      - projection_id
+      - field_fidelity
+      - exclusion_findings
+      - task_fitness
+      - execution_quality
+      - target_limitations
+      - disagreements
+      - feedback_proposal_ids
+      - derivation_id
+    invariants:
+      - schema_invariant_semantic_and_usefulness_results_are_separate
+      - evaluation_does_not_mutate_its_inputs

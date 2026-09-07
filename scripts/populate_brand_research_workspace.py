@@ -278,6 +278,21 @@ def _llm_timeout_seconds() -> float:
     return timeout
 
 
+def _llm_max_tokens() -> int | None:
+    """Return an optional provider output budget for bounded population runs."""
+
+    raw = os.getenv("TESTFLIGHT_COGNEE_LLM_MAX_TOKENS")
+    if raw is None or not raw.strip():
+        return None
+    try:
+        max_tokens = int(raw)
+    except ValueError as error:
+        raise ValueError("TESTFLIGHT_COGNEE_LLM_MAX_TOKENS must be an integer") from error
+    if not 256 <= max_tokens <= 16_000:
+        raise ValueError("TESTFLIGHT_COGNEE_LLM_MAX_TOKENS must be from 256 through 16000")
+    return max_tokens
+
+
 def _llm_configs(credential: str) -> tuple[Any, Any]:
     endpoint = os.getenv("TESTFLIGHT_COGNEE_LLM_ENDPOINT", "https://openrouter.ai/api/v1")
     llm_provider = os.getenv("TESTFLIGHT_COGNEE_LLM_PROVIDER", "custom")
@@ -287,6 +302,7 @@ def _llm_configs(credential: str) -> tuple[Any, Any]:
         "TESTFLIGHT_COGNEE_EMBEDDING_MODEL", "openai/text-embedding-3-small"
     )
     embedding_endpoint = os.getenv("TESTFLIGHT_COGNEE_EMBEDDING_ENDPOINT", endpoint)
+    max_tokens = _llm_max_tokens()
 
     # Cognee initializes global settings while its package is first imported. Set the standard
     # variables before importing its config classes so startup checks use the explicit endpoint.
@@ -300,6 +316,7 @@ def _llm_configs(credential: str) -> tuple[Any, Any]:
             "EMBEDDING_MODEL": embedding_model,
             "EMBEDDING_ENDPOINT": embedding_endpoint,
             "EMBEDDING_API_KEY": credential,
+            **({"LLM_MAX_COMPLETION_TOKENS": str(max_tokens)} if max_tokens is not None else {}),
         }
     )
 
@@ -311,7 +328,11 @@ def _llm_configs(credential: str) -> tuple[Any, Any]:
         "llm_model": llm_model,
         "llm_endpoint": endpoint,
         "llm_temperature": 0.0,
-        "llm_args": {"timeout": _llm_timeout_seconds()},
+        **({"llm_max_completion_tokens": max_tokens} if max_tokens is not None else {}),
+        "llm_args": {
+            "timeout": _llm_timeout_seconds(),
+            **({"max_tokens": max_tokens} if max_tokens is not None else {}),
+        },
         "llm_" + "api_" + "key": credential,
     }
     llm = LLMConfig(**llm_kwargs)

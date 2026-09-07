@@ -1,0 +1,14 @@
+module_id: world://ontology/module/brand/measurement
+version: 2.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand/core, world://ontology/module/brand/creative]
+competency_questions:
+  - Can an observed outcome be kept distinct from a proposed learning or future strategy change?
+evidence_basis: [research:customer-journey, research:creative-strategy]
+entity_types:
+  - {id: world://ontology/brand/type/Measurement, label: Measurement, definition: "A method-bounded record of an observed metric or response.", examples: ["Instagram install conversion measurement"], counterexamples: ["A strategic objective."]}
+  - {id: world://ontology/brand/type/ObservedOutcome, label: Observed outcome, definition: "A scoped observed result derived from one or more measurements.", examples: ["Qualified installs increased"], counterexamples: ["An intended campaign goal."]}
+  - {id: world://ontology/brand/type/Learning, label: Learning, definition: "A proposed or accepted interpretation of an outcome for future decisions.", examples: ["Confidence framing merits further testing"], counterexamples: ["The outcome itself."]}
+relationship_types:
+  - {id: world://ontology/brand/relation/evaluates, label: evaluates, definition: "A measurement or outcome evaluates an asset, campaign, or strategy under a stated method.", family: evidence, source_type_ids: [world://ontology/brand/type/Measurement, world://ontology/brand/type/ObservedOutcome], target_type_ids: [world://ontology/brand/type/Asset, world://ontology/brand/type/Campaign, world://ontology/brand/type/CampaignStrategy], examples: ["Measurement evaluates Instagram ad."], counterexamples: ["A metric proves all campaign decisions."]}
+  - {id: world://ontology/brand/relation/informs, label: informs, definition: "A learning is available as an input to a later decision without asserting a causal effect.", family: feedback, source_type_ids: [world://ontology/brand/type/Learning], target_type_ids: [world://ontology/brand/type/StrategyDecision, world://ontology/brand/type/ProductDefinition, world://ontology/brand/type/CampaignStrategy], examples: ["Learning informs a later strategy decision."], counterexamples: ["A learning automatically changes strategy."]}

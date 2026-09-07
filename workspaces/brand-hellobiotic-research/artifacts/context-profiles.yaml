@@ -1,0 +1,28 @@
+version: 1
+workspace_id: world://workspace/brand/hellobiotic-research
+contexts:
+- id: CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  brand_id: world://brand/hellobiotic
+  audience_ids:
+  - people-evaluating-natural-deodorant-alternatives
+  channel_ids:
+  - website
+  - product-page
+  campaign_or_occasion_ids:
+  - product-education
+  - deodorant-consideration
+  artifact_type_ids:
+  - product-landing-page
+  - product-detail-page
+  - educational-content
+  branch_id: research-main
+  valid_time:
+    from: null
+    through: '2026-08-31'
+  geography: availability_not_independently_verified
+  perspective_scope:
+  - intended
+  - reported
+  - observed
+  - inferred
+  purpose: Current public deodorant product-education context.

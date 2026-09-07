@@ -1,0 +1,7 @@
+version: 1
+root: workflows
+definitions:
+  - id: workflow://testflight/evidence-synthesis
+    version: 1
+    path: examples/evidence-synthesis.yaml
+    status: candidate

@@ -1,0 +1,28 @@
+version: 1
+workspace_id: world://workspace/testflight-product/finance-commercial
+status: hypothesis
+currency: USD
+source_url: repo://deliverables/testflight-commercial-viability-deep-research.md
+pricing_hypotheses:
+  - {id: price:paid-design-partner-pilot, amount_range: [15000, 30000], period: 8_to_12_weeks, upper_custom_scope: 50000, epistemic_status: research_inferred}
+  - {id: price:departmental-campaign-intelligence, arr_range: [24000, 60000], onboarding_range: [10000, 30000], epistemic_status: research_inferred}
+  - {id: price:multi-brand-scale, arr_range: [60000, 120000], onboarding_range: [30000, 75000], epistemic_status: research_inferred}
+  - {id: price:global-regulated-enterprise, arr_range: [150000, 300000], implementation_range: [75000, 200000], epistemic_status: research_inferred}
+  - {id: price:agency-platform, base_arr_range: [40000, 100000], epistemic_status: research_inferred}
+commercial_model_hypothesis:
+  structure: [base_annual_platform_fee, included_brand_and_curator_allowance, inexpensive_reviewers, connector_and_active_brand_tiers, metered_high_cost_analysis, separate_onboarding_services, premium_enterprise_options]
+  value_gate: customer_specific_benefit_case_at_least_3x_annual_contract_value
+  realization_formula: affected_users_times_verified_hours_saved_times_loaded_cost_times_active_weeks_times_adoption_times_realization
+observed_testflight_financials:
+  revenue: unavailable
+  signed_contracts: unavailable
+  cost_of_service: unavailable
+  gross_margin: unavailable
+  customer_acquisition_cost: unavailable
+  retention: unavailable
+  realized_roi: unavailable
+limitations:
+  - adjacent_category_spend_does_not_establish_testflight_willingness_to_pay
+  - all_prices_are_hypotheses
+  - no_customer_specific_value_model_has_been_verified
+

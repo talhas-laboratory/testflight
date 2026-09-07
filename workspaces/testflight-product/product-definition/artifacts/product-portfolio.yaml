@@ -1,0 +1,26 @@
+version: 1
+workspace_id: world://workspace/testflight-product/product-definition
+status: active
+portfolio:
+  - id: product:testflight-integration-laboratory
+    lifecycle: active_current_identity
+    authority: repository_definition
+    purpose: Evaluate and combine replaceable upstream software behind locally owned interfaces.
+    source_refs: [repo://README.md, repo://docs/plans/2026-08-18-integration-laboratory-design.md]
+  - id: product:founder-brand-world
+    lifecycle: proposed_product
+    authority: product_proposal
+    purpose: Turn founder expression into an attributed reviewable Brand World.
+    source_refs: [repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md]
+    offer_ids: [offer:world-seeder-pilot]
+  - id: offer:campaign-decision-intelligence
+    lifecycle: research_recommended_wedge
+    authority: research_synthesis
+    purpose: Turn fragmented marketing evidence into approved campaign context and creative review.
+    source_refs: [repo://deliverables/testflight-commercial-viability-deep-research.md]
+conflicts_and_branches:
+  - id: branch:initial-commercial-wedge
+    alternatives: [offer:world-seeder-pilot, offer:campaign-decision-intelligence]
+    status: unresolved
+    resolution_requires: [customer_discovery, paid_pilot_evidence, product_authority_decision]
+

@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/testflight-product/product-definition
+parent: world://workspace/testflight-product
+type: child-knowledge-container
+label: Product definition
+mission: Maintain Testflight identity, principles, portfolio, capabilities, surfaces, and roadmap.
+dataset_name: testflight_testflight_product_product_definition_staging
+route: product-definition
+status: candidate
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes: [identity, principles, portfolio, product_capabilities, product_surfaces, outcomes, roadmap]
+  excludes: [approval_authority, implementation_detail, customer_specific_brand_facts]
+

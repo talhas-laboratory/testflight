@@ -17,13 +17,13 @@ def test_workspace_manifest_and_metadata_are_valid() -> None:
 
     assert validated["manifest"]["id"] == "world://workspace/reasoning-operators"
     assert validated["manifest"]["cognee"]["dataset_name"] == "testflight_reasoning_operators"
-    assert len(validated["catalog"]["operators"]) == 16
+    assert len(validated["catalog"]["operators"]) == 24
 
 
 def test_workspace_materialization_is_bounded_and_provenance_bearing() -> None:
     documents = build_documents(REPO_ROOT)
 
-    assert len(documents) == 26
+    assert len(documents) == 34
     assert len({document.document_id for document in documents}) == len(documents)
     assert all("WORKSPACE_ID:" in document.text for document in documents)
     assert all("SOURCE_HASH:" in document.text for document in documents)

@@ -1,0 +1,129 @@
+version: 1
+workspace_id: world://workspace/testflight-product
+status: active
+purpose: >-
+  Preserve semantic distinctions across product, business, experience, and implementation work.
+semantic_types:
+  entity:
+    description: A referent with continuity across time.
+    kinds:
+      - product
+      - product_surface
+      - product_capability
+      - actor
+      - organization
+      - customer
+      - market_segment
+      - software_component
+      - interface
+      - design_component
+      - channel
+      - artifact
+      - source
+      - workflow
+      - requirement
+      - metric
+      - risk
+      - policy
+      - role
+  event:
+    description: Something that occurs and may change state.
+    kinds:
+      - decision
+      - release
+      - experiment
+      - interaction
+      - transaction
+      - incident
+      - review
+      - research_activity
+      - authorization
+      - deployment
+  state:
+    description: Time-bounded condition of one or more entities.
+    kinds:
+      - product_state
+      - module_state
+      - customer_state
+      - financial_state
+      - operating_state
+      - design_revision_state
+      - roadmap_state
+      - risk_state
+      - experiment_state
+  relation:
+    description: Typed, scoped connection among records.
+    kinds:
+      - composed_of
+      - belongs_to
+      - serves
+      - depends_on
+      - implements
+      - expressed_through
+      - governed_by
+      - evidence_for
+      - supersedes
+      - bridges_to
+      - measured_by
+  claim:
+    description: An assertion with source, authority, confidence, and epistemic status.
+    kinds:
+      - observation
+      - hypothesis
+      - proposal
+      - accepted_decision
+      - assumption
+      - forecast
+      - research_question
+      - evaluation_finding
+      - requirement_proposal
+  context:
+    description: Scope required to interpret another record.
+    kinds:
+      - workspace
+      - product_module
+      - project
+      - market
+      - channel
+      - temporal
+      - jurisdiction
+  projection:
+    description: A derived representation, never an independent source of truth.
+    kinds:
+      - user_interface
+      - retrieval_index
+      - graph
+      - financial_report
+      - campaign_view
+      - roadmap_view
+      - evaluation_report
+distinctions:
+  - knowledge_module_is_not_product_capability
+  - product_capability_is_not_software_component
+  - software_component_is_not_design_component
+  - proposal_is_not_accepted_decision
+  - current_state_is_not_persistent_identity
+  - retrieved_hit_is_not_semantic_truth
+  - product_design_rule_is_not_customer_brand_evidence
+  - research_source_is_not_accepted_product_truth
+  - hypothesis_is_not_observed_outcome
+  - roadmap_item_is_not_implemented_capability
+  - role_is_not_person
+record_requirements:
+  all:
+    - id
+    - semantic_type
+    - workspace_id
+    - module_id
+    - status
+    - valid_time
+    - provenance
+  claims:
+    - epistemic_status
+    - authority
+    - evidence_refs
+  relations:
+    - relation_type
+    - subject_ids
+    - object_ids
+    - scope

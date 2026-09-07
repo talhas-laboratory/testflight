@@ -30,7 +30,7 @@ workspace:
         purpose: rebuild, refresh, and recertify the workspace
   scope:
     includes:
-      - the 16 versioned guardrail operator contracts
+      - the 16 versioned guardrail operator contracts and 8 Creative Field contracts
       - operator selection, execution, evaluation, and maintenance guidance
       - exact source provenance and certification probes
     excludes:

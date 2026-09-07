@@ -1,0 +1,200 @@
+version: 1
+fixture_family: multimodal-content-profile-gold
+rights:
+  license_record_id: license:synthetic-profile
+  owner: testflight-fixtures
+  permitted_use: [analysis, testing, local_model_disclosure]
+  disclosure_allowed: true
+  generation_allowed: false
+  retention_policy: repository_fixture
+profile:
+  profile_id: content-profile:verdant-lab
+  platform: synthetic-social
+  provider_profile_id: synthetic:verdant-lab
+  handle: verdant_lab
+  sampled_from: 2026-08-01T00:00:00Z
+  sampled_until: 2026-08-31T23:59:59Z
+  source_envelope_id: source-envelope:verdant-lab
+  content_unit_ids: [content:reel-01, content:reel-02, content:reel-03]
+
+content_units:
+  - content_unit_id: content:reel-01
+    kind: reel
+    source_envelope_id: source-envelope:reel-01
+    published_at: 2026-08-04T10:00:00Z
+    duration_ms: 12000
+    tracks:
+      - {track_id: track:reel-01:video, modality: video, status: available}
+      - {track_id: track:reel-01:audio, modality: audio, status: available}
+      - {track_id: track:reel-01:transcript, modality: speech_text, status: available}
+      - {track_id: track:reel-01:caption, modality: written_text, status: available}
+      - {track_id: track:reel-01:ocr, modality: on_screen_text, status: available}
+    segments:
+      - {segment_id: segment:reel-01:hook, start_ms: 0, end_ms: 2600, roles: [hook]}
+      - {segment_id: segment:reel-01:explain, start_ms: 2600, end_ms: 7600, roles: [explanation]}
+      - {segment_id: segment:reel-01:proof, start_ms: 7600, end_ms: 12000, roles: [product_proof]}
+    observations:
+      - observation_id: observation:reel-01:visual-pace
+        dimension: temporal
+        value: three long-held shots with soft dissolves
+        anchors: [segment:reel-01:hook, segment:reel-01:explain, track:reel-01:video]
+      - observation_id: observation:reel-01:claim
+        dimension: rhetorical
+        value: narrator says "your barrier can recover without stripping"
+        anchors: [segment:reel-01:explain, track:reel-01:transcript]
+      - observation_id: observation:reel-01:audio
+        dimension: audio
+        value: low-volume ambient bed remains under an even speaking voice
+        anchors: [segment:reel-01:explain, track:reel-01:audio]
+      - observation_id: observation:reel-01:reveal
+        dimension: structural
+        value: product enters after the explanatory statement
+        anchors: [segment:reel-01:proof, track:reel-01:video]
+    interpretation:
+      interpretation_id: interpretation:reel-01
+      frame_id: frame:social-brand-reading-v1
+      proposition: calm explanation is followed by a concrete product demonstration
+      evidence_refs:
+        - observation:reel-01:visual-pace
+        - observation:reel-01:claim
+        - observation:reel-01:audio
+        - observation:reel-01:reveal
+      alternatives:
+        - proposition: the pace may reflect the tutorial format rather than a stable brand posture
+          invalidation_condition: faster tutorials use the same explanatory and vocal posture
+
+  - content_unit_id: content:reel-02
+    kind: reel
+    source_envelope_id: source-envelope:reel-02
+    published_at: 2026-08-12T15:00:00Z
+    duration_ms: 15000
+    tracks:
+      - {track_id: track:reel-02:video, modality: video, status: available}
+      - {track_id: track:reel-02:audio, modality: audio, status: available}
+      - {track_id: track:reel-02:transcript, modality: speech_text, status: available}
+      - {track_id: track:reel-02:caption, modality: written_text, status: available}
+      - {track_id: track:reel-02:ocr, modality: on_screen_text, status: available}
+    segments:
+      - {segment_id: segment:reel-02:hook, start_ms: 0, end_ms: 3000, roles: [hook]}
+      - {segment_id: segment:reel-02:explain, start_ms: 3000, end_ms: 9400, roles: [explanation]}
+      - {segment_id: segment:reel-02:proof, start_ms: 9400, end_ms: 15000, roles: [product_proof]}
+    observations:
+      - observation_id: observation:reel-02:visual-pace
+        dimension: temporal
+        value: restrained pacing with four shots and no rapid montage
+        anchors: [segment:reel-02:hook, segment:reel-02:explain, track:reel-02:video]
+      - observation_id: observation:reel-02:claim
+        dimension: rhetorical
+        value: speaker explains one ingredient before naming the product
+        anchors: [segment:reel-02:explain, track:reel-02:transcript]
+      - observation_id: observation:reel-02:audio
+        dimension: audio
+        value: quiet voice remains foregrounded over sparse music
+        anchors: [segment:reel-02:explain, track:reel-02:audio]
+      - observation_id: observation:reel-02:reveal
+        dimension: structural
+        value: texture demonstration follows the ingredient explanation
+        anchors: [segment:reel-02:proof, track:reel-02:video]
+    interpretation:
+      interpretation_id: interpretation:reel-02
+      frame_id: frame:social-brand-reading-v1
+      proposition: ingredient education is resolved through a restrained proof sequence
+      evidence_refs:
+        - observation:reel-02:visual-pace
+        - observation:reel-02:claim
+        - observation:reel-02:audio
+        - observation:reel-02:reveal
+      alternatives:
+        - proposition: the structure may be category convention rather than distinctive identity
+          invalidation_condition: comparison profiles use materially different sequencing
+
+  - content_unit_id: content:reel-03
+    kind: reel
+    source_envelope_id: source-envelope:reel-03
+    published_at: 2026-08-23T18:00:00Z
+    duration_ms: 9000
+    tracks:
+      - {track_id: track:reel-03:video, modality: video, status: available}
+      - track_id: track:reel-03:audio
+        modality: audio
+        status: unavailable
+        omission: source export contains a silent audio stream
+      - {track_id: track:reel-03:caption, modality: written_text, status: available}
+      - {track_id: track:reel-03:ocr, modality: on_screen_text, status: available}
+    segments:
+      - {segment_id: segment:reel-03:montage, start_ms: 0, end_ms: 6200, roles: [hook, montage]}
+      - {segment_id: segment:reel-03:cta, start_ms: 6200, end_ms: 9000, roles: [call_to_action]}
+    observations:
+      - observation_id: observation:reel-03:fast-pace
+        dimension: temporal
+        value: nine hard cuts occur during the opening montage
+        anchors: [segment:reel-03:montage, track:reel-03:video]
+      - observation_id: observation:reel-03:direct-cta
+        dimension: rhetorical
+        value: on-screen text asks viewers to shop the launch immediately
+        anchors: [segment:reel-03:cta, track:reel-03:ocr]
+      - observation_id: observation:reel-03:audio-unavailable
+        dimension: audio
+        status: unavailable
+        value: null
+        omission: audio behavior cannot be observed
+        anchors: [track:reel-03:audio]
+    interpretation:
+      interpretation_id: interpretation:reel-03
+      frame_id: frame:social-brand-reading-v1
+      proposition: this launch reel uses urgency and direct conversion rather than calm explanation
+      evidence_refs: [observation:reel-03:fast-pace, observation:reel-03:direct-cta]
+      alternatives:
+        - proposition: the launch context may explain the departure from the recurring format
+          invalidation_condition: non-launch reels show the same urgent montage behavior
+
+occurrences:
+  - occurrence_id: occurrence:calm-expert:reel-01
+    content_unit_id: content:reel-01
+    observation_ids:
+      - observation:reel-01:visual-pace
+      - observation:reel-01:claim
+      - observation:reel-01:audio
+      - observation:reel-01:reveal
+  - occurrence_id: occurrence:calm-expert:reel-02
+    content_unit_id: content:reel-02
+    observation_ids:
+      - observation:reel-02:visual-pace
+      - observation:reel-02:claim
+      - observation:reel-02:audio
+      - observation:reel-02:reveal
+
+pattern_candidates:
+  - pattern_id: pattern:profile:calm-expert-to-proof
+    target_scope: profile_sample
+    sampled_content_unit_ids: [content:reel-01, content:reel-02, content:reel-03]
+    occurrence_ids: [occurrence:calm-expert:reel-01, occurrence:calm-expert:reel-02]
+    counterexample_observation_ids:
+      - observation:reel-03:fast-pace
+      - observation:reel-03:direct-cta
+    proposition: calm expert explanation tends to precede product proof in this sampled profile
+    transfer_conditions:
+      - remains scoped to the sampled profile and August 2026 window
+      - launch-specific content may legitimately use a different temporal and rhetorical structure
+    expected_status: scoped_pattern
+
+gate_cases:
+  - gate_case_id: gate:rights-missing
+    request: analyze content:external-reel without a SourceLicenseRecord
+    expected_status: hold
+    expected_reason: rights_missing
+  - gate_case_id: gate:causal-performance
+    request: conclude that calm pacing caused higher engagement
+    evidence_refs: [pattern:profile:calm-expert-to-proof]
+    expected_status: hold
+    expected_reason: causal_evidence_missing
+  - gate_case_id: gate:audio-reading
+    request: characterize the music in content:reel-03
+    evidence_refs: [observation:reel-03:audio-unavailable]
+    expected_status: partial
+    expected_reason: modality_unavailable
+  - gate_case_id: gate:humor-topic
+    request: identify recurring humor structures in the sampled profile
+    evidence_refs: []
+    expected_status: no_hit
+    expected_reason: no_supporting_occurrence

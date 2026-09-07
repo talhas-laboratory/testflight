@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "workspaceId": "world://workspace/brand/hellobiotic-research",
+  "brandId": "world://brand/hellobiotic",
+  "purpose": "Separate, source-grounded visual-language entity graph derived from public observation.",
+  "status": "observed_public_research",
+  "nodes": [
+    {
+      "id": "VLE-HB-ROOT-001",
+      "label": "Hellobiotic public visual language",
+      "kind": "visual-root",
+      "entityType": "visual-system",
+      "epistemicStatus": "observed",
+      "status": "observed",
+      "summary": "Public visual observation layer; not proprietary guidelines.",
+      "sourceUrls": ["https://www.hellobiotic.com/"]
+    },
+    {
+      "id": "VLE-HB-COLOR-001",
+      "label": "Warm off-white, charcoal, lemon yellow",
+      "kind": "visual-entity",
+      "entityType": "palette",
+      "epistemicStatus": "observed",
+      "status": "observed",
+      "summary": "Observed storefront base, type, and CTA/product accent colors: rgb(241,239,238), rgb(67,65,67), and rgb(236,217,37).",
+      "sourceUrls": ["https://www.hellobiotic.com/", "https://www.hellobiotic.com/products/brightening-probiotic-deodorant-1"]
+    },
+    {
+      "id": "VLE-HB-TYPE-001",
+      "label": "Cormorant editorial serif + AktivGrotesk utility",
+      "kind": "visual-entity",
+      "entityType": "typography",
+      "epistemicStatus": "observed",
+      "status": "observed",
+      "summary": "Large editorial display and compact utility sans-serif establish hierarchy across storefront and product detail pages.",
+      "sourceUrls": ["https://www.hellobiotic.com/", "https://www.hellobiotic.com/products/brightening-probiotic-deodorant-1"]
+    },
+    {
+      "id": "VLE-HB-GRAPHIC-001",
+      "label": "Claim ticker, starbursts, and hand-drawn benefit marks",
+      "kind": "visual-entity",
+      "entityType": "graphic-device",
+      "epistemicStatus": "observed",
+      "status": "observed",
+      "summary": "A yellow repeating claim ribbon, small celestial/star forms, and thin benefit icons translate product credentials into a playful system.",
+      "sourceUrls": ["https://www.hellobiotic.com/"]
+    },
+    {
+      "id": "VLE-HB-PRODUCT-001",
+      "label": "White cylinder with yellow-cap recognition cue",
+      "kind": "visual-entity",
+      "entityType": "product-form",
+      "epistemicStatus": "observed",
+      "status": "observed",
+      "summary": "The deodorant pack is legible and central; the yellow cap functions as the most concentrated product recognition asset.",
+      "sourceUrls": ["https://www.hellobiotic.com/products/brightening-probiotic-deodorant-1"]
+    },
+    {
+      "id": "VLE-HB-IMAGE-001",
+      "label": "Tactile sunlit product still life",
+      "kind": "visual-entity",
+      "entityType": "image-direction",
+      "epistemicStatus": "observed",
+      "status": "observed",
+      "summary": "Product imagery uses daylight, raw stone, woven texture, ice, botanicals, and hands rather than sterile floating-pack treatment.",
+      "sourceUrls": ["https://www.hellobiotic.com/", "https://www.hellobiotic.com/products/brightening-probiotic-deodorant-1"]
+    },
+    {
+      "id": "VLE-HB-SOCIAL-001",
+      "label": "Seasonal body-and-ritual social imagery",
+      "kind": "visual-entity",
+      "entityType": "social-image-direction",
+      "epistemicStatus": "observed",
+      "status": "observed",
+      "summary": "The visible public Instagram grid uses water, beach/pool scenes, heat, towels, citrus, bodies, and product-in-hand imagery.",
+      "sourceUrls": ["https://www.instagram.com/hellobiotic/"]
+    },
+    {
+      "id": "VLE-HB-PRINCIPLE-001",
+      "label": "Quiet sunlit apothecary",
+      "kind": "visual-entity",
+      "entityType": "creative-principle",
+      "epistemicStatus": "inferred",
+      "status": "held",
+      "summary": "A synthesis of observed system components, proposed as a working creative read rather than an approved brand rule.",
+      "sourceUrls": ["repo://docs/research/2026-08-31-hellobiotic-visual-language-dossier.md"]
+    },
+    {
+      "id": "VLE-HB-GAP-001",
+      "label": "No authorized production system or observed active US Meta ads",
+      "kind": "visual-gap",
+      "entityType": "evidence-gap",
+      "epistemicStatus": "partial",
+      "status": "held",
+      "summary": "No proprietary design standards, cleared assets, or active US Meta ad creative were available in the bounded public research.",
+      "sourceUrls": ["https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&media_type=all&q=hellobiotic&search_type=keyword_unordered"]
+    }
+  ],
+  "relationships": [
+    {"id": "VLR-HB-001", "sourceId": "VLE-HB-ROOT-001", "targetId": "VLE-HB-COLOR-001", "relationshipType": "uses_palette", "epistemicStatus": "observed", "status": "observed"},
+    {"id": "VLR-HB-002", "sourceId": "VLE-HB-ROOT-001", "targetId": "VLE-HB-TYPE-001", "relationshipType": "uses_typography", "epistemicStatus": "observed", "status": "observed"},
+    {"id": "VLR-HB-003", "sourceId": "VLE-HB-ROOT-001", "targetId": "VLE-HB-GRAPHIC-001", "relationshipType": "uses_graphic_device", "epistemicStatus": "observed", "status": "observed"},
+    {"id": "VLR-HB-004", "sourceId": "VLE-HB-ROOT-001", "targetId": "VLE-HB-PRODUCT-001", "relationshipType": "centers_product_form", "epistemicStatus": "observed", "status": "observed"},
+    {"id": "VLR-HB-005", "sourceId": "VLE-HB-PRODUCT-001", "targetId": "VLE-HB-COLOR-001", "relationshipType": "anchors_with", "epistemicStatus": "observed", "status": "observed"},
+    {"id": "VLR-HB-006", "sourceId": "VLE-HB-PRODUCT-001", "targetId": "VLE-HB-IMAGE-001", "relationshipType": "pictured_through", "epistemicStatus": "observed", "status": "observed"},
+    {"id": "VLR-HB-007", "sourceId": "VLE-HB-ROOT-001", "targetId": "VLE-HB-SOCIAL-001", "relationshipType": "extends_through", "epistemicStatus": "observed", "status": "observed"},
+    {"id": "VLR-HB-008", "sourceId": "VLE-HB-SOCIAL-001", "targetId": "VLE-HB-IMAGE-001", "relationshipType": "broadens", "epistemicStatus": "inferred", "status": "held"},
+    {"id": "VLR-HB-009", "sourceId": "VLE-HB-PRINCIPLE-001", "targetId": "VLE-HB-ROOT-001", "relationshipType": "synthesizes", "epistemicStatus": "inferred", "status": "held"},
+    {"id": "VLR-HB-010", "sourceId": "VLE-HB-GAP-001", "targetId": "VLE-HB-ROOT-001", "relationshipType": "limits", "epistemicStatus": "partial", "status": "held"}
+  ]
+}

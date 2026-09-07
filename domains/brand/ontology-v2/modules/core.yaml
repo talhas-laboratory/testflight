@@ -1,0 +1,13 @@
+module_id: world://ontology/module/brand/core
+version: 2.0.0-candidate
+status: candidate
+imports: []
+competency_questions:
+  - Can the system distinguish a persistent commercial entity from an assertion about it?
+evidence_basis: [research:brand-ontology-constitution]
+entity_types:
+  - {id: world://ontology/brand/type/Brand, label: Brand, definition: "An identity-bearing market entity.", examples: ["Nike"], counterexamples: ["A sentence claiming Nike is innovative."]}
+  - {id: world://ontology/brand/type/Offering, label: Offering, definition: "A commercial product, service, or value-bearing capability.", examples: ["Nike App"], counterexamples: ["A campaign headline."]}
+  - {id: world://ontology/brand/type/Channel, label: Channel, definition: "A distribution or interaction medium through which an offering or asset is encountered.", examples: ["Instagram"], counterexamples: ["A target audience."]}
+relationship_types:
+  - {id: world://ontology/brand/relation/offers, label: offers, definition: "A Brand makes an Offering available under its scope.", family: composition, source_type_ids: [world://ontology/brand/type/Brand], target_type_ids: [world://ontology/brand/type/Offering], examples: ["Nike offers Nike App."], counterexamples: ["Nike App offers Nike."]}

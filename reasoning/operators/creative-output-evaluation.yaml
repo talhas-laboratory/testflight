@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/creative/output-evaluation
+  version: 1
+  kind: transformational
+  category: creative_output_evaluation
+  purpose: Evaluate a creative output for field fidelity, exclusions, task fitness and target limitations, then propose bounded feedback.
+  accepts:
+    - generated output and GenerationPacket
+    - original request, field version and projection
+    - evaluator configuration and reviewer feedback
+  requires_context:
+    - field principles, tensions and exclusions
+    - target capability and execution metadata
+    - evidence and output artifact access
+    - evaluation rubric and disagreement policy
+  preconditions:
+    - distinguish semantic fidelity from production quality
+    - evaluate exclusions and limitations explicitly
+    - preserve evaluator disagreement instead of averaging it away
+  parameters:
+    abstraction_level: system
+    depth: working
+    context_lens: strategic
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: end_to_end
+  procedure:
+    - step: reconstruct
+      action: Reconstruct the request, effective field version, projection and target limitations.
+    - step: inspect
+      action: Inspect output evidence for field fidelity, exclusion adherence, task fitness and execution quality.
+    - step: compare
+      action: Compare evaluator findings and record disagreements with their evidence.
+    - step: propose
+      action: Produce bounded FeedbackRecord proposals linked to the failed dimension or control.
+    - step: return
+      action: Return CreativeEvaluation with status success, partial or held; never silently revise the field.
+  returns:
+    - field: evaluation
+      semantics: multidimensional assessment of output against request and field
+      authority: evaluator configuration and evidence
+    - field: disagreements
+      semantics: evaluator or stakeholder differences requiring review
+      authority: explicit disagreement record
+    - field: feedback_proposals
+      semantics: bounded corrections targeting a projection, request or future field proposal
+      authority: proposal-only feedback
+  invariants:
+    - output evaluation cannot mutate an accepted field version
+    - field fidelity, task fitness and execution quality stay separate
+    - target limitations qualify findings
+  forbidden_shortcuts:
+    - score visual resemblance as complete field fidelity
+    - erase disagreement with a single confidence number
+    - convert feedback directly into canonical state
+  hold_when:
+    - output or packet evidence is unavailable
+    - target limitations prevent a fair comparison
+    - evaluator disagreement changes the recommended correction
+  failure_modes:
+    - evaluation_scope_loss
+    - exclusion_miss
+    - target_limit_blindness
+    - feedback_promotion
+  evaluators:
+    - id: evaluation-dimension-separation
+      check: Field fidelity, exclusions, task fitness and execution quality are reported independently.
+      pass_condition: no single score hides a material failure.
+    - id: evaluation-feedback-lineage
+      check: Every feedback proposal references an evaluation finding and target record.
+      pass_condition: corrections are bounded and replayable.
+  evidence:
+    mindscape_operator_refs: [O-06, O-09, O-12]
+    source_basis: [reasoning/README.md, domains/creative-field/manifest.yaml]

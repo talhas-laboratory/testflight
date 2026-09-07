@@ -1,0 +1,25 @@
+version: 1
+root: .agents/skills
+skills:
+  - id: child-container-creator
+    path: child-container-creator
+    category: knowledge-containers
+    status: candidate
+    owner: testflight
+    summary: Create, register, validate, and prepare isolated child knowledge containers.
+    triggers:
+      - create a child container
+      - add a child knowledge workspace
+      - isolate a knowledge domain
+      - scaffold a Cognee child dataset
+    modes:
+      - scaffold
+      - populate
+      - certify
+    outputs:
+      - child container contract
+      - isolated staging dataset configuration
+      - source registry
+      - retrieval probes
+      - validation receipt
+

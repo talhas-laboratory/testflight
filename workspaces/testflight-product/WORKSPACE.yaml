@@ -1,0 +1,71 @@
+workspace:
+  id: world://workspace/testflight-product
+  version: 1
+  status: active
+  name: Testflight Product
+  mission: >-
+    Maintain a clean, authoritative, extensible model of Testflight's product, experience,
+    customers, market, business, architecture, decisions, and operations for people and agents.
+  source_of_truth: canonical-workspace-files
+  projection:
+    provider: cognee-ready
+    dataset_name: testflight_product
+    population_command: scripts/populate_testflight_product_workspace.py
+    generated_state: ignored
+  topology:
+    parent: testflight-product
+    children:
+      - id: product-definition
+        workspace_id: world://workspace/testflight-product/product-definition
+        path: product-definition
+        route: product-definition
+      - id: product-decisions
+        workspace_id: world://workspace/testflight-product/product-decisions
+        path: product-decisions
+        route: product-decisions
+      - id: experience-design
+        workspace_id: world://workspace/testflight-product/experience-design
+        path: experience-design
+        route: experience-design
+      - id: architecture
+        workspace_id: world://workspace/testflight-product/architecture
+        path: architecture
+        route: architecture
+      - id: customers-market
+        workspace_id: world://workspace/testflight-product/customers-market
+        path: customers-market
+        route: customers-market
+      - id: marketing-growth
+        workspace_id: world://workspace/testflight-product/marketing-growth
+        path: marketing-growth
+        route: marketing-growth
+      - id: finance-commercial
+        workspace_id: world://workspace/testflight-product/finance-commercial
+        path: finance-commercial
+        route: finance-commercial
+      - id: operations-governance
+        workspace_id: world://workspace/testflight-product/operations-governance
+        path: operations-governance
+        route: operations-governance
+      - id: research-learning
+        workspace_id: world://workspace/testflight-product/research-learning
+        path: research-learning
+        route: research-learning
+  scope:
+    includes:
+      - Testflight product identity, principles, capabilities, surfaces, and roadmap
+      - product decisions, proposals, authority, alternatives, and supersession
+      - user-facing language, aesthetics, design tokens, components, and interaction patterns
+      - customers, markets, marketing, finance, commercial models, and operations
+      - software architecture, runtime boundaries, interfaces, dependencies, and deployment
+      - research questions, hypotheses, experiments, evaluations, outcomes, and learning updates
+    excludes:
+      - customer or brand canonical facts unless explicitly bridged with provenance and authority
+      - secrets, credentials, personal data without a declared policy, and generated knowledge stores
+      - unreviewed proposals presented as accepted product truth
+  policy:
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    mutation: proposal_only
+    action: deny_unless_authorized
+    no_hit: valid

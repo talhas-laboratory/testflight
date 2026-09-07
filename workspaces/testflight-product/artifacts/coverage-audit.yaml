@@ -1,0 +1,26 @@
+version: 1
+workspace_id: world://workspace/testflight-product
+audit_date: 2026-09-04
+status: partial
+repository_scope:
+  inspected: [apps, packages, adapters, domains, workspaces, reasoning, docs, infra, upstreams, deliverables]
+  excluded: [.git, .venv, node_modules, generated_runtime_state, secrets]
+module_coverage:
+  product-definition: {status: populated, evidence: [product_states, offers, surfaces, capabilities, workflows, roadmap]}
+  product-decisions: {status: populated, evidence: [repository_adrs, creative_field_local_decisions, product_workspace_decision]}
+  experience-design: {status: populated, evidence: [active_design_contract, shared_tokens, three_surface_pattern_inventory]}
+  architecture: {status: populated, evidence: [apps, packages, adapters, upstreams, workspaces, runtime_boundaries]}
+  customers-market: {status: partial, evidence: [proposed_founder_role, desk_research_segments], missing: [interviews, named_consented_customers, observed_usage]}
+  marketing-growth: {status: partial, evidence: [research_positioning, wedge_message, proposed_gtm], missing: [campaigns, channel_results, acquisition_data]}
+  finance-commercial: {status: partial, evidence: [pricing_hypotheses, value_model, adjacent_category_spend], missing: [testflight_revenue, cost_model, signed_contracts, realized_unit_economics]}
+  operations-governance: {status: populated_with_open_gaps, evidence: [roles, policies, engineering_operations, risks], missing: [enterprise_control_evidence, incident_history, service_levels]}
+  research-learning: {status: populated, evidence: [research_catalog, hypotheses, validation_sequence, missing_outcomes]}
+global_findings:
+  - current_repository_identity_is_integration_laboratory
+  - founder_brand_world_is_a_product_proposal_with_an_experience_prototype
+  - campaign_decision_intelligence_is_a_research_recommendation_not_an_accepted_replacement
+  - creative_field_is_the_most_complete_end_to_end_vertical_slice
+  - multimodal_content_substrate_is_only_partially_implemented
+  - customer_market_finance_and_gtm_have_no_testflight_specific_observed_outcomes
+  - no_live_external_projection_was_required_for_this_population
+

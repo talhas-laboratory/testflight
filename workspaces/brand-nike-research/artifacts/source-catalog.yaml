@@ -1,0 +1,202 @@
+version: 1
+workspace_id: world://workspace/brand/nike-research
+status: bounded_public_research_corpus
+last_verified_at: 2026-08-25
+source_policy:
+  full_text_storage: prohibited
+  bounded_excerpt_required: true
+  primary_source_for_self_claims: true
+  independent_source_for_perception: true
+  competitor_self_claims_do_not_establish_nike_state: true
+sources:
+  - id: SRC-NIKE-001
+    title: Explore Nike's Purpose and Read Our Mission Statement
+    publisher: NIKE, Inc.
+    source_type: official_mission
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.nike.com/en/mission/
+    valid_time: current_at_2026-08-25
+    permitted_use: intended_identity_and_audience_scope
+    status: verified
+  - id: SRC-NIKE-002
+    title: NIKE, Inc. 2026 Form 10-K
+    publisher: U.S. Securities and Exchange Commission
+    source_type: regulated_filing
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm
+    valid_time: fiscal_year_ended_2026-05-31
+    permitted_use: strategy_offerings_channels_markets_competitors_and_risks
+    status: verified
+  - id: SRC-NIKE-003
+    title: NIKE, Inc. Reports Fiscal 2026 Fourth Quarter and Full Year Results
+    publisher: NIKE, Inc. Investor Relations
+    source_type: official_results_release
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://investors.nike.com/investors/news-events-and-reports/investor-news/investor-news-details/2026/NIKE-Inc--Reports-Fiscal-2026-Fourth-Quarter-and-Full-Year-Results/default.aspx
+    valid_time: 2026-06-30
+    permitted_use: current_strategy_and_reported_performance
+    status: verified
+  - id: SRC-NIKE-004
+    title: NIKE, Inc. Corporate Governance
+    publisher: NIKE, Inc. Investor Relations
+    source_type: governance_registry
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://investors.nike.com/investors/corporate-governance/default.aspx
+    valid_time: current_at_2026-08-25
+    permitted_use: governance_entities_roles_and_policies
+    status: verified
+  - id: SRC-NIKE-005
+    title: Welcome to NIKE, Inc.
+    publisher: NIKE, Inc.
+    source_type: official_company_profile
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.nike.com/en/company
+    valid_time: current_at_2026-08-25
+    permitted_use: portfolio_identity_and_leadership
+    status: verified
+  - id: SRC-NIKE-006
+    title: The Nike Swoosh Logo From Humble Beginnings to Global Icon
+    publisher: NIKE, Inc. Department of Nike Archives
+    source_type: official_history
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.nike.com/en/magazine/nike-swoosh-logo-history
+    valid_time: published_2025-10-02
+    permitted_use: expression_history_and_reported_symbolic_meaning
+    status: verified
+  - id: SRC-NIKE-007
+    title: Nike Reintroduces Just Do It with Why Do It
+    publisher: NIKE, Inc.
+    source_type: official_campaign_release
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.nike.com/en-GB/newsroom/releases/nike-reintroduces-just-do-it-to-todays-generation-with-why-do-it-campaign
+    valid_time: 2025-09-04
+    permitted_use: expression_event_and_young_athlete_audience
+    status: verified
+  - id: SRC-NIKE-008
+    title: Nike's New So Win Brand Anthem
+    publisher: NIKE, Inc.
+    source_type: official_campaign_release
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.nike.com/en/newsroom/releases/nike-so-win-brand-anthem
+    valid_time: 2025-02-09
+    permitted_use: expression_event_and_women_athlete_audience
+    status: verified
+  - id: SRC-NIKE-009
+    title: Nike Debuts Rip the Script
+    publisher: NIKE, Inc.
+    source_type: official_campaign_release
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.nike.com/en/newsroom/releases/nike-debuts-rip-the-script-a-step-inside-the-universe-of-nike-football
+    valid_time: 2026-06-04
+    permitted_use: football_expression_products_audiences_and_event
+    status: verified
+  - id: SRC-NIKE-010
+    title: What Is Nike Membership
+    publisher: Nike
+    source_type: official_service_documentation
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://www.nike.com/help/a/member-benefits/experiences
+    valid_time: current_at_2026-08-25
+    permitted_use: membership_offering_and_experience
+    status: verified
+  - id: SRC-NIKE-011
+    title: How Are the Nike App and SNKRS App Different
+    publisher: Nike
+    source_type: official_service_documentation
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://www.nike.com/help/a/nike-snkrs-app-difference/
+    valid_time: current_at_2026-08-25
+    permitted_use: digital_offerings_and_experiences
+    status: verified
+  - id: SRC-NIKE-012
+    title: Nike Ignites Football Fandom Through Immersive Retail Experiences
+    publisher: NIKE, Inc.
+    source_type: official_experience_release
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.nike.com/en/newsroom/releases/nike-ignites-football-fandom-through-immersive-retail-experiences-designed-to-reach-more-consumers
+    valid_time: 2026-06-11
+    permitted_use: retail_community_experience_and_event
+    status: verified
+  - id: SRC-NIKE-013
+    title: Nike Brings Innovation to Every Run
+    publisher: NIKE, Inc.
+    source_type: official_product_collection
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.nike.com/en/newsroom/collections/nike-running-shoes
+    valid_time: updated_2026-05
+    permitted_use: running_offerings_and_innovation_identity
+    status: verified
+  - id: SRC-NIKE-014
+    title: Nike Brand Profile
+    publisher: Interbrand
+    source_type: independent_brand_valuation
+    authority_tier: B
+    evidence_tier: T2
+    canonical_url: https://interbrand.com/best-global-brands/global/nike/
+    valid_time: 2025_ranking
+    permitted_use: scoped_external_brand_value_signal
+    status: verified
+  - id: SRC-NIKE-015
+    title: adidas vs Nike A Close Race in Global Brand Perception
+    publisher: YouGov
+    source_type: independent_brand_tracking
+    authority_tier: B
+    evidence_tier: T2
+    canonical_url: https://yougov.com/en-us/articles/54038-adidas-vs-nike-a-close-race-in-global-brand-perception
+    valid_time: 2026_ranking
+    permitted_use: scoped_external_perception_signal
+    status: verified
+  - id: SRC-NIKE-016
+    title: Roadmap to Success
+    publisher: adidas Annual Report 2025
+    source_type: competitor_regulated_report
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://report.adidas-group.com/2025/en/group-management-report-our-company/roadmap-to-success.html
+    valid_time: fiscal_2025
+    permitted_use: adidas_self_reported_positioning_only
+    status: verified
+  - id: SRC-NIKE-017
+    title: On Holding 2025 Annual Report
+    publisher: On Holding AG
+    source_type: competitor_regulated_report
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://investors.on-running.com/files/doc_financials/2025/ar/Ex-99-3_Annual-Report_FY2025-1.pdf
+    valid_time: fiscal_2025
+    permitted_use: on_self_reported_positioning_only
+    status: verified
+  - id: SRC-NIKE-018
+    title: PUMA Annual Report 2025
+    publisher: PUMA SE
+    source_type: competitor_regulated_report
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.puma.com/sites/default/files/financial-report/2025/puma-gb-2025-gesamt-en-final.pdf
+    valid_time: fiscal_2025
+    permitted_use: puma_self_reported_positioning_only
+    status: verified
+  - id: SRC-NIKE-019
+    title: NIKE Inc. Announces Global Operations Changes
+    publisher: NIKE, Inc.
+    source_type: official_governance_event
+    authority_tier: A
+    evidence_tier: T1
+    canonical_url: https://about.nike.com/en/newsroom/releases/nike-inc-april-23-2026-global-operations-announcement
+    valid_time: 2026-04-23
+    permitted_use: win_now_and_operating_model_event
+    status: verified
+

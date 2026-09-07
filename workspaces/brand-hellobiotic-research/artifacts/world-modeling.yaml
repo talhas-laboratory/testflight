@@ -1,0 +1,90 @@
+version: 1
+workspace_id: world://workspace/brand/hellobiotic-research
+purpose: Proposal-only semantic overlays over bounded public evidence.
+evidence_links:
+- link_id: EVIDLINK-HELLOBIOTIC-001
+  evidence_id: EVID-HB-001
+  target_id: STATE-HELLOBIOTIC-PUBLIC-CORE-001
+  role: supports
+  context_id: CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  derivation_id: DERIV-HELLOBIOTIC-PUBLIC-001
+  note: Supports the bounded public state.
+- link_id: EVIDLINK-HELLOBIOTIC-002
+  evidence_id: EVID-HB-001
+  target_id: FRAME-HELLOBIOTIC-OFFER-EXPERIENCE-001
+  role: supports
+  context_id: CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  derivation_id: DERIV-HELLOBIOTIC-PUBLIC-001
+  note: Supports the public offering-to-experience frame.
+states:
+- state_id: STATE-HELLOBIOTIC-PUBLIC-CORE-001
+  version: 1
+  subject_ids:
+  - ENT-HB-ID-001
+  - ENT-HB-OF-001
+  state_type_id: world://ontology/brand/state/public-brand-core
+  context_id: CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  values:
+  - key: research_scope
+    value: publicly documented brand and product claims only
+  source_assertion_ids:
+  - REL-HELLOBIOTIC-003
+  - REL-HELLOBIOTIC-012
+  evidence_link_ids:
+  - EVIDLINK-HELLOBIOTIC-001
+  status: supported
+  derivation_id: DERIV-HELLOBIOTIC-PUBLIC-001
+perspectives:
+- perspective_id: PERS-HELLOBIOTIC-PUBLIC-CUSTOMER-001
+  holder_id: ENT-HB-EN-001
+  perspective_type_id: world://ontology/brand/perspective/public-potential-customer
+  context_id: CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  goals:
+  - Understand documented benefits and limits before evaluating an offer.
+  accessible_record_selectors:
+  - ENT-HB-ID-001
+  - ENT-HB-OF-001
+  - ENT-HB-XP-001
+  known_limitations:
+  - No validated ICP, purchase behavior, eligibility, or individual health outcome
+    is established.
+  derivation_id: DERIV-HELLOBIOTIC-PUBLIC-001
+relationship_frames:
+- frame_id: FRAME-HELLOBIOTIC-OFFER-EXPERIENCE-001
+  frame_type_id: world://ontology/brand/frame/public-offering-experience
+  context_id: CTX-HELLOBIOTIC-DEODORANT-CURRENT
+  role_bindings:
+  - role_id: brand
+    record_ids:
+    - ENT-HB-ID-001
+  - role_id: offering
+    record_ids:
+    - ENT-HB-OF-001
+  - role_id: experience
+    record_ids:
+    - ENT-HB-XP-001
+  - role_id: environment
+    record_ids:
+    - ENT-HB-EN-001
+  assertion_ids:
+  - REL-HELLOBIOTIC-003
+  - REL-HELLOBIOTIC-004
+  status: supported
+  evidence_link_ids:
+  - EVIDLINK-HELLOBIOTIC-002
+  derivation_id: DERIV-HELLOBIOTIC-PUBLIC-001
+hypotheses: []
+experiments: []
+observed_outcomes: []
+learning_updates: []
+branches:
+- branch_id: research-main
+  workspace_id: world://workspace/brand/hellobiotic-research
+  branch_kind: interpretation
+  label: Source-grounded public research view
+  created_by: testflight-public-brand-scaffold
+  created_at: '2026-08-31T00:00:00Z'
+  status: active
+  derivation_id: DERIV-HELLOBIOTIC-PUBLIC-001
+branch_deltas: []
+conflicts: []

@@ -1,0 +1,51 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]: Experience prototype
+    - navigation "Prototype views" [ref=e5]:
+      - button "Notebook" [ref=e6] [cursor=pointer]
+      - button "Clarify" [active] [ref=e7] [cursor=pointer]
+      - button "Review" [ref=e8] [cursor=pointer]
+  - main [ref=e9]:
+    - complementary "Capture progress" [ref=e10]:
+      - link "Testflight home" [ref=e11] [cursor=pointer]:
+        - /url: "#"
+        - text: T/F
+      - list [ref=e14]:
+        - listitem [ref=e15]:
+          - generic [ref=e16]: "1"
+          - generic [ref=e17]: Today
+        - listitem [ref=e18]:
+          - generic [ref=e19]: "2"
+          - generic [ref=e20]: Tomorrow
+        - listitem [ref=e21]:
+          - generic [ref=e22]: "3"
+          - generic [ref=e23]: Then
+      - button "Open privacy note" [ref=e24] [cursor=pointer]:
+        - generic [ref=e27]: Private
+    - region [ref=e69]:
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - paragraph [ref=e72]: A few things worth understanding
+          - heading [level=2] [ref=e73]:
+            - text: We listened.
+            - emphasis [ref=e74]: Now we get precise.
+        - generic [ref=e75]:
+          - strong [ref=e76]: "01"
+          - generic [ref=e77]: / 04
+      - article [ref=e78]:
+        - generic [ref=e79]:
+          - paragraph [ref=e80]: One small distinction
+          - blockquote [ref=e81]: “People come to us because the alternatives make them feel like they are already behind.”
+          - button "From your note on day one ↗" [ref=e82] [cursor=pointer]
+        - generic [ref=e83]:
+          - heading "When customers feel “behind,” what do they believe they should already know or be able to do?" [level=3] [ref=e84]
+          - generic [ref=e85]: Your answer
+          - textbox "Your answer" [ref=e86]:
+            - /placeholder: Answer however it comes. A sentence is enough.
+          - generic [ref=e87]:
+            - button "Answer by voice" [ref=e88] [cursor=pointer]
+            - generic [ref=e90]:
+              - button "I don’t know" [ref=e91] [cursor=pointer]
+              - button "Keep this answer →" [ref=e92] [cursor=pointer]
+      - paragraph [ref=e93]: You can change any answer later. Uncertainty is useful information too.
+  - status

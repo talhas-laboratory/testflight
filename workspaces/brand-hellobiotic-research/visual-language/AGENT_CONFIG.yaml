@@ -1,0 +1,7 @@
+workspace_id: world://workspace/brand/hellobiotic-research
+route: visual-language
+retrieval_order:
+- exact
+- bm25
+- bounded_hybrid_same_child
+production_requires: authorized_internal_standards

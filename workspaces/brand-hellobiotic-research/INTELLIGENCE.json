@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "workspaceId": "world://workspace/brand/hellobiotic-research",
+  "brandId": "world://brand/hellobiotic",
+  "datasetName": "testflight_brand_hellobiotic_research_staging",
+  "subjectScope": "Publicly documented Biotic / Hellobiotic brand and product ecosystem only.",
+  "retrieval": {
+    "topK": 12,
+    "maximumQueries": 3,
+    "navigationSourcePatterns": [
+      "agent_index",
+      "agent_config",
+      "workspace.yaml"
+    ]
+  },
+  "visualLanguage": {
+    "enabled": true,
+    "route": "visual-language",
+    "workflowStages": [
+      "brief",
+      "concept",
+      "production",
+      "review"
+    ],
+    "manifestPath": "workspaces/brand-hellobiotic-research/visual-language/manifest.json",
+    "datasetName": "testflight_brand_hellobiotic_visual_language_staging"
+  },
+  "worldView": {
+    "enabled": true,
+    "manifestPath": "workspaces/brand-hellobiotic-research/artifacts/world-modeling.yaml"
+  },
+  "activation": {
+    "actionTerms": [
+      "create",
+      "make",
+      "write",
+      "design",
+      "review",
+      "brief",
+      "concept"
+    ],
+    "domainTerms": [
+      "hellobiotic",
+      "brand",
+      "campaign",
+      "asset",
+      "audience",
+      "positioning",
+      "creative"
+    ]
+  },
+  "workflows": []
+}

@@ -1,0 +1,35 @@
+version: 1
+workspace_id: world://workspace/testflight-product
+purpose: Add product knowledge without turning the parent into an unbounded miscellaneous store.
+create_child_when_any:
+  - distinct_retrieval_route
+  - distinct_permission_or_privacy_policy
+  - distinct_source_authority_or_evidence_policy
+  - distinct_version_or_refresh_lifecycle
+  - sufficient_volume_to_reduce_parent_precision
+keep_in_existing_module_when:
+  - difference_is_only_a_folder_or_ui_label
+  - records_share_route_authority_lifecycle_and_policy
+required_child_files:
+  - AGENT_INDEX.md
+  - AGENT_CONFIG.yaml
+  - WORKSPACE.yaml
+  - artifacts/source_manifest.yaml
+  - artifacts/module-contract.yaml
+  - certification_cases/probes.yaml
+  - resource_registry.json
+registration_steps:
+  - define mission, includes, exclusions, owner, authority, lifecycle, and quality gates
+  - dry-run the child-container scaffold
+  - add the child to WORKSPACE.yaml topology and module-registry.yaml
+  - add exact, intent, adversarial-navigation, and out-of-domain probes
+  - validate structure and metadata before any projection
+  - certify retrieval separately before production exposure
+  - record a parent-registration receipt with operator evaluator results
+forbidden:
+  - generic_miscellaneous_module
+  - implicit_cross_workspace_import
+  - generated_state_as_source_of_truth
+  - parent_wide_hybrid_default
+  - navigation_document_as_domain_answer
+

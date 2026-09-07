@@ -1,0 +1,29 @@
+version: 1
+root: .agents/skills
+layout: flat-discovery-root
+catalog: catalog.yaml
+index: AGENT_INDEX.md
+categories:
+  - knowledge-containers
+  - retrieval
+  - reasoning
+  - integrations
+  - quality
+rules:
+  skill_directory: .agents/skills/<skill-name>
+  required_entrypoint: SKILL.md
+  optional_directories:
+    - agents
+    - references
+    - scripts
+    - assets
+  catalog_required: true
+  nested_category_directories: false
+  automatic_discovery_default: true
+  live_external_mutation_requires_explicit_authorization: true
+statuses:
+  - draft
+  - candidate
+  - certified
+  - deprecated
+

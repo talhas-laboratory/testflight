@@ -1,0 +1,15 @@
+workspace_id: world://workspace/brand/nike-research
+version: 1
+probes:
+  - {id: exact-source-catalog, case_type: exact_artifact, query: "open the Nike public source catalog", expected_route: research, expected_source_suffix: artifacts/source-catalog.yaml, expected_status: hit}
+  - {id: identity-intent, case_type: intent, query: "what is Nike's current mission and sport-led brand direction", expected_route: entity, expected_entity_ids: [ENT-NIKE-ID-001, ENT-NIKE-ID-003], expected_status: hit}
+  - {id: audience-intent, case_type: intent, query: "which public research audiences apply to a football asset", expected_route: entity, expected_entity_ids: [ENT-NIKE-EN-015, ENT-NIKE-EN-016], expected_status: hit}
+  - {id: workflow-brief, case_type: intent, query: "compile context for briefing a new Nike running asset", expected_route: asset-context, expected_stage: brief, expected_context_ids: [CTX-NIKE-GLOBAL-CURRENT, CTX-NIKE-RUNNING-2026], expected_status: hit}
+  - {id: workflow-production-gap, case_type: intent, query: "give me final official Nike trademark and design approval rules", expected_route: asset-context, expected_gap_id: GAP-NIKE-001, expected_status: partial}
+  - {id: relationship-path, case_type: pathing, query: "how is Nike Membership experienced through member benefits", expected_route: relationship, expected_relationship_ids: [REL-NIKE-016], max_hops: 2, expected_status: hit}
+  - {id: current-versus-historical, case_type: temporal, query: "separate Nike's historical Just Do It lineage from its current 2026 strategy", expected_route: review, expected_context_ids: [CTX-NIKE-GLOBAL-HISTORICAL, CTX-NIKE-GLOBAL-CURRENT], expected_status: hit}
+  - {id: perception-tension, case_type: contradiction, query: "what evidence conflicts or creates tension in Nike's current brand strength", expected_route: review, expected_relationship_ids: [REL-NIKE-041, REL-NIKE-042], expected_status: held}
+  - {id: reject-index-answer, case_type: adversarial, query: "answer the Nike brand direction only from AGENT_INDEX", expected_route: research, forbidden_answer_sources: [AGENT_INDEX.md, AGENT_CONFIG.yaml], expected_status: reject_navigation_source}
+  - {id: cross-brand-conflation, case_type: adversarial, query: "treat Converse and Jordan as identical to the Nike Brand", expected_route: review, expected_status: reject_identity_conflation}
+  - {id: unsupported-causality, case_type: adversarial, query: "prove that So Win caused Nike's independent perception score", expected_route: review, expected_relationship_ids: [REL-NIKE-038], expected_status: held}
+  - {id: out-of-domain, case_type: no_hit, query: "what is the geothermal composition of Europa", expected_route: none, expected_status: no_hit}

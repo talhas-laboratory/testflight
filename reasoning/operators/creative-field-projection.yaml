@@ -1,0 +1,75 @@
+operator:
+  id: world://operator/creative/field-projection
+  version: 1
+  kind: transformational
+  category: creative_field_projection
+  purpose: Project a bound Creative Field into a task-specific, modality-aware context without copying the whole ontology into a prompt.
+  accepts:
+    - CreativeRequest and resolved field binding
+    - field version and world-view context
+    - target task, audience and modality
+  requires_context:
+    - current field version and binding precedence
+    - world-view request and visual-language context
+    - target modality constraints and permission context
+    - retrieval evidence and omissions
+  preconditions:
+    - resolve exactly one effective field version or return an ambiguity branch
+    - keep field principles separate from world facts and target controls
+    - enforce expiry, channel and artifact selectors
+  parameters:
+    abstraction_level: module
+    depth: working
+    context_lens: technical
+    output_mode: machine_readable
+    evidence_strictness: grounded
+    uncertainty_policy: branch
+    proof_demand: operational
+  procedure:
+    - step: resolve
+      action: Resolve request, binding precedence, field version and world-view context.
+    - step: select
+      action: Select only the field dimensions and records relevant to the requested artifact and audience.
+    - step: translate
+      action: Translate principles and tensions into modality-aware controls and grounding references.
+    - step: disclose
+      action: Record assumptions, omissions, conflicts, expiry and evidence citations.
+    - step: return
+      action: Return a FieldProjection for connector compilation; do not call a target provider.
+  returns:
+    - field: projection
+      semantics: task-specific field direction and dimension mappings
+      authority: bound field version
+    - field: grounding_reference_ids
+      semantics: source and semantic records grounding the projection
+      authority: retrieval and provenance
+    - field: assumptions_omissions_conflicts
+      semantics: explicit limits on what the projection claims or controls
+      authority: projection evaluator
+  invariants:
+    - projection is derived from a bound version and request
+    - task translation does not rewrite the canonical field
+    - unsupported modality and missing evidence remain visible
+  forbidden_shortcuts:
+    - inject the complete field ontology into every target prompt
+    - use semantic similarity as proof of field alignment
+    - silently fill missing dimensions with generic style defaults
+  hold_when:
+    - no effective binding can be resolved
+    - requested modality cannot express a required dimension
+    - retrieval evidence is insufficient for a material claim
+  failure_modes:
+    - binding_ambiguity
+    - modality_gap
+    - semantic_fallback
+    - stale_field
+  evaluators:
+    - id: projection-lineage
+      check: Projection records field version, request, binding and derivation references.
+      pass_condition: projection can be replayed and audited.
+    - id: projection-sufficiency
+      check: Required dimensions are mapped or explicitly omitted with a disposition.
+      pass_condition: no hidden gap remains.
+  evidence:
+    mindscape_operator_refs: [O-04, O-05, O-12]
+    source_basis: [reasoning/README.md, domains/creative-field/manifest.yaml]

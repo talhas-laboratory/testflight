@@ -1,0 +1,12 @@
+version: 1
+container_id: world://workspace/testflight-product/product-definition
+sources:
+  - repo://workspaces/testflight-product/product-definition/artifacts/module-contract.yaml
+  - repo://workspaces/testflight-product/product-definition/artifacts/product-portfolio.yaml
+  - repo://workspaces/testflight-product/product-definition/artifacts/capability-inventory.yaml
+  - repo://workspaces/testflight-product/product-definition/artifacts/roadmap-inventory.yaml
+  - repo://workspaces/testflight-product/artifacts/product-surface-inventory.yaml
+  - repo://README.md
+  - repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md
+  - repo://docs/plans/2026-09-04-founder-brand-world-build-order.md
+  - repo://deliverables/testflight-commercial-viability-deep-research.md
