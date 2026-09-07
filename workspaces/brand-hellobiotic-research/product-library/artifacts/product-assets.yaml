@@ -20,9 +20,9 @@ assets:
         transform: deterministic_color_key_eeeeee_tolerance_0.08_blend_0.015
         transparent_background: true
         validation: alpha_channel_range_0_to_255
-    rights_record_id: rights:hellobiotic-public-site:unverified
-    generation_allowed: false
-    use_allowed: [analysis_and_reference]
+    rights_record_id: rights:hellobiotic-product-library:collaboration-grant-2026-09-07
+    generation_allowed: true
+    use_allowed: [analysis_and_reference, generation_reference]
     recorded_at: '2026-09-07'
   - product_asset_uid: product-asset:product:biotic:brightening-probiotic-deodorant:v1:mini-front:c6daa4d7
     product_uid: product:biotic:brightening-probiotic-deodorant:v1
@@ -43,9 +43,9 @@ assets:
         transform: deterministic_color_key_eeeeee_tolerance_0.08_blend_0.015
         transparent_background: true
         validation: alpha_channel_range_0_to_255
-    rights_record_id: rights:hellobiotic-public-site:unverified
-    generation_allowed: false
-    use_allowed: [analysis_and_reference]
+    rights_record_id: rights:hellobiotic-product-library:collaboration-grant-2026-09-07
+    generation_allowed: true
+    use_allowed: [analysis_and_reference, generation_reference]
     recorded_at: '2026-09-07'
   - product_asset_uid: product-asset:product:biotic:brightening-probiotic-deodorant:v1:duo-open:4d92e0f6
     product_uid: product:biotic:brightening-probiotic-deodorant:v1
@@ -66,9 +66,9 @@ assets:
         transform: deterministic_color_key_eeeeee_tolerance_0.08_blend_0.015
         transparent_background: true
         validation: alpha_channel_range_0_to_255
-    rights_record_id: rights:hellobiotic-public-site:unverified
-    generation_allowed: false
-    use_allowed: [analysis_and_reference]
+    rights_record_id: rights:hellobiotic-product-library:collaboration-grant-2026-09-07
+    generation_allowed: true
+    use_allowed: [analysis_and_reference, generation_reference]
     recorded_at: '2026-09-07'
   - product_asset_uid: product-asset:product:biotic:brightening-probiotic-deodorant:v1:in-hand-oblique:42dd3e6f
     product_uid: product:biotic:brightening-probiotic-deodorant:v1
@@ -82,13 +82,13 @@ assets:
     dimensions: {width: 800, height: 608}
     transparent_background: false
     derivative_status: source_as_published
-    rights_record_id: rights:hellobiotic-public-site:unverified
-    generation_allowed: false
-    use_allowed: [analysis_and_reference]
+    rights_record_id: rights:hellobiotic-product-library:collaboration-grant-2026-09-07
+    generation_allowed: true
+    use_allowed: [analysis_and_reference, generation_reference]
     recorded_at: '2026-09-07'
 coverage_assessment:
   product_uid: product:biotic:brightening-probiotic-deodorant:v1
   observed_angles: [front_closed, front_closed_mini, front_duo_cap_off, in_hand_front_oblique]
   missing_angles: [back, left_side, right_side, top_closed, bottom, isolated_open_single, 360_or_3d]
-  generation_readiness: hold
-  rationale: Public official images show useful front/open references but do not establish complete geometry or all required pack angles.
+  generation_readiness: partial
+  rationale: Collaboration authority permits generation reference use for observed front/open/in-hand coverage only; it does not establish complete geometry or unobserved pack angles.

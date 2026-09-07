@@ -6,9 +6,11 @@ sources:
     source_type: official_public_product_page
     authority: brand_published_public_claim
     scope: product_identity_visible_packaging_variants_and_public_claims
-    rights_status: public_accessible_terms_unverified
-    generation_allowed: false
+    rights_status: user_confirmed_brand_collaboration
+    rights_record_id: rights:hellobiotic-product-library:collaboration-grant-2026-09-07
+    generation_allowed: true
+    generation_scope: controlled_reference_generation_for_biotic_project
     retrieved_at: '2026-09-07'
     limitations:
-      - Public availability does not establish permission to use imagery as a generative reference or in production.
+      - The user reports active Biotic collaboration and authorizes generation-reference use for this project; retain this as the authority basis until a written brand grant is recorded.
       - Claims remain attributable to the product page and are not independently validated.

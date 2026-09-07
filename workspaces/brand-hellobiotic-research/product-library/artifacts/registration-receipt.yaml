@@ -17,6 +17,6 @@ validation:
   - command: uv run python scripts/validate_concrete_brand_workspace.py --workspace workspaces/brand-hellobiotic-research
     outcome: pass
 limitations:
-  - One public-product-page record and four public official image references are populated; rights remain unverified.
+  - One public-product-page record and four public official image references are populated; the user has confirmed collaboration-based generation-reference authority for this project.
   - No approved back, side, isolated open-single, 360-degree, or 3D representation is available.
   - No staging projection has been built or certified.
