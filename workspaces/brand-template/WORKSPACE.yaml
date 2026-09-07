@@ -21,6 +21,11 @@ storage:
   runtime_root: /home/talha/testflight/.data/brand-workspaces/<workspace_slug>
   evidence_root: /home/talha/testflight/.data/brand-workspaces/<workspace_slug>/evidence
   semantic_repository: /home/talha/testflight/.data/brand-workspaces/<workspace_slug>/semantic.sqlite3
+topology:
+  children:
+    - id: product-library
+      path: product-library/AGENT_INDEX.md
+      purpose: route stable product identity, approved product assets, and product-context links
 scope:
   includes:
     - versioned Brand definitions

@@ -1,0 +1,11 @@
+version: 1
+id: world://workspace/brand/template/product-library
+parent: world://workspace/brand/template
+type: child-knowledge-container
+label: Product library
+mission: Reusable empty product identity, asset-rights, and product-context child-container template.
+dataset_name: testflight_brand_template_product_library_staging
+route: product-library
+status: template_empty
+source_of_truth: canonical-workspace-files
+projection: rebuildable

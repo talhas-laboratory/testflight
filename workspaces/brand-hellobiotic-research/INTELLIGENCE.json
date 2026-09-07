@@ -25,6 +25,14 @@
     "manifestPath": "workspaces/brand-hellobiotic-research/visual-language/manifest.json",
     "datasetName": "testflight_brand_hellobiotic_visual_language_staging"
   },
+  "productLibrary": {
+    "enabled": true,
+    "route": "product-library",
+    "containerId": "world://workspace/brand/hellobiotic-research/product-library",
+    "manifestPath": "workspaces/brand-hellobiotic-research/product-library/artifacts/module-contract.yaml",
+    "datasetName": "testflight_brand_hellobiotic_research_product_library_staging",
+    "status": "empty_unpopulated"
+  },
   "worldView": {
     "enabled": true,
     "manifestPath": "workspaces/brand-hellobiotic-research/artifacts/world-modeling.yaml"
@@ -45,6 +53,9 @@
       "campaign",
       "asset",
       "audience",
+      "product",
+      "sku",
+      "packshot",
       "positioning",
       "creative"
     ]

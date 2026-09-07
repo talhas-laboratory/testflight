@@ -1,0 +1,24 @@
+version: 1
+container_id: world://workspace/brand/hellobiotic-research/product-library
+parent_workspace_id: world://workspace/brand/hellobiotic-research
+dataset_name: testflight_brand_hellobiotic_research_product_library_staging
+route: product-library
+status: empty_unpopulated
+retrieval:
+  container_ids: [world://workspace/brand/hellobiotic-research/product-library]
+  primary: exact_then_bm25
+  fallback: bounded_same_child_hybrid
+  graph_max_hops: 2
+  out_of_domain: NO_HITS
+  reject_navigation_as_answer: true
+spaces:
+  product-index: {authority: canonical_identity, refresh: on_product_change}
+  product-knowledge-space: {authority: evidence_scoped, refresh: on_spec_or_variant_change}
+  product-image-space: {authority: rights_bounded_asset_reference, refresh: on_asset_or_rights_change}
+  product-purpose-space: {authority: relation_with_evidence_status, refresh: on_claim_or_evidence_change}
+  product-end-user-connection-space: {authority: bounded_context_or_held_hypothesis, refresh: on_evidence_change}
+quality_gates:
+  require_product_uid_for_non_global_query: true
+  require_active_rights_for_generation: true
+  require_angle_coverage_for_generation: true
+  no_hit_correctness: 1.0

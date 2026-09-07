@@ -1,0 +1,15 @@
+version: 1
+id: world://workspace/brand/hellobiotic-research/product-library
+parent: world://workspace/brand/hellobiotic-research
+type: child-knowledge-container
+label: Product library
+mission: Route product identity, product knowledge, approved visual assets, and product-to-user context for bounded brand workflows.
+dataset_name: testflight_brand_hellobiotic_research_product_library_staging
+route: product-library
+status: empty_unpopulated
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+binary_asset_policy:
+  canonical_storage: external_content_addressed_store
+  index_representation: stable_uri_content_hash_rights_and_coverage_metadata
+  generated_state_is_canonical: false

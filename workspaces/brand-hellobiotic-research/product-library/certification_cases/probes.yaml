@@ -1,0 +1,5 @@
+version: 1
+container_id: world://workspace/brand/hellobiotic-research/product-library
+status: draft_empty_library
+required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
+probes: []

@@ -1,0 +1,49 @@
+version: 1
+container_id: world://workspace/brand/hellobiotic-research/product-library
+status: empty_unpopulated
+uid_contract:
+  product_uid: product:{brand_slug}:{product_slug}:{product_version}
+  sku_uid: sku:{product_uid}:{market}:{size_or_variant}:{sku_version}
+  product_asset_uid: product-asset:{product_uid}:{asset_role}:{content_hash_prefix}
+  product_view_uid: product-view:{product_uid}:{view_angle}:{view_version}
+identity_rules:
+  product_uid_is_stable_across_asset_refreshes: true
+  product_version_changes_on_material_product_identity_change: true
+  sku_and_asset_records_must_reference_product_uid: true
+spaces:
+  product-index:
+    source: artifacts/product-index.yaml
+    owns: [product_uid, active_version, linked_space_ids, lifecycle_status]
+  product-knowledge-space:
+    owns: [physical_specification, variants, ingredients_or_materials, market_scope, evidence_refs]
+  product-image-space:
+    owns: [asset_uri, content_hash, asset_role, view_angle, visual_coverage, rights, generation_allowed]
+  product-purpose-space:
+    owns: [offering_relation, intended_job, pain_point_relation, claim_status, evidence_refs]
+  product-end-user-connection-space:
+    owns: [audience_context_relation, occasion, journey_touchpoint, evidence_status, uncertainty]
+required_product_fields:
+  - product_uid
+  - display_name
+  - product_version
+  - lifecycle_status
+  - offering_entity_id
+  - linked_space_ids
+required_asset_fields:
+  - product_asset_uid
+  - product_uid
+  - asset_uri
+  - content_hash
+  - asset_role
+  - view_angle
+  - rights_record_id
+  - generation_allowed
+  - recorded_at
+generation_readiness:
+  permitted_outcomes: [ready, partial, hold, no_hit]
+  ready_requires: [active_rights, generation_allowed, requested_angle_coverage]
+  exact_likeness_requires: [approved_multi_view_or_3d_representation]
+  prohibited: [invented_label_text, invented_pack_geometry, inferred_variant]
+relation_contract:
+  pain_point_and_end_user_links_require: [relation_id, source_status, evidence_refs, valid_time, uncertainty]
+  allowed_source_status: [owner_approved, public_claim, observed_feedback, held_hypothesis]

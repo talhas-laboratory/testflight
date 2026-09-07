@@ -1,0 +1,3 @@
+version: 1
+container_id: world://workspace/brand/template/product-library
+sources: []

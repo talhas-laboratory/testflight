@@ -1,0 +1,8 @@
+version: 1
+container_id: world://workspace/brand/template/product-library
+parent_workspace_id: world://workspace/brand/template
+dataset_name: testflight_brand_template_product_library_staging
+route: product-library
+status: template_empty
+retrieval: {primary: exact_then_bm25, fallback: bounded_same_child_hybrid, graph_max_hops: 2, out_of_domain: NO_HITS}
+spaces: [product-index, product-knowledge-space, product-image-space, product-purpose-space, product-end-user-connection-space]

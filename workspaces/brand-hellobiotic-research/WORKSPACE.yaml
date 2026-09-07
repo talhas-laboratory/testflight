@@ -50,10 +50,14 @@ workspace:
     - id: visual-language
       path: visual-language/AGENT_INDEX.md
       purpose: resolve versioned public visual references
+    - id: product-library
+      path: product-library/AGENT_INDEX.md
+      purpose: route stable product identity, approved product assets, and product-context links
   scope:
     includes:
     - public identity, products, experience, expression, and evidence
     - versioned public visual-language observations
+    - empty reusable product-library contracts and source-rights metadata
     - proposal-only hypotheses and experiment plans
     excludes:
     - confidential strategy, customers, and internal guidelines

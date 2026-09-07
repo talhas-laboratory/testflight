@@ -1,0 +1,21 @@
+version: 1
+receipt_id: receipt:hellobiotic-product-library-scaffold:2026-09-07
+container_id: world://workspace/brand/hellobiotic-research/product-library
+parent_workspace_id: world://workspace/brand/hellobiotic-research
+operation: scaffold_and_parent_registration
+status: pass
+population_status: empty_unpopulated
+projection_changed: false
+operator_evaluations:
+  - {operator_id: configuration-runtime@1, outcome: pass, detail: isolated child ID, route, and staging dataset declared}
+  - {operator_id: workspace-isolation@1, outcome: pass, detail: child is bound only to the Biotic parent workspace}
+  - {operator_id: retrieval-reasoning-conflation@1, outcome: pass, detail: routes return evidence-scoped records or valid no-hit states}
+  - {operator_id: evaluation-schema@1, outcome: pass, detail: structural validator and parent workspace validator passed}
+validation:
+  - command: python3 .agents/skills/child-container-creator/scripts/validate_child_container.py workspaces/brand-hellobiotic-research/product-library
+    outcome: pass
+  - command: uv run python scripts/validate_concrete_brand_workspace.py --workspace workspaces/brand-hellobiotic-research
+    outcome: pass
+limitations:
+  - No product, SKU, asset, source, rights, purpose, pain-point, or end-user records are populated.
+  - No staging projection has been built or certified.

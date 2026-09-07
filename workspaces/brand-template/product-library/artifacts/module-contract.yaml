@@ -1,0 +1,18 @@
+version: 1
+container_id: world://workspace/brand/template/product-library
+status: template_empty
+uid_contract:
+  product_uid: product:{brand_slug}:{product_slug}:{product_version}
+  sku_uid: sku:{product_uid}:{market}:{size_or_variant}:{sku_version}
+  product_asset_uid: product-asset:{product_uid}:{asset_role}:{content_hash_prefix}
+  product_view_uid: product-view:{product_uid}:{view_angle}:{view_version}
+spaces:
+  - product-index
+  - product-knowledge-space
+  - product-image-space
+  - product-purpose-space
+  - product-end-user-connection-space
+generation_readiness:
+  ready_requires: [active_rights, generation_allowed, requested_angle_coverage]
+  exact_likeness_requires: [approved_multi_view_or_3d_representation]
+  prohibited: [invented_label_text, invented_pack_geometry, inferred_variant]

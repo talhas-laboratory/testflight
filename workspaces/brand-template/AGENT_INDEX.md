@@ -10,6 +10,7 @@ This template is a navigation and policy index. It is not a source of Brand fact
 | Review identity or assertion | `review` | hypotheses, evidence, contradictions |
 | Explain a Brand relationship | `query` | assertion node plus evidence spans |
 | Compare intended and observed layers | `query` | perspective-filtered assertions |
+| Route stable product identity or approved product assets | `product-library` | product UID, image rights, and product-context relations |
 | Rebuild Cognee | `rebuild` | canonical records and projection receipt |
 | Certify retrieval | `certify` | certification cases and report |
 

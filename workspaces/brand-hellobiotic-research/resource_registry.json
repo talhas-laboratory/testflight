@@ -2,6 +2,45 @@
   "workspace_id": "world://workspace/brand/hellobiotic-research",
   "sources": [
     {
+      "source_url": "repo://workspaces/brand-hellobiotic-research/product-library/artifacts/module-contract.yaml",
+      "doc_type": "product_library_module_contract",
+      "evidence_tier": "T1",
+      "canonical": false,
+      "task_view": "product-library",
+      "module": "product-library",
+      "unit": "hellobiotic-product-library-contract",
+      "tool": "testflight-brand",
+      "experience_type": "research_contract",
+      "difficulty": "advanced",
+      "last_verified_at": "2026-09-07"
+    },
+    {
+      "source_url": "repo://workspaces/brand-hellobiotic-research/product-library/artifacts/product-index.yaml",
+      "doc_type": "product_index",
+      "evidence_tier": "T1",
+      "canonical": false,
+      "task_view": "product-library",
+      "module": "product-library",
+      "unit": "hellobiotic-product-index",
+      "tool": "testflight-brand",
+      "experience_type": "research_contract",
+      "difficulty": "advanced",
+      "last_verified_at": "2026-09-07"
+    },
+    {
+      "source_url": "repo://workspaces/brand-hellobiotic-research/product-library/artifacts/registration-receipt.yaml",
+      "doc_type": "container_registration_receipt",
+      "evidence_tier": "T1",
+      "canonical": false,
+      "task_view": "product-library",
+      "module": "product-library",
+      "unit": "hellobiotic-product-library-registration-receipt",
+      "tool": "testflight-brand",
+      "experience_type": "research_contract",
+      "difficulty": "advanced",
+      "last_verified_at": "2026-09-07"
+    },
+    {
       "source_url": "repo://workspaces/brand-hellobiotic-research/artifacts/research-protocol.md",
       "doc_type": "protocol",
       "evidence_tier": "T1",
