@@ -1,0 +1,118 @@
+schema_version: 1
+id: workflow://testflight/biotic/social-carousel-create
+version: 1
+lifecycle: candidate
+name: Biotic social carousel creation
+description: Compile public Biotic research into a reviewable local social-carousel concept bundle.
+tags: [biotic, public-research, social, creative]
+
+access:
+  public: false
+  agent_ids: [agent:testflight-biotic]
+
+knowledge:
+  workspace_ids: [world://workspace/brand/hellobiotic-research]
+  container_ids: [world://workspace/brand/hellobiotic-research]
+  entity_ids: [ENT-HB-ID-001, ENT-HB-OF-001, CTX-HELLOBIOTIC-DEODORANT-CURRENT]
+  entity_types: [brand, offering, context, claim, visual_observation]
+  branch_ids: [research-main]
+  data_classifications: [public]
+  max_results: 20
+  max_graph_hops: 2
+
+authority:
+  capabilities: [knowledge.retrieve, artifact.compose, artifact.persist]
+  action_ids: [action://testflight/creative/local-artifact-persist]
+  credential_refs: [credential://testflight/workflow-runtime]
+  proposal_write: true
+  canonical_write: false
+  external_action: true
+
+inputs_schema:
+  type: object
+  additionalProperties: false
+  required: [request_id, objective, audience, channel]
+  properties:
+    request_id: {type: string}
+    objective: {type: string}
+    audience: {type: string}
+    channel: {type: string, const: instagram}
+
+outputs_schema:
+  type: object
+  additionalProperties: false
+  required: [review_bundle]
+  properties:
+    review_bundle: {type: object}
+
+steps:
+  - id: compile_context
+    kind: retrieve
+    handler: biotic.compile_public_context
+    description: Compile a bounded public-only Biotic context packet from tracked workspace artifacts.
+    instruction:
+      id: instruction://testflight/biotic/compile-public-context
+      version: 1
+      objective: Return only public research observations and their limitations for concept work.
+      rules:
+        - Do not claim owner approval, internal strategy, medical efficacy, or validated audience behavior.
+        - Preserve public-research scope and the limitations of visual, claims, and audience overlays.
+        - Return a hold when the declared workspace contract cannot be found.
+    arguments:
+      objective: $inputs.objective
+      audience: $inputs.audience
+      channel: $inputs.channel
+    access:
+      workspace_ids: [world://workspace/brand/hellobiotic-research]
+      container_ids: [world://workspace/brand/hellobiotic-research]
+      entity_ids: [ENT-HB-ID-001, ENT-HB-OF-001, CTX-HELLOBIOTIC-DEODORANT-CURRENT]
+      entity_types: [brand, offering, context, claim, visual_observation]
+    capabilities: [knowledge.retrieve]
+
+  - id: compose_carousel
+    kind: transform
+    handler: biotic.compose_social_carousel
+    description: Create a five-card, explicitly proposal-only carousel and local SVG image representations.
+    instruction:
+      id: instruction://testflight/biotic/compose-social-carousel
+      version: 1
+      objective: Turn the bounded context into a useful social concept without turning observations into owner-approved rules.
+      rules:
+        - Use only the supplied context packet.
+        - Mark all output as public-research concept work pending human review.
+        - Do not include medical efficacy, performance, or unsupported audience claims.
+    needs: [compile_context]
+    arguments:
+      request_id: $inputs.request_id
+      objective: $inputs.objective
+      audience: $inputs.audience
+      channel: $inputs.channel
+      context: $steps.compile_context.output
+    capabilities: [artifact.compose]
+
+  - id: persist_artifact
+    kind: action
+    handler: biotic.persist_local_artifact_bundle
+    description: Persist the structured copy and SVG cards as a locally reviewable bundle.
+    instruction:
+      id: instruction://testflight/biotic/persist-local-artifact-bundle
+      version: 1
+      objective: Record an immutable local artifact bundle without publishing or changing canonical brand knowledge.
+      rules:
+        - Require the workflow's local artifact persistence authority.
+        - Use the request id as the idempotency key.
+        - Persist proposal-only output under the configured local runtime root.
+    needs: [compose_carousel]
+    arguments:
+      carousel: $steps.compose_carousel.output
+    capabilities: [artifact.persist]
+    action_ids: [action://testflight/creative/local-artifact-persist]
+    idempotency_key: $inputs.request_id
+    retry:
+      max_attempts: 2
+      retry_on: [transient, timeout]
+      backoff_seconds: 0
+    on_error: hold
+
+outputs:
+  review_bundle: $steps.persist_artifact.output

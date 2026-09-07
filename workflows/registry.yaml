@@ -1,6 +1,10 @@
 version: 1
 root: workflows
 definitions:
+  - id: workflow://testflight/biotic/social-carousel-create
+    version: 1
+    path: biotic/social-carousel-create.yaml
+    status: candidate
   - id: workflow://testflight/evidence-synthesis
     version: 1
     path: examples/evidence-synthesis.yaml

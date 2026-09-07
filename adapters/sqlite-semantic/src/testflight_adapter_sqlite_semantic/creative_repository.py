@@ -20,6 +20,9 @@ class RevisionConflictError(ValueError):
 
 
 _IDENTITY_FIELDS: dict[str, str] = {
+    "ArtifactBundle": "bundle_id",
+    "ArtifactReviewDecision": "artifact_review_id",
+    "ArtifactExportReceipt": "export_id",
     "CreativeProject": "project_id",
     "Moodboard": "moodboard_id",
     "SourceLicenseRecord": "license_record_id",

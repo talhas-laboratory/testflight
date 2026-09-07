@@ -5,7 +5,7 @@ applications:
   - {id: app:brand-intake-web, surface_id: surface:brand-intake, path: apps/brand-intake-web, runtime: static_browser, lifecycle: experience_prototype, write_authority: browser_local_only}
   - {id: app:brand-lab, surface_id: surface:brand-lab, path: apps/brand-lab, runtime: python_local_http, lifecycle: implemented_local, write_authority: read_only}
   - {id: app:creative-studio, surface_id: surface:creative-studio, path: apps/creative-studio, runtime: python_local_http, lifecycle: implemented_local, write_authority: project_scoped_commands}
-  - {id: app:workflow-runtime, path: apps/workflow-runtime, runtime: python_asgi_mcp_langgraph, lifecycle: executable_foundation, write_authority: workflow_scoped_authority}
+  - {id: app:workflow-runtime, path: apps/workflow-runtime, runtime: python_asgi_mcp_langgraph, lifecycle: executable_foundation, write_authority: workflow_scoped_authority, workflows: [workflow://testflight/evidence-synthesis@1, workflow://testflight/biotic/social-carousel-create@1]}
 packages:
   - {id: package:testflight-core, path: packages/testflight-core, owns: [adapter_descriptor, capability, health_contract]}
   - {id: package:testflight-semantic, path: packages/testflight-semantic, owns: [semantic_kernel, evidence, identity, context, time, provenance, authority, branches, representation, dependencies, federation, world_views, learning]}

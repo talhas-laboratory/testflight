@@ -536,7 +536,81 @@ class FeedbackRecord(CreativeRecord):
     derivation_id: str | None = None
 
 
+class ArtifactBundle(CreativeRecord):
+    """A reviewable, immutable grouping of structured and media creative outputs.
+
+    The bundle is deliberately target-neutral: its members are existing ``CreativeOutput``
+    records, while the payload needed to render or export them remains in the blob store.
+    """
+
+    bundle_id: str = Field(min_length=1)
+    project_id: str = Field(min_length=1)
+    request_id: str = Field(min_length=1)
+    artifact_kind: str = Field(min_length=1)
+    revision: int = Field(ge=1)
+    output_ids: tuple[str, ...] = Field(min_length=1)
+    parent_bundle_id: str | None = None
+    field_version_id: str = Field(min_length=1)
+    context_packet_id: str = Field(min_length=1)
+    authority_grant_id: str = Field(min_length=1)
+    limitations: tuple[str, ...] = ()
+    lifecycle_status: LifecycleStatus = LifecycleStatus.REVIEW_NEEDED
+    derivation_id: str = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def unique_outputs_and_non_circular_parent(self) -> "ArtifactBundle":
+        if len(set(self.output_ids)) != len(self.output_ids):
+            raise ValueError("ArtifactBundle output_ids must be unique")
+        if self.parent_bundle_id == self.bundle_id:
+            raise ValueError("ArtifactBundle cannot parent itself")
+        return self
+
+
+class ArtifactReviewDecision(CreativeRecord):
+    """A human decision that gates an artifact bundle's next lifecycle operation."""
+
+    artifact_review_id: str = Field(min_length=1)
+    bundle_id: str = Field(min_length=1)
+    action: ReviewAction
+    actor_id: str = Field(min_length=1)
+    rationale: str = Field(min_length=1)
+    created_at: str = Field(min_length=1)
+    authority_grant_id: str = Field(min_length=1)
+    replacement_bundle_id: str | None = None
+    derivation_id: str = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def accepted_review_cannot_replace_bundle(self) -> "ArtifactReviewDecision":
+        if self.action is ReviewAction.ACCEPT and self.replacement_bundle_id is not None:
+            raise ValueError("accepted ArtifactReviewDecision cannot replace a bundle")
+        return self
+
+
+class ArtifactExportReceipt(CreativeRecord):
+    """An immutable record of a local export performed after human acceptance."""
+
+    export_id: str = Field(min_length=1)
+    bundle_id: str = Field(min_length=1)
+    artifact_review_id: str = Field(min_length=1)
+    destination_uri: str = Field(min_length=1)
+    exported_output_ids: tuple[str, ...] = Field(min_length=1)
+    exported_at: str = Field(min_length=1)
+    actor_id: str = Field(min_length=1)
+    authority_grant_id: str = Field(min_length=1)
+    status: ArtifactStatus
+    derivation_id: str = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def unique_exported_outputs(self) -> "ArtifactExportReceipt":
+        if len(set(self.exported_output_ids)) != len(self.exported_output_ids):
+            raise ValueError("ArtifactExportReceipt exported_output_ids must be unique")
+        return self
+
+
 __all__ = [
+    "ArtifactBundle",
+    "ArtifactExportReceipt",
+    "ArtifactReviewDecision",
     "ArtifactStatus",
     "BindingMode",
     "BoardRevision",

@@ -6,7 +6,7 @@ from testflight_adapter_sqlite_semantic import (
     CreativeRepository,
     RevisionConflictError,
 )
-from testflight_creative_field import BoardRevision, Placement, ReferenceAsset
+from testflight_creative_field import ArtifactBundle, BoardRevision, Placement, ReferenceAsset
 
 
 def _asset(asset_id: str, source_id: str, content_hash: str) -> ReferenceAsset:
@@ -85,3 +85,22 @@ def test_board_revisions_replay_and_reject_stale_writes_atomically(tmp_path) -> 
         assert repository.latest_board_revision("moodboard:creative") == 1
         repository.put_board_revision(second, expected_revision=1)
         assert repository.replay_board("moodboard:creative") == [first, second]
+
+
+def test_creative_repository_persists_artifact_bundle_by_project(tmp_path) -> None:
+    bundle = ArtifactBundle(
+        bundle_id="bundle:creative",
+        project_id="project:creative",
+        request_id="request:creative",
+        artifact_kind="social-carousel",
+        revision=1,
+        output_ids=("output:copy",),
+        field_version_id="field:creative@1",
+        context_packet_id="packet:creative",
+        authority_grant_id="grant:creative",
+        derivation_id="derivation:creative",
+    )
+    with CreativeRepository(tmp_path / "creative.sqlite3") as repository:
+        repository.append(bundle)
+        assert repository.get(ArtifactBundle, bundle.bundle_id) == bundle
+        assert repository.list(ArtifactBundle, project_id=bundle.project_id) == [bundle]

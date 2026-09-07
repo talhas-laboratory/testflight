@@ -2,6 +2,10 @@ from pathlib import Path
 
 import pytest
 from testflight_creative_field import (
+    ArtifactBundle,
+    ArtifactExportReceipt,
+    ArtifactReviewDecision,
+    ArtifactStatus,
     BoardRevision,
     CreativeFieldVersion,
     FieldBinding,
@@ -97,3 +101,54 @@ def test_dimension_registry_loads_extensible_dimensions() -> None:
     dimensions = load_dimension_registry(Path("domains/creative-field/dimensions.yaml"))
     assert len(dimensions) == 10
     assert all(isinstance(item, FieldDimension) for item in dimensions)
+
+
+def test_artifact_bundle_review_and_export_are_typed_and_guarded() -> None:
+    bundle = ArtifactBundle(
+        bundle_id="bundle:1",
+        project_id="project:1",
+        request_id="request:1",
+        artifact_kind="social-carousel",
+        revision=1,
+        output_ids=("output:copy", "output:card-1"),
+        field_version_id="field:1@1",
+        context_packet_id="packet:1",
+        authority_grant_id="grant:artifact",
+        derivation_id="derivation:1",
+    )
+    review = ArtifactReviewDecision(
+        artifact_review_id="artifact-review:1",
+        bundle_id=bundle.bundle_id,
+        action=ReviewAction.ACCEPT,
+        actor_id="user:1",
+        rationale="Approved for local export.",
+        created_at="2026-09-07T00:00:00Z",
+        authority_grant_id="grant:review",
+        derivation_id="derivation:review:1",
+    )
+    exported = ArtifactExportReceipt(
+        export_id="export:1",
+        bundle_id=bundle.bundle_id,
+        artifact_review_id=review.artifact_review_id,
+        destination_uri="file:///tmp/export",
+        exported_output_ids=bundle.output_ids,
+        exported_at="2026-09-07T00:01:00Z",
+        actor_id="user:1",
+        authority_grant_id="grant:export",
+        status=ArtifactStatus.SUCCESS,
+        derivation_id="derivation:export:1",
+    )
+    assert bundle.lifecycle_status is LifecycleStatus.REVIEW_NEEDED
+    assert exported.exported_output_ids == bundle.output_ids
+    with pytest.raises(ValueError, match="cannot replace"):
+        ArtifactReviewDecision(
+            artifact_review_id="artifact-review:invalid",
+            bundle_id=bundle.bundle_id,
+            action=ReviewAction.ACCEPT,
+            actor_id="user:1",
+            rationale="Invalid combination.",
+            created_at="2026-09-07T00:00:00Z",
+            authority_grant_id="grant:review",
+            replacement_bundle_id="bundle:replacement",
+            derivation_id="derivation:review:invalid",
+        )

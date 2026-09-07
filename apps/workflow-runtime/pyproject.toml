@@ -11,6 +11,8 @@ dependencies = [
   "testflight-adapter-langgraph[langgraph]",
   "testflight-adapter-mcp-workflows",
   "testflight-adapter-sqlite-workflow-runtime",
+  "testflight-adapter-sqlite-semantic",
+  "testflight-creative-field",
   "testflight-workflows",
 ]
 
@@ -21,6 +23,8 @@ workflow-runtime = "testflight_workflow_runtime.main:main"
 testflight-adapter-langgraph = { workspace = true }
 testflight-adapter-mcp-workflows = { workspace = true }
 testflight-adapter-sqlite-workflow-runtime = { workspace = true }
+testflight-adapter-sqlite-semantic = { workspace = true }
+testflight-creative-field = { workspace = true }
 testflight-workflows = { workspace = true }
 
 [tool.hatch.build.targets.wheel]

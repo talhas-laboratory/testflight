@@ -2771,7 +2771,9 @@ source = { editable = "apps/workflow-runtime" }
 dependencies = [
     { name = "testflight-adapter-langgraph", extra = ["langgraph"] },
     { name = "testflight-adapter-mcp-workflows" },
+    { name = "testflight-adapter-sqlite-semantic" },
     { name = "testflight-adapter-sqlite-workflow-runtime" },
+    { name = "testflight-creative-field" },
     { name = "testflight-workflows" },
 ]
 
@@ -2779,7 +2781,9 @@ dependencies = [
 requires-dist = [
     { name = "testflight-adapter-langgraph", extras = ["langgraph"], editable = "adapters/langgraph" },
     { name = "testflight-adapter-mcp-workflows", editable = "adapters/mcp-workflows" },
+    { name = "testflight-adapter-sqlite-semantic", editable = "adapters/sqlite-semantic" },
     { name = "testflight-adapter-sqlite-workflow-runtime", editable = "adapters/sqlite-workflow-runtime" },
+    { name = "testflight-creative-field", editable = "packages/testflight-creative-field" },
     { name = "testflight-workflows", editable = "packages/testflight-workflows" },
 ]
 

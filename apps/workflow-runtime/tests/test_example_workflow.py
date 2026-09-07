@@ -157,3 +157,64 @@ def test_assigned_agent_executes_real_langgraph_workflow(tmp_path, monkeypatch):
         "prompt://testflight/research/synthesize-proposal",
     }
     assert all(call["context"]["disclosure_refs"] for call in operator_client.calls)
+
+
+def test_biotic_carousel_workflow_creates_a_local_review_bundle(tmp_path, monkeypatch):
+    monkeypatch.setenv("TESTFLIGHT_PROJECT_ROOT", str(ROOT))
+    monkeypatch.setenv("TESTFLIGHT_BIOTIC_ARTIFACT_ROOT", str(tmp_path / "biotic-artifacts"))
+    catalog = load_catalog(ROOT / "workflows/registry.yaml")
+    handlers = load_handlers(("testflight_workflow_runtime.biotic_artifact_handlers",))
+    store = SqliteWorkflowRuntimeStore(tmp_path / "runtime.sqlite3")
+    engine = LangGraphWorkflowEngine(catalog=catalog, handlers=handlers, idempotency=store)
+    service = WorkflowRuntimeService(catalog=catalog, engine=engine, run_store=store)
+
+    record = asyncio.run(
+        service.run_and_wait(
+            principal=WorkflowPrincipal(id="agent:testflight-biotic"),
+            workflow_id="workflow://testflight/biotic/social-carousel-create",
+            workflow_version=1,
+            run_id="run:biotic-carousel-test",
+            inputs={
+                "request_id": "request:biotic-carousel-test",
+                "objective": "Create an educational daily-routine carousel concept.",
+                "audience": "People curious about an underarm-care ritual.",
+                "channel": "instagram",
+            },
+        )
+    )
+
+    assert record.result is not None
+    assert record.result.status is ResultStatus.SUCCESS
+    assert list(record.result.step_results) == [
+        "compile_context",
+        "compose_carousel",
+        "persist_artifact",
+    ]
+    bundle = record.result.outputs["review_bundle"]
+    assert bundle["status"] == "review_needed"
+    assert bundle["review_required"] is True
+    assert len(bundle["outputs"]) == 6
+    assert {output["media_type"] for output in bundle["outputs"]} == {
+        "application/json",
+        "image/svg+xml",
+    }
+    assert all("owner-approved" in item for item in bundle["limitations"][:1])
+    assert (tmp_path / "biotic-artifacts" / "creative.sqlite3").exists()
+
+    replay = asyncio.run(
+        service.run_and_wait(
+            principal=WorkflowPrincipal(id="agent:testflight-biotic"),
+            workflow_id="workflow://testflight/biotic/social-carousel-create",
+            workflow_version=1,
+            run_id="run:biotic-carousel-replay",
+            inputs={
+                "request_id": "request:biotic-carousel-test",
+                "objective": "Create an educational daily-routine carousel concept.",
+                "audience": "People curious about an underarm-care ritual.",
+                "channel": "instagram",
+            },
+        )
+    )
+    assert replay.result is not None
+    receipt = {item.step_id: item for item in replay.result.receipts}["persist_artifact"]
+    assert receipt.idempotent_replay is True
