@@ -1,0 +1,11 @@
+version: 1
+container_id: world://workspace/brand/hellobiotic-research/product-library
+relations:
+  - relation_id: product-relation:biotic:brightening-probiotic-deodorant:v1:audience-hypothesis
+    product_uid: product:biotic:brightening-probiotic-deodorant:v1
+    target_entity_id: AUD-HB-HYP-002
+    relation: may_resonate_with
+    source_status: held_hypothesis
+    evidence_refs: [repo://workspaces/brand-hellobiotic-research/audience/graph.json]
+    valid_time: {observed_at: '2026-09-07', end: unknown}
+    uncertainty: No validated behavioral, demographic, or purchase evidence supports this connection.

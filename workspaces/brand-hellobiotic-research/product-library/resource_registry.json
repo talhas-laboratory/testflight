@@ -1,5 +1,58 @@
 {
   "version": 1,
   "containerId": "world://workspace/brand/hellobiotic-research/product-library",
-  "resources": []
+  "resources": [
+    {
+      "module": "product-library",
+      "unit": "biotic-deodorant-2oz-front",
+      "task_view": "product-image-space",
+      "tool": "testflight-brand",
+      "doc_type": "official_product_image",
+      "evidence_tier": "T1",
+      "experience_type": "public_reference",
+      "difficulty": "advanced",
+      "canonical": false,
+      "last_verified_at": "2026-09-07",
+      "source_url": "https://www.hellobiotic.com/cdn/shop/products/2ozsingleclosed_800x.png?v=1658849884"
+    },
+    {
+      "module": "product-library",
+      "unit": "biotic-deodorant-mini-front",
+      "task_view": "product-image-space",
+      "tool": "testflight-brand",
+      "doc_type": "official_product_image",
+      "evidence_tier": "T1",
+      "experience_type": "public_reference",
+      "difficulty": "advanced",
+      "canonical": false,
+      "last_verified_at": "2026-09-07",
+      "source_url": "https://www.hellobiotic.com/cdn/shop/products/minisingleclosed_800x.png?v=1658849884"
+    },
+    {
+      "module": "product-library",
+      "unit": "biotic-deodorant-duo-open",
+      "task_view": "product-image-space",
+      "tool": "testflight-brand",
+      "doc_type": "official_product_image",
+      "evidence_tier": "T1",
+      "experience_type": "public_reference",
+      "difficulty": "advanced",
+      "canonical": false,
+      "last_verified_at": "2026-09-07",
+      "source_url": "https://www.hellobiotic.com/cdn/shop/products/duominiopen_800x.png?v=1657126020"
+    },
+    {
+      "module": "product-library",
+      "unit": "biotic-deodorant-in-hand-oblique",
+      "task_view": "product-image-space",
+      "tool": "testflight-brand",
+      "doc_type": "official_product_image",
+      "evidence_tier": "T1",
+      "experience_type": "public_reference",
+      "difficulty": "advanced",
+      "canonical": false,
+      "last_verified_at": "2026-09-07",
+      "source_url": "https://www.hellobiotic.com/cdn/shop/products/p2_800x.png?v=1657126020"
+    }
+  ]
 }

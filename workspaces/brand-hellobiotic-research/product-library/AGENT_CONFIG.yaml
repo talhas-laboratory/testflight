@@ -3,7 +3,7 @@ container_id: world://workspace/brand/hellobiotic-research/product-library
 parent_workspace_id: world://workspace/brand/hellobiotic-research
 dataset_name: testflight_brand_hellobiotic_research_product_library_staging
 route: product-library
-status: empty_unpopulated
+status: candidate_partial
 retrieval:
   container_ids: [world://workspace/brand/hellobiotic-research/product-library]
   primary: exact_then_bm25

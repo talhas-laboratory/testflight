@@ -1,3 +1,14 @@
 version: 1
 container_id: world://workspace/brand/hellobiotic-research/product-library
-sources: []
+sources:
+  - source_id: SRC-HB-PROD-001
+    source_url: https://www.hellobiotic.com/products/brightening-probiotic-deodorant-1
+    source_type: official_public_product_page
+    authority: brand_published_public_claim
+    scope: product_identity_visible_packaging_variants_and_public_claims
+    rights_status: public_accessible_terms_unverified
+    generation_allowed: false
+    retrieved_at: '2026-09-07'
+    limitations:
+      - Public availability does not establish permission to use imagery as a generative reference or in production.
+      - Claims remain attributable to the product page and are not independently validated.

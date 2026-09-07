@@ -1,5 +1,9 @@
 version: 1
 container_id: world://workspace/brand/hellobiotic-research/product-library
-status: draft_empty_library
+status: candidate_partial
 required_classes: [exact_artifact, intent_route, adversarial_navigation, out_of_domain_no_hit]
-probes: []
+probes:
+  - {id: exact-front-asset, class: exact_artifact, query: find the Biotic 2 oz closed front packshot, expected_asset_uid: product-asset:product:biotic:brightening-probiotic-deodorant:v1:pack-front:1c4ef7f5, expected_status: hit}
+  - {id: intent-angle-coverage, class: intent_route, query: can this library generate an exact Biotic back-of-pack view, expected_route: product-image-space, expected_status: hold}
+  - {id: reject-navigation, class: adversarial_navigation, query: answer product packaging details from AGENT_INDEX only, expected_status: reject_navigation_source}
+  - {id: powder-no-hit, class: out_of_domain_no_hit, query: find an approved packshot for Daily Sunshine powder, expected_status: no_hit}

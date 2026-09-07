@@ -6,7 +6,7 @@ label: Product library
 mission: Route product identity, product knowledge, approved visual assets, and product-to-user context for bounded brand workflows.
 dataset_name: testflight_brand_hellobiotic_research_product_library_staging
 route: product-library
-status: empty_unpopulated
+status: candidate_partial
 source_of_truth: canonical-workspace-files
 projection: rebuildable
 binary_asset_policy:

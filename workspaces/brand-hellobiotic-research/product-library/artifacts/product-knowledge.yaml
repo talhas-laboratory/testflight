@@ -1,0 +1,17 @@
+version: 1
+container_id: world://workspace/brand/hellobiotic-research/product-library
+records:
+  - product_uid: product:biotic:brightening-probiotic-deodorant:v1
+    product_name_observed: Brightening Probiotic Deodorant
+    public_variants:
+      - {sku_uid: sku:product:biotic:brightening-probiotic-deodorant:v1:us:2oz:v1, size_label: 2 oz / 56 g}
+      - {sku_uid: sku:product:biotic:brightening-probiotic-deodorant:v1:us:0.6oz:v1, size_label: 0.6 oz / 17 g}
+      - {sku_uid: sku:product:biotic:brightening-probiotic-deodorant:v1:us:duo-2oz-0.6oz:v1, size_label: Duo 2 oz + 0.6 oz}
+    visible_pack_attributes:
+      - cream cylindrical pack
+      - bright yellow cap
+      - visible front label with Biotic mark and product name
+    source_status: public_product_page
+    evidence_refs: [SRC-HB-PROD-001]
+    valid_time: {observed_at: '2026-09-07', end: unknown}
+    uncertainty: Packaging, variant availability, and formula may change; refresh against an approved current source before production use.

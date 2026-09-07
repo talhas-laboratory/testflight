@@ -4,7 +4,7 @@ container_id: world://workspace/brand/hellobiotic-research/product-library
 parent_workspace_id: world://workspace/brand/hellobiotic-research
 operation: scaffold_and_parent_registration
 status: pass
-population_status: empty_unpopulated
+population_status: candidate_partial
 projection_changed: false
 operator_evaluations:
   - {operator_id: configuration-runtime@1, outcome: pass, detail: isolated child ID, route, and staging dataset declared}
@@ -17,5 +17,6 @@ validation:
   - command: uv run python scripts/validate_concrete_brand_workspace.py --workspace workspaces/brand-hellobiotic-research
     outcome: pass
 limitations:
-  - No product, SKU, asset, source, rights, purpose, pain-point, or end-user records are populated.
+  - One public-product-page record and four public official image references are populated; rights remain unverified.
+  - No approved back, side, isolated open-single, 360-degree, or 3D representation is available.
   - No staging projection has been built or certified.

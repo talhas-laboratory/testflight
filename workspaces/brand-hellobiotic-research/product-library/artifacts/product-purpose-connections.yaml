@@ -1,0 +1,19 @@
+version: 1
+container_id: world://workspace/brand/hellobiotic-research/product-library
+relations:
+  - relation_id: product-relation:biotic:brightening-probiotic-deodorant:v1:offering
+    product_uid: product:biotic:brightening-probiotic-deodorant:v1
+    target_entity_id: ENT-HB-OF-001
+    relation: instantiates_offering
+    source_status: public_product_page
+    evidence_refs: [SRC-HB-PROD-001]
+    valid_time: {observed_at: '2026-09-07', end: unknown}
+    uncertainty: Product-page representation only; not owner-approved internal product strategy.
+  - relation_id: product-relation:biotic:brightening-probiotic-deodorant:v1:odor-concern
+    product_uid: product:biotic:brightening-probiotic-deodorant:v1
+    target_label: odor concern
+    relation: addresses_claimed_concern
+    source_status: public_claim
+    evidence_refs: [SRC-HB-PROD-001]
+    valid_time: {observed_at: '2026-09-07', end: unknown}
+    uncertainty: A public marketing claim, not independently established effectiveness or an end-user outcome.

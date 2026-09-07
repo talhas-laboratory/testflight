@@ -1,0 +1,94 @@
+version: 1
+container_id: world://workspace/brand/hellobiotic-research/product-library
+assets:
+  - product_asset_uid: product-asset:product:biotic:brightening-probiotic-deodorant:v1:pack-front:1c4ef7f5
+    product_uid: product:biotic:brightening-probiotic-deodorant:v1
+    asset_role: packshot
+    view_angle: front_closed
+    visual_coverage: [front, closed_pack, front_label]
+    source_url: https://www.hellobiotic.com/cdn/shop/products/2ozsingleclosed_800x.png?v=1658849884
+    local_cache_uri: file:///Users/talhauddin/Documents/ChatGPT/testflight/.data/biotic-product-library/originals/2oz-closed.png
+    content_hash: 1c4ef7f50bee2e8621e186e728309b22fa57d445fc32e0b594bf3f0fb894cca8
+    media_type: image/png
+    dimensions: {width: 800, height: 608}
+    transparent_background: false
+    derivative_status: source_as_published
+    derivatives:
+      - derivative_uid: product-asset-derivative:product:biotic:brightening-probiotic-deodorant:v1:pack-front:transparent:9505429a
+        local_cache_uri: file:///Users/talhauddin/Documents/ChatGPT/testflight/.data/biotic-product-library/derived/2oz-closed-transparent.png
+        content_hash: 9505429af27b2532b01fcd304191129075a003c78025cd499d0fec8014ebf010
+        transform: deterministic_color_key_eeeeee_tolerance_0.08_blend_0.015
+        transparent_background: true
+        validation: alpha_channel_range_0_to_255
+    rights_record_id: rights:hellobiotic-public-site:unverified
+    generation_allowed: false
+    use_allowed: [analysis_and_reference]
+    recorded_at: '2026-09-07'
+  - product_asset_uid: product-asset:product:biotic:brightening-probiotic-deodorant:v1:mini-front:c6daa4d7
+    product_uid: product:biotic:brightening-probiotic-deodorant:v1
+    asset_role: packshot
+    view_angle: front_closed_mini
+    visual_coverage: [front, closed_pack, front_label, mini_variant]
+    source_url: https://www.hellobiotic.com/cdn/shop/products/minisingleclosed_800x.png?v=1658849884
+    local_cache_uri: file:///Users/talhauddin/Documents/ChatGPT/testflight/.data/biotic-product-library/originals/mini-closed.png
+    content_hash: c6daa4d73ab2264cbc513ca3fee09bb742a37de853bbede8b0498da2bf19a083
+    media_type: image/png
+    dimensions: {width: 800, height: 608}
+    transparent_background: false
+    derivative_status: source_as_published
+    derivatives:
+      - derivative_uid: product-asset-derivative:product:biotic:brightening-probiotic-deodorant:v1:mini-front:transparent:9b9f338e
+        local_cache_uri: file:///Users/talhauddin/Documents/ChatGPT/testflight/.data/biotic-product-library/derived/mini-closed-transparent.png
+        content_hash: 9b9f338e69be53bb4acd5cac69af1a59eec29beb92267b943552409635489c77
+        transform: deterministic_color_key_eeeeee_tolerance_0.08_blend_0.015
+        transparent_background: true
+        validation: alpha_channel_range_0_to_255
+    rights_record_id: rights:hellobiotic-public-site:unverified
+    generation_allowed: false
+    use_allowed: [analysis_and_reference]
+    recorded_at: '2026-09-07'
+  - product_asset_uid: product-asset:product:biotic:brightening-probiotic-deodorant:v1:duo-open:4d92e0f6
+    product_uid: product:biotic:brightening-probiotic-deodorant:v1
+    asset_role: packshot
+    view_angle: front_duo_cap_off
+    visual_coverage: [front, closed_pack, open_pack, cap_off, mini_variant, duo]
+    source_url: https://www.hellobiotic.com/cdn/shop/products/duominiopen_800x.png?v=1657126020
+    local_cache_uri: file:///Users/talhauddin/Documents/ChatGPT/testflight/.data/biotic-product-library/originals/duo-mini-open.png
+    content_hash: 4d92e0f6337bec7b413fabf87f650dc5fcd018a9283b124a1de9e2aece562ba3
+    media_type: image/png
+    dimensions: {width: 800, height: 608}
+    transparent_background: false
+    derivative_status: source_as_published
+    derivatives:
+      - derivative_uid: product-asset-derivative:product:biotic:brightening-probiotic-deodorant:v1:duo-open:transparent:b30e7ffd
+        local_cache_uri: file:///Users/talhauddin/Documents/ChatGPT/testflight/.data/biotic-product-library/derived/duo-mini-open-transparent.png
+        content_hash: b30e7ffd9aebf5252dadb80fc3169112ab49f7ac7f178b95c6833f86017aeb46
+        transform: deterministic_color_key_eeeeee_tolerance_0.08_blend_0.015
+        transparent_background: true
+        validation: alpha_channel_range_0_to_255
+    rights_record_id: rights:hellobiotic-public-site:unverified
+    generation_allowed: false
+    use_allowed: [analysis_and_reference]
+    recorded_at: '2026-09-07'
+  - product_asset_uid: product-asset:product:biotic:brightening-probiotic-deodorant:v1:in-hand-oblique:42dd3e6f
+    product_uid: product:biotic:brightening-probiotic-deodorant:v1
+    asset_role: lifestyle_reference
+    view_angle: in_hand_front_oblique
+    visual_coverage: [front_label, in_hand, oblique]
+    source_url: https://www.hellobiotic.com/cdn/shop/products/p2_800x.png?v=1657126020
+    local_cache_uri: file:///Users/talhauddin/Documents/ChatGPT/testflight/.data/biotic-product-library/originals/product-view-p2.png
+    content_hash: 42dd3e6f86b727019cb1db445a1fd9098249be53670ea27176ada3c447a14130
+    media_type: image/png
+    dimensions: {width: 800, height: 608}
+    transparent_background: false
+    derivative_status: source_as_published
+    rights_record_id: rights:hellobiotic-public-site:unverified
+    generation_allowed: false
+    use_allowed: [analysis_and_reference]
+    recorded_at: '2026-09-07'
+coverage_assessment:
+  product_uid: product:biotic:brightening-probiotic-deodorant:v1
+  observed_angles: [front_closed, front_closed_mini, front_duo_cap_off, in_hand_front_oblique]
+  missing_angles: [back, left_side, right_side, top_closed, bottom, isolated_open_single, 360_or_3d]
+  generation_readiness: hold
+  rationale: Public official images show useful front/open references but do not establish complete geometry or all required pack angles.

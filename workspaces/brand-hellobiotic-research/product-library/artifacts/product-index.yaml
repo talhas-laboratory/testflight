@@ -1,3 +1,18 @@
 version: 1
 container_id: world://workspace/brand/hellobiotic-research/product-library
-products: []
+products:
+  - product_uid: product:biotic:brightening-probiotic-deodorant:v1
+    display_name: Brightening Probiotic Deodorant
+    product_version: v1
+    lifecycle_status: publicly_observed
+    offering_entity_id: ENT-HB-OF-001
+    linked_space_ids:
+      - product-knowledge-space:product:biotic:brightening-probiotic-deodorant:v1
+      - product-image-space:product:biotic:brightening-probiotic-deodorant:v1
+      - product-purpose-space:product:biotic:brightening-probiotic-deodorant:v1
+      - product-end-user-connection-space:product:biotic:brightening-probiotic-deodorant:v1
+    source_status: public_product_page
+    source_refs: [SRC-HB-PROD-001]
+    limitations:
+      - Product identity and visible packaging are public observations, not owner-approved production specifications.
+      - No generation use is authorized from public-site imagery without separate rights confirmation.
