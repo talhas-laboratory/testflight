@@ -5,6 +5,14 @@ definitions:
     version: 1
     path: biotic/social-carousel-create.yaml
     status: candidate
+  - id: workflow://testflight/biotic/social-carousel-revise
+    version: 1
+    path: biotic/social-carousel-revise.yaml
+    status: candidate
+  - id: workflow://testflight/biotic/social-carousel-review-export
+    version: 1
+    path: biotic/social-carousel-review-export.yaml
+    status: candidate
   - id: workflow://testflight/evidence-synthesis
     version: 1
     path: examples/evidence-synthesis.yaml

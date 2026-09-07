@@ -7,7 +7,9 @@ from pathlib import Path
 from mcp import Client
 from testflight_adapter_langgraph import LangGraphWorkflowEngine
 from testflight_adapter_mcp_workflows import create_mcp_server
+from testflight_adapter_sqlite_semantic import CreativeRepository
 from testflight_adapter_sqlite_workflow_runtime import SqliteWorkflowRuntimeStore
+from testflight_creative_field import ArtifactBundle
 from testflight_workflow_runtime.config import load_catalog, load_handlers
 from testflight_workflow_runtime.service import WorkflowRuntimeService
 from testflight_workflows import ResultStatus, WorkflowPrincipal
@@ -218,3 +220,80 @@ def test_biotic_carousel_workflow_creates_a_local_review_bundle(tmp_path, monkey
     assert replay.result is not None
     receipt = {item.step_id: item for item in replay.result.receipts}["persist_artifact"]
     assert receipt.idempotent_replay is True
+
+
+def test_biotic_revision_preserves_unchanged_cards_and_exports_only_after_acceptance(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setenv("TESTFLIGHT_PROJECT_ROOT", str(ROOT))
+    artifact_root = tmp_path / "biotic-artifacts"
+    monkeypatch.setenv("TESTFLIGHT_BIOTIC_ARTIFACT_ROOT", str(artifact_root))
+    catalog = load_catalog(ROOT / "workflows/registry.yaml")
+    handlers = load_handlers(("testflight_workflow_runtime.biotic_artifact_handlers",))
+    store = SqliteWorkflowRuntimeStore(tmp_path / "runtime.sqlite3")
+    engine = LangGraphWorkflowEngine(catalog=catalog, handlers=handlers, idempotency=store)
+    service = WorkflowRuntimeService(catalog=catalog, engine=engine, run_store=store)
+    principal = WorkflowPrincipal(id="agent:testflight-biotic")
+
+    async def exercise():
+        created = await service.run_and_wait(
+            principal=principal,
+            workflow_id="workflow://testflight/biotic/social-carousel-create",
+            workflow_version=1,
+            run_id="run:biotic-source",
+            inputs={
+                "request_id": "request:biotic-source",
+                "objective": "Create an educational daily-routine carousel concept.",
+                "audience": "People curious about an underarm-care ritual.",
+                "channel": "instagram",
+            },
+        )
+        revised = await service.run_and_wait(
+            principal=principal,
+            workflow_id="workflow://testflight/biotic/social-carousel-revise",
+            workflow_version=1,
+            run_id="run:biotic-revision",
+            inputs={
+                "request_id": "request:biotic-revision",
+                "bundle_id": "bundle:run:biotic-source",
+                "card_positions": [2],
+                "revision_instruction": "Make the wording more direct and warm.",
+            },
+        )
+        exported = await service.run_and_wait(
+            principal=principal,
+            workflow_id="workflow://testflight/biotic/social-carousel-review-export",
+            workflow_version=1,
+            run_id="run:biotic-export",
+            inputs={
+                "request_id": "request:biotic-export",
+                "bundle_id": "bundle:run:biotic-revision",
+                "action": "accept",
+                "actor_id": "user:biotic-owner",
+                "rationale": "Approved for local handoff.",
+            },
+        )
+        return created, revised, exported
+
+    created, revised, exported = asyncio.run(exercise())
+    assert created.result is not None and revised.result is not None and exported.result is not None
+    source_bundle = created.result.outputs["review_bundle"]
+    successor = revised.result.outputs["review_bundle"]
+    assert successor["bundle_id"] == "bundle:run:biotic-revision"
+    assert successor["status"] == "review_needed"
+    source_ids = [item["output_id"] for item in source_bundle["outputs"]]
+    successor_ids = [item["output_id"] for item in successor["outputs"]]
+    assert successor_ids[1] == source_ids[1]
+    assert successor_ids[2] != source_ids[2]
+    assert successor_ids[3:] == source_ids[3:]
+    assert successor_ids[0] != source_ids[0]
+
+    assert exported.result.outputs["review_result"]["exported"] is True
+    destination = artifact_root / "exports" / "bundle-run-biotic-revision"
+    assert (destination / "copy.json").exists()
+    assert (destination / "card-1.svg").exists()
+    assert (destination / "card-5.svg").exists()
+    with CreativeRepository(artifact_root / "creative.sqlite3") as repository:
+        persisted = repository.get(ArtifactBundle, "bundle:run:biotic-revision")
+    assert persisted is not None
+    assert persisted.parent_bundle_id == "bundle:run:biotic-source"

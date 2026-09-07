@@ -1,0 +1,78 @@
+schema_version: 1
+id: workflow://testflight/biotic/social-carousel-review-export
+version: 1
+lifecycle: candidate
+name: Biotic social carousel review and local export
+description: Record a human review decision and export only an accepted local artifact bundle.
+tags: [biotic, public-research, social, creative, review, export]
+access: {public: false, agent_ids: [agent:testflight-biotic]}
+knowledge:
+  workspace_ids: [world://workspace/brand/hellobiotic-research]
+  container_ids: [world://workspace/brand/hellobiotic-research]
+  entity_ids: [ENT-HB-ID-001, ENT-HB-OF-001, CTX-HELLOBIOTIC-DEODORANT-CURRENT]
+  entity_types: [brand, offering, context, claim, visual_observation]
+  branch_ids: [research-main]
+  data_classifications: [public]
+  max_results: 20
+  max_graph_hops: 2
+authority:
+  capabilities: [artifact.retrieve, artifact.review, artifact.export]
+  action_ids: [action://testflight/creative/local-artifact-export]
+  credential_refs: [credential://testflight/workflow-runtime]
+  proposal_write: true
+  canonical_write: false
+  external_action: true
+inputs_schema:
+  type: object
+  additionalProperties: false
+  required: [request_id, bundle_id, action, actor_id, rationale]
+  properties:
+    request_id: {type: string}
+    bundle_id: {type: string}
+    action: {type: string}
+    actor_id: {type: string}
+    rationale: {type: string}
+outputs_schema:
+  type: object
+  additionalProperties: false
+  required: [review_result]
+  properties: {review_result: {type: object}}
+steps:
+  - id: load_bundle
+    kind: retrieve
+    handler: biotic.load_artifact_bundle
+    description: Load a local Biotic artifact bundle for review.
+    instruction:
+      id: instruction://testflight/biotic/load-review-bundle
+      version: 1
+      objective: Load a project-scoped bundle or hold.
+      rules: [Do not retrieve outside the declared local project.]
+    arguments: {bundle_id: $inputs.bundle_id}
+    access:
+      workspace_ids: [world://workspace/brand/hellobiotic-research]
+      container_ids: [world://workspace/brand/hellobiotic-research]
+    capabilities: [artifact.retrieve]
+  - id: record_and_export
+    kind: action
+    handler: biotic.review_and_export_artifact_bundle
+    description: Record the supplied review decision and export only on accept.
+    instruction:
+      id: instruction://testflight/biotic/review-and-export-artifact-bundle
+      version: 1
+      objective: Require an explicit human decision before any local export.
+      rules:
+        - Only accept, modify, reject, or defer are valid decisions.
+        - Export only when the action is accept.
+        - Never publish or modify canonical brand knowledge.
+    needs: [load_bundle]
+    arguments:
+      request_id: $inputs.request_id
+      bundle: $steps.load_bundle.output
+      action: $inputs.action
+      actor_id: $inputs.actor_id
+      rationale: $inputs.rationale
+    capabilities: [artifact.review, artifact.export]
+    action_ids: [action://testflight/creative/local-artifact-export]
+    idempotency_key: $inputs.request_id
+    on_error: hold
+outputs: {review_result: $steps.record_and_export.output}
