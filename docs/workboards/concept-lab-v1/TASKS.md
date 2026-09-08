@@ -8,9 +8,9 @@
 | `TASK-004-add-the-controlled-testflight-product-bridge` | done | codex | Add the controlled Testflight Product bridge | done |
 | `TASK-005-add-concept-lab-transformation-operators` | done | codex | Add Concept Lab transformation operators | done |
 | `TASK-006-create-the-concept-lab-codex-skill` | done | codex | Create the concept-lab Codex skill | done |
-| `TASK-007-add-validation-and-semantic-continuity-fixtures` | in-progress | codex | Add validation and semantic continuity fixtures | implementation |
-| `TASK-008-rehearse-biotic-concept-to-agent-formation` | backlog | unassigned | Rehearse Biotic concept-to-agent formation | intake |
-| `TASK-009-close-documentation-and-certification-gates` | backlog | unassigned | Close documentation and certification gates | intake |
+| `TASK-007-add-validation-and-semantic-continuity-fixtures` | done | codex | Add validation and semantic continuity fixtures | done |
+| `TASK-008-rehearse-biotic-concept-to-agent-formation` | done | codex | Rehearse Biotic concept-to-agent formation | done |
+| `TASK-009-close-documentation-and-certification-gates` | ready | unassigned | Close documentation and certification gates | implementation |
 
 Status values: `backlog`, `ready`, `in-progress`, `review`, `blocked`, `done`.
 A task may enter `done` only when every required gate in `GATES.md` has evidence.

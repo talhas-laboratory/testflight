@@ -1,6 +1,6 @@
 version: 1
 container_id: "world://workspace/concept-lab/relational-content"
-status: draft_unpopulated
+status: candidate_proof_case_uncertified
 required_classes:
   - exact_artifact
   - intent_route
@@ -10,8 +10,8 @@ probes:
   - id: exact-relational-content-unpopulated
     class: exact_artifact
     query: world://workspace/concept-lab/relational-content
-    expected_status: no_hit
-    rationale: No domain source artifact is populated in this task.
+    expected_status: hit
+    rationale: The bounded Biotic proof artifact is now registered.
   - id: intent-relational-content-unpopulated
     class: intent_route
     query: Map the relation between product use and self image.

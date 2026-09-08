@@ -1,0 +1,32 @@
+version: 1
+status: proposal_only
+source_boundary:
+  source_workspace_id: world://workspace/brand/hellobiotic-research/content-strategy
+  permitted_source_refs:
+    - repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/founder-brief-2026-09-08.md
+    - repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/relational-content-model.yaml
+  authority: founder_directed_strategy_not_customer_or_scientific_evidence
+concept_fragments:
+  - {id: fragment:field-first, text: Product use may be one expression of a broader field of engagement., source_refs: [repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/founder-brief-2026-09-08.md]}
+  - {id: fragment:reader-independence, text: Content should be worthwhile without product mention., source_refs: [repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/relational-content-model.yaml]}
+branches:
+  - {id: theory:field-first, thesis: Reader stake and field precede optional brand or product relation., status: selected, fragment_refs: [fragment:field-first, fragment:reader-independence]}
+  - {id: theory:self-practice, thesis: Self-concept and practice may shape engagement but require explicit evidence before personalization., status: alternative, fragment_refs: [fragment:field-first]}
+formation_packet:
+  id: packet:biotic-newsletter-agent-formation
+  target_workspace_id: world://workspace/testflight-product
+  target_module_id: product-definition
+  theory_branch_ref: theory:field-first
+  canonical_write: false
+  ontology_proposal: person_context_field_tension_then_optional_brand_product
+  traversal_policy: child_first; person/context/field/tension before brand/product; no parent fallback
+  agent_composition: [resolve_composition, frame_question, establish_legitimacy, research, design_contribution, draft, evaluate, propose]
+  alternatives: [theory:self-practice]
+  evaluations: {schema: pass, invariants: pass, semantic: founder_hypothesis_only, usefulness: review_required}
+  limitations: [no_subscriber_evidence, no_live_retrieval, no_biological_inference_from_vegan, no_publication]
+reverse_trace:
+  technical_rules: [ontology_proposal, traversal_policy, agent_composition]
+  theory_refs: [theory:field-first]
+  fragment_refs: [fragment:field-first, fragment:reader-independence]
+  source_refs: [repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/founder-brief-2026-09-08.md, repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/relational-content-model.yaml]
+  missing_links: []

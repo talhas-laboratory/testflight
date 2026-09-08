@@ -1,3 +1,7 @@
 version: 1
 container_id: "world://workspace/concept-lab/relational-content"
-sources: []
+sources:
+  - repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/founder-brief-2026-09-08.md
+  - repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/relational-content-model.yaml
+  - repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/newsletter-agent-charter.yaml
+  - repo://workspaces/concept-lab/relational-content/artifacts/biotic-rehearsal.yaml

@@ -1,5 +1,8 @@
 {
   "version": 1,
   "containerId": "world://workspace/concept-lab/relational-content",
-  "resources": []
+  "resources": [
+    {"module":"relational-content","unit":"biotic-founder-brief","task_view":"source-capture","tool":"concept-lab","doc_type":"founder_strategy","evidence_tier":"T1","experience_type":"founder_direction","difficulty":"advanced","canonical":false,"last_verified_at":"2026-09-08","source_url":"repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/founder-brief-2026-09-08.md"},
+    {"module":"relational-content","unit":"biotic-rehearsal","task_view":"formation-and-trace","tool":"concept-lab","doc_type":"proof_case","evidence_tier":"T1","experience_type":"proposal_only","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-08","source_url":"repo://workspaces/concept-lab/relational-content/artifacts/biotic-rehearsal.yaml"}
+  ]
 }

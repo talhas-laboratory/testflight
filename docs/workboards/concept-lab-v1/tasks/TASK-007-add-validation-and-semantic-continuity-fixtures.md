@@ -1,6 +1,6 @@
 # TASK-007-add-validation-and-semantic-continuity-fixtures: Add validation and semantic continuity fixtures
 
-Status: in-progress
+Status: done
 Owner: codex
 Current gate: implementation
 
@@ -68,12 +68,14 @@ Verification commands:
 
 ## Verification Evidence
 
-- Not run yet.
+- `uv run python scripts/validate_concept_lab.py` passed: five continuity cases.
+- `uv run pytest tests/test_concept_lab.py -q` passed.
 
 ## Updates
 
 - Created: `2026-09-08T09:53:07.959342+00:00`
 - Claimed: `2026-09-08T11:22:00Z` by codex.
+- Completed: `2026-09-08T11:28:00Z` by codex.
 
 ## Handoff Notes
 

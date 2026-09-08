@@ -1,8 +1,8 @@
 # TASK-008-rehearse-biotic-concept-to-agent-formation: Rehearse Biotic concept-to-agent formation
 
-Status: backlog
-Owner: unassigned
-Current gate: intake
+Status: done
+Owner: codex
+Current gate: implementation
 
 ## Problem
 
@@ -71,12 +71,16 @@ Verification commands:
 
 ## Verification Evidence
 
-- Not run yet.
+- Child structural validation passed with two source-bearing resources and four probes; certification remains unrun.
+- Concept Lab validator and targeted test passed.
+- `git diff --check` passed.
 
 ## Updates
 
 - Created: `2026-09-08T09:53:07.959504+00:00`
+- Claimed: `2026-09-08T11:30:00Z` by codex.
+- Completed: `2026-09-08T11:36:00Z` by codex.
 
 ## Handoff Notes
 
-- On completion, make TASK-009 ready. State explicitly that live retrieval is uncertified.
+- TASK-009 is ready. Live retrieval remains uncertified.
