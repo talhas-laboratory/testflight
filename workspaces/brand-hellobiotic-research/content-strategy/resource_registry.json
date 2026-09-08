@@ -92,6 +92,19 @@
       "canonical": false,
       "last_verified_at": "2026-09-08",
       "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/relational-content-research-digest-2026-09-08.md"
+    },
+    {
+      "module": "content-strategy",
+      "unit": "newsletter-issue-clean-not-stripped-2026-09-08",
+      "task_view": "newsletter-proposal",
+      "tool": "testflight-workflows",
+      "doc_type": "review_only_newsletter_issue",
+      "evidence_tier": "T2",
+      "experience_type": "human_authored_proposal_pending_review",
+      "difficulty": "advanced",
+      "canonical": false,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/proposals/issue-clean-not-stripped-2026-09-08.md"
     }
   ]
 }

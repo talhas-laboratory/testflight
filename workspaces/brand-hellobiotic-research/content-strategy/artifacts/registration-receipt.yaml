@@ -15,7 +15,7 @@ parent_files_updated:
   - workspaces/brand-hellobiotic-research/WORKSPACE.yaml
   - workspaces/brand-hellobiotic-research/resource_registry.json
 source_registry_hashes:
-  resource_registry_sha256: f4cfab6d889ef387d3d0b355463e3d5e363af6ac66f098d5cf797e065c731741
+  resource_registry_sha256: 55e1ea7003f35b23bb2a584505ea3c0da59c3efe3eecced0b5bda2e6fb792874
   source_manifest_sha256: e1dca6f786bebbcf3cc2b8254c101b6ee58ca99a56baffb2e8062ae8b94b8da3
 operator_evaluations:
   - operator_id: configuration-runtime@1
@@ -64,3 +64,5 @@ limitations:
   - A candidate proposal-only newsletter workflow is registered. It has no subscriber-data bridge,
     publishing connector, send action, canonical-write authority, or persistent approval interrupt.
   - Content fields and reader relations remain founder hypotheses until supported by scoped evidence or explicit preferences.
+  - The first issue proposal was composed directly because the local model-operator endpoint was unavailable;
+    it is source-traced but is not a workflow execution receipt or a live-model evaluation.
