@@ -1,0 +1,23 @@
+version: 1
+id: "world://workspace/concept-lab/relational-content"
+parent: "world://workspace/concept-lab"
+type: child-knowledge-container
+label: "Relational content"
+mission: "Develop bounded theories of how people, self, brand, product, and shared fields of engagement relate, without asserting customer facts or publishing content"
+dataset_name: "testflight_concept_lab_relational_content_staging"
+route: "relational-content"
+status: draft_unpopulated
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+scope:
+  includes:
+    - bounded relational-content theories, formation proposals, and reverse traces
+  excludes:
+    - imported Biotic founder strategy before an explicit bridge packet
+    - customer facts, scientific claims, individual profiles, publication, and runtime execution
+source_authority:
+  current: no_imported_domain_sources
+  future_biotic_proof_case: explicit_scoped_bridge_required
+lifecycle:
+  population: not_started
+  certification: not_run_unpopulated

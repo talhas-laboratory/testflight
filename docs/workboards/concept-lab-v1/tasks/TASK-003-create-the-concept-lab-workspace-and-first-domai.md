@@ -1,8 +1,8 @@
 # TASK-003-create-the-concept-lab-workspace-and-first-domai: Create the Concept Lab workspace and first domain child
 
-Status: backlog
-Owner: unassigned
-Current gate: intake
+Status: done
+Owner: codex
+Current gate: implementation
 
 ## Problem
 
@@ -69,12 +69,18 @@ Verification commands:
 
 ## Verification Evidence
 
-- Not run yet.
+- The child-container scaffold helper dry run and apply both reported only the expected six
+  canonical child files, the isolated `testflight_concept_lab_relational_content_staging` dataset,
+  and no live projection change.
+- `python3 .agents/skills/child-container-creator/scripts/validate_child_container.py workspaces/concept-lab/relational-content` passed in structural mode: zero resources, four planned probes, and no errors.
+- Targeted YAML/JSON parsing and `git diff --check` passed.
 
 ## Updates
 
 - Created: `2026-09-08T09:53:07.958541+00:00`
+- Claimed: `2026-09-08T10:33:00Z` by codex.
+- Completed: `2026-09-08T10:39:00Z` by codex.
 
 ## Handoff Notes
 
-- On completion, make TASK-004 ready if TASK-002 is done. TASK-006 still waits for TASK-005.
+- TASK-004 is ready because TASK-002 and TASK-003 are done. TASK-006 still waits for TASK-005.

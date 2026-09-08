@@ -1,0 +1,31 @@
+version: 1
+container_id: world://workspace/concept-lab
+dataset_name: testflight_concept_lab_staging
+status: candidate
+classification: internal_theory_formation
+authority:
+  theory_records: proposal_only
+  product_promotion: explicit_human_authorization_required
+  cross_workspace_traversal: deny_unless_explicitly_granted
+  external_action: deny_unless_authorized
+retrieval:
+  routing: child_first
+  primary: exact_or_bm25
+  fallback: bounded_same_child_hybrid
+  child_no_hit: NO_HITS
+  graph_max_hops: 2
+  reject_navigation_as_answer: true
+metadata_contract:
+  required: [module, unit, task_view, tool, doc_type, evidence_tier, experience_type, difficulty, canonical, last_verified_at, source_url]
+quality_gates:
+  top_1_precision_min: 0.90
+  routing_error_max: 0.03
+  query_failure_max: 0.005
+  no_hit_correctness: 1.0
+  structural_validation_required: true
+  certification_requires_source_bearing_records: true
+operators:
+  - configuration-runtime@1
+  - workspace-isolation@1
+  - retrieval-reasoning-conflation@1
+  - evaluation-schema@1

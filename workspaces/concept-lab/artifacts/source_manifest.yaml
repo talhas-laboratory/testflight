@@ -1,0 +1,7 @@
+version: 1
+container_id: world://workspace/concept-lab
+sources:
+  - repo://domains/concept-lab/manifest.yaml
+  - repo://domains/concept-lab/vocabulary.yaml
+  - repo://domains/concept-lab/contracts.yaml
+  - repo://workspaces/concept-lab/relational-content/WORKSPACE.yaml

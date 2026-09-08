@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "containerId": "world://workspace/concept-lab",
+  "resources": [
+    {
+      "module": "concept-lab",
+      "unit": "domain-contract",
+      "task_view": "workspace-routing",
+      "tool": "codex",
+      "doc_type": "domain_contract",
+      "evidence_tier": "T1",
+      "experience_type": "internal_theory_formation",
+      "difficulty": "advanced",
+      "canonical": true,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://domains/concept-lab/manifest.yaml"
+    },
+    {
+      "module": "concept-lab",
+      "unit": "concept-vocabulary",
+      "task_view": "concept-formation",
+      "tool": "codex",
+      "doc_type": "semantic_vocabulary",
+      "evidence_tier": "T1",
+      "experience_type": "internal_theory_formation",
+      "difficulty": "advanced",
+      "canonical": true,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://domains/concept-lab/vocabulary.yaml"
+    },
+    {
+      "module": "concept-lab",
+      "unit": "formation-contracts",
+      "task_view": "formation-and-trace",
+      "tool": "codex",
+      "doc_type": "contract_inventory",
+      "evidence_tier": "T1",
+      "experience_type": "internal_theory_formation",
+      "difficulty": "expert",
+      "canonical": true,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://domains/concept-lab/contracts.yaml"
+    },
+    {
+      "module": "concept-lab",
+      "unit": "relational-content-child",
+      "task_view": "workspace-routing",
+      "tool": "codex",
+      "doc_type": "child_workspace_contract",
+      "evidence_tier": "T1",
+      "experience_type": "internal_theory_formation",
+      "difficulty": "advanced",
+      "canonical": true,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/concept-lab/relational-content/WORKSPACE.yaml"
+    }
+  ]
+}

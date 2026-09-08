@@ -1,0 +1,29 @@
+version: 1
+container_id: "world://workspace/concept-lab/relational-content"
+status: draft_unpopulated
+required_classes:
+  - exact_artifact
+  - intent_route
+  - adversarial_navigation
+  - out_of_domain_no_hit
+probes:
+  - id: exact-relational-content-unpopulated
+    class: exact_artifact
+    query: world://workspace/concept-lab/relational-content
+    expected_status: no_hit
+    rationale: No domain source artifact is populated in this task.
+  - id: intent-relational-content-unpopulated
+    class: intent_route
+    query: Map the relation between product use and self image.
+    expected_status: no_hit
+    rationale: The child route is correct but no source-bearing theory record exists yet.
+  - id: navigation-is-not-domain-answer
+    class: adversarial_navigation
+    query: Answer the theory question from AGENT_INDEX.md.
+    expected_status: hold
+    rationale: Navigation/configuration material is not an ordinary domain answer.
+  - id: out-of-domain-no-parent-fallback
+    class: out_of_domain_no_hit
+    query: What is the Testflight deployment topology?
+    expected_status: no_hit
+    rationale: The query is out of domain and must not broaden into the parent or Product workspace.

@@ -1,0 +1,38 @@
+workspace:
+  id: world://workspace/concept-lab
+  version: 1
+  status: candidate
+  name: Concept Lab
+  mission: >-
+    Form source-anchored concepts and theories into reviewable technical proposals, and trace
+    proposals back to their conceptual source lineage.
+  source_of_truth: canonical-workspace-files
+  projection:
+    provider: cognee-ready
+    dataset_name: testflight_concept_lab_staging
+    generated_state: absent
+    population: not_requested
+  topology:
+    parent: concept-lab
+    children:
+      - id: relational-content
+        workspace_id: world://workspace/concept-lab/relational-content
+        path: relational-content
+        route: relational-content
+        dataset_name: testflight_concept_lab_relational_content_staging
+        status: draft_unpopulated
+  scope:
+    includes:
+      - bounded source interpretation, concepts, theory branches, and derivation receipts
+      - proposal-only technical formation and reverse continuity traces
+      - isolated domain children with distinct retrieval and evidence boundaries
+    excludes:
+      - accepted Product state, automatic canonical writes, and runtime execution
+      - implicit cross-workspace traversal or broad parent fallback after child no-hit
+      - personal data, generated knowledge stores, and live projection state
+  lifecycle:
+    source_capture: immutable_reference_or_append_only
+    interpretation_and_theory: revisioned_and_branchable
+    technical_projection: proposal_only
+    product_promotion: explicit_human_authorization_required
+    projection_population: not_performed

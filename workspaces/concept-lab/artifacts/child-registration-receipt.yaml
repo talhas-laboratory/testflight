@@ -1,0 +1,20 @@
+version: 1
+receipt_id: concept-lab-relational-content-scaffold-v1
+parent_workspace_id: world://workspace/concept-lab
+child_workspace_id: world://workspace/concept-lab/relational-content
+child_path: workspaces/concept-lab/relational-content
+route: relational-content
+staging_dataset: testflight_concept_lab_relational_content_staging
+parent_files_updated: [AGENT_INDEX.md, AGENT_CONFIG.yaml, WORKSPACE.yaml, artifacts/source_manifest.yaml, resource_registry.json]
+source_registry_hashes:
+  parent: 9fc31b73f799a54bc343477e38413036d822b657567f35f05c1c5bd8eef5a01b
+  child: 78c083954ef9f0f6f9aae03d13b61b9f5c02a91d74c6bd558d4779f284bdcb5b
+validation:
+  structural: pass
+  certification: not_run_unpopulated
+live_population:
+  requested: false
+  performed: false
+notes:
+  - The child is created without Biotic imports or Product bridge records.
+  - Parent registration is not cross-workspace traversal permission.
