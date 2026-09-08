@@ -146,6 +146,19 @@
       "source_url": "repo://workspaces/testflight-product/artifacts/retrieval-lexicon.yaml"
     },
     {
+      "module": "architecture",
+      "unit": "concept-lab-bridge",
+      "task_view": "bootstrap",
+      "tool": "testflight",
+      "doc_type": "bridge_contract",
+      "evidence_tier": "T1",
+      "experience_type": "planned",
+      "difficulty": "expert",
+      "canonical": false,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/concept-lab/artifacts/testflight-product-bridge.yaml"
+    },
+    {
       "module": "product-decisions",
       "unit": "adr-0007-concept-lab",
       "task_view": "none",

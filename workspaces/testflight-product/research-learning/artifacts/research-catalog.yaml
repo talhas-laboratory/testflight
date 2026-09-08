@@ -2,6 +2,12 @@ version: 1
 workspace_id: world://workspace/testflight-product/research-learning
 status: active
 research_programs:
+  - id: research:concept-lab-formation-quality
+    question: Can source-anchored theory formation produce useful technical proposals without promoting speculative theory into Product truth?
+    source_url: repo://workspaces/concept-lab/artifacts/testflight-product-bridge.yaml
+    method: deterministic_contract_and_fixture_evaluation
+    status: planned
+    limitations: [no_live_retrieval, no_product_promotion, no_user_study]
   - id: research:commercial-viability
     question: Will brands pay for Testflight, for what workflow, and at what price?
     source_url: repo://deliverables/testflight-commercial-viability-deep-research.md
@@ -48,4 +54,3 @@ proposed_experiments:
     measures: [token_adoption, accessibility_findings, task_success, cross_surface_comprehension]
 observed_outcomes: []
 learning_updates: []
-

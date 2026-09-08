@@ -1,8 +1,8 @@
 # TASK-004-add-the-controlled-testflight-product-bridge: Add the controlled Testflight Product bridge
 
-Status: backlog
-Owner: unassigned
-Current gate: intake
+Status: done
+Owner: codex
+Current gate: implementation
 
 ## Problem
 
@@ -82,11 +82,16 @@ Verification commands:
 
 ## Verification Evidence
 
-- Not run yet.
+- Federation registry validates with `testflight_semantic.FederationRegistry`; both bridge records set `allow_traversal: false`.
+- Product workspace validation passed with no live projection change.
+- Product route audit passed: 10/10 checks, zero routing errors.
+- `git diff --check` passed.
 
 ## Updates
 
 - Created: `2026-09-08T09:53:07.958821+00:00`
+- Claimed: `2026-09-08T11:00:00Z` by codex.
+- Completed: `2026-09-08T11:08:00Z` by codex.
 
 ## Handoff Notes
 

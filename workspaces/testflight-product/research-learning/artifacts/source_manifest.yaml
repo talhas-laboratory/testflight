@@ -5,4 +5,4 @@ sources:
   - repo://workspaces/testflight-product/research-learning/artifacts/research-catalog.yaml
   - repo://deliverables/testflight-commercial-viability-deep-research.md
   - repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md
-
+  - repo://workspaces/concept-lab/artifacts/testflight-product-bridge.yaml

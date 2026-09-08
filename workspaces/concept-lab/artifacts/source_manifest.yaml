@@ -5,3 +5,5 @@ sources:
   - repo://domains/concept-lab/vocabulary.yaml
   - repo://domains/concept-lab/contracts.yaml
   - repo://workspaces/concept-lab/relational-content/WORKSPACE.yaml
+  - repo://workspaces/concept-lab/artifacts/federation-registry.yaml
+  - repo://workspaces/concept-lab/artifacts/testflight-product-bridge.yaml

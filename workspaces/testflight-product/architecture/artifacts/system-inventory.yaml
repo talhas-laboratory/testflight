@@ -31,6 +31,7 @@ upstreams:
   - {id: upstream:langgraph, release: 1.2.11, runtime: python, integration: package, registry_ref: repo://upstreams/registry.yaml}
   - {id: upstream:model-context-protocol-python-sdk, release: 2.1.1, runtime: python, integration: package, registry_ref: repo://upstreams/registry.yaml}
 runtime_boundaries:
+  - {id: component:concept-lab-bridge, path: workspaces/concept-lab/artifacts/testflight-product-bridge.yaml, lifecycle: planned_packet_exchange, write_authority: human_promotion_only, traversal: false}
   - {id: runtime:operator-http, visibility: private_local, endpoint_default: "127.0.0.1:8781", canonical: false, owner: package:testflight-operator-runtime}
   - {id: runtime:workflow-api, visibility: authenticated_local, endpoint_default: "127.0.0.1:8782", canonical: false, owner: app:workflow-runtime}
   - {id: runtime:sqlite-canonical, visibility: local_workspace_scoped, canonical: true_for_accepted_records, owner: adapter:sqlite-semantic}

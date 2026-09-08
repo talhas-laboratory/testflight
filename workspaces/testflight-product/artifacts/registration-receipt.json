@@ -25,16 +25,16 @@
     "workspaces/testflight-product/architecture/resource_registry.json"
   ],
   "source_registry_sha256": {
-    "parent": "ed9d5845dca35217e898c3eda6ca4b3cf6ee37d10bf632a225ae64364a153af0",
-    "product-definition": "f7b371ee4856ee1e3dfd42778bf0baa8c01d6c256bf0bb83ec9a8798de26e2e2",
+    "parent": "ad6d70ce26546732ec71eba8af080246da7993b45fc8b77cfd07da619cfb24f3",
+    "product-definition": "d11e477e858024b1a790f44a7bcbda83c92b9e9ed34f99944973f4684bae654a",
     "product-decisions": "32f52fece45e855b917bb2aebea9ad8d672e062b65ffa243a21ca358b8d5807c",
     "experience-design": "09c353037dca48b324bfb367171f00fcb6b3b2e47594d340b5f6ee6ee674a825",
-    "architecture": "1d6b23ecf15802d5de770ad964dd4f8bd85ce187ad9dc449d86d4c76130d3679",
+    "architecture": "3a4d83ea0dc1abd705578e62011a6a937d45ce082d5324bea85ca43329536adc",
     "customers-market": "b53439bd5711014159e68a241a65b92f9e412b0cbba66acf63767b651ae6d2f7",
     "marketing-growth": "d29f3b4ca87caa8abcfc0bc2540f923db2e918fc4672099ef31d2af56407451f",
     "finance-commercial": "fa47c9d067f59db28ca4d9c09678b71141404ce134b611071bfcc631af2749c3",
     "operations-governance": "ab5641cf8bddfc0480eb667264b76dbf12a71dfa0bc1c34f8825e4a1465fa3d9",
-    "research-learning": "840efa69517b08e318d18911c2508fdb0cd01e235448cf35e9f9729703d271bf"
+    "research-learning": "ce4b13a6311214db50e3d6b5897de01a4070cdba37dd66725e9f9cd1e1e8a51d"
   },
   "operator_evaluations": [
     {

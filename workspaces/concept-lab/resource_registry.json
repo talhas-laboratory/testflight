@@ -53,6 +53,8 @@
       "canonical": true,
       "last_verified_at": "2026-09-08",
       "source_url": "repo://workspaces/concept-lab/relational-content/WORKSPACE.yaml"
-    }
+    },
+    {"module":"concept-lab","unit":"federation-registry","task_view":"workspace-routing","tool":"codex","doc_type":"federation_registry","evidence_tier":"T1","experience_type":"planned","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-08","source_url":"repo://workspaces/concept-lab/artifacts/federation-registry.yaml"},
+    {"module":"concept-lab","unit":"testflight-product-bridge","task_view":"formation-and-trace","tool":"codex","doc_type":"bridge_contract","evidence_tier":"T1","experience_type":"planned","difficulty":"expert","canonical":true,"last_verified_at":"2026-09-08","source_url":"repo://workspaces/concept-lab/artifacts/testflight-product-bridge.yaml"}
   ]
 }

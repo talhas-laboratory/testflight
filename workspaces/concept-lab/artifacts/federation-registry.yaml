@@ -1,0 +1,23 @@
+containers:
+  - {workspace_id: world://workspace/concept-lab, route: concept-lab, dataset_name: testflight_concept_lab_staging, status: draft}
+  - {workspace_id: world://workspace/concept-lab/relational-content, route: relational-content, dataset_name: testflight_concept_lab_relational_content_staging, parent_workspace_id: world://workspace/concept-lab, status: draft}
+  - {workspace_id: world://workspace/testflight-product, route: testflight-product, dataset_name: testflight_product, status: active}
+bridges:
+  - bridge_id: bridge:testflight-product-inquiry-to-concept-lab
+    source_workspace_id: world://workspace/testflight-product
+    target_workspace_id: world://workspace/concept-lab
+    subject_id: packet:inquiry
+    predicate_id: world://ontology/federation/proposes_inquiry_to
+    object_id: capability:concept-lab
+    context_id: world://context/concept-lab-product-bridge
+    evidence_refs: [repo://docs/decisions/0007-concept-lab-formation-workspace.md]
+    allow_traversal: false
+  - bridge_id: bridge:concept-lab-formation-to-testflight-product
+    source_workspace_id: world://workspace/concept-lab
+    target_workspace_id: world://workspace/testflight-product
+    subject_id: packet:formation
+    predicate_id: world://ontology/federation/proposes_formation_to
+    object_id: capability:concept-lab
+    context_id: world://context/concept-lab-product-bridge
+    evidence_refs: [repo://docs/decisions/0007-concept-lab-formation-workspace.md]
+    allow_traversal: false

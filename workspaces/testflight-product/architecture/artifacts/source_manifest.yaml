@@ -8,3 +8,4 @@ sources:
   - repo://README.md
   - repo://upstreams/registry.yaml
   - repo://infra/compose.yaml
+  - repo://workspaces/concept-lab/artifacts/testflight-product-bridge.yaml

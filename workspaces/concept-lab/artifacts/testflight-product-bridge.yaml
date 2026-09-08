@@ -1,0 +1,22 @@
+version: 1
+bridge_id: bridge:concept-lab-testflight-product-v1
+status: planned_packet_exchange
+authority: explicit_human_promotion_required
+inquiry_packet:
+  direction: testflight-product_to_concept-lab
+  required: [id, source_workspace_id, source_module_id, question, product_locus, constraints, allowed_source_refs, requested_abstraction, authority_status, context_refs]
+  imported_context: explicit_allowed_source_refs_only
+formation_packet:
+  direction: concept-lab_to_testflight-product
+  required: [id, target_workspace_id, target_module_id, theory_branch_ref, proposed_change, technical_projection, source_refs, derivation_refs, alternatives, evaluator_results, authority_status, canonical_write]
+  canonical_write: false
+target_routes:
+  capability_outcome_roadmap: product-definition
+  system_package_interface_runtime: architecture
+  question_hypothesis_experiment_evaluation: research-learning
+  accept_reject_hold_supersede: product-decisions
+rules:
+  traversal: false
+  automatic_product_mutation: false
+  human_promotion: required
+  customer_or_brand_fact_import: separately_authorized_provenance_bearing_bridge_required
