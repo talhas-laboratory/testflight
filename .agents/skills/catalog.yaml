@@ -1,6 +1,15 @@
 version: 1
 root: .agents/skills
 skills:
+  - id: concept-lab
+    path: concept-lab
+    category: reasoning
+    status: candidate
+    owner: testflight
+    summary: Translate scoped sources into theory branches and proposal-only technical formations.
+    triggers: ["$concept-lab", "enter the Concept Lab", concept formation, reverse trace]
+    modes: [explore, distill, formalize, form, trace]
+    outputs: [ConceptFragment, TheoryBranch, FormationPacket, ReverseTrace]
   - id: child-container-creator
     path: child-container-creator
     category: knowledge-containers
@@ -22,4 +31,3 @@ skills:
       - source registry
       - retrieval probes
       - validation receipt
-

@@ -7,8 +7,8 @@
 | `TASK-003-create-the-concept-lab-workspace-and-first-domai` | done | codex | Create the Concept Lab workspace and first domain child | done |
 | `TASK-004-add-the-controlled-testflight-product-bridge` | done | codex | Add the controlled Testflight Product bridge | done |
 | `TASK-005-add-concept-lab-transformation-operators` | done | codex | Add Concept Lab transformation operators | done |
-| `TASK-006-create-the-concept-lab-codex-skill` | ready | unassigned | Create the concept-lab Codex skill | implementation |
-| `TASK-007-add-validation-and-semantic-continuity-fixtures` | backlog | unassigned | Add validation and semantic continuity fixtures | intake |
+| `TASK-006-create-the-concept-lab-codex-skill` | done | codex | Create the concept-lab Codex skill | done |
+| `TASK-007-add-validation-and-semantic-continuity-fixtures` | ready | unassigned | Add validation and semantic continuity fixtures | implementation |
 | `TASK-008-rehearse-biotic-concept-to-agent-formation` | backlog | unassigned | Rehearse Biotic concept-to-agent formation | intake |
 | `TASK-009-close-documentation-and-certification-gates` | backlog | unassigned | Close documentation and certification gates | intake |
 

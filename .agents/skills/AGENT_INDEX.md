@@ -8,6 +8,8 @@ Use [`catalog.yaml`](catalog.yaml) for machine-readable routing. Use
 
 ## Routing
 
+- Enter the Concept Lab, formalize a conversation-derived concept, or trace a technical proposal:
+  [`concept-lab`](concept-lab/SKILL.md).
 - Create or register a specialized child knowledge container:
   [`child-container-creator`](child-container-creator/SKILL.md).
 
@@ -17,4 +19,3 @@ one matching entry to `catalog.yaml` and run:
 ```bash
 uv run python scripts/validate_skill_catalog.py
 ```
-
