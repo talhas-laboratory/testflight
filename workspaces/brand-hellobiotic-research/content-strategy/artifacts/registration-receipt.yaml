@@ -15,7 +15,7 @@ parent_files_updated:
   - workspaces/brand-hellobiotic-research/WORKSPACE.yaml
   - workspaces/brand-hellobiotic-research/resource_registry.json
 source_registry_hashes:
-  resource_registry_sha256: 55e1ea7003f35b23bb2a584505ea3c0da59c3efe3eecced0b5bda2e6fb792874
+  resource_registry_sha256: c110796441b0de08c0aa8eec720108fa839c9522c3b66318d3e710c5bfebfce9
   source_manifest_sha256: e1dca6f786bebbcf3cc2b8254c101b6ee58ca99a56baffb2e8062ae8b94b8da3
 operator_evaluations:
   - operator_id: configuration-runtime@1

@@ -105,6 +105,19 @@
       "canonical": false,
       "last_verified_at": "2026-09-08",
       "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/proposals/issue-clean-not-stripped-2026-09-08.md"
+    },
+    {
+      "module": "content-strategy",
+      "unit": "newsletter-clean-not-stripped-2026-09-08",
+      "task_view": "newsletter-deliverable",
+      "tool": "testflight-workflows",
+      "doc_type": "reader_facing_newsletter_proposal",
+      "evidence_tier": "T2",
+      "experience_type": "review_only_reader_facing_draft",
+      "difficulty": "intermediate",
+      "canonical": false,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/proposals/newsletter-clean-not-stripped-2026-09-08.md"
     }
   ]
 }
