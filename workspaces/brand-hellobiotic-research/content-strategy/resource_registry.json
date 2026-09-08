@@ -79,6 +79,19 @@
       "canonical": true,
       "last_verified_at": "2026-09-08",
       "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/evaluation-rubric.yaml"
+    },
+    {
+      "module": "content-strategy",
+      "unit": "relational-content-research-digest-2026-09-08",
+      "task_view": "research-and-theory",
+      "tool": "concept-lab",
+      "doc_type": "research_synthesis",
+      "evidence_tier": "T2",
+      "experience_type": "research_informed_proposal",
+      "difficulty": "expert",
+      "canonical": false,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/relational-content-research-digest-2026-09-08.md"
     }
   ]
 }

@@ -36,3 +36,8 @@ sources:
     derived_from:
       - "source:hellobiotic-fundamental-content-strategy-v0.1"
       - "source:hellobiotic-newsletter-agent-charter-v0.1"
+  - source_id: "source:hellobiotic-relational-research-digest-2026-09-08"
+    source_url: repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/relational-content-research-digest-2026-09-08.md
+    authority: external_research_synthesis
+    epistemic_status: research_informed_proposal
+    derived_from: ["source:hellobiotic-founder-newsletter-brief-2026-09-08", "source:hellobiotic-relational-content-model-v0.1"]
