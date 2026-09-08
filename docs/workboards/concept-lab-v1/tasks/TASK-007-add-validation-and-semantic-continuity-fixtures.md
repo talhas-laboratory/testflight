@@ -1,8 +1,8 @@
 # TASK-007-add-validation-and-semantic-continuity-fixtures: Add validation and semantic continuity fixtures
 
-Status: backlog
-Owner: unassigned
-Current gate: intake
+Status: in-progress
+Owner: codex
+Current gate: implementation
 
 ## Problem
 
@@ -73,6 +73,7 @@ Verification commands:
 ## Updates
 
 - Created: `2026-09-08T09:53:07.959342+00:00`
+- Claimed: `2026-09-08T11:22:00Z` by codex.
 
 ## Handoff Notes
 

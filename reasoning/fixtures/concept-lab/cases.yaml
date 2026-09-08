@@ -1,0 +1,44 @@
+version: 1
+cases:
+  - id: supported-continuity
+    status: pass
+    source_refs: [source:founder-brief]
+    branches: [theory:relational-content]
+    selected_branch: theory:relational-content
+    target_module_id: product-definition
+    canonical_write: false
+    trace: {technical: true, formal: true, theoretical: true, interpretive: true, source: true, missing_links: []}
+  - id: ambiguous-branches
+    status: branch
+    source_refs: [source:discussion]
+    branches: [theory:a, theory:b]
+    selected_branch: null
+    target_module_id: null
+    canonical_write: false
+    trace: {technical: false, formal: false, theoretical: true, interpretive: true, source: true, missing_links: []}
+  - id: missing-source
+    status: hold
+    source_refs: []
+    branches: []
+    selected_branch: null
+    target_module_id: null
+    canonical_write: false
+    trace: {technical: false, formal: false, theoretical: false, interpretive: false, source: false, missing_links: [source]}
+  - id: unauthorized-bridge
+    status: hold
+    source_refs: [source:external]
+    branches: [theory:x]
+    selected_branch: theory:x
+    target_module_id: product-definition
+    canonical_write: false
+    bridge_traversal: false
+    requested_traversal: true
+    trace: {technical: false, formal: true, theoretical: true, interpretive: true, source: true, missing_links: [bridge_authority]}
+  - id: broken-reverse-trace
+    status: partial
+    source_refs: [source:brief]
+    branches: [theory:x]
+    selected_branch: theory:x
+    target_module_id: architecture
+    canonical_write: false
+    trace: {technical: true, formal: true, theoretical: true, interpretive: false, source: true, missing_links: [interpretive]}
