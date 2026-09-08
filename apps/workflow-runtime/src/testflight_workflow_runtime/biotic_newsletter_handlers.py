@@ -180,6 +180,95 @@ class RelationalNewsletterContextCompiler:
         )
 
 
+class NewsletterGenerationPacketCompiler:
+    """Create the exact hybrid packet consumed by the copy-generation node."""
+
+    async def execute(self, context: StepExecutionContext) -> StepResult:
+        context_packet = context.arguments["context"]
+        composition = context.arguments["composition"]
+        content_plan = context.arguments["content_plan"]
+        composition_id = composition.get("composition_id")
+        if (
+            not isinstance(composition_id, str)
+            or content_plan.get("composition_id") != composition_id
+            or any(
+                item.get("publication_status") != "proposal_only"
+                for item in (composition, content_plan)
+                if isinstance(item, Mapping)
+            )
+        ):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "generation_packet_source_continuity_failed"},
+                receipt={"status": "hold"},
+            )
+        creative_brief = content_plan.get("creative_brief")
+        if not isinstance(creative_brief, str) or not creative_brief.strip():
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "content_plan_requires_creative_brief"},
+                receipt={"status": "hold"},
+            )
+        product_role = content_plan.get("product_role")
+        if product_role not in _PRODUCT_ROLE_RANK:
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "generation_packet_has_invalid_product_role"},
+                receipt={"status": "hold"},
+            )
+        prohibited_moves = [
+            "Add a factual claim that is not listed in constraints.factual_claims.",
+            (
+                "Turn audience context into an individual's identity, health status, insecurity, "
+                "or motive."
+            ),
+            "Give medical advice or imply product efficacy.",
+            "Authorize publication, sending, or a canonical write.",
+        ]
+        if product_role == "none":
+            prohibited_moves.append("Mention Biotic products or include a product CTA.")
+        return StepResult(
+            status=ResultStatus.SUCCESS,
+            output={
+                "packet_id": f"generation-packet:{context.run_id}:newsletter",
+                "format": "newsletter_generation_packet@1",
+                "composition_id": composition_id,
+                "publication_status": "proposal_only",
+                "constraints": {
+                    "reader_promise": content_plan["locked"]["reader_promise"],
+                    "controlling_idea": content_plan["locked"]["controlling_idea"],
+                    "contribution": composition["selected"]["contribution"],
+                    "product_role": product_role,
+                    "product_role_rationale": content_plan["product_role_rationale"],
+                    "cta_boundary": content_plan["locked"]["cta_boundary"],
+                    "claim_boundary": content_plan["locked"]["claim_boundary"],
+                    "factual_claims": content_plan["factual_claims"],
+                    "prohibited_moves": prohibited_moves,
+                    "publication_status": "proposal_only",
+                },
+                "creative_brief": creative_brief,
+                "craft_direction": {
+                    "directional": content_plan["directional"],
+                    "content_system": content_plan["content_system"],
+                    "artifact_characteristics": content_plan["artifact_characteristics"],
+                    "open": content_plan["open"],
+                },
+                "source_packet": {
+                    "context_packet_id": context_packet["packet_id"],
+                    "personalization_mode": context_packet["personalization_mode"],
+                },
+            },
+            receipt={
+                "operator_ids": [
+                    "world://operator/guardrail/ontology-conflation@1",
+                    "world://operator/guardrail/evidence-truth-conflation@1",
+                    "world://operator/guardrail/evaluation-schema@1",
+                ],
+                "format": "newsletter_generation_packet@1",
+            },
+        )
+
+
 class NewsletterReviewPackagePreparer:
     """Make the final proposal explicitly reviewable without persisting or publishing it."""
 
@@ -187,6 +276,7 @@ class NewsletterReviewPackagePreparer:
         evaluation = context.arguments["evaluation"]
         composition = context.arguments["composition"]
         content_plan = context.arguments["content_plan"]
+        generation_packet = context.arguments["generation_packet"]
         draft = context.arguments["draft"]
         context_packet = context.arguments["context"]
         if evaluation.get("decision") != "review_ready":
@@ -212,6 +302,7 @@ class NewsletterReviewPackagePreparer:
         if (
             not isinstance(composition_id, str)
             or not composition_id
+            or generation_packet.get("composition_id") != composition_id
             or any(
                 item.get("composition_id") != composition_id
                 for item in (content_plan, draft, evaluation)
@@ -239,6 +330,17 @@ class NewsletterReviewPackagePreparer:
             return StepResult(
                 status=ResultStatus.HOLD,
                 output={"reason": "product_role_continuity_failed"},
+                receipt={"status": "hold"},
+            )
+        if (
+            generation_packet.get("format") != "newsletter_generation_packet@1"
+            or generation_packet.get("publication_status") != "proposal_only"
+            or generation_packet.get("constraints", {}).get("product_role")
+            != content_plan.get("product_role")
+        ):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "generation_packet_continuity_failed"},
                 receipt={"status": "hold"},
             )
         gates = evaluation.get("hard_gates")
@@ -310,6 +412,7 @@ class NewsletterReviewPackagePreparer:
                 "context_packet_id": context_packet["packet_id"],
                 "relational_composition": composition,
                 "content_plan": content_plan,
+                "generation_packet": generation_packet,
                 "draft": draft,
                 "evaluation": evaluation,
                 "limitations": context_packet["limitations"],
@@ -342,6 +445,9 @@ def register_workflow_handlers(
     registry.register("biotic.compile_newsletter_context", RelationalNewsletterContextCompiler())
     registry.register("biotic.compose_newsletter_issue", prompt_handler)
     registry.register("biotic.form_newsletter_content_plan", prompt_handler)
+    registry.register(
+        "biotic.compile_newsletter_generation_packet", NewsletterGenerationPacketCompiler()
+    )
     registry.register("biotic.draft_newsletter", prompt_handler)
     registry.register("biotic.evaluate_newsletter", prompt_handler)
     registry.register("biotic.prepare_newsletter_review_package", NewsletterReviewPackagePreparer())

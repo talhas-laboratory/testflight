@@ -90,9 +90,17 @@ class FakeNewsletterOperatorClient:
                 ],
                 "product_role": "none",
                 "product_role_rationale": "The contribution is valuable without a product mention.",
+                "creative_brief": (
+                    "Begin with a familiar post-wash feeling, then offer a calmer systems lens. "
+                    "Leave the reader curious rather than anxious."
+                ),
                 "publication_status": "proposal_only",
             }
         elif prompt_id.endswith("draft-newsletter"):
+            arguments = payload["input"]["arguments"]
+            assert "content_plan" not in arguments
+            assert arguments["generation_packet"]["format"] == "newsletter_generation_packet@1"
+            assert arguments["generation_packet"]["constraints"]["product_role"] == "none"
             output = {
                 "composition_id": "composition:skin-ecology-01",
                 "product_role": "none",
@@ -192,7 +200,7 @@ def test_biotic_newsletter_workflow_returns_review_only_package(tmp_path, monkey
         service.run_and_wait(
             principal=WorkflowPrincipal(id="agent:hellobiotic-newsletter-strategist"),
             workflow_id="workflow://testflight/biotic/newsletter-compose",
-            workflow_version=2,
+            workflow_version=3,
             run_id="run:biotic-newsletter",
             inputs={
                 "request_id": "request:biotic-newsletter",
@@ -226,6 +234,8 @@ def test_biotic_newsletter_workflow_returns_review_only_package(tmp_path, monkey
     assert package["canonical_write"] is False
     assert package["send_authorized"] is False
     assert package["content_plan"]["product_role"] == "none"
+    assert package["generation_packet"]["format"] == "newsletter_generation_packet@1"
+    assert package["generation_packet"]["constraints"]["product_role"] == "none"
     assert package["draft"]["claims_used"][0]["evidence_id"] == "evidence:microbiome-1"
     assert package["next_required_decision"] == "human_editorial_review"
 
@@ -235,7 +245,7 @@ def test_review_package_rejects_claim_lineage_drift():
     workflow = catalog.get(
         WorkflowPrincipal(id="agent:hellobiotic-newsletter-strategist"),
         "workflow://testflight/biotic/newsletter-compose",
-        2,
+        3,
     )
     assert workflow is not None
     step = next(item for item in workflow.steps if item.id == "prepare_review_package")
@@ -274,6 +284,12 @@ def test_review_package_rejects_claim_lineage_drift():
                                 "source_ref": "source:known",
                             }
                         ],
+                    },
+                    "generation_packet": {
+                        "format": "newsletter_generation_packet@1",
+                        "composition_id": composition_id,
+                        "publication_status": "proposal_only",
+                        "constraints": {"product_role": "none"},
                     },
                     "draft": {
                         "composition_id": composition_id,

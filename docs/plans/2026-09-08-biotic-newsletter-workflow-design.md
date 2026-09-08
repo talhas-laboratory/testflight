@@ -42,7 +42,9 @@ directional or open. `draft_newsletter` can be creative inside that envelope but
 same `composition_id` and records every factual claim it uses. `evaluate_issue` independently
 scores the visible draft and returns a concrete repair brief when it cannot clear review.
 
-`prepare_review_package` is deterministic: it rejects composition drift, product-role escalation,
+`compile_generation_packet` is a deterministic boundary between planning and writing. It gives a
+blank creative agent a binding `constraints` object plus a readable `creative_brief`; it never
+passes a prior draft or review into generation. `prepare_review_package` is deterministic: it rejects composition drift, product-role escalation,
 failed hard gates, and claim-lineage drift before returning `review_required`.
 
 ## State and control

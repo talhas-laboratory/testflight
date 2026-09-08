@@ -50,6 +50,8 @@ individual subscriber profile from a segment label. Return `ask`, `partial`, or 
 reader composition or evidence is insufficient.
 
 The executable scaffold follows that route through `compile_relational_context`, `compose_issue`,
-`form_content_plan`, `draft_newsletter`, `evaluate_issue`, and `prepare_review_package`. It is
-proposal-only. A future publishing workflow needs a distinct explicit authority grant and a
-durable human-approval interrupt; it must not be added to this workflow.
+`form_content_plan`, `compile_generation_packet`, `draft_newsletter`, `evaluate_issue`, and
+`prepare_review_package`. The generation packet is the sole drafting input: it pairs binding
+constraints with a readable creative brief. The workflow is proposal-only. A future publishing
+workflow needs a distinct explicit authority grant and a durable human-approval interrupt; it
+must not be added to this workflow.

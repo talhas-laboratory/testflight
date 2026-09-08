@@ -16,7 +16,7 @@ parent_files_updated:
   - workspaces/brand-hellobiotic-research/resource_registry.json
 source_registry_hashes:
   resource_registry_sha256: c110796441b0de08c0aa8eec720108fa839c9522c3b66318d3e710c5bfebfce9
-  source_manifest_sha256: e1dca6f786bebbcf3cc2b8254c101b6ee58ca99a56baffb2e8062ae8b94b8da3
+  source_manifest_sha256: 8e557acfad96479fcc72ad9e07d05f7f3303004ae7745a745a1bbcf9fa6ba125
 operator_evaluations:
   - operator_id: configuration-runtime@1
     outcome: pass
@@ -30,10 +30,10 @@ operator_evaluations:
   - operator_id: evaluation-schema@1
     outcome: pass_with_limits
     detail: >-
-      The candidate workflow has schema-bound composition, plan, draft, and evaluation nodes, and
-      a deterministic review-package gate that rejects composition, product-role, and claim-lineage
-      drift. A fake structured-model run and node test pack passed; no live model or staging
-      retrieval evaluation has been run.
+      The candidate workflow has schema-bound composition, plan, generation-packet, draft, and
+      evaluation nodes. Its deterministic gates reject composition, product-role, and claim-lineage
+      drift, and its drafting node receives only the hybrid generation packet. A fake structured-
+      model run and node test pack passed; no live model or staging retrieval evaluation has been run.
   - operator_id: boundary-conflation@1
     outcome: pass
     detail: Founder direction, audience evidence, scientific evidence, generated proposals, and publication authority remain distinct.

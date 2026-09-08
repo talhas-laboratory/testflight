@@ -1,6 +1,6 @@
 schema_version: 1
 id: workflow://testflight/biotic/newsletter-compose
-version: 2
+version: 3
 lifecycle: candidate
 name: Biotic relational newsletter composition
 description: >-
@@ -21,7 +21,7 @@ knowledge:
   max_graph_hops: 2
 
 authority:
-  capabilities: [knowledge.retrieve, reasoning.compose, content.plan, content.draft, content.evaluate, model.invoke]
+  capabilities: [knowledge.retrieve, reasoning.compose, content.plan, content.packet, content.draft, content.evaluate, model.invoke]
   credential_refs: [credential://testflight/workflow-runtime]
   proposal_write: false
   canonical_write: false
@@ -154,6 +154,7 @@ steps:
         - "Build an issue arc: recognition → useful distinction → explanation → practical implication → closing invitation."
         - Include only factual claims that resolve to supplied evidence_ids and state how each may be expressed.
         - The product can be none, contextual, illustrative, practical, or central_and_justified; justify every non-none role.
+        - Write a concise creative_brief that makes the intended intellectual and emotional movement legible to a blank writing agent.
       prompt:
         id: prompt://testflight/biotic/newsletter/form-content-plan
         version: 1
@@ -176,7 +177,7 @@ steps:
         output_schema:
           type: object
           additionalProperties: false
-          required: [composition_id, locked, directional, open, content_system, artifact_characteristics, factual_claims, product_role, product_role_rationale, publication_status]
+          required: [composition_id, locked, directional, open, content_system, artifact_characteristics, factual_claims, product_role, product_role_rationale, creative_brief, publication_status]
           properties:
             composition_id: {type: string}
             locked: {type: object}
@@ -187,6 +188,7 @@ steps:
             factual_claims: {type: array}
             product_role: {type: string}
             product_role_rationale: {type: string}
+            creative_brief: {type: string}
             publication_status: {type: string, const: proposal_only}
         configuration: {reasoning_effort: low}
     needs: [compile_relational_context, compose_issue]
@@ -200,17 +202,45 @@ steps:
     capabilities: [content.plan, model.invoke]
     on_error: hold
 
+  - id: compile_generation_packet
+    kind: transform
+    handler: biotic.compile_newsletter_generation_packet
+    description: >-
+      Compile the exact hybrid packet consumed by the draft node: binding constraints plus a
+      readable creative brief, without adding new editorial meaning.
+    instruction:
+      id: instruction://testflight/biotic/newsletter/compile-generation-packet
+      version: 1
+      objective: Package the plan for a blank creative agent while preserving all binding boundaries.
+      rules:
+        - Derive constraints deterministically from the selected composition and content plan.
+        - Preserve composition_id, factual-claim lineage, product role, and proposal-only status.
+        - Keep creative_brief readable but non-binding; constraints are the source of truth.
+        - Return hold when the plan cannot yield a complete safe generation packet.
+    needs: [compile_relational_context, compose_issue, form_content_plan]
+    arguments:
+      context: $steps.compile_relational_context.output
+      composition: $steps.compose_issue.output
+      content_plan: $steps.form_content_plan.output
+    access:
+      workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
+    capabilities: [content.packet]
+    on_error: hold
+
   - id: draft_newsletter
     kind: transform
     handler: biotic.draft_newsletter
     description: >-
-      Draft a complete, reader-first newsletter from the plan while keeping every sentence
+      Draft a complete, reader-first newsletter from the generation packet while keeping every sentence
       accountable to the selected contribution, claim boundaries, and product role.
     instruction:
       id: instruction://testflight/biotic/newsletter/draft-newsletter
       version: 1
       objective: Produce an engaging, useful issue draft that earns attention through contribution rather than product pressure.
       rules:
+        - Treat generation_packet.constraints as binding and generation_packet.creative_brief as creative guidance.
         - Preserve composition_id, controlling idea, reader promise, issue arc, and product role exactly.
         - "Give each section an explicit role: opening, distinction, explanation, practical implication, or closing."
         - Do not add factual claims, medical advice, reader attributes, or product benefits not in the plan.
@@ -225,13 +255,13 @@ steps:
         operator_version: 1
         modality: text/plain
         system: |
-          You are a precise, reader-first newsletter copywriter. Write from the content plan only.
+          You are a precise, reader-first newsletter copywriter. Write from the generation packet only.
           Make the issue feel like a helpful contribution to a field the reader already inhabits,
           never a sales message in educational clothing. Honor the locked fields exactly and use the
           directional fields as a compass, not a script. Do not fabricate facts, medical advice,
           reader biography, or product benefits. Return JSON matching the schema exactly.
         user: |
-          Content plan: {{ arguments.content_plan }}
+          Generation packet: {{ arguments.generation_packet }}
         output_schema:
           type: object
           additionalProperties: false
@@ -247,9 +277,9 @@ steps:
             claims_used: {type: array}
             publication_status: {type: string, const: proposal_only}
         configuration: {reasoning_effort: low}
-    needs: [form_content_plan]
+    needs: [compile_generation_packet]
     arguments:
-      content_plan: $steps.form_content_plan.output
+      generation_packet: $steps.compile_generation_packet.output
     access:
       workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
       container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
@@ -309,11 +339,12 @@ steps:
             residual_uncertainty: {type: array}
             publication_status: {type: string, const: proposal_only}
         configuration: {reasoning_effort: low}
-    needs: [compile_relational_context, compose_issue, form_content_plan, draft_newsletter]
+    needs: [compile_relational_context, compose_issue, form_content_plan, compile_generation_packet, draft_newsletter]
     arguments:
       context: $steps.compile_relational_context.output
       composition: $steps.compose_issue.output
       content_plan: $steps.form_content_plan.output
+      generation_packet: $steps.compile_generation_packet.output
       draft: $steps.draft_newsletter.output
     access:
       workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
@@ -334,12 +365,13 @@ steps:
         - Require the evaluation node to return review_ready.
         - Set review_required true in meaning and never imply send authorization.
         - Keep every limitation and evidence trace available to the editor.
-    needs: [compile_relational_context, compose_issue, form_content_plan, draft_newsletter, evaluate_issue]
+    needs: [compile_relational_context, compose_issue, form_content_plan, compile_generation_packet, draft_newsletter, evaluate_issue]
     arguments:
       request_id: $inputs.request_id
       context: $steps.compile_relational_context.output
       composition: $steps.compose_issue.output
       content_plan: $steps.form_content_plan.output
+      generation_packet: $steps.compile_generation_packet.output
       draft: $steps.draft_newsletter.output
       evaluation: $steps.evaluate_issue.output
     access:

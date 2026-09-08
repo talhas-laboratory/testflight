@@ -48,12 +48,13 @@ workflow:
 
 runtime_scaffold:
   workflow_id: workflow://testflight/biotic/newsletter-compose
-  version: 2
+  version: 3
   lifecycle: candidate
   topology:
     - compile_relational_context
     - compose_issue
     - form_content_plan
+    - compile_generation_packet
     - draft_newsletter
     - evaluate_issue
     - prepare_review_package
