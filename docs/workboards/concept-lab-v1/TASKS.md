@@ -2,8 +2,8 @@
 
 | id | status | owner | title | gate |
 |---|---|---|---|---|
-| `TASK-001-record-the-concept-lab-v1-decision` | ready | unassigned | Record the Concept Lab v1 decision | readiness |
-| `TASK-002-define-concept-lab-core-contracts` | backlog | unassigned | Define Concept Lab core contracts | intake |
+| `TASK-001-record-the-concept-lab-v1-decision` | done | codex | Record the Concept Lab v1 decision | done |
+| `TASK-002-define-concept-lab-core-contracts` | ready | unassigned | Define Concept Lab core contracts | implementation |
 | `TASK-003-create-the-concept-lab-workspace-and-first-domai` | backlog | unassigned | Create the Concept Lab workspace and first domain child | intake |
 | `TASK-004-add-the-controlled-testflight-product-bridge` | backlog | unassigned | Add the controlled Testflight Product bridge | intake |
 | `TASK-005-add-concept-lab-transformation-operators` | backlog | unassigned | Add Concept Lab transformation operators | intake |

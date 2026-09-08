@@ -144,6 +144,19 @@
       "canonical": true,
       "last_verified_at": "2026-09-04",
       "source_url": "repo://workspaces/testflight-product/artifacts/retrieval-lexicon.yaml"
+    },
+    {
+      "module": "product-decisions",
+      "unit": "adr-0007-concept-lab",
+      "task_view": "none",
+      "tool": "testflight",
+      "doc_type": "architecture_decision",
+      "evidence_tier": "T1",
+      "experience_type": "canonical",
+      "difficulty": "expert",
+      "canonical": true,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://docs/decisions/0007-concept-lab-formation-workspace.md"
     }
   ]
 }

@@ -25,9 +25,9 @@
     "workspaces/testflight-product/architecture/resource_registry.json"
   ],
   "source_registry_sha256": {
-    "parent": "f4aa2592048090b8d39daba77e1962da6bfea07921ae73e607355bc995c1daaf",
-    "product-definition": "6f8bb7ac8d7a176500a34f32cdc78630597dd693d60b9e65c38cef86c256c32f",
-    "product-decisions": "876eba15d3befa5c5e01d4cb93cb5d56938057c57edde2ee8ff49215e896f719",
+    "parent": "ed9d5845dca35217e898c3eda6ca4b3cf6ee37d10bf632a225ae64364a153af0",
+    "product-definition": "f7b371ee4856ee1e3dfd42778bf0baa8c01d6c256bf0bb83ec9a8798de26e2e2",
+    "product-decisions": "32f52fece45e855b917bb2aebea9ad8d672e062b65ffa243a21ca358b8d5807c",
     "experience-design": "09c353037dca48b324bfb367171f00fcb6b3b2e47594d340b5f6ee6ee674a825",
     "architecture": "1d6b23ecf15802d5de770ad964dd4f8bd85ce187ad9dc449d86d4c76130d3679",
     "customers-market": "b53439bd5711014159e68a241a65b92f9e412b0cbba66acf63767b651ae6d2f7",

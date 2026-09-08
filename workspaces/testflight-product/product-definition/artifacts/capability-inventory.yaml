@@ -13,6 +13,7 @@ capabilities:
   - {id: capability:multimodal-content-substrate, implementation_status: contracts_and_fixtures_only, implementation_refs: [repo://packages/testflight-content, repo://docs/workboards/multimodal-content-world-compilation]}
   - {id: capability:operator-runtime, implementation_status: implemented_private_runtime, implementation_refs: [repo://packages/testflight-operator-runtime]}
   - {id: capability:founder-capture, implementation_status: experience_prototype_only, implementation_refs: [repo://apps/brand-intake-web]}
+  - {id: capability:concept-lab, implementation_status: planned_v1, implementation_refs: [repo://docs/decisions/0007-concept-lab-formation-workspace.md, repo://docs/plans/2026-09-08-concept-lab-v1-implementation-plan.md]}
 missing_product_capabilities:
   - {id: capability:authenticated-product-api, required_by: product:founder-brand-world, status: planned}
   - {id: capability:durable-operational-store, required_by: product:founder-brand-world, status: planned}
@@ -22,4 +23,3 @@ missing_product_capabilities:
   - {id: capability:enterprise-identity-and-access, required_by: offer:campaign-decision-intelligence, status: research_requirement}
   - {id: capability:connector-ecosystem, required_by: offer:campaign-decision-intelligence, status: research_requirement}
   - {id: capability:value-telemetry, required_by: [offer:world-seeder-pilot, offer:campaign-decision-intelligence], status: planned}
-

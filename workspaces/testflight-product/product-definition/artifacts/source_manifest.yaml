@@ -9,4 +9,5 @@ sources:
   - repo://README.md
   - repo://docs/plans/2026-09-04-founder-brand-world-product-overview.md
   - repo://docs/plans/2026-09-04-founder-brand-world-build-order.md
+  - repo://docs/decisions/0007-concept-lab-formation-workspace.md
   - repo://deliverables/testflight-commercial-viability-deep-research.md

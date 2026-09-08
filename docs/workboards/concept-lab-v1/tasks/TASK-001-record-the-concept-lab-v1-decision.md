@@ -1,8 +1,8 @@
 # TASK-001-record-the-concept-lab-v1-decision: Record the Concept Lab v1 decision
 
-Status: ready
-Owner: unassigned
-Current gate: readiness
+Status: done
+Owner: codex
+Current gate: implementation
 
 ## Problem
 
@@ -37,7 +37,10 @@ Exact implementation files:
 - `workspaces/testflight-product/product-decisions/artifacts/source_manifest.yaml`
 - `workspaces/testflight-product/product-decisions/resource_registry.json`
 - `workspaces/testflight-product/product-definition/artifacts/capability-inventory.yaml`
+- `workspaces/testflight-product/product-definition/artifacts/source_manifest.yaml`
+- `workspaces/testflight-product/product-definition/resource_registry.json`
 - `workspaces/testflight-product/resource_registry.json`
+- `workspaces/testflight-product/artifacts/registration-receipt.json`
 
 Out:
 
@@ -73,12 +76,26 @@ Verification commands:
 
 ## Verification Evidence
 
-- Not run yet.
+- Initial Product validation failed as expected after adding ADR 0007 to the product-definition
+  source manifest without its matching registry record: `source manifest and registry differ:
+  product-definition`. Root cause: the Product validator requires exact set equality between a child
+  source manifest and its registry URLs. The matching ADR registry record has been added.
+- The second Product validation run failed with `registration receipt registry hash mismatch:
+  parent`. Root cause: the registration receipt stores byte-level hashes for each registry; the
+  parent, product-definition, and product-decisions registries changed as part of this task. Their
+- `uv run python scripts/validate_testflight_product_workspace.py` passed: 42 entities, 9 child
+  modules, and 16 sources; no live projection changed.
+- `uv run python scripts/audit_testflight_product_routes.py --summary` passed: 10/10 route
+  checks, zero routing errors, and no live retrieval certification asserted.
+- `git diff --check` passed.
 
 ## Updates
 
 - Created: `2026-09-08T09:53:07.958094+00:00`
+- Claimed: `2026-09-08T10:05:00Z` by codex.
+- Completed: `2026-09-08T10:18:00Z` by codex.
 
 ## Handoff Notes
 
-- On completion, make TASK-002 ready. Do not make other tasks ready.
+- TASK-002 is ready: it may define the domain-level contracts using ADR 0007 and the controlling
+  plan. Do not make other tasks ready.

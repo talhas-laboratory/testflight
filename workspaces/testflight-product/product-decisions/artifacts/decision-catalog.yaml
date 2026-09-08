@@ -8,6 +8,7 @@ repository_decisions:
   - {id: decision:adr-0004, title: Establish the Brand Ontology Constitution v0.1, status: accepted_for_research_and_implementation_planning, source_url: repo://docs/decisions/0004-brand-ontology-constitution.md}
   - {id: decision:adr-0005, title: Add the Moodboard and Creative Field application profile, status: accepted_for_vertical_slice, source_url: repo://docs/decisions/0005-moodboard-creative-field-profile.md}
   - {id: decision:adr-0006, title: Add a multimodal Content substrate and explicit World compilation boundary, status: accepted_for_phased_implementation, source_url: repo://docs/decisions/0006-content-substrate-and-world-compilation.md}
+  - {id: decision:adr-0007, title: Establish a sovereign Concept Lab formation workspace and guarded Product bridge, status: accepted_for_v1_implementation, authority: user:talha, source_url: repo://docs/decisions/0007-concept-lab-formation-workspace.md}
   - {id: decision:product-workspace-v1, title: Create the isolated modular Testflight Product workspace and design language, status: accepted, source_url: repo://docs/plans/2026-09-04-testflight-product-workspace-design.md}
 creative_field_local_decisions:
   source_url: repo://docs/workboards/moodboard-creative-field-implementation/DECISIONS.md
@@ -43,4 +44,3 @@ open_product_decisions:
     question: When should the Brand Intake prototype become the proposed Ionic and FastAPI product?
     status: unresolved
     evidence_needed: [pilot_contract, fixture, stage_zero_gate]
-
