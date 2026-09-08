@@ -1,0 +1,307 @@
+schema_version: 1
+id: workflow://testflight/biotic/newsletter-compose
+version: 1
+lifecycle: candidate
+name: Biotic relational newsletter composition
+description: >-
+  Form an evidence-aware, field-first Biotic newsletter content plan and draft for human editorial
+  review. This workflow never sends or publishes.
+tags: [biotic, newsletter, relational-content, proposal-only]
+
+access:
+  public: false
+  agent_ids: [agent:hellobiotic-newsletter-strategist]
+
+knowledge:
+  workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+  container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+  entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
+  data_classifications: [internal]
+  max_results: 20
+  max_graph_hops: 2
+
+authority:
+  capabilities: [knowledge.retrieve, reasoning.compose, content.plan, content.draft, content.evaluate, model.invoke]
+  credential_refs: [credential://testflight/workflow-runtime]
+  proposal_write: false
+  canonical_write: false
+  external_action: false
+
+inputs_schema:
+  type: object
+  additionalProperties: false
+  required: [request_id, issue_objective, audience_context, evidence_packet, current_field_signals, prior_issue_feedback, authorized_product_context]
+  properties:
+    request_id: {type: string}
+    issue_objective: {type: string}
+    audience_context: {type: object}
+    evidence_packet: {type: array}
+    current_field_signals: {type: array}
+    prior_issue_feedback: {type: array}
+    authorized_product_context: {type: object}
+
+outputs_schema:
+  type: object
+  additionalProperties: false
+  required: [review_package]
+  properties:
+    review_package: {type: object}
+
+steps:
+  - id: compile_relational_context
+    kind: retrieve
+    handler: biotic.compile_newsletter_context
+    description: Compile the bounded strategy, explicit audience context, and traceable evidence packet.
+    instruction:
+      id: instruction://testflight/biotic/newsletter/compile-relational-context
+      version: 1
+      objective: Preserve the relational field without turning strategic hypotheses into customer or scientific facts.
+      rules:
+        - Treat founder strategy as an editorial constraint, never as evidence about readers.
+        - Require an explicit audience source status and source-bound factual claims.
+        - Preserve uncertainty, evidence limitations, and the lack of publication authority.
+    arguments:
+      issue_objective: $inputs.issue_objective
+      audience_context: $inputs.audience_context
+      evidence_packet: $inputs.evidence_packet
+      current_field_signals: $inputs.current_field_signals
+      prior_issue_feedback: $inputs.prior_issue_feedback
+      authorized_product_context: $inputs.authorized_product_context
+    access:
+      workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
+    capabilities: [knowledge.retrieve]
+    on_error: hold
+
+  - id: compose_issue
+    kind: transform
+    handler: biotic.compose_newsletter_issue
+    description: Select one bounded issue composition and retain unresolved relational assumptions.
+    instruction:
+      id: instruction://testflight/biotic/newsletter/compose-issue
+      version: 1
+      objective: Select a field-first reader contribution that can earn Biotic's participation.
+      rules:
+        - Choose one field, reader question, contribution, moment, and bounded legitimacy basis.
+        - A product role is optional; product adjacency cannot establish relevance.
+        - Never infer an individual’s identity, health, insecurity, or motive.
+        - Use only the supplied context packet and return proposal-only JSON.
+      prompt:
+        id: prompt://testflight/biotic/newsletter/compose-issue
+        version: 1
+        operator_id: runtime://testflight/workflow/prompt-step
+        operator_version: 1
+        modality: text/plain
+        system: |
+          You are Biotic's relational newsletter strategist. Work only with the supplied packet.
+          A composition is editorial reasoning, not a customer fact or a scientific conclusion.
+          Return JSON matching the schema exactly. Never authorize publication.
+        user: |
+          Issue objective: {{ arguments.issue_objective }}
+          Bounded context packet: {{ arguments.context }}
+        output_schema:
+          type: object
+          additionalProperties: false
+          required: [field, reader_question, contribution, moment, brand_legitimacy_basis, product_role, assumptions, uncertainty_notes, publication_status]
+          properties:
+            field: {type: string}
+            reader_question: {type: string}
+            contribution: {type: string}
+            moment: {type: string}
+            brand_legitimacy_basis: {type: string}
+            product_role: {type: string}
+            assumptions: {type: array}
+            uncertainty_notes: {type: array}
+            publication_status: {type: string, const: proposal_only}
+        configuration: {reasoning_effort: low}
+    needs: [compile_relational_context]
+    arguments:
+      issue_objective: $inputs.issue_objective
+      context: $steps.compile_relational_context.output
+    access:
+      workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
+    capabilities: [reasoning.compose, model.invoke]
+    on_error: hold
+
+  - id: form_content_plan
+    kind: transform
+    handler: biotic.form_newsletter_content_plan
+    description: Translate the selected composition into a writer-facing newsletter content plan.
+    instruction:
+      id: instruction://testflight/biotic/newsletter/form-content-plan
+      version: 1
+      objective: Specify the complete newsletter's content and artifact characteristics without over-controlling prose.
+      rules:
+        - Lock the controlling idea, reader promise, claim boundaries, and product role.
+        - Make rhetoric, voice, structure, visual character, and length directional.
+        - Leave exact wording, transitions, metaphors, rhythm, and title alternatives open.
+        - Include only factual claims that resolve to the supplied evidence packet.
+      prompt:
+        id: prompt://testflight/biotic/newsletter/form-content-plan
+        version: 1
+        operator_id: runtime://testflight/workflow/prompt-step
+        operator_version: 1
+        modality: text/plain
+        system: |
+          You turn a relational issue composition into a copywriter-ready content plan.
+          The plan must be vivid enough to guide a small writing model and open enough for good prose.
+          Preserve evidence limits. Return JSON matching the schema exactly.
+        user: |
+          Context: {{ arguments.context }}
+          Selected issue composition: {{ arguments.composition }}
+        output_schema:
+          type: object
+          additionalProperties: false
+          required: [locked, directional, open, content_system, artifact_characteristics, factual_claims, product_role, publication_status]
+          properties:
+            locked: {type: object}
+            directional: {type: object}
+            open: {type: object}
+            content_system: {type: object}
+            artifact_characteristics: {type: object}
+            factual_claims: {type: array}
+            product_role: {type: string}
+            publication_status: {type: string, const: proposal_only}
+        configuration: {reasoning_effort: low}
+    needs: [compile_relational_context, compose_issue]
+    arguments:
+      context: $steps.compile_relational_context.output
+      composition: $steps.compose_issue.output
+    access:
+      workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
+    capabilities: [content.plan, model.invoke]
+    on_error: hold
+
+  - id: draft_newsletter
+    kind: transform
+    handler: biotic.draft_newsletter
+    description: Draft the newsletter from the locked and directional portions of the plan.
+    instruction:
+      id: instruction://testflight/biotic/newsletter/draft-newsletter
+      version: 1
+      objective: Produce an engaging, useful issue draft that earns attention through contribution rather than product pressure.
+      rules:
+        - Respect locked claim boundaries and product role exactly.
+        - Do not add factual claims, medical advice, or reader attributes not in the plan.
+        - Keep the product absent when its role is none.
+        - Mark the result proposal-only.
+      prompt:
+        id: prompt://testflight/biotic/newsletter/draft-newsletter
+        version: 1
+        operator_id: runtime://testflight/workflow/prompt-step
+        operator_version: 1
+        modality: text/plain
+        system: |
+          You are a precise, reader-first newsletter copywriter. Write from the content plan only.
+          Do not fabricate facts, medical advice, reader biography, or product benefits.
+          Return JSON matching the schema exactly.
+        user: |
+          Content plan: {{ arguments.content_plan }}
+        output_schema:
+          type: object
+          additionalProperties: false
+          required: [subject_options, preheader, sections, closing, claims_used, publication_status]
+          properties:
+            subject_options: {type: array}
+            preheader: {type: string}
+            sections: {type: array}
+            closing: {type: string}
+            claims_used: {type: array}
+            publication_status: {type: string, const: proposal_only}
+        configuration: {reasoning_effort: low}
+    needs: [form_content_plan]
+    arguments:
+      content_plan: $steps.form_content_plan.output
+    access:
+      workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
+    capabilities: [content.draft, model.invoke]
+    on_error: hold
+
+  - id: evaluate_issue
+    kind: transform
+    handler: biotic.evaluate_newsletter
+    description: Independently evaluate evidence, reader value, legitimacy, and copy-plan adherence.
+    instruction:
+      id: instruction://testflight/biotic/newsletter/evaluate-issue
+      version: 1
+      objective: Clear a draft for human editorial review only when its rubric and hard gates are satisfied.
+      rules:
+        - Fail closed when a factual claim lacks a traceable source or limitation.
+        - Reject exploitative identity framing and unearned product centrality.
+        - A review-ready decision is not publication approval.
+      prompt:
+        id: prompt://testflight/biotic/newsletter/evaluate-issue
+        version: 1
+        operator_id: runtime://testflight/workflow/prompt-step
+        operator_version: 1
+        modality: text/plain
+        system: |
+          You are an independent editorial and evidence reviewer. Evaluate only the supplied material.
+          Return review_ready only if hard gates are passed. Never authorize sending or publication.
+          Return JSON matching the schema exactly.
+        user: |
+          Context: {{ arguments.context }}
+          Composition: {{ arguments.composition }}
+          Content plan: {{ arguments.content_plan }}
+          Draft: {{ arguments.draft }}
+        output_schema:
+          type: object
+          additionalProperties: false
+          required: [decision, hard_gates, rubric_scores, required_revisions, claim_trace, publication_status]
+          properties:
+            decision: {type: string}
+            hard_gates: {type: array}
+            rubric_scores: {type: object}
+            required_revisions: {type: array}
+            claim_trace: {type: array}
+            publication_status: {type: string, const: proposal_only}
+        configuration: {reasoning_effort: low}
+    needs: [compile_relational_context, compose_issue, form_content_plan, draft_newsletter]
+    arguments:
+      context: $steps.compile_relational_context.output
+      composition: $steps.compose_issue.output
+      content_plan: $steps.form_content_plan.output
+      draft: $steps.draft_newsletter.output
+    access:
+      workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
+    capabilities: [content.evaluate, model.invoke]
+    on_error: hold
+
+  - id: prepare_review_package
+    kind: transform
+    handler: biotic.prepare_newsletter_review_package
+    description: Assemble a final review package without persistence, publication, or send authority.
+    instruction:
+      id: instruction://testflight/biotic/newsletter/prepare-review-package
+      version: 1
+      objective: Return a reviewable package that remains clearly proposal-only.
+      rules:
+        - Require the evaluation node to return review_ready.
+        - Set review_required true in meaning and never imply send authorization.
+        - Keep every limitation and evidence trace available to the editor.
+    needs: [compile_relational_context, compose_issue, form_content_plan, draft_newsletter, evaluate_issue]
+    arguments:
+      request_id: $inputs.request_id
+      context: $steps.compile_relational_context.output
+      composition: $steps.compose_issue.output
+      content_plan: $steps.form_content_plan.output
+      draft: $steps.draft_newsletter.output
+      evaluation: $steps.evaluate_issue.output
+    access:
+      workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
+    capabilities: [content.evaluate]
+    on_error: hold
+
+outputs:
+  review_package: $steps.prepare_review_package.output

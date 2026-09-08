@@ -35,6 +35,8 @@ most two hops. Return `NO_HITS` for unsupported or out-of-domain requests.
 - `artifacts/fundamental-content-strategy.md`: evolving human-readable manifest.
 - `artifacts/relational-content-model.yaml`: proposed machine-readable model of the field.
 - `artifacts/newsletter-agent-charter.yaml`: generation, safety, and evaluation contract.
+- `workflows/biotic/newsletter-compose.yaml`: registered proposal-only workflow that returns a
+  content plan, draft, and review package; it cannot send or publish.
 - `artifacts/evaluation-rubric.yaml`: independent editorial quality dimensions and gates.
 - `artifacts/registration-receipt.yaml`: boundary, operator, and validation results.
 - `resource_registry.json`: source metadata and provenance.
@@ -46,3 +48,8 @@ Compile context in this order: current manifest revision → relational model �
 audience evidence explicitly bridged from an authorized source → topic evidence. Never infer an
 individual subscriber profile from a segment label. Return `ask`, `partial`, or `NO_HITS` when the
 reader composition or evidence is insufficient.
+
+The executable scaffold follows that route through `compile_relational_context`, `compose_issue`,
+`form_content_plan`, `draft_newsletter`, `evaluate_issue`, and `prepare_review_package`. It is
+proposal-only. A future publishing workflow needs a distinct explicit authority grant and a
+durable human-approval interrupt; it must not be added to this workflow.

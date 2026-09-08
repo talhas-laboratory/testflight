@@ -25,10 +25,18 @@ sources:
   - source_id: "source:hellobiotic-newsletter-agent-charter-v0.1"
     source_url: repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/newsletter-agent-charter.yaml
     authority: derived_agent_contract
-    epistemic_status: strategy_defined_runtime_not_implemented
+    epistemic_status: proposal_only_workflow_scaffolded
     derived_from:
       - "source:hellobiotic-fundamental-content-strategy-v0.1"
       - "source:hellobiotic-relational-content-model-v0.1"
+  - source_id: "source:hellobiotic-newsletter-workflow-v1"
+    source_url: repo://workflows/biotic/newsletter-compose.yaml
+    authority: executable_proposal_workflow_contract
+    epistemic_status: candidate_no_publication_authority
+    derived_from:
+      - "source:hellobiotic-newsletter-agent-charter-v0.1"
+      - "source:hellobiotic-relational-content-model-v0.1"
+      - "source:hellobiotic-newsletter-evaluation-rubric-v1"
   - source_id: "source:hellobiotic-newsletter-evaluation-rubric-v1"
     source_url: repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/evaluation-rubric.yaml
     authority: editorial_quality_contract

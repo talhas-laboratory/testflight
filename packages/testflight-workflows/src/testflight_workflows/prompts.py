@@ -46,7 +46,9 @@ def _render(template: str, roots: Mapping[str, Mapping[str, Any]]) -> str:
         return json.dumps(value, ensure_ascii=False, sort_keys=True)
 
     rendered = _PLACEHOLDER.sub(replace, template)
-    if "{{" in rendered or "}}" in rendered:
+    # A rendered JSON object can legitimately end in adjacent closing braces (``}}``). Only an
+    # opening marker can denote an unresolved or malformed template expression at this point.
+    if "{{" in rendered:
         raise PromptRenderError("prompt contains an unsupported or incomplete placeholder")
     return rendered
 

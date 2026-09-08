@@ -4,12 +4,20 @@ database_path: .data/workflow-runtime/runtime.sqlite3
 host: 127.0.0.1
 port: 8782
 principals:
+  - id: agent:hellobiotic-newsletter-strategist
+    roles: [hellobiotic-newsletter-strategist]
+    token_env: TESTFLIGHT_WORKFLOW_TOKEN_HELLOBIOTIC_NEWSLETTER
   - id: agent:testflight-research
     roles: [testflight-research-agent]
     token_env: TESTFLIGHT_WORKFLOW_TOKEN_RESEARCH
 mcp_principal_id: agent:testflight-research
-handler_modules: [testflight_workflow_runtime.example_handlers]
+handler_modules:
+  - testflight_workflow_runtime.example_handlers
+  - testflight_workflow_runtime.biotic_newsletter_handlers
 handler_configuration:
   testflight_workflow_runtime.example_handlers:
+    operator_runtime_endpoint: http://127.0.0.1:8781/execute
+    operator_runtime_timeout_seconds: 120
+  testflight_workflow_runtime.biotic_newsletter_handlers:
     operator_runtime_endpoint: http://127.0.0.1:8781/execute
     operator_runtime_timeout_seconds: 120

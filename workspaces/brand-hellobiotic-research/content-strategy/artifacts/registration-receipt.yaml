@@ -16,7 +16,7 @@ parent_files_updated:
   - workspaces/brand-hellobiotic-research/resource_registry.json
 source_registry_hashes:
   resource_registry_sha256: f4cfab6d889ef387d3d0b355463e3d5e363af6ac66f098d5cf797e065c731741
-  source_manifest_sha256: e810d0c2ff2bc090cd09d67e12737e0ffa6cb02104994950291c648e3995595c
+  source_manifest_sha256: e1dca6f786bebbcf3cc2b8254c101b6ee58ca99a56baffb2e8062ae8b94b8da3
 operator_evaluations:
   - operator_id: configuration-runtime@1
     outcome: pass
@@ -28,8 +28,11 @@ operator_evaluations:
     outcome: pass
     detail: Child-first exact/BM25 routing, bounded fallback, source tracing, and honest no-hit outcomes are declared.
   - operator_id: evaluation-schema@1
-    outcome: partial
-    detail: Independent dimensions and hard gates are defined, but no generated issue or staging retrieval run has been evaluated.
+    outcome: pass_with_limits
+    detail: >-
+      The candidate workflow has schema-bound composition, plan, draft, and evaluation nodes, and
+      a deterministic review-package gate. A fake structured-model run passed; no live model or
+      staging retrieval evaluation has been run.
   - operator_id: boundary-conflation@1
     outcome: pass
     detail: Founder direction, audience evidence, scientific evidence, generated proposals, and publication authority remain distinct.
@@ -47,9 +50,16 @@ validation:
     outcome: pass
     mode: skill_contract
   - command: make check
-    outcome: pass
+    outcome: blocked_by_preexisting_unrelated_formatting
     mode: repository
+  - command: uv run --package testflight-workflows python scripts/validate_workflows.py
+    outcome: pass
+    mode: workflow_contract
+  - command: uv run pytest apps/workflow-runtime/tests/test_biotic_newsletter_workflow.py adapters/langgraph/tests/test_adapter.py packages/testflight-workflows/tests/test_workflows.py -q
+    outcome: pass
+    mode: workflow_and_adapter
 limitations:
   - Retrieval probes are drafted but have not been run against a staging projection.
-  - The newsletter agent is strategy-defined; no executable workflow, model route, subscriber-data bridge, or publishing connector was created.
+  - A candidate proposal-only newsletter workflow is registered. It has no subscriber-data bridge,
+    publishing connector, send action, canonical-write authority, or persistent approval interrupt.
   - Content fields and reader relations remain founder hypotheses until supported by scoped evidence or explicit preferences.

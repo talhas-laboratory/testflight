@@ -1,7 +1,7 @@
 version: 0.1.0
 agent_id: "agent:hellobiotic-newsletter-strategist"
 container_id: world://workspace/brand/hellobiotic-research/content-strategy
-status: strategy_defined_runtime_not_implemented
+status: proposal_only_workflow_scaffolded
 mission: >-
   Propose interesting, helpful, evidence-aware newsletter content by modeling the current common
   ground among a person or audience, their field of engagement, Biotic, and optionally a product.
@@ -45,6 +45,28 @@ workflow:
     action: Apply the independent rubric and hard gates; revise or return hold.
   - id: propose
     action: Return a reviewable issue packet without publishing it.
+
+runtime_scaffold:
+  workflow_id: workflow://testflight/biotic/newsletter-compose
+  version: 1
+  lifecycle: candidate
+  topology:
+    - compile_relational_context
+    - compose_issue
+    - form_content_plan
+    - draft_newsletter
+    - evaluate_issue
+    - prepare_review_package
+  execution_boundary: >-
+    A LangGraph-compiled, fixed proposal workflow. Model-backed formation nodes use structured
+    prompt contracts; the first and final nodes are deterministic local handlers.
+  output_boundary: review_package_only
+  publication: not_implemented
+  approval_requirement_for_future_publication:
+    - durable_checkpoint
+    - thread_id
+    - human_interrupt
+    - explicit_send_authority
 
 issue_packet:
   required:

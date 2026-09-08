@@ -93,6 +93,22 @@ def test_example_loads_and_compiles_parallel_safe_stages():
     assert '"id": "evidence:1"' in rendered.user
 
 
+def test_prompt_renderer_allows_nested_json_values_after_substitution():
+    workflow = load_workflow(EXAMPLE)
+    evaluate = next(step for step in workflow.steps if step.id == "evaluate_records")
+    assert evaluate.instruction is not None
+    assert evaluate.instruction.prompt is not None
+    rendered = render_prompt(
+        evaluate.instruction.prompt,
+        inputs={"question": "ignored"},
+        arguments={
+            "question": "What changed?",
+            "record": {"id": "evidence:1", "metadata": {"nested": True}},
+        },
+    )
+    assert '"nested": true' in rendered.user
+
+
 def test_compiler_groups_independent_steps_for_parallel_execution():
     payload = load_workflow(EXAMPLE).model_dump(mode="json")
     payload["steps"].append(
