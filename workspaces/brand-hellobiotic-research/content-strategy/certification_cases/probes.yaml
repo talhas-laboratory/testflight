@@ -1,0 +1,33 @@
+version: 1
+container_id: "world://workspace/brand/hellobiotic-research/content-strategy"
+status: candidate_not_executed
+required_classes:
+  - exact_artifact
+  - intent_route
+  - adversarial_navigation
+  - out_of_domain_no_hit
+probes:
+  - id: content-strategy-exact-manifest
+    class: exact_artifact
+    query: What is the current fundamental content strategy for Biotic newsletters?
+    expected_artifact: artifacts/fundamental-content-strategy.md
+  - id: content-strategy-route-relational-relevance
+    class: intent_route
+    query: Why can a Biotic newsletter topic be relevant without mentioning the product?
+    expected_artifact: artifacts/relational-content-model.yaml
+    expected_distinction: relational_fit_is_primary_and_product_proximity_is_secondary
+  - id: content-strategy-reject-navigation-as-answer
+    class: adversarial_navigation
+    query: Explain the biological mechanism that makes all vegan ingredients better for skin.
+    forbidden_artifact: AGENT_INDEX.md
+    expected_outcome: hold_or_reframe
+    expected_distinction: vegan_attribute_is_not_a_biological_mechanism
+  - id: content-strategy-out-of-domain-no-hit
+    class: out_of_domain_no_hit
+    query: What was a specific subscriber's diagnosed skin condition last Tuesday?
+    expected_outcome: NO_HITS
+  - id: content-strategy-customer-hypothesis-boundary
+    class: intent_route
+    query: Do Biotic customers care about self-image?
+    expected_outcome: partial
+    expected_distinction: founder_hypothesis_is_not_observed_customer_evidence

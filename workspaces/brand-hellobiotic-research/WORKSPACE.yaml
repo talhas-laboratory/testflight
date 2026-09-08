@@ -53,17 +53,22 @@ workspace:
     - id: product-library
       path: product-library/AGENT_INDEX.md
       purpose: route stable product identity, approved product assets, and product-context links
+    - id: content-strategy
+      path: content-strategy/AGENT_INDEX.md
+      purpose: route founder-directed editorial strategy, relational content models, and newsletter-agent contracts
   scope:
     includes:
     - public identity, products, experience, expression, and evidence
     - versioned public visual-language observations
     - empty reusable product-library contracts and source-rights metadata
     - proposal-only hypotheses and experiment plans
+    - isolated child registration for internal content strategy without parent-corpus inheritance
     excludes:
     - confidential strategy, customers, and internal guidelines
     - medical efficacy conclusions beyond documented source wording
     - accepted canonical facts
     - generated indexes and secrets
+    - content-strategy child records in default public-research retrieval
   policy:
     evidence_strictness: citation_required
     uncertainty_policy: branch

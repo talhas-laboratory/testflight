@@ -1,0 +1,102 @@
+version: 0.1.0
+model_id: world://brand/hellobiotic/content-strategy/relational-field
+container_id: world://workspace/brand/hellobiotic-research/content-strategy
+status: proposed_foundation
+source_refs:
+  - "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/founder-brief-2026-09-08.md"
+purpose: >-
+  Represent why a particular content contribution may matter to a person without reducing
+  relevance to product adjacency or a static audience segment.
+
+semantic_types:
+  person:
+    kind: entity
+    definition: A human participant whose context must not be inferred beyond available evidence.
+  self_concept:
+    kind: contextual_state
+    definition: A time-bounded way a person understands or hopes to relate to themselves.
+  field_of_engagement:
+    kind: context
+    definition: A changing domain of attention, practice, concern, learning, and identity.
+  tension_or_question:
+    kind: contextual_state
+    definition: A bounded uncertainty, conflict, desire, or practical problem within a field.
+  practice:
+    kind: activity
+    definition: Something a person does to participate in or navigate a field.
+  brand:
+    kind: entity
+    definition: A participant with a position, voice, history, and bounded legitimacy in a field.
+  product:
+    kind: entity
+    definition: An offering that can mediate a person's engagement with a field.
+  content_contribution:
+    kind: artifact
+    definition: A proposed contribution of explanation, utility, perspective, or inquiry.
+  evidence:
+    kind: evidence_record
+    definition: A traceable source or observation supporting a bounded claim or relation.
+
+relations:
+  - {id: participates_in, from: person, to: field_of_engagement, temporal: true, evidence_required: true}
+  - {id: relates_to_self_through, from: person, to: self_concept, temporal: true, evidence_required: true}
+  - {id: experiences, from: person, to: tension_or_question, temporal: true, evidence_required: true}
+  - {id: performs, from: person, to: practice, temporal: true, evidence_required: true}
+  - {id: uses, from: person, to: product, temporal: true, evidence_required: true}
+  - {id: mediates_engagement_with, from: product, to: field_of_engagement, temporal: true, evidence_required: true}
+  - {id: positions_within, from: brand, to: field_of_engagement, temporal: true, evidence_required: true}
+  - {id: addresses, from: content_contribution, to: tension_or_question, temporal: false, evidence_required: true}
+  - {id: contributes_to, from: content_contribution, to: field_of_engagement, temporal: false, evidence_required: true}
+  - {id: supported_by, from: content_contribution, to: evidence, temporal: false, evidence_required: true}
+
+composition_contract:
+  required:
+    - field_of_engagement
+    - reader_stake_or_question
+    - proposed_contribution
+    - brand_legitimacy_basis
+    - evidence_status
+  optional:
+    - self_concept
+    - practice
+    - product
+  forbidden_substitutions:
+    - purchase_history_for_person_identity
+    - segment_label_for_individual_belief
+    - vegan_attribute_for_biological_mechanism
+    - source_retrieval_for_accepted_truth
+    - product_proximity_for_reader_relevance
+  uncertain_compositions: [ask, branch, broad_non_personalized_issue, hold]
+
+relevance_dimensions:
+  scale: {minimum: 0, maximum: 4}
+  dimensions:
+    field_centrality: Does the topic belong to the active field?
+    lived_stake: Does it meet a real question, practice, tension, or choice?
+    contribution_value: Does it add usable insight, perspective, or constructive surprise?
+    brand_legitimacy: Does Biotic have an honest, bounded reason to speak here?
+    reader_independence: Is it worthwhile without a purchase or product mention?
+  candidate_threshold: 15
+  maximum_score: 20
+  note: The score supports editorial judgment and never overrides a failed gate.
+
+hard_gates:
+  - id: claim_traceability
+    rule: Factual claims resolve to sources; health and safety claims receive proportionate review.
+  - id: non_exploitative_identity
+    rule: The concept does not manufacture or exploit insecurity for conversion.
+  - id: epistemic_precision
+    rule: Hypothesis, evidence, interpretation, and accepted claim remain distinct.
+  - id: authority_boundary
+    rule: Generation does not imply permission to publish.
+
+biotic_candidate_fields:
+  - {id: "field:vegan-skincare", status: founder_hypothesis}
+  - {id: "field:hygiene-practice", status: founder_hypothesis}
+  - {id: "field:skin-ecology", status: founder_hypothesis}
+  - {id: "field:self-image-and-embodied-care", status: exploratory_branch}
+
+learning_loop:
+  inputs: [explicit_reader_preferences, editorial_review, corrections, qualitative_feedback, observed_behavior]
+  updates: [relation_strength, field_boundaries, active_questions, contribution_formats, uncertainty]
+  never_infer_without_review: [health_status, sensitive_identity, insecurity, motive]

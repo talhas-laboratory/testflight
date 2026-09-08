@@ -1,0 +1,33 @@
+version: 1
+id: "world://workspace/brand/hellobiotic-research/content-strategy"
+parent: "world://workspace/brand/hellobiotic-research"
+type: child-knowledge-container
+label: "Fundamental content strategy"
+mission: "Model the relational field between people, self, brand, product, and shared domains of engagement so Biotic can create useful, interesting, evidence-aware newsletter content"
+dataset_name: "testflight_brand_hellobiotic_research_content_strategy_staging"
+route: "content-strategy"
+status: candidate_foundation
+source_of_truth: canonical-workspace-files
+projection: rebuildable
+classification: internal_strategy
+scope:
+  includes:
+    - founder-directed content principles and editorial hypotheses
+    - relational content model proposals
+    - newsletter agent generation and evaluation contract
+    - evidence-aware Biotic content territories
+  excludes:
+    - accepted customer beliefs or individual subscriber profiles
+    - unsupported medical, safety, efficacy, or environmental claims
+    - automatic publication or external action authority
+    - public-research evidence copied without an explicit scoped bridge
+source_authority:
+  founder_brief: strategic_direction
+  relational_model: proposal_derived_from_founder_brief
+  topic_facts: external_evidence_required
+  audience_response: observed_feedback_required
+lifecycle:
+  strategy_revision: explicit_review
+  topic_queue: continuous
+  audience_learning: after_observed_response
+  projection_population: not_performed

@@ -1,0 +1,35 @@
+version: 1
+container_id: world://workspace/brand/hellobiotic-research/content-strategy
+status: candidate_foundation
+mission: >-
+  Preserve and evolve the relational theory, editorial strategy, and agent contract used to
+  propose valuable Biotic newsletter content.
+spaces:
+  founder-direction:
+    owns: [intent, strategic_theses, candidate_fields, open_questions]
+    authority: founder_authored
+  relational-model:
+    owns: [semantic_types, relations, composition_contract, relevance_dimensions]
+    authority: proposal_derived_from_founder_direction
+  editorial-strategy:
+    owns: [editorial_promise, principles, territories, issue_pattern, evolution_policy]
+    authority: current_reviewed_strategy
+  newsletter-agent:
+    owns: [mission, inputs, workflow, output_contract, claim_policy, feedback_loop]
+    authority: proposal_generation_contract
+  evaluation:
+    owns: [quality_dimensions, thresholds, hard_failures, review_outcomes]
+    authority: editorial_quality_contract
+semantic_distinctions:
+  - strategy_direction_is_not_customer_evidence
+  - audience_hypothesis_is_not_individual_identity
+  - field_of_engagement_is_not_a_static_segment
+  - vegan_attribute_is_not_a_biological_mechanism
+  - retrieval_is_not_claim_acceptance
+  - generation_is_not_publication_authority
+change_contract:
+  required_fields: [revision, date, change_source, authority, rationale, affected_artifacts]
+  change_sources: [founder_direction, audience_evidence, scientific_evidence, editorial_learning, observed_response]
+  automatic_promotion: false
+  preserve_superseded_revisions: true
+agent_outcomes: [proposal, revise, branch, ask, partial, hold, no_hit]

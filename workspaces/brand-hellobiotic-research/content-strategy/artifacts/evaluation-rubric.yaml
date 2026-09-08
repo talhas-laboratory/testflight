@@ -1,0 +1,33 @@
+version: 1
+rubric_id: "rubric:hellobiotic-newsletter-content-v1"
+container_id: world://workspace/brand/hellobiotic-research/content-strategy
+purpose: Keep structural validity, epistemic safety, semantic quality, and reader usefulness separate.
+dimensions:
+  schema:
+    checks: [issue_packet_complete, source_refs_resolve, product_role_declared]
+    pass_condition: all_checks_pass
+  invariants:
+    checks: [workspace_bound, authority_preserved, hypotheses_labeled, publication_proposal_only]
+    pass_condition: all_checks_pass
+  semantic_quality:
+    scale: [0, 1, 2, 3, 4]
+    checks: [field_fit, reader_stake, relational_coherence, non_reduction, brand_legitimacy]
+    pass_condition: no_score_below_3
+  reader_usefulness:
+    scale: [0, 1, 2, 3, 4]
+    checks: [clarity_gain, practical_or_conceptual_value, novelty, reader_independence]
+    pass_condition: mean_at_least_3
+  editorial_quality:
+    scale: [0, 1, 2, 3, 4]
+    checks: [specificity, structure, voice_fit, engagingness, proportionate_depth]
+    pass_condition: mean_at_least_3
+hard_failures:
+  - unsupported_health_or_safety_claim
+  - unmarked_customer_assumption
+  - identity_or_insecurity_exploitation
+  - product_insertion_without_reader_value
+  - fabricated_source_or_evidence
+outcomes: [pass_to_human_review, revise, branch, ask, hold]
+independence_requirement: >-
+  The evaluator must inspect the issue packet against this rubric and its source lineage rather
+  than repeat the producing agent's self-assessment.

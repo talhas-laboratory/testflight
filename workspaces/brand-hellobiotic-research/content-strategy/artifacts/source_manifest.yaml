@@ -1,0 +1,38 @@
+version: 1
+container_id: "world://workspace/brand/hellobiotic-research/content-strategy"
+sources:
+  - source_id: "source:hellobiotic-content-strategy-module-contract-v1"
+    source_url: repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/module-contract.yaml
+    authority: workspace_contract
+    epistemic_status: canonical_container_contract
+    valid_from: 2026-09-08
+  - source_id: "source:hellobiotic-founder-newsletter-brief-2026-09-08"
+    source_url: repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/founder-brief-2026-09-08.md
+    authority: founder_authored_strategic_direction
+    epistemic_status: intended_direction_and_hypothesis
+    valid_from: 2026-09-08
+    permitted_use: content_strategy_and_newsletter_agent_proposals
+  - source_id: "source:hellobiotic-fundamental-content-strategy-v0.1"
+    source_url: repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/fundamental-content-strategy.md
+    authority: derived_strategy_manifest
+    epistemic_status: current_candidate_foundation
+    derived_from: ["source:hellobiotic-founder-newsletter-brief-2026-09-08"]
+  - source_id: "source:hellobiotic-relational-content-model-v0.1"
+    source_url: repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/relational-content-model.yaml
+    authority: derived_model_proposal
+    epistemic_status: proposed
+    derived_from: ["source:hellobiotic-founder-newsletter-brief-2026-09-08"]
+  - source_id: "source:hellobiotic-newsletter-agent-charter-v0.1"
+    source_url: repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/newsletter-agent-charter.yaml
+    authority: derived_agent_contract
+    epistemic_status: strategy_defined_runtime_not_implemented
+    derived_from:
+      - "source:hellobiotic-fundamental-content-strategy-v0.1"
+      - "source:hellobiotic-relational-content-model-v0.1"
+  - source_id: "source:hellobiotic-newsletter-evaluation-rubric-v1"
+    source_url: repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/evaluation-rubric.yaml
+    authority: editorial_quality_contract
+    epistemic_status: candidate
+    derived_from:
+      - "source:hellobiotic-fundamental-content-strategy-v0.1"
+      - "source:hellobiotic-newsletter-agent-charter-v0.1"

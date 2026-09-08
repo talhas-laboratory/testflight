@@ -116,7 +116,7 @@ certification behavior. Route to the smallest relevant child before retrieving.
 | `workspaces/brand-template` | Reusable isolated Brand workspace template | `workspaces/brand-template/AGENT_INDEX.md` | `brand-lab init`; validate and certify with Brand Lab |
 | `workspaces/brand-ontology-research` | Evidence, questions, candidates, fixtures, and synthetic worlds supporting the Brand ontology | `workspaces/brand-ontology-research/AGENT_INDEX.md` | `make brand-research-workspace`; projection script is provider-specific |
 | `workspaces/brand-nike-research` | Concrete public-evidence Brand workspace with entities, relations, world views, and visual language | `workspaces/brand-nike-research/AGENT_INDEX.md` | `make nike-research-workspace`; preview with `make nike-research-projection` |
-| `workspaces/brand-hellobiotic-research` | Public-evidence Brand workspace with audience, claims, visual-language, and task views | `workspaces/brand-hellobiotic-research/AGENT_INDEX.md` | Follow its workspace/config/registry contracts and certify each child route |
+| `workspaces/brand-hellobiotic-research` | Public-evidence Brand workspace with isolated product-library and internal content-strategy child routes | `workspaces/brand-hellobiotic-research/AGENT_INDEX.md` | Follow its workspace/config/registry contracts and certify each child route |
 | `workspaces/brand-seeds` | Bounded seed inputs used to initialize Brand workspaces | Inspect the target seed and its provenance | Consume through workspace initialization; do not treat a seed as accepted evidence |
 
 ### Testflight Product child modules
@@ -257,4 +257,3 @@ Before committing any material change, run:
 ```bash
 make check
 ```
-

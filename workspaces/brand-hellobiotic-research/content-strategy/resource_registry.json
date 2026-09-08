@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "containerId": "world://workspace/brand/hellobiotic-research/content-strategy",
+  "resources": [
+    {
+      "module": "content-strategy",
+      "unit": "module-contract",
+      "task_view": "content-strategy",
+      "tool": "testflight-brand",
+      "doc_type": "module_contract",
+      "evidence_tier": "T1",
+      "experience_type": "internal_strategy",
+      "difficulty": "advanced",
+      "canonical": true,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/module-contract.yaml"
+    },
+    {
+      "module": "content-strategy",
+      "unit": "founder-newsletter-brief-2026-09-08",
+      "task_view": "founder-direction",
+      "tool": "testflight-brand",
+      "doc_type": "founder_strategy_brief",
+      "evidence_tier": "T1",
+      "experience_type": "founder_authored_direction",
+      "difficulty": "intermediate",
+      "canonical": true,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/founder-brief-2026-09-08.md"
+    },
+    {
+      "module": "content-strategy",
+      "unit": "fundamental-content-strategy-v0.1",
+      "task_view": "editorial-strategy",
+      "tool": "testflight-brand",
+      "doc_type": "evolving_strategy_manifest",
+      "evidence_tier": "T1",
+      "experience_type": "internal_strategy",
+      "difficulty": "advanced",
+      "canonical": true,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/fundamental-content-strategy.md"
+    },
+    {
+      "module": "content-strategy",
+      "unit": "relational-content-model-v0.1",
+      "task_view": "relational-model",
+      "tool": "testflight-brand",
+      "doc_type": "semantic_model_proposal",
+      "evidence_tier": "T1",
+      "experience_type": "internal_strategy",
+      "difficulty": "expert",
+      "canonical": false,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/relational-content-model.yaml"
+    },
+    {
+      "module": "content-strategy",
+      "unit": "newsletter-agent-charter-v0.1",
+      "task_view": "newsletter-agent",
+      "tool": "testflight-workflows",
+      "doc_type": "agent_charter",
+      "evidence_tier": "T1",
+      "experience_type": "strategy_defined_runtime_not_implemented",
+      "difficulty": "expert",
+      "canonical": false,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/newsletter-agent-charter.yaml"
+    },
+    {
+      "module": "content-strategy",
+      "unit": "newsletter-content-evaluation-rubric-v1",
+      "task_view": "evaluation",
+      "tool": "testflight-brand",
+      "doc_type": "evaluation_rubric",
+      "evidence_tier": "T1",
+      "experience_type": "internal_strategy",
+      "difficulty": "advanced",
+      "canonical": true,
+      "last_verified_at": "2026-09-08",
+      "source_url": "repo://workspaces/brand-hellobiotic-research/content-strategy/artifacts/evaluation-rubric.yaml"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+version: 1
+receipt_id: "receipt:hellobiotic-content-strategy-scaffold:2026-09-08"
+container_id: world://workspace/brand/hellobiotic-research/content-strategy
+parent_workspace_id: world://workspace/brand/hellobiotic-research
+operation: scaffold_populate_and_parent_registration
+status: pass_with_limits
+population_status: canonical_files_populated_projection_not_built
+projection_changed: false
+route: content-strategy
+staging_dataset: testflight_brand_hellobiotic_research_content_strategy_staging
+canonical_child_path: workspaces/brand-hellobiotic-research/content-strategy
+parent_files_updated:
+  - AGENT_INDEX.md
+  - workspaces/brand-hellobiotic-research/AGENT_INDEX.md
+  - workspaces/brand-hellobiotic-research/WORKSPACE.yaml
+  - workspaces/brand-hellobiotic-research/resource_registry.json
+source_registry_hashes:
+  resource_registry_sha256: f4cfab6d889ef387d3d0b355463e3d5e363af6ac66f098d5cf797e065c731741
+  source_manifest_sha256: e810d0c2ff2bc090cd09d67e12737e0ffa6cb02104994950291c648e3995595c
+operator_evaluations:
+  - operator_id: configuration-runtime@1
+    outcome: pass
+    detail: Child ID, parent ID, route, classification, and isolated staging dataset are explicit; no runtime was invoked.
+  - operator_id: workspace-isolation@1
+    outcome: pass
+    detail: Internal strategy is isolated from default public-research retrieval and no external store was mutated.
+  - operator_id: retrieval-reasoning-conflation@1
+    outcome: pass
+    detail: Child-first exact/BM25 routing, bounded fallback, source tracing, and honest no-hit outcomes are declared.
+  - operator_id: evaluation-schema@1
+    outcome: partial
+    detail: Independent dimensions and hard gates are defined, but no generated issue or staging retrieval run has been evaluated.
+  - operator_id: boundary-conflation@1
+    outcome: pass
+    detail: Founder direction, audience evidence, scientific evidence, generated proposals, and publication authority remain distinct.
+  - operator_id: ontology-conflation@1
+    outcome: pass
+    detail: Person, contextual self-concept, field, tension, practice, brand, product, content artifact, and evidence are typed separately.
+validation:
+  - command: python3 .agents/skills/child-container-creator/scripts/validate_child_container.py workspaces/brand-hellobiotic-research/content-strategy
+    outcome: pass
+    mode: structure
+  - command: uv run python scripts/validate_concrete_brand_workspace.py --workspace workspaces/brand-hellobiotic-research
+    outcome: pass
+    mode: parent_workspace
+  - command: uv run pytest tests/test_child_container_creator_skill.py -q
+    outcome: pass
+    mode: skill_contract
+  - command: make check
+    outcome: pass
+    mode: repository
+limitations:
+  - Retrieval probes are drafted but have not been run against a staging projection.
+  - The newsletter agent is strategy-defined; no executable workflow, model route, subscriber-data bridge, or publishing connector was created.
+  - Content fields and reader relations remain founder hypotheses until supported by scoped evidence or explicit preferences.
