@@ -10,7 +10,7 @@ from scripts.validate_reasoning_operators import validate_catalog  # noqa: E402
 
 
 def test_reasoning_operator_catalog_is_valid() -> None:
-    assert validate_catalog(REPO_ROOT) == 24
+    assert validate_catalog(REPO_ROOT) == 28
 
 
 def test_every_operator_has_a_procedure_and_evaluator() -> None:

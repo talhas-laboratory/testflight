@@ -1,0 +1,29 @@
+operator:
+  id: world://operator/concept-lab/theory-synthesis
+  version: 1
+  kind: transformational
+  category: theory_synthesis
+  purpose: Form scoped definitions, relations, and competing TheoryBranches from anchored fragments without hiding disagreement.
+  accepts: [ConceptFragment refs, existing definitions and branches, synthesis configuration]
+  requires_context: [source_refs, fragment_refs, context_refs, branch policy, derivation identity, requested scope]
+  preconditions: [input fragments resolve to source anchors, scope is explicit, alternatives are retained]
+  parameters: {abstraction_level: world, depth: working, context_lens: conceptual, output_mode: machine_readable, evidence_strictness: grounded, uncertainty_policy: branch, proof_demand: conceptual}
+  procedure:
+    - {step: inventory, action: Map fragments by meaning, authority, scope, and disagreement.}
+    - {step: define, action: Propose scoped ConceptDefinitions and directional ConceptRelations with relation posture.}
+    - {step: branch, action: Compose coherent TheoryBranches and preserve competing branches, assumptions, and questions.}
+    - {step: evaluate, action: Return coverage, conflicts, omissions, and a TransformationRun without selecting canonical truth.}
+  returns:
+    - {field: theory_branches, semantics: coherent but proposal-only conceptual models, authority: proposal_only}
+    - {field: definitions_relations, semantics: scoped interpretive records with lineage, authority: proposal_only}
+    - {field: transformation_run, semantics: receipt with evaluator results and omissions, authority: runtime_audit}
+  invariants: [Definitions retain fragment and source lineage, relations distinguish observation from hypothesis, competing branches remain inspectable, theory never implies accepted Product state]
+  forbidden_shortcuts: [average away disagreement, infer universal ontology from a proof case, convert sequence into causality, promote theory to customer or scientific fact]
+  hold_when: [fragments lack source lineage, conflict changes the requested outcome without a branch, scope exceeds available authority]
+  failure_modes: [unsupported_generalization, relation_conflation, branch_collapse, theory_acceptance_leak]
+  evaluators:
+    - {id: synthesis-schema, check: Definitions relations branches and receipt meet their declared contract fields, pass_condition: all required references resolve.}
+    - {id: synthesis-invariants, check: Branch, scope, authority, and uncertainty remain distinct, pass_condition: no hidden selection or acceptance occurs.}
+    - {id: synthesis-semantics, check: Each thesis is supported by its constituent records and counterexamples are visible, pass_condition: support and limits are explicit.}
+    - {id: synthesis-usefulness, check: Result gives a bounded theory or typed non-success outcome, pass_condition: a later formation step can identify its next input.}
+  evidence: {mindscape_operator_refs: [O-03, O-05, O-06], source_basis: [reasoning/README.md, domains/concept-lab/contracts.yaml], composed_guardrails: [ontology-conflation, evidence-truth-conflation, sequence-causality-conflation]}

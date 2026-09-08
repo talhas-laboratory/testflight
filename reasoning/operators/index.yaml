@@ -143,6 +143,22 @@ operators:
     category: creative_output_evaluation
     kind: transformational
     mindscape_operator_refs: [O-06, O-09, O-12]
+  - id: world://operator/concept-lab/concept-extraction
+    file: concept-extraction.yaml
+    category: concept_extraction
+    kind: transformational
+  - id: world://operator/concept-lab/theory-synthesis
+    file: theory-synthesis.yaml
+    category: theory_synthesis
+    kind: transformational
+  - id: world://operator/concept-lab/formation-projection
+    file: formation-projection.yaml
+    category: formation_projection
+    kind: transformational
+  - id: world://operator/concept-lab/formation-trace
+    file: formation-trace.yaml
+    category: formation_trace
+    kind: transformational
 
 routes:
   extraction:
@@ -166,3 +182,12 @@ routes:
     - retrieval_reasoning_conflation
     - local_global_conflation
     - evidence_truth_conflation
+  concept_lab:
+    - boundary_conflation
+    - evidence_truth_conflation
+    - ontology_conflation
+    - concept_extraction
+    - theory_synthesis
+    - formation_projection
+    - formation_trace
+    - workspace_isolation

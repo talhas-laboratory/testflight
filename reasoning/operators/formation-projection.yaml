@@ -1,0 +1,29 @@
+operator:
+  id: world://operator/concept-lab/formation-projection
+  version: 1
+  kind: transformational
+  category: formation_projection
+  purpose: Translate one selected TheoryBranch into a reviewable ontology, traversal, agent-composition, workflow, schema, or technical-language proposal.
+  accepts: [selected TheoryBranch ref, formation target, target workspace and module, projection configuration]
+  requires_context: [theory_branch_ref, source_refs, derivation_refs, target_workspace_id, target_module_id, authority status, alternatives, evaluator criteria]
+  preconditions: [one selected branch resolves, target workspace and module resolve, target is within authorized proposal scope, canonical_write is false]
+  parameters: {abstraction_level: system, depth: working, context_lens: technical, output_mode: machine_readable, evidence_strictness: grounded, uncertainty_policy: ask, proof_demand: operational}
+  procedure:
+    - {step: resolve, action: Resolve the selected branch, scope, target owner, and allowed formation type.}
+    - {step: project, action: Translate theory assumptions and relations into a bounded technical proposal and named alternatives.}
+    - {step: constrain, action: Preserve source lineage, uncertainty, non-goals, and target-owner authority.}
+    - {step: packet, action: Return a FormationPacket with canonical_write false and a TransformationRun; do not write the target workspace.}
+  returns:
+    - {field: formation_packet, semantics: target-specific reviewable technical proposal, authority: proposal_only}
+    - {field: alternatives_and_omissions, semantics: unselected approaches and known gaps, authority: epistemic_uncertainty}
+    - {field: transformation_run, semantics: replayable formation receipt, authority: runtime_audit}
+  invariants: [Exactly one selected TheoryBranch is named, target workspace and module are explicit, source branch scope and uncertainty survive translation, canonical_write is false]
+  forbidden_shortcuts: [choose a branch silently, invent a target module, mutate target records, treat evaluator pass as promotion, conceal alternatives]
+  hold_when: [source lineage is missing, target owner is unresolved, bridge authority is absent, requested artifact exceeds proposal authority]
+  failure_modes: [target_ambiguity, branch_loss, proposal_promotion_leak, unsupported_projection]
+  evaluators:
+    - {id: formation-schema, check: FormationPacket includes target ids alternatives evaluations authority status and canonical_write false, pass_condition: packet contract is complete.}
+    - {id: formation-invariants, check: Selected branch scope uncertainty and target boundary are preserved, pass_condition: no canonical mutation or authority leak occurs.}
+    - {id: formation-semantics, check: Technical structures map to explicit theory assumptions and relations, pass_condition: each material element has lineage or an omission.}
+    - {id: formation-usefulness, check: A target owner can review the proposed change without reconstructing hidden context, pass_condition: rationale alternatives and acceptance boundary are explicit.}
+  evidence: {mindscape_operator_refs: [O-04, O-05, O-12], source_basis: [reasoning/README.md, domains/concept-lab/contracts.yaml], composed_guardrails: [boundary-conflation, workspace-isolation, validation-persistence-conflation, evaluation-schema]}

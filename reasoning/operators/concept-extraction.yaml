@@ -1,0 +1,29 @@
+operator:
+  id: world://operator/concept-lab/concept-extraction
+  version: 1
+  kind: transformational
+  category: concept_extraction
+  purpose: Extract source-anchored candidate concepts, questions, tensions, and ambiguities without promoting interpretation to fact.
+  accepts: [bounded source records, requested scope, extraction configuration]
+  requires_context: [source_refs, context_refs, authority posture, branch policy, derivation identity]
+  preconditions: [source references resolve or are reported missing, scope is bounded, source authority is known]
+  parameters: {abstraction_level: module, depth: working, context_lens: conceptual, output_mode: machine_readable, evidence_strictness: grounded, uncertainty_policy: branch, proof_demand: conceptual}
+  procedure:
+    - {step: inventory, action: Inventory source spans, authority, scope, and missing material.}
+    - {step: distinguish, action: Extract candidate fragments while labeling observation, interpretation, question, and tension separately.}
+    - {step: branch, action: Emit alternatives when more than one interpretation is defensible.}
+    - {step: receipt, action: Emit ConceptFragments, omissions, and a TransformationRun; do not define or accept a theory.}
+  returns:
+    - {field: concept_fragments, semantics: source-anchored candidate meanings, authority: proposal_only}
+    - {field: questions_tensions_ambiguities, semantics: unresolved material that constrains later formation, authority: epistemic_uncertainty}
+    - {field: transformation_run, semantics: append-only transformation receipt, authority: runtime_audit}
+  invariants: [Every fragment has source_refs and derivation_refs, source material and interpretation remain distinct, defensible alternatives retain branch identity, missing anchors return hold rather than invented content]
+  forbidden_shortcuts: [infer customer facts from founder direction, convert a term into a biological mechanism, merge conflicting interpretations, treat source accessibility as truth]
+  hold_when: [source anchors are missing, scope is ambiguous, source authority is insufficient for the requested claim]
+  failure_modes: [source_gap, interpretation_truth_leak, branch_flattening, scope_expansion]
+  evaluators:
+    - {id: extraction-schema, check: Required ConceptFragment and TransformationRun fields are present, pass_condition: schema references are complete.}
+    - {id: extraction-invariants, check: Every output preserves source, scope, branch, and uncertainty distinctions, pass_condition: no conflation is found.}
+    - {id: extraction-semantics, check: Candidate meanings are supported by their cited source spans, pass_condition: unsupported outputs are omitted or marked uncertain.}
+    - {id: extraction-usefulness, check: Output exposes actionable distinctions or explicit no-hit/hold reasons, pass_condition: a later synthesis can be bounded.}
+  evidence: {mindscape_operator_refs: [O-06, O-08], source_basis: [reasoning/README.md, domains/concept-lab/contracts.yaml], composed_guardrails: [mention-entity-conflation, evidence-truth-conflation, boundary-conflation]}

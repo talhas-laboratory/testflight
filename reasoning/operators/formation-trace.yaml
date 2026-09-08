@@ -1,0 +1,29 @@
+operator:
+  id: world://operator/concept-lab/formation-trace
+  version: 1
+  kind: transformational
+  category: formation_trace
+  purpose: Trace a technical proposal through formal, theoretical, interpretive, and source layers while reporting every unresolved edge.
+  accepts: [technical artifact or FormationPacket ref, trace configuration]
+  requires_context: [technical_artifact_ref, derivation_refs, source_refs, branch refs, context_refs, resolution scope]
+  preconditions: [artifact identity is stable, accessible references are bounded, trace does not imply traversal permission]
+  parameters: {abstraction_level: system, depth: exhaustive, context_lens: technical, output_mode: machine_readable, evidence_strictness: citation_required, uncertainty_policy: hold, proof_demand: end_to_end}
+  procedure:
+    - {step: resolve, action: Resolve the technical artifact and direct FormationPacket or report no_hit.}
+    - {step: walk, action: Follow declared derivation references through technical projection formal proposal theory interpretation and source layers.}
+    - {step: qualify, action: Record branch context authority and every missing or inaccessible edge.}
+    - {step: return, action: Return ReverseTrace and TransformationRun; never reconstruct a theory from plausibility.}
+  returns:
+    - {field: reverse_trace, semantics: continuity report across required semantic planes, authority: derivation_audit}
+    - {field: missing_links, semantics: unresolved required edges with plane expected ref and reason, authority: epistemic_uncertainty}
+    - {field: transformation_run, semantics: trace receipt and evaluator results, authority: runtime_audit}
+  invariants: [Trace includes technical formal theoretical interpretive and source layers, unresolved edges remain explicit, branch identity is retained, no trace grants cross-workspace traversal]
+  forbidden_shortcuts: [invent a missing source, infer a theory from an artifact alone, equate reachable data with authorized evidence, hide broken derivation edges]
+  hold_when: [required artifact access is unauthorized, lineage is materially missing, requested trace crosses an ungranted workspace boundary]
+  failure_modes: [missing_derivation_edge, reverse_invention, branch_identity_loss, traversal_authority_leak]
+  evaluators:
+    - {id: trace-schema, check: ReverseTrace has every plane plus explicit missing_links, pass_condition: no required field is absent.}
+    - {id: trace-invariants, check: Trace preserves lineage branch and boundary distinctions, pass_condition: unsupported paths are not created.}
+    - {id: trace-semantics, check: Each resolved edge is a declared reference rather than semantic resemblance, pass_condition: every claim is reference-backed or missing.}
+    - {id: trace-usefulness, check: Result identifies the precise repair or review needed for incomplete continuity, pass_condition: missing links are actionable.}
+  evidence: {mindscape_operator_refs: [O-06, O-08, O-12], source_basis: [reasoning/README.md, domains/concept-lab/contracts.yaml], composed_guardrails: [identity-provenance-conflation, retrieval-reasoning-conflation, workspace-isolation]}

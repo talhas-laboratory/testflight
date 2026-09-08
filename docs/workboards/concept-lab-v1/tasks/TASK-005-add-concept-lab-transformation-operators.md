@@ -1,8 +1,8 @@
 # TASK-005-add-concept-lab-transformation-operators: Add Concept Lab transformation operators
 
-Status: backlog
-Owner: unassigned
-Current gate: intake
+Status: done
+Owner: codex
+Current gate: implementation
 
 ## Problem
 
@@ -70,12 +70,16 @@ Verification commands:
 
 ## Verification Evidence
 
-- Not run yet.
+- `uv run python scripts/validate_reasoning_operators.py` passed: 28 operators validate against the portable contract.
+- `uv run pytest tests/test_reasoning_operators.py -q` passed: 4 tests.
+- `git diff --check` passed.
 
 ## Updates
 
 - Created: `2026-09-08T09:53:07.958983+00:00`
+- Claimed: `2026-09-08T10:44:00Z` by codex.
+- Completed: `2026-09-08T10:50:00Z` by codex.
 
 ## Handoff Notes
 
-- On completion, make TASK-006 ready if TASK-003 is also done.
+- TASK-006 is ready because TASK-003 is done.

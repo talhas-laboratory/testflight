@@ -62,6 +62,10 @@ EXPECTED_CATEGORIES = {
     "creative_field_projection",
     "creative_connector_packet",
     "creative_output_evaluation",
+    "concept_extraction",
+    "theory_synthesis",
+    "formation_projection",
+    "formation_trace",
 }
 
 
