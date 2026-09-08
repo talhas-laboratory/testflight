@@ -3,10 +3,10 @@
 | id | status | owner | title | gate |
 |---|---|---|---|---|
 | `TASK-001-record-the-concept-lab-v1-decision` | done | codex | Record the Concept Lab v1 decision | done |
-| `TASK-002-define-concept-lab-core-contracts` | ready | unassigned | Define Concept Lab core contracts | implementation |
-| `TASK-003-create-the-concept-lab-workspace-and-first-domai` | backlog | unassigned | Create the Concept Lab workspace and first domain child | intake |
+| `TASK-002-define-concept-lab-core-contracts` | done | codex | Define Concept Lab core contracts | done |
+| `TASK-003-create-the-concept-lab-workspace-and-first-domai` | ready | unassigned | Create the Concept Lab workspace and first domain child | implementation |
 | `TASK-004-add-the-controlled-testflight-product-bridge` | backlog | unassigned | Add the controlled Testflight Product bridge | intake |
-| `TASK-005-add-concept-lab-transformation-operators` | backlog | unassigned | Add Concept Lab transformation operators | intake |
+| `TASK-005-add-concept-lab-transformation-operators` | ready | unassigned | Add Concept Lab transformation operators | implementation |
 | `TASK-006-create-the-concept-lab-codex-skill` | backlog | unassigned | Create the concept-lab Codex skill | intake |
 | `TASK-007-add-validation-and-semantic-continuity-fixtures` | backlog | unassigned | Add validation and semantic continuity fixtures | intake |
 | `TASK-008-rehearse-biotic-concept-to-agent-formation` | backlog | unassigned | Rehearse Biotic concept-to-agent formation | intake |

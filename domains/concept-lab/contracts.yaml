@@ -1,0 +1,86 @@
+contract_version: 0.1.0-candidate
+common_rules:
+  record_identity: Every record has an immutable id and revision or version reference.
+  source_lineage: Every interpretive, theoretical, formal, and technical record names source_refs and derivation_refs; empty source lineage is a hold, not an inferred fact.
+  branch_preservation: Multiple defensible interpretations or theories use distinct branch_refs and status branch.
+  authority_posture: Concept Lab emits proposals only; acceptance and canonical writes belong to the target owner.
+  mutation_posture: Inputs are immutable; a transformation emits a new record and TransformationRun.
+  continuity: Reverse traces report missing links explicitly and never invent them.
+  boundary: A packet reference is not cross-workspace traversal permission.
+reused_primitive_refs:
+  evidence: repo://packages/testflight-semantic
+  context: repo://packages/testflight-semantic
+  world_branch: repo://packages/testflight-semantic
+  derivation: repo://packages/testflight-semantic
+  authority_grant: repo://packages/testflight-semantic
+  content_unit: repo://packages/testflight-content
+  knowledge_container: repo://packages/testflight-semantic/src/testflight_semantic/federation.py
+  federation_bridge: repo://packages/testflight-semantic/src/testflight_semantic/federation.py
+record_types:
+  ConceptFragment:
+    purpose: Capture one source-anchored candidate meaning before it is formalized.
+    owner: concept-lab-domain
+    required_fields: [id, revision, status, text, fragment_kind, source_refs, context_refs, derivation_refs, uncertainty]
+    optional_fields: [content_unit_refs, concept_refs, alternatives, notes]
+    lifecycle: [draft, ready, partial, branch, hold, rejected, superseded]
+    source_derivation_rule: source_refs point to immutable material; derivation_refs record extraction without asserting truth.
+  ConceptDefinition:
+    purpose: State one scoped, revisioned concept meaning and its alternatives.
+    owner: concept-lab-domain
+    required_fields: [id, revision, status, label, definition, scope, fragment_refs, source_refs, derivation_refs, uncertainty]
+    optional_fields: [exclusions, alternative_definition_refs, context_refs, branch_refs]
+    lifecycle: [draft, ready, partial, branch, ask, hold, rejected, superseded]
+    source_derivation_rule: fragment_refs and source_refs must resolve; alternatives cannot be silently flattened.
+  ConceptRelation:
+    purpose: Express one directional, typed relationship without converting association into causality.
+    owner: concept-lab-domain
+    required_fields: [id, revision, status, subject_concept_id, predicate, object_concept_id, scope, relation_posture, source_refs, derivation_refs, uncertainty]
+    optional_fields: [context_refs, branch_refs, counterexamples, alternative_relation_refs]
+    lifecycle: [draft, ready, partial, branch, ask, hold, rejected, superseded]
+    source_derivation_rule: predicate and relation_posture distinguish observation, interpretation, hypothesis, and proposed constraint.
+  TheoryBranch:
+    purpose: Preserve one coherent but not necessarily accepted conceptual model.
+    owner: concept-lab-domain
+    required_fields: [id, revision, status, thesis, scope, definition_refs, relation_refs, invariant_refs, source_refs, derivation_refs, uncertainty]
+    optional_fields: [parent_branch_ref, competing_branch_refs, assumptions, open_questions, context_refs]
+    lifecycle: [draft, ready, partial, branch, ask, hold, rejected, superseded]
+    source_derivation_rule: all constituent definitions and relations retain their own lineage; a branch never upgrades founder theory to external fact.
+  TransformationRun:
+    purpose: Receipt for a bounded transformation and its evaluation outcomes.
+    owner: concept-lab-domain
+    required_fields: [id, operator_id, operator_version, status, input_refs, configuration, output_refs, omission_refs, evaluator_results, derivation_refs]
+    optional_fields: [branch_refs, context_refs, started_at, completed_at, notes]
+    lifecycle: [ready, partial, branch, ask, hold, no_hit, rejected]
+    source_derivation_rule: input_refs and output_refs are immutable references; evaluator results do not confer authority or canonical state.
+  InquiryPacket:
+    purpose: Carry a bounded question from a target workspace to the Lab.
+    owner: source_workspace
+    required_fields: [id, source_workspace_id, source_module_id, question, product_locus, constraints, allowed_source_refs, requested_abstraction, authority_status, context_refs]
+    optional_fields: [target_domain_id, branch_refs, evaluation_criteria, authority_grant_ref]
+    lifecycle: [draft, ready, partial, ask, hold, no_hit, closed]
+    source_derivation_rule: allowed_source_refs are the complete import scope; packet creation neither grants traversal nor changes Lab theory.
+  FormationPacket:
+    purpose: Carry a reviewable technical projection from the Lab to one named target module.
+    owner: concept-lab-domain
+    required_fields: [id, status, source_workspace_id, target_workspace_id, target_module_id, theory_branch_ref, proposed_change, technical_projection, source_refs, derivation_refs, alternatives, evaluator_results, authority_status, canonical_write]
+    optional_fields: [inquiry_packet_ref, context_refs, assumptions, uncertainty, requested_review, authority_grant_ref]
+    required_values:
+      canonical_write: false
+    lifecycle: [draft, ready, partial, branch, ask, hold, rejected, superseded, promoted]
+    source_derivation_rule: target module must resolve before ready; promoted records must name the separate human authorization and target-owned acceptance record.
+  ReverseTrace:
+    purpose: Report whether a proposed technical artifact resolves through every required semantic plane.
+    owner: concept-lab-domain
+    required_fields: [id, status, technical_artifact_ref, technical_projection_refs, formal_proposal_refs, theory_branch_refs, interpretation_refs, source_refs, transformation_run_refs, missing_links, derivation_refs]
+    optional_fields: [context_refs, branch_refs, evaluator_results, notes]
+    lifecycle: [ready, partial, branch, hold, no_hit, superseded]
+    source_derivation_rule: each listed reference must be resolvable or appear in missing_links with plane, expected_ref, and reason.
+forward_continuity_invariants:
+  - ConceptFragment source_refs resolve before a ConceptDefinition is ready.
+  - A TheoryBranch names definition_refs and relation_refs and preserves competing branches.
+  - A FormationPacket names one selected TheoryBranch, its alternatives, evaluations, target workspace, and target module.
+  - No FormationPacket has canonical_write true.
+reverse_continuity_invariants:
+  - A ReverseTrace includes technical, formal, theoretical, interpretive, and source layers.
+  - A missing layer is represented in missing_links rather than fabricated.
+  - TransformationRun references connect each traceable transition.

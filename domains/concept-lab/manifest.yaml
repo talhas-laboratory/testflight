@@ -1,0 +1,48 @@
+id: world://domain/concept-lab
+version: 0.1.0-candidate
+status: candidate
+purpose: >-
+  Define provider-neutral Concept Lab records for source-anchored conceptual formation and
+  reverse tracing without granting product mutation, cross-workspace traversal, or execution.
+authority:
+  owner: concept-lab-domain
+  controlling_decision: repo://docs/decisions/0007-concept-lab-formation-workspace.md
+  canonical_write: false
+scope:
+  includes:
+    - concept fragments, definitions, and relations
+    - theory branches and transformation receipts
+    - bounded inquiry and formation packets
+    - reverse continuity traces
+  excludes:
+    - evidence, context, branch, derivation, authority, content, container, and bridge primitive redefinition
+    - persistence, retrieval, model-provider, UI, workflow, or runtime implementation
+    - automatic promotion into a target workspace
+semantic_route:
+  - source_material
+  - interpretation
+  - theoretical_branch
+  - formal_proposal
+  - technical_projection
+  - accepted_product_state
+  - runtime_execution
+artifacts:
+  vocabulary: vocabulary.yaml
+  contracts: contracts.yaml
+reused_primitives:
+  - id: Evidence
+    owner: repo://packages/testflight-semantic
+  - id: Context
+    owner: repo://packages/testflight-semantic
+  - id: WorldBranch
+    owner: repo://packages/testflight-semantic
+  - id: Derivation
+    owner: repo://packages/testflight-semantic
+  - id: AuthorityGrant
+    owner: repo://packages/testflight-semantic
+  - id: ContentUnit
+    owner: repo://packages/testflight-content
+  - id: KnowledgeContainer
+    owner: repo://packages/testflight-semantic/src/testflight_semantic/federation.py
+  - id: FederationBridge
+    owner: repo://packages/testflight-semantic/src/testflight_semantic/federation.py

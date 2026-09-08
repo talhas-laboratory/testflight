@@ -1,0 +1,51 @@
+vocabulary:
+  - id: concept_fragment
+    label: ConceptFragment
+    meaning: A source-anchored candidate distinction, tension, question, or claim before definition.
+    plane: interpretation
+  - id: concept_definition
+    label: ConceptDefinition
+    meaning: A revisioned, scoped definition that preserves alternatives and source lineage.
+    plane: interpretation
+  - id: concept_relation
+    label: ConceptRelation
+    meaning: A directional, typed relation between concepts with explicit scope and posture.
+    plane: interpretation
+  - id: theory_branch
+    label: TheoryBranch
+    meaning: An internally coherent, branchable model composed from definitions and relations.
+    plane: theoretical_branch
+  - id: transformation_run
+    label: TransformationRun
+    meaning: An append-only receipt for one operator-mediated input-to-output transformation.
+    plane: derivation
+  - id: inquiry_packet
+    label: InquiryPacket
+    meaning: A bounded Product-to-Lab question with allowed sources and no traversal grant.
+    plane: formal_proposal
+  - id: formation_packet
+    label: FormationPacket
+    meaning: A Lab-to-target proposal for review; it is never a canonical target-workspace write.
+    plane: technical_projection
+  - id: reverse_trace
+    label: ReverseTrace
+    meaning: A continuity report from a technical proposal to formal, theory, interpretation, and source layers.
+    plane: derivation
+controlled_terms:
+  proposal: A reviewable candidate that has not been accepted or executed.
+  source_anchor: A stable reference to the material that supports an interpretation or records its absence.
+  alternative: A competing defensible definition, relation, branch, or technical approach.
+  missing_link: A required continuity edge that cannot be resolved; it is reported, never fabricated.
+  canonical_write: A mutation of an owning workspace's accepted record; always false for Concept Lab packets.
+  promotion: A separately authorized human decision to adopt a proposal in its target owner's records.
+  traversal: Retrieval across a workspace boundary; registration does not grant it.
+statuses:
+  draft: Work in progress; not ready for handoff.
+  ready: Structurally complete for the stated next review or transformation.
+  partial: Useful but incomplete; omissions are named.
+  branch: More than one defensible path exists; alternatives remain active.
+  ask: A bounded authority, target, or scope question must be answered.
+  hold: A required source, boundary, or authority condition is absent.
+  no_hit: A bounded retrieval or resolution request found no matching record.
+  rejected: Explicitly not selected, while its lineage remains inspectable.
+  superseded: Replaced by a named revision without deleting history.

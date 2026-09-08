@@ -1,8 +1,8 @@
 # TASK-002-define-concept-lab-core-contracts: Define Concept Lab core contracts
 
-Status: backlog
-Owner: unassigned
-Current gate: intake
+Status: done
+Owner: codex
+Current gate: implementation
 
 ## Problem
 
@@ -72,12 +72,16 @@ Verification commands:
 
 ## Verification Evidence
 
-- Not run yet.
+- `uv run python -c 'import pathlib,yaml; [yaml.safe_load(p.read_text()) for p in pathlib.Path("domains/concept-lab").glob("*.yaml")]'` passed.
+- `uv run python scripts/validate_reasoning_operators.py` passed: 24 existing operators remain valid.
+- `git diff --check` passed.
 
 ## Updates
 
 - Created: `2026-09-08T09:53:07.958292+00:00`
+- Claimed: `2026-09-08T10:22:00Z` by codex.
+- Completed: `2026-09-08T10:28:00Z` by codex.
 
 ## Handoff Notes
 
-- On completion, make TASK-003 and TASK-005 ready. TASK-004 remains blocked on TASK-003.
+- TASK-003 and TASK-005 are ready. TASK-004 remains backlog until TASK-003 is done.
