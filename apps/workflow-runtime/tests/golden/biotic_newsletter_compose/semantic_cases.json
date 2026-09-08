@@ -1,0 +1,23 @@
+{
+  "node_name": "biotic_newsletter_compose",
+  "pack_type": "semantic_adherence",
+  "cases": [
+    {
+      "case_id": "biotic_newsletter_compose_semantic_adherence_01",
+      "node_name": "biotic_newsletter_compose",
+      "node_type": "planner",
+      "intent": "A skin-ecology issue visibly preserves the selected contribution and reader independence through the review package.",
+      "runtime_setup": {
+        "llm_mode": "fake_structured_model"
+      },
+      "input_state": {"field": "skin ecology", "product_role": "none"},
+      "semantic_requirements": {
+        "target_output_paths": ["review_package.relational_composition", "review_package.content_plan", "review_package.draft"],
+        "must_express_any": {"field": ["skin ecology", "skin ecosystem"], "reader_independence": ["none", "reflection", "question"]},
+        "must_not_express": ["publication authorization", "product benefit", "medical advice"],
+        "alignment_paths": {"product_role": "review_package.content_plan.product_role"}
+      },
+      "notes": "The integration test checks structured continuity; a future live-model evaluation set must inspect visible prose semantically."
+    }
+  ]
+}

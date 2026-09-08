@@ -1,0 +1,20 @@
+{
+  "required_dimensions": [
+    "field_fit",
+    "reader_stake",
+    "reader_independence",
+    "claim_traceability",
+    "relational_coherence"
+  ],
+  "minimum_thresholds": {
+    "field_fit": 3,
+    "reader_stake": 3,
+    "reader_independence": 3,
+    "claim_traceability": "pass",
+    "relational_coherence": 3
+  },
+  "critical_dimensions": [
+    "claim_traceability",
+    "reader_independence"
+  ]
+}

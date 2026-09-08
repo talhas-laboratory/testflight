@@ -2,7 +2,7 @@ version: 1
 root: workflows
 definitions:
   - id: workflow://testflight/biotic/newsletter-compose
-    version: 1
+    version: 2
     path: biotic/newsletter-compose.yaml
     status: candidate
   - id: workflow://testflight/biotic/social-carousel-create

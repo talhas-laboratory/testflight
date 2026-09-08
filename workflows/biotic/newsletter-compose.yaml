@@ -1,6 +1,6 @@
 schema_version: 1
 id: workflow://testflight/biotic/newsletter-compose
-version: 1
+version: 2
 lifecycle: candidate
 name: Biotic relational newsletter composition
 description: >-
@@ -51,15 +51,18 @@ steps:
   - id: compile_relational_context
     kind: retrieve
     handler: biotic.compile_newsletter_context
-    description: Compile the bounded strategy, explicit audience context, and traceable evidence packet.
+    description: >-
+      Compile a bounded relational packet with a declared personalization mode, traceable evidence,
+      and invariants that all later nodes must preserve.
     instruction:
       id: instruction://testflight/biotic/newsletter/compile-relational-context
       version: 1
       objective: Preserve the relational field without turning strategic hypotheses into customer or scientific facts.
       rules:
         - Treat founder strategy as an editorial constraint, never as evidence about readers.
-        - Require an explicit audience source status and source-bound factual claims.
-        - Preserve uncertainty, evidence limitations, and the lack of publication authority.
+        - Require audience source status plus source refs; unknown status permits broad issues only.
+        - Require an evidence_id, source ref, evidence status, and limitations for each factual input.
+        - Preserve uncertainty, evidence limitations, product authorization limits, and the lack of publication authority.
     arguments:
       issue_objective: $inputs.issue_objective
       audience_context: $inputs.audience_context
@@ -77,15 +80,20 @@ steps:
   - id: compose_issue
     kind: transform
     handler: biotic.compose_newsletter_issue
-    description: Select one bounded issue composition and retain unresolved relational assumptions.
+    description: >-
+      Explore plausible relational compositions, select one editorial direction, and record the
+      assumptions that make it suitable for this issue.
     instruction:
       id: instruction://testflight/biotic/newsletter/compose-issue
       version: 1
       objective: Select a field-first reader contribution that can earn Biotic's participation.
       rules:
-        - Choose one field, reader question, contribution, moment, and bounded legitimacy basis.
-        - A product role is optional; product adjacency cannot establish relevance.
+        - Consider two or three materially distinct compositions before selecting one.
+        - Score each candidate against field centrality, lived stake, contribution value, brand legitimacy, and reader independence.
+        - Choose one field, reader question, contribution, moment, mode, and bounded legitimacy basis.
+        - A product role is optional; product adjacency cannot establish relevance or outrank reader value.
         - Never infer an individual’s identity, health, insecurity, or motive.
+        - If the field, stake, or legitimacy is unsupported, choose branch, ask, broad_issue, or hold rather than inventing certainty.
         - Use only the supplied context packet and return proposal-only JSON.
       prompt:
         id: prompt://testflight/biotic/newsletter/compose-issue
@@ -95,7 +103,10 @@ steps:
         modality: text/plain
         system: |
           You are Biotic's relational newsletter strategist. Work only with the supplied packet.
-          A composition is editorial reasoning, not a customer fact or a scientific conclusion.
+          A composition is an inspectable editorial hypothesis, never a customer fact or scientific conclusion.
+          First form a small portfolio of genuinely different ways this issue could matter. Then select
+          the composition with the strongest reader-independent contribution and honest Biotic legitimacy.
+          Preserve source status, personalization mode, product limits, and every unresolved assumption.
           Return JSON matching the schema exactly. Never authorize publication.
         user: |
           Issue objective: {{ arguments.issue_objective }}
@@ -103,14 +114,13 @@ steps:
         output_schema:
           type: object
           additionalProperties: false
-          required: [field, reader_question, contribution, moment, brand_legitimacy_basis, product_role, assumptions, uncertainty_notes, publication_status]
+          required: [composition_id, decision, candidates, selected_candidate_id, selected, assumptions, uncertainty_notes, publication_status]
           properties:
-            field: {type: string}
-            reader_question: {type: string}
-            contribution: {type: string}
-            moment: {type: string}
-            brand_legitimacy_basis: {type: string}
-            product_role: {type: string}
+            composition_id: {type: string}
+            decision: {type: string}
+            candidates: {type: array}
+            selected_candidate_id: {type: string}
+            selected: {type: object}
             assumptions: {type: array}
             uncertainty_notes: {type: array}
             publication_status: {type: string, const: proposal_only}
@@ -129,16 +139,21 @@ steps:
   - id: form_content_plan
     kind: transform
     handler: biotic.form_newsletter_content_plan
-    description: Translate the selected composition into a writer-facing newsletter content plan.
+    description: >-
+      Translate the selected composition into a writer-facing plan that locks meaning and claim
+      boundaries while leaving language-level craft appropriately open.
     instruction:
       id: instruction://testflight/biotic/newsletter/form-content-plan
       version: 1
       objective: Specify the complete newsletter's content and artifact characteristics without over-controlling prose.
       rules:
-        - Lock the controlling idea, reader promise, claim boundaries, and product role.
-        - Make rhetoric, voice, structure, visual character, and length directional.
-        - Leave exact wording, transitions, metaphors, rhythm, and title alternatives open.
-        - Include only factual claims that resolve to the supplied evidence packet.
+        - Preserve the selected composition_id, field, reader question, contribution, and product role.
+        - Lock the controlling idea, reader promise, contribution, claim boundaries, product role, and CTA boundary.
+        - Make audience calibration, rhetoric, voice, structure, visual character, and length directional.
+        - Leave exact wording, transitions, metaphors, rhythm, image choices, and title alternatives open.
+        - "Build an issue arc: recognition → useful distinction → explanation → practical implication → closing invitation."
+        - Include only factual claims that resolve to supplied evidence_ids and state how each may be expressed.
+        - The product can be none, contextual, illustrative, practical, or central_and_justified; justify every non-none role.
       prompt:
         id: prompt://testflight/biotic/newsletter/form-content-plan
         version: 1
@@ -146,17 +161,24 @@ steps:
         operator_version: 1
         modality: text/plain
         system: |
-          You turn a relational issue composition into a copywriter-ready content plan.
-          The plan must be vivid enough to guide a small writing model and open enough for good prose.
-          Preserve evidence limits. Return JSON matching the schema exactly.
+          You turn a selected relational composition into a copywriter-ready content plan.
+          The plan must be vivid enough to guide a small writing model and open enough for alive prose.
+          Preserve the composition_id exactly. Do not replace reader value with product pressure.
+          `locked` is non-negotiable meaning: controlling idea, reader promise, contribution,
+          claim boundaries, product role, and CTA boundary. `directional` gives craft direction:
+          reader calibration, length, rhetorical movement, voice, structure, visual character.
+          `open` deliberately reserves title wording, rhythm, transitions, metaphors, and examples.
+          Every factual_claim must have a stable claim_id, evidence_id, source_ref, allowed expression,
+          and limitation. Return JSON matching the schema exactly.
         user: |
           Context: {{ arguments.context }}
           Selected issue composition: {{ arguments.composition }}
         output_schema:
           type: object
           additionalProperties: false
-          required: [locked, directional, open, content_system, artifact_characteristics, factual_claims, product_role, publication_status]
+          required: [composition_id, locked, directional, open, content_system, artifact_characteristics, factual_claims, product_role, product_role_rationale, publication_status]
           properties:
+            composition_id: {type: string}
             locked: {type: object}
             directional: {type: object}
             open: {type: object}
@@ -164,6 +186,7 @@ steps:
             artifact_characteristics: {type: object}
             factual_claims: {type: array}
             product_role: {type: string}
+            product_role_rationale: {type: string}
             publication_status: {type: string, const: proposal_only}
         configuration: {reasoning_effort: low}
     needs: [compile_relational_context, compose_issue]
@@ -180,15 +203,20 @@ steps:
   - id: draft_newsletter
     kind: transform
     handler: biotic.draft_newsletter
-    description: Draft the newsletter from the locked and directional portions of the plan.
+    description: >-
+      Draft a complete, reader-first newsletter from the plan while keeping every sentence
+      accountable to the selected contribution, claim boundaries, and product role.
     instruction:
       id: instruction://testflight/biotic/newsletter/draft-newsletter
       version: 1
       objective: Produce an engaging, useful issue draft that earns attention through contribution rather than product pressure.
       rules:
-        - Respect locked claim boundaries and product role exactly.
-        - Do not add factual claims, medical advice, or reader attributes not in the plan.
-        - Keep the product absent when its role is none.
+        - Preserve composition_id, controlling idea, reader promise, issue arc, and product role exactly.
+        - "Give each section an explicit role: opening, distinction, explanation, practical implication, or closing."
+        - Do not add factual claims, medical advice, reader attributes, or product benefits not in the plan.
+        - Every factual statement used must be listed in claims_used with claim_id, evidence_id, and source_ref.
+        - Keep the product absent when its role is none; a contextual mention must not become a CTA.
+        - The reader should gain a usable distinction or proportionate next step even if they never buy anything.
         - Mark the result proposal-only.
       prompt:
         id: prompt://testflight/biotic/newsletter/draft-newsletter
@@ -198,19 +226,24 @@ steps:
         modality: text/plain
         system: |
           You are a precise, reader-first newsletter copywriter. Write from the content plan only.
-          Do not fabricate facts, medical advice, reader biography, or product benefits.
-          Return JSON matching the schema exactly.
+          Make the issue feel like a helpful contribution to a field the reader already inhabits,
+          never a sales message in educational clothing. Honor the locked fields exactly and use the
+          directional fields as a compass, not a script. Do not fabricate facts, medical advice,
+          reader biography, or product benefits. Return JSON matching the schema exactly.
         user: |
           Content plan: {{ arguments.content_plan }}
         output_schema:
           type: object
           additionalProperties: false
-          required: [subject_options, preheader, sections, closing, claims_used, publication_status]
+          required: [composition_id, product_role, subject_options, preheader, sections, closing, feedback_prompt, claims_used, publication_status]
           properties:
+            composition_id: {type: string}
+            product_role: {type: string}
             subject_options: {type: array}
             preheader: {type: string}
             sections: {type: array}
             closing: {type: string}
+            feedback_prompt: {type: string}
             claims_used: {type: array}
             publication_status: {type: string, const: proposal_only}
         configuration: {reasoning_effort: low}
@@ -227,14 +260,19 @@ steps:
   - id: evaluate_issue
     kind: transform
     handler: biotic.evaluate_newsletter
-    description: Independently evaluate evidence, reader value, legitimacy, and copy-plan adherence.
+    description: >-
+      Independently evaluate lineage, relational coherence, reader value, and visible draft
+      adherence; produce a repair brief instead of a vague negative verdict.
     instruction:
       id: instruction://testflight/biotic/newsletter/evaluate-issue
       version: 1
       objective: Clear a draft for human editorial review only when its rubric and hard gates are satisfied.
       rules:
-        - Fail closed when a factual claim lacks a traceable source or limitation.
-        - Reject exploitative identity framing and unearned product centrality.
+        - Evaluate against the supplied rubric, not the producing agent's self-assessment.
+        - Fail closed when a factual claim lacks a traceable evidence_id, source ref, or limitation.
+        - Reject exploitative identity framing, unearned product centrality, and a draft that loses reader independence.
+        - Score every rubric dimension 0–4 with evidence from the visible draft; scores are not facts about readers.
+        - Return a prioritized, bounded repair brief for revise, branch, ask, or hold decisions.
         - A review-ready decision is not publication approval.
       prompt:
         id: prompt://testflight/biotic/newsletter/evaluate-issue
@@ -244,8 +282,12 @@ steps:
         modality: text/plain
         system: |
           You are an independent editorial and evidence reviewer. Evaluate only the supplied material.
-          Return review_ready only if hard gates are passed. Never authorize sending or publication.
-          Return JSON matching the schema exactly.
+          Do not repeat the producer's confidence. Inspect whether the visible draft actually carries
+          the selected relational contribution, whether all factual claims trace back to the supplied
+          evidence, whether product presence is earned, and whether the reader gains independent value.
+          A hard gate is pass only with a concrete rationale. Return review_ready only if every hard
+          gate passes and no material rubric dimension is below threshold. Never authorize sending or
+          publication. Return JSON matching the schema exactly.
         user: |
           Context: {{ arguments.context }}
           Composition: {{ arguments.composition }}
@@ -254,13 +296,17 @@ steps:
         output_schema:
           type: object
           additionalProperties: false
-          required: [decision, hard_gates, rubric_scores, required_revisions, claim_trace, publication_status]
+          required: [composition_id, product_role, decision, hard_gates, rubric_scores, findings, required_revisions, claim_trace, residual_uncertainty, publication_status]
           properties:
+            composition_id: {type: string}
+            product_role: {type: string}
             decision: {type: string}
             hard_gates: {type: array}
             rubric_scores: {type: object}
+            findings: {type: array}
             required_revisions: {type: array}
             claim_trace: {type: array}
+            residual_uncertainty: {type: array}
             publication_status: {type: string, const: proposal_only}
         configuration: {reasoning_effort: low}
     needs: [compile_relational_context, compose_issue, form_content_plan, draft_newsletter]

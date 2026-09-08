@@ -19,6 +19,19 @@ from .prompt_handler import PromptStepHandler
 
 CONTENT_STRATEGY_WORKSPACE = "world://workspace/brand/hellobiotic-research/content-strategy"
 _STRATEGY_ROOT = Path("workspaces/brand-hellobiotic-research/content-strategy")
+_REQUIRED_REVIEW_GATES = {
+    "claim_traceability",
+    "non_exploitative_identity",
+    "epistemic_precision",
+    "authority_boundary",
+}
+_PRODUCT_ROLE_RANK = {
+    "none": 0,
+    "contextual": 1,
+    "illustrative": 2,
+    "practical": 3,
+    "central_and_justified": 4,
+}
 
 
 def _project_root() -> Path:
@@ -60,6 +73,15 @@ class RelationalNewsletterContextCompiler:
                 output={"reason": "audience_context_requires_supported_source_status"},
                 receipt={"status": "hold"},
             )
+        source_refs = audience.get("source_refs")
+        if not isinstance(source_refs, list) or not all(
+            isinstance(reference, str) and reference.strip() for reference in source_refs
+        ):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "audience_context_requires_source_refs"},
+                receipt={"status": "hold"},
+            )
         evidence = list(context.arguments["evidence_packet"])
         malformed = [
             index
@@ -67,7 +89,7 @@ class RelationalNewsletterContextCompiler:
             if not isinstance(item, Mapping)
             or not all(
                 isinstance(item.get(key), str) and item[key].strip()
-                for key in ("claim", "source_ref", "evidence_status")
+                for key in ("evidence_id", "claim", "source_ref", "evidence_status")
             )
             or not isinstance(item.get("limitations"), list)
         ]
@@ -77,6 +99,18 @@ class RelationalNewsletterContextCompiler:
                 output={"reason": "evidence_packet_is_not_traceable", "invalid_indices": malformed},
                 receipt={"status": "hold"},
             )
+        evidence_ids = [str(item["evidence_id"]) for item in evidence]
+        if len(evidence_ids) != len(set(evidence_ids)):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "evidence_packet_contains_duplicate_evidence_ids"},
+                receipt={"status": "hold"},
+            )
+        personalization_mode = {
+            "explicit": "contextual_only",
+            "aggregated": "audience_level_only",
+            "unknown": "broad_non_personalized_only",
+        }[source_status]
         return StepResult(
             status=ResultStatus.SUCCESS,
             output={
@@ -84,18 +118,39 @@ class RelationalNewsletterContextCompiler:
                 "workspace_id": CONTENT_STRATEGY_WORKSPACE,
                 "issue_objective": context.arguments["issue_objective"],
                 "audience_context": audience,
+                "personalization_mode": personalization_mode,
                 "evidence_packet": evidence,
                 "current_field_signals": context.arguments.get("current_field_signals", []),
                 "prior_issue_feedback": context.arguments.get("prior_issue_feedback", []),
                 "authorized_product_context": context.arguments.get("authorized_product_context"),
                 "relational_contract": model["composition_contract"],
                 "candidate_fields": model["biotic_candidate_fields"],
+                "composition_requirements": {
+                    "required_relations": model["composition_contract"]["required"],
+                    "optional_relations": model["composition_contract"]["optional"],
+                    "forbidden_substitutions": model["composition_contract"][
+                        "forbidden_substitutions"
+                    ],
+                    "uncertain_compositions": model["composition_contract"][
+                        "uncertain_compositions"
+                    ],
+                },
                 "charter": {
                     "editorial_modes": charter["editorial_modes"],
                     "claim_policy": charter["claim_policy"],
                     "product_role_values": charter["issue_packet"]["product_role_values"],
                 },
                 "rubric": rubric,
+                "handoff_invariants": {
+                    "composition_id": "Must be preserved by every subsequent node.",
+                    "claim_ids": (
+                        "Every factual claim must resolve to an evidence_id and source_ref."
+                    ),
+                    "product_role": (
+                        "May narrow but must not become more central without new authority."
+                    ),
+                    "publication_status": "Must remain proposal_only.",
+                },
                 "limitations": [
                     "Founder-directed strategy is an editorial constraint, not customer evidence.",
                     (
@@ -130,6 +185,10 @@ class NewsletterReviewPackagePreparer:
 
     async def execute(self, context: StepExecutionContext) -> StepResult:
         evaluation = context.arguments["evaluation"]
+        composition = context.arguments["composition"]
+        content_plan = context.arguments["content_plan"]
+        draft = context.arguments["draft"]
+        context_packet = context.arguments["context"]
         if evaluation.get("decision") != "review_ready":
             return StepResult(
                 status=ResultStatus.HOLD,
@@ -137,6 +196,107 @@ class NewsletterReviewPackagePreparer:
                     "reason": "editorial_evaluation_did_not_clear_review_gate",
                     "evaluation": evaluation,
                 },
+                receipt={"status": "hold"},
+            )
+        if any(
+            item.get("publication_status") != "proposal_only"
+            for item in (composition, content_plan, draft, evaluation)
+            if isinstance(item, Mapping)
+        ):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "publication_status_drift"},
+                receipt={"status": "hold"},
+            )
+        composition_id = composition.get("composition_id")
+        if (
+            not isinstance(composition_id, str)
+            or not composition_id
+            or any(
+                item.get("composition_id") != composition_id
+                for item in (content_plan, draft, evaluation)
+                if isinstance(item, Mapping)
+            )
+        ):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "composition_continuity_failed"},
+                receipt={"status": "hold"},
+            )
+        selected = composition.get("selected")
+        source_product_role = (
+            selected.get("product_role") if isinstance(selected, Mapping) else None
+        )
+        downstream_roles = [content_plan.get("product_role"), draft.get("product_role")]
+        if (
+            source_product_role not in _PRODUCT_ROLE_RANK
+            or any(role not in _PRODUCT_ROLE_RANK for role in downstream_roles)
+            or any(
+                _PRODUCT_ROLE_RANK[role] > _PRODUCT_ROLE_RANK[source_product_role]
+                for role in downstream_roles
+            )
+        ):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "product_role_continuity_failed"},
+                receipt={"status": "hold"},
+            )
+        gates = evaluation.get("hard_gates")
+        passed_gates = (
+            {
+                item.get("id")
+                for item in gates
+                if isinstance(item, Mapping) and item.get("status") == "pass"
+            }
+            if isinstance(gates, list)
+            else set()
+        )
+        if not _REQUIRED_REVIEW_GATES.issubset(passed_gates):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "required_review_gates_not_passed", "evaluation": evaluation},
+                receipt={"status": "hold"},
+            )
+        evidence_by_id = {
+            item["evidence_id"]: item["source_ref"] for item in context_packet["evidence_packet"]
+        }
+        factual_claims = content_plan.get("factual_claims")
+        claims_used = draft.get("claims_used")
+        claim_trace = evaluation.get("claim_trace")
+        if not all(isinstance(value, list) for value in (factual_claims, claims_used, claim_trace)):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "claim_trace_contract_invalid"},
+                receipt={"status": "hold"},
+            )
+        plan_claim_ids = {
+            item.get("claim_id")
+            for item in factual_claims
+            if isinstance(item, Mapping)
+            and evidence_by_id.get(item.get("evidence_id")) == item.get("source_ref")
+        }
+        used_claim_ids = {
+            item.get("claim_id")
+            for item in claims_used
+            if isinstance(item, Mapping)
+            and evidence_by_id.get(item.get("evidence_id")) == item.get("source_ref")
+        }
+        traced_claim_ids = {
+            item.get("claim_id")
+            for item in claim_trace
+            if isinstance(item, Mapping)
+            and evidence_by_id.get(item.get("evidence_id")) == item.get("source_ref")
+        }
+        if (
+            len(plan_claim_ids) != len(factual_claims)
+            or len(used_claim_ids) != len(claims_used)
+            or len(traced_claim_ids) != len(claim_trace)
+            or not used_claim_ids.issubset(plan_claim_ids)
+            or not used_claim_ids.issubset(traced_claim_ids)
+        ):
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "claim_lineage_continuity_failed"},
                 receipt={"status": "hold"},
             )
         return StepResult(
@@ -147,12 +307,12 @@ class NewsletterReviewPackagePreparer:
                 "publication_status": "proposal_only",
                 "canonical_write": False,
                 "send_authorized": False,
-                "context_packet_id": context.arguments["context"]["packet_id"],
-                "relational_composition": context.arguments["composition"],
-                "content_plan": context.arguments["content_plan"],
-                "draft": context.arguments["draft"],
+                "context_packet_id": context_packet["packet_id"],
+                "relational_composition": composition,
+                "content_plan": content_plan,
+                "draft": draft,
                 "evaluation": evaluation,
-                "limitations": context.arguments["context"]["limitations"],
+                "limitations": context_packet["limitations"],
                 "next_required_decision": "human_editorial_review",
             },
             receipt={

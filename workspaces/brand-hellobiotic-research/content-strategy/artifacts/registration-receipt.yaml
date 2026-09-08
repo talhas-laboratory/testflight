@@ -31,8 +31,9 @@ operator_evaluations:
     outcome: pass_with_limits
     detail: >-
       The candidate workflow has schema-bound composition, plan, draft, and evaluation nodes, and
-      a deterministic review-package gate. A fake structured-model run passed; no live model or
-      staging retrieval evaluation has been run.
+      a deterministic review-package gate that rejects composition, product-role, and claim-lineage
+      drift. A fake structured-model run and node test pack passed; no live model or staging
+      retrieval evaluation has been run.
   - operator_id: boundary-conflation@1
     outcome: pass
     detail: Founder direction, audience evidence, scientific evidence, generated proposals, and publication authority remain distinct.
@@ -55,7 +56,7 @@ validation:
   - command: uv run --package testflight-workflows python scripts/validate_workflows.py
     outcome: pass
     mode: workflow_contract
-  - command: uv run pytest apps/workflow-runtime/tests/test_biotic_newsletter_workflow.py adapters/langgraph/tests/test_adapter.py packages/testflight-workflows/tests/test_workflows.py -q
+  - command: uv run pytest apps/workflow-runtime/tests/test_biotic_newsletter_workflow.py apps/workflow-runtime/tests/golden/biotic_newsletter_compose adapters/langgraph/tests/test_adapter.py packages/testflight-workflows/tests/test_workflows.py -q
     outcome: pass
     mode: workflow_and_adapter
 limitations:

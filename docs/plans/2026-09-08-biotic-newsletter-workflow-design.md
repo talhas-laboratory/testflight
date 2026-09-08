@@ -19,7 +19,7 @@ prompts, and outputs. `adapters/langgraph` owns `StateGraph` compilation. The ru
 model-provider route. That preserves provider neutrality and makes each small-model decision
 inspectable.
 
-## Initial node topology
+## Node topology and handoffs
 
 ```text
 compile_relational_context
@@ -30,10 +30,20 @@ compile_relational_context
   -> prepare_review_package
 ```
 
-`compile_relational_context` is deterministic. The three formation nodes are prompt-backed,
-schema-bound proposals. `evaluate_issue` may return a hold instead of laundering uncertainty into
-a polished draft. `prepare_review_package` is deterministic and labels the result
-`review_required`.
+`compile_relational_context` is deterministic. It determines whether personalization can be
+contextual, audience-level, or broad only; it also assigns stable evidence IDs and records the
+invariants every later node must preserve.
+
+`compose_issue` is a planner rather than a topic picker: it considers a small portfolio of
+materially different field–stake–contribution compositions, scores them against the relational
+model, selects one, and records residual uncertainty. `form_content_plan` then locks meaning
+(reader promise, contribution, claim and CTA boundaries, product role) while keeping craft
+directional or open. `draft_newsletter` can be creative inside that envelope but carries the
+same `composition_id` and records every factual claim it uses. `evaluate_issue` independently
+scores the visible draft and returns a concrete repair brief when it cannot clear review.
+
+`prepare_review_package` is deterministic: it rejects composition drift, product-role escalation,
+failed hard gates, and claim-lineage drift before returning `review_required`.
 
 ## State and control
 
@@ -52,7 +62,8 @@ workflow or in its authority envelope.
 - Founder-directed content strategy is an editorial constraint, not customer evidence.
 - Audience context is accepted only with a stated source status; a segment never becomes an
   individual's identity, health state, insecurity, or motive.
-- Each factual claim must retain a source reference, evidence status, and limitations.
+- Each factual claim must retain a claim ID, evidence ID, source reference, allowed expression,
+  and limitations; the draft and evaluation may only reuse those IDs.
 - A product is optional and may be `none`, `contextual`, `illustrative`, or `practical`; it cannot
   become the issue topic merely through adjacency.
 - Publication status stays `proposal_only` through every node.
@@ -62,4 +73,6 @@ workflow or in its authority envelope.
 The workflow definition is schema-validated and covered by a runtime test with a fake structured
 model. The test asserts that relational context, claim limitations, a content plan, draft, and
 evaluation reach the review package, and that the final output cannot represent a send or a
-canonical write.
+canonical write. It also asserts that a draft using an unplanned or untraced evidence ID is held
+before review. The golden node pack captures the planner's semantic and governance expectations;
+it does not pretend to measure live-model editorial quality.

@@ -1,0 +1,39 @@
+{
+  "node_name": "biotic_newsletter_compose",
+  "node_type": "planner",
+  "runtime": "testflight_workflow_runtime",
+  "required_test_layers": [
+    "contract",
+    "decision",
+    "guardrail",
+    "observability",
+    "semantic_adherence"
+  ],
+  "recommended_repo_paths": {
+    "fixtures": "apps/workflow-runtime/tests/golden/biotic_newsletter_compose",
+    "test_file": "apps/workflow-runtime/tests/golden/biotic_newsletter_compose/test_biotic_newsletter_compose.py"
+  },
+  "comparison_policy": {
+    "exact_for": [
+      "contracts",
+      "routing",
+      "field_ownership",
+      "deterministic_transforms"
+    ],
+    "bounded_for": [
+      "freeform_generation",
+      "semantic_quality",
+      "repair_outputs"
+    ]
+  },
+  "questionnaire_gate": {
+    "required_before_semantic_quality_assertions": true,
+    "blocking_categories": [
+      "semantic_success_definition",
+      "acceptable_variation",
+      "prohibited_outcomes",
+      "preservation_rules",
+      "decision_priority_rules"
+    ]
+  }
+}
