@@ -13,6 +13,7 @@ dependencies = [
   "testflight-creative-field",
   "testflight-core",
   "testflight-semantic",
+  "testflight-world",
 ]
 
 [project.optional-dependencies]
@@ -23,6 +24,7 @@ testflight-core = { workspace = true }
 testflight-brand = { workspace = true }
 testflight-creative-field = { workspace = true }
 testflight-semantic = { workspace = true }
+testflight-world = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/testflight_adapter_cognee"]

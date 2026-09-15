@@ -1,0 +1,14 @@
+id: world://ontology/brand-world/projection/eight-systems
+version: 3.0.0-candidate
+status: candidate
+purpose: Human navigation only. This projection does not redefine canonical semantic kinds.
+systems:
+  - {id: identity, label: Identity, module_ids: [world://ontology/module/brand-world/identity, world://ontology/module/brand-world/organizational-reality]}
+  - {id: expression, label: Expression, module_ids: [world://ontology/module/brand-world/expression-manifestation]}
+  - {id: offering, label: Offering, module_ids: [world://ontology/module/brand-world/offering]}
+  - {id: experience, label: Experience, relation_families: [experience]}
+  - {id: perception, label: Perception, claim_kinds: [observation, interpretation]}
+  - {id: governance, label: Governance, module_ids: [world://ontology/module/brand-world/governance-decisions]}
+  - {id: environment, label: Environment, module_ids: [world://ontology/module/brand-world/environment, world://ontology/module/brand-world/relationships]}
+  - {id: event, label: Event, semantic_kinds: [event]}
+fallback: held-unassigned

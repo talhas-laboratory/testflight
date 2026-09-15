@@ -9,6 +9,17 @@ entities:
   label: Microbiome-friendly whole-body care intention
   description: The public storefront frames Biotic around microbiome-friendly deodorant
     and full-spectrum care.
+  assertion: The public storefront presents Biotic through microbiome-friendly deodorant
+    and broader whole-body care language.
+  interpretation: This supports a proposed whole-body-care identity direction; it does
+    not establish an approved internal positioning or a complete product portfolio.
+  permitted_uses:
+  - Use as a source-attributed identity hypothesis in briefs and concept exploration.
+  constraints:
+  - Preserve its proposed status and attribute the underlying framing to Biotic's public storefront.
+  - Do not present whole-body care as an approved internal strategy without further evidence.
+  unknowns:
+  - Internal positioning, portfolio intent, and approval status are not available in the public corpus.
   evidence_ids:
   - EVID-HB-001
   context_ids:
@@ -21,6 +32,16 @@ entities:
   label: Playful body-positive verbal expression
   description: Public copy uses informal body language such as pit-care and Hello
     everyBODY.
+  assertion: Biotic's public copy uses informal body-positive phrases including pit-care
+    and Hello everyBODY.
+  interpretation: The observed language makes product education feel approachable and
+    body-positive rather than clinical.
+  permitted_uses:
+  - Use as an observed expression pattern when drafting or reviewing public-facing copy.
+  constraints:
+  - Preserve the distinction between an observed pattern and an approved internal voice rule.
+  unknowns:
+  - No internal copy standard or approval matrix is available.
   evidence_ids:
   - EVID-HB-001
   epistemic_status: observed
@@ -33,6 +54,15 @@ entities:
   label: Brightening Probiotic Deodorant
   description: A publicly listed deodorant with documented formats and subscription
     options.
+  assertion: Biotic publicly lists Brightening Probiotic Deodorant with documented formats
+    and subscription options.
+  interpretation: This is an observed offering record, not evidence of availability in every market.
+  permitted_uses:
+  - Use for product-specific briefs after verifying the current product page, SKU, and market.
+  constraints:
+  - Do not generalize current formats, availability, ingredients, or claims across markets or time.
+  unknowns:
+  - Current inventory, market availability, formula, and subscription terms require live verification.
   evidence_ids:
   - EVID-HB-002
   context_ids:
@@ -45,6 +75,15 @@ entities:
   label: Direct product education and purchase journey
   description: The storefront and product pages combine education, ingredients, purchase
     choices, and FAQ guidance.
+  assertion: Biotic's storefront and product pages combine product education, ingredient
+    explanation, purchase choices, and FAQ guidance.
+  interpretation: The observed journey uses education to bridge product consideration and purchase.
+  permitted_uses:
+  - Use as a public-journey observation when designing briefs, content sequences, or reviews.
+  constraints:
+  - Do not infer conversion performance or customer comprehension from the presence of content.
+  unknowns:
+  - Journey analytics, usability evidence, and internal experience principles are unavailable.
   evidence_ids:
   - EVID-HB-001
   - EVID-HB-002
@@ -59,6 +98,15 @@ entities:
   label: Public testimonial layer
   description: The storefront displays customer testimonials; these are reported site
     content, not representative outcome research.
+  assertion: Biotic's storefront displays customer testimonial statements.
+  interpretation: The testimonials expose public customer language but do not establish
+    representative perception or product outcomes.
+  permitted_uses:
+  - Use as attributed testimonial language or as a prompt for further research.
+  constraints:
+  - Do not treat testimonials as representative customer evidence or independent efficacy proof.
+  unknowns:
+  - Sampling, moderation, verification, and representativeness are not documented.
   evidence_ids:
   - EVID-HB-001
   epistemic_status: observed
@@ -71,6 +119,15 @@ entities:
   label: Founder-reported brand stewardship
   description: The public story identifies Sadaf and Leila as founders; it does not
     expose approval or governance procedures.
+  assertion: Biotic's public story identifies Sadaf and Leila as founders.
+  interpretation: This supports founder stewardship as a public governance signal, but
+    does not reveal operational authority or approval procedures.
+  permitted_uses:
+  - Attribute the founder relationship to the public story when relevant.
+  constraints:
+  - Do not infer decision rights, legal roles, or approval authority.
+  unknowns:
+  - Current roles, decision rights, approval workflows, and governance procedures are unavailable.
   evidence_ids:
   - EVID-HB-003
   context_ids:
@@ -83,6 +140,15 @@ entities:
   label: People evaluating natural deodorant alternatives
   description: A bounded public audience environment inferred from product and FAQ
     framing, not a validated ICP.
+  assertion: Product and FAQ content addresses people evaluating alternatives to standard antiperspirants.
+  interpretation: This suggests a bounded consideration environment; it is not a validated
+    customer segment or ideal-customer profile.
+  permitted_uses:
+  - Use as a research hypothesis for audience framing and information needs.
+  constraints:
+  - Do not state segment size, purchase behavior, demographic composition, or validated fit.
+  unknowns:
+  - Internal segmentation, independent audience research, and behavioral data are unavailable.
   evidence_ids:
   - EVID-HB-002
   - EVID-HB-004
@@ -98,6 +164,15 @@ entities:
   label: Public product ecosystem snapshot
   description: The verified storefront publicly lists deodorant and Daily Sunshine
     powder products at the research cutoff.
+  assertion: At the research cutoff, Biotic's verified storefront listed deodorant and
+    Daily Sunshine powder products.
+  interpretation: This is a time-bounded public portfolio snapshot, not a permanent offering definition.
+  permitted_uses:
+  - Use for time-bounded portfolio context with the research cutoff stated.
+  constraints:
+  - Refresh the live storefront before making current portfolio or availability statements.
+  unknowns:
+  - Products added, removed, renamed, or made unavailable after the cutoff are not represented.
   evidence_ids:
   - EVID-HB-001
   - EVID-HB-005

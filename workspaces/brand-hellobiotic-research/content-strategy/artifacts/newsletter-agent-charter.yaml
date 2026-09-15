@@ -7,6 +7,19 @@ mission: >-
   ground among a person or audience, their field of engagement, Biotic, and optionally a product.
 primary_obligation: reader_value
 
+brand_world_access:
+  workspace_id: world://workspace/brand/hellobiotic-research
+  branch_id: public-research-v3
+  capability: world:read
+  authority_grant_ref: grant:hellobiotic-newsletter-public-research-read
+  scope:
+    modules: [identity, expression-manifestation, offering, relationships]
+    lifecycle_statuses: [proposed]
+  interpretation_boundary: >-
+    Brand World material is bounded public research. It may ground a proposal only when its
+    evidence, limitations, provenance, and lifecycle status remain visible; it never becomes an
+    approved brand fact or publication authority.
+
 non_goals:
   - mention a product in every issue
   - optimize attention at the cost of trust or usefulness

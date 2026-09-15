@@ -14,6 +14,12 @@ surfaces:
     role: Read-only exploration and diagnostics for Brand World records.
     implementation_ref: repo://apps/brand-lab
     lifecycle: local_application
+  - id: surface:brand-world-canvas
+    name: Brand World Canvas
+    kind: product_surface
+    role: Read-only semantic navigation through the eight canonical Brand ontology systems.
+    implementation_ref: repo://apps/brand-world
+    lifecycle: local_application
   - id: surface:creative-studio
     name: Creative Studio
     kind: product_surface
@@ -27,4 +33,3 @@ shared_experience_invariants:
   - honest_hold_partial_and_no_hit_states
   - keyboard_and_reduced_motion_support
   - semantic_design_tokens
-

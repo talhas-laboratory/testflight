@@ -4,15 +4,17 @@ status: active
 applications:
   - {id: app:brand-intake-web, surface_id: surface:brand-intake, path: apps/brand-intake-web, runtime: static_browser, lifecycle: experience_prototype, write_authority: browser_local_only}
   - {id: app:brand-lab, surface_id: surface:brand-lab, path: apps/brand-lab, runtime: python_local_http, lifecycle: implemented_local, write_authority: read_only}
+  - {id: app:brand-world, surface_id: surface:brand-world-canvas, path: apps/brand-world, runtime: python_local_http_svg, lifecycle: implemented_local, write_authority: read_only}
   - {id: app:creative-studio, surface_id: surface:creative-studio, path: apps/creative-studio, runtime: python_local_http, lifecycle: implemented_local, write_authority: project_scoped_commands}
   - {id: app:workflow-runtime, path: apps/workflow-runtime, runtime: python_asgi_mcp_langgraph, lifecycle: executable_foundation, write_authority: workflow_scoped_authority, workflows: [workflow://testflight/evidence-synthesis@1, workflow://testflight/biotic/social-carousel-create@1, workflow://testflight/biotic/social-carousel-revise@1, workflow://testflight/biotic/social-carousel-review-export@1]}
 packages:
   - {id: package:testflight-core, path: packages/testflight-core, owns: [adapter_descriptor, capability, health_contract]}
-  - {id: package:testflight-semantic, path: packages/testflight-semantic, owns: [semantic_kernel, evidence, identity, context, time, provenance, authority, branches, representation, dependencies, federation, world_views, learning]}
-  - {id: package:testflight-brand, path: packages/testflight-brand, owns: [brand_system, brand_ontology, brand_assertions, brand_states, brand_modules]}
+  - {id: package:testflight-semantic, path: packages/testflight-semantic, owns: [semantic_kernel, evidence, identity, context, time, provenance, authority, branches, representation, dependencies, federation, world_views, learning, world_v3_record_contracts]}
+  - {id: package:testflight-brand, path: packages/testflight-brand, owns: [brand_system, brand_ontology, brand_assertions, brand_states, brand_modules, ontology_v3_modules, legacy_migration_ledger]}
+  - {id: package:testflight-world, path: packages/testflight-world, owns: [world_change_sets, proposal_review_approval_rejection, supersession, branch_merge, accepted_world_queries, evidence_relation_dependency_reads, diff, accepted_world_history]}
   - {id: package:testflight-creative-field, path: packages/testflight-creative-field, owns: [creative_records, lifecycle, bindings, orchestration, projection, evaluation]}
   - {id: package:testflight-content, path: packages/testflight-content, owns: [normalized_content_records, perceptual_observation, occurrences, patterns, interpretation, transformation]}
-  - {id: package:testflight-context-intelligence, path: packages/testflight-context-intelligence, owns: [context_request, retrieval_filtering, world_view_resolution, visual_language_resolution, context_packet, trace]}
+  - {id: package:testflight-context-intelligence, path: packages/testflight-context-intelligence, owns: [context_request_v2, route_definition, route_evaluation, sufficiency_policy, bounded_expansion, world_v3_wire_decoding, world_view_resolution, visual_language_resolution, context_packet_v2, context_run_trace_v2, replay]}
   - {id: package:testflight-operator-runtime, path: packages/testflight-operator-runtime, owns: [operator_contract, provider_preflight, execution, receipts, local_http_transport]}
   - {id: package:testflight-workflows, path: packages/testflight-workflows, owns: [workflow_contract, access_envelope, authority_bundle, step_graph, instruction_contract, prompt_contract, reference_execution, agent_catalog]}
   - {id: package:testflight-design-language, path: packages/testflight-design-language, owns: [product_design_tokens, generation_contract]}
@@ -22,7 +24,7 @@ adapters:
   - {id: adapter:mcp-workflows, path: adapters/mcp-workflows, upstream_id: model-context-protocol-python-sdk, status: implemented_boundary, owns: [agent_tool_projection, streamable_http, workflow_rest_api]}
   - {id: adapter:deepseek-harness, path: adapters/deepseek-harness, upstream_id: deepseek-harness, status: implemented_boundary, owns: [launcher_profile, upstream_probe]}
   - {id: adapter:deepseek-context-intelligence, path: adapters/deepseek-harness-context-intelligence, upstream_id: deepseek-harness, status: implemented_plugin_boundary, owns: [context_injection, compile_context_tool, trace_inspection]}
-  - {id: adapter:sqlite-semantic, path: adapters/sqlite-semantic, status: implemented_owned_adapter, owns: [semantic_repository, creative_repository, content_addressed_blob_store]}
+  - {id: adapter:sqlite-semantic, path: adapters/sqlite-semantic, status: implemented_owned_adapter, owns: [semantic_repository, creative_repository, world_v3_repository, content_addressed_blob_store]}
   - {id: adapter:sqlite-workflow-runtime, path: adapters/sqlite-workflow-runtime, status: implemented_owned_adapter, owns: [workflow_run_store, workflow_idempotency_store]}
   - {id: adapter:creative-connectors, path: adapters/creative-connectors, status: implemented_owned_adapter, owns: [text_target, image_target, normalized_output, invocation_receipt]}
 upstreams:

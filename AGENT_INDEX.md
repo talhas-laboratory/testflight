@@ -59,6 +59,7 @@ not redefine their contracts.
 | --- | --- | --- | --- |
 | `apps/brand-intake-web` | Dependency-free founder-facing Brand intake experience prototype; browser-local data only | Serve with `python3 -m http.server 4317 --bind 127.0.0.1 --directory apps/brand-intake-web` | Experience-design contract and design-language package; no backend yet |
 | `apps/brand-lab` | CLI and local explorer for validating, certifying, initializing, and inspecting Brand workspaces | `uv run brand-lab --help` | Brand and semantic packages; SQLite semantic adapter |
+| `apps/brand-world` | Standalone read-only semantic canvas for navigating a Brand through its eight canonical ontology systems | `make serve-brand-world` | Brand ontology and concrete Brand workspaces; design-language package |
 | `apps/creative-studio` | Write-capable, project-scoped moodboard and Creative Field surface | Start the operator runtime, then `creative-studio --project-id <id>` | Creative Field, semantic SQLite, creative connectors, operator HTTP runtime |
 | `apps/workflow-runtime` | Authenticated shared runtime for declarative workflows over REST and MCP | `make serve-workflow-runtime`, using `workflows/runtime.example.yaml` as the configuration shape | Workflows package, LangGraph, MCP, operator HTTP, workflow SQLite |
 
@@ -73,9 +74,10 @@ Packages own stable contracts and reusable logic. They must not import optional 
 | `packages/testflight-brand` | Brand-system ontology records, assertions, states, modules, and validation | Modeling or validating a Brand world | Brand domain YAML, Brand Lab, semantic package |
 | `packages/testflight-content` | Immutable multimodal content units, observations, occurrences, patterns, interpretations, and transformations | Normalizing media before domain interpretation | Source evidence upstream; Brand/Creative Field interpretation downstream |
 | `packages/testflight-creative-field` | Moodboard, observation, interpretation, Creative Field, projection, generation, evaluation, and review contracts | Building creative workflows without coupling to providers or UI | Creative Studio, semantic package, connectors, operator runtime |
-| `packages/testflight-context-intelligence` | Scoped retrieval filtering, world-view and visual-language resolution, context packets, and traces | Compiling bounded evidence for another agent | Cognee read bridge and DeepSeek Harness context plugin |
+| `packages/testflight-context-intelligence` | Context Compiler v2 request, route, sufficiency, packet, strict v3 wire decoding, typed World/visual-language resolution, replay, and snapshot-pinned graph-guided runtime | Compiling bounded, authorized v3 context for another agent | Canonical World snapshot/hydration seam, rebuildable Cognee discovery projection, and agent adapters |
 | `packages/testflight-operator-runtime` | Executable operator definitions, provider preflight, structured execution, receipts, retries, and local HTTP transport | Running versioned model-backed operators | Canonical reasoning YAML, compatible model provider, Creative Studio and workflow prompt nodes |
 | `packages/testflight-workflows` | Workflow schema, access, authority, step graph, prompts, handler contract, validation, catalog, and reference execution | Defining reusable agent workflows | LangGraph adapter, workflow runtime, MCP and SQLite adapters |
+| `packages/testflight-world` | Explicit Brand World v3 proposal, review, approval, rejection, supersession, merge, query, diff, dependency, and history service contracts | Promoting or reading canonical Brand World change sets | Semantic kernel; SQLite semantic v3 adapter; Context Compiler v2 |
 | `packages/testflight-design-language` | Code-consumable design tokens and generation contract | Building any user-facing Testflight interface | Canonical experience-design knowledge module and all UI apps |
 
 ## Adapters
@@ -85,12 +87,12 @@ inside the adapter and require a pinned entry in `upstreams/registry.yaml`.
 
 | Module | Boundary | How to connect it |
 | --- | --- | --- |
-| `adapters/cognee` | Converts accepted semantic/content records into isolated, rebuildable Cognee projections and provides read bridges | Install the `cognee` extra; populate a named staging dataset; inject only its provider-neutral read interface |
+| `adapters/cognee` | Converts accepted semantic/content records into isolated, rebuildable Cognee projections and provides read bridges | Install the `cognee` extra; World v3 approvals enqueue a durable single-writer graph rebuild, while proposal previews remain explicitly non-canonical |
 | `adapters/langgraph` | Compiles a portable workflow definition into a real `StateGraph` and owns checkpoint selection | Construct `LangGraphWorkflowEngine` with the workflow catalog, handler registry, validator, and idempotency store |
 | `adapters/mcp-workflows` | Projects authorized workflows as MCP tools and REST endpoints | Give it the workflow runtime service, authenticator, and selected MCP principal |
 | `adapters/deepseek-harness` | Pins and launches the external DeepSeek Harness agent runtime | Configure environment-only provider values and run `scripts/run_deepseek_harness.sh` |
 | `adapters/deepseek-harness-context-intelligence` | Native Cordis plugin that injects or explicitly compiles scoped context for Harness | Install through `make setup-server-context-intelligence`; point it at an isolated workspace configuration |
-| `adapters/sqlite-semantic` | Append-oriented canonical semantic, creative, and content-addressed blob persistence | Inject repository implementations into Brand Lab or Creative Studio; keep databases under ignored `.data/` |
+| `adapters/sqlite-semantic` | Append-oriented canonical semantic, World v3, creative, and content-addressed blob persistence | Inject repository implementations into Brand Lab or Creative Studio; keep databases under ignored `.data/` |
 | `adapters/sqlite-workflow-runtime` | Durable workflow run records and action idempotency | Inject its stores into Workflow Runtime; keep the database under ignored `.data/` |
 | `adapters/creative-connectors` | Capability-honest text/image target invocation and normalized output receipts | Translate a validated generation packet only after explicit external-action authority |
 
@@ -98,7 +100,7 @@ inside the adapter and require a pinned entry in `upstreams/registry.yaml`.
 
 | Module | What it defines | Consumers |
 | --- | --- | --- |
-| `domains/brand` | Canonical Brand ontology, policies, fixtures, visual-reference types, and ontology-v2 migration source | `testflight-brand`, Brand workspaces, validation and population scripts |
+| `domains/brand` | Canonical Brand ontology releases, the candidate v3 modular vocabulary and navigation projections, policies, fixtures, visual-reference types, and read-only legacy migration source | `testflight-brand`, Brand workspaces, validation and population scripts |
 | `domains/creative-field` | Canonical Creative Field dimensions and provider-neutral semantic vocabulary | `testflight-creative-field`, Creative Studio and operator configuration |
 
 Domain definitions are not generated knowledge stores. Change IDs and meanings only through an

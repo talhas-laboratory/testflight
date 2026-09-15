@@ -6,6 +6,7 @@ relations:
   - {id: relation:founder-product-offers-pilot, relation_type: offers, subject_id: product:founder-brand-world, object_id: offer:world-seeder-pilot, status: proposed, source_refs: [source:founder-product-overview]}
   - {id: relation:founder-product-uses-intake, relation_type: expressed_through, subject_id: product:founder-brand-world, object_id: surface:brand-intake, status: proposed, source_refs: [source:founder-product-overview, source:brand-intake-prototype]}
   - {id: relation:brand-world-explored-by-lab, relation_type: expressed_through, subject_id: capability:brand-world, object_id: surface:brand-lab, status: grounded, source_refs: [source:brand-lab-implementation]}
+  - {id: relation:brand-world-navigated-by-canvas, relation_type: expressed_through, subject_id: capability:brand-world, object_id: surface:brand-world-canvas, status: grounded, source_refs: [source:brand-world-canvas-implementation]}
   - {id: relation:creative-field-expressed-by-studio, relation_type: expressed_through, subject_id: capability:creative-field, object_id: surface:creative-studio, status: grounded, source_refs: [source:creative-studio-docs]}
   - {id: relation:artifact-handoff-depends-creative-field, relation_type: depends_on, subject_id: capability:artifact-handoff, object_id: capability:creative-field, status: grounded, source_refs: [source:creative-field-workboard]}
   - {id: relation:creative-field-depends-context, relation_type: depends_on, subject_id: capability:creative-field, object_id: capability:context-compilation, status: grounded, source_refs: [source:creative-field-workboard]}
@@ -15,4 +16,3 @@ relations:
   - {id: relation:founder-workflow-tests-hypothesis, relation_type: tests, subject_id: workflow:founder-brand-world, object_id: hypothesis:founder-input-produces-useful-world, status: proposed, source_refs: [source:founder-product-overview]}
   - {id: relation:expert-governs-world-promotion, relation_type: governs, subject_id: role:testflight-expert, object_id: workflow:founder-brand-world, status: proposed, source_refs: [source:founder-product-overview]}
   - {id: relation:campaign-offer-tests-wedge, relation_type: tests, subject_id: offer:campaign-decision-intelligence, object_id: hypothesis:campaign-decision-intelligence-wedge, status: proposed, source_refs: [source:commercial-viability-research]}
-

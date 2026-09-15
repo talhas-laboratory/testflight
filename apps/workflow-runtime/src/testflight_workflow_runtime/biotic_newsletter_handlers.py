@@ -6,6 +6,8 @@ formation is delegated to the shared prompt handler so this module never couples
 
 from __future__ import annotations
 
+import asyncio
+import json
 import os
 from collections.abc import Mapping
 from pathlib import Path
@@ -18,7 +20,11 @@ from .operator_client import HttpOperatorRuntimeClient
 from .prompt_handler import PromptStepHandler
 
 CONTENT_STRATEGY_WORKSPACE = "world://workspace/brand/hellobiotic-research/content-strategy"
+BRAND_WORLD_WORKSPACE = "world://workspace/brand/hellobiotic-research"
 _STRATEGY_ROOT = Path("workspaces/brand-hellobiotic-research/content-strategy")
+_BRAND_WORLD_COMPILER = Path(
+    "packages/testflight-context-intelligence/scripts/compile-biotic-newsletter-world.mjs"
+)
 _REQUIRED_REVIEW_GATES = {
     "claim_traceability",
     "non_exploitative_identity",
@@ -46,14 +52,88 @@ def _read_artifact(name: str) -> tuple[dict[str, Any], str]:
     ), f"repo://{path.relative_to(_project_root())}"
 
 
+class BrandWorldV3NewsletterContextCompiler:
+    """Compile scoped v3 context without giving the workflow write access."""
+
+    def __init__(self, timeout_seconds: float = 15) -> None:
+        self.timeout_seconds = timeout_seconds
+
+    async def compile(
+        self,
+        *,
+        request_id: str,
+        task_ref: str,
+        objective: str,
+    ) -> dict[str, Any]:
+        root = _project_root()
+        script = root / _BRAND_WORLD_COMPILER
+        if not script.is_file():
+            raise FileNotFoundError(f"Brand World compiler is missing: {script}")
+        payload = json.dumps(
+            {
+                "request_id": request_id,
+                "task_ref": task_ref,
+                "objective": objective,
+            }
+        ).encode()
+        environment = {**os.environ, "TESTFLIGHT_PROJECT_ROOT": str(root)}
+        process = await asyncio.create_subprocess_exec(
+            "node",
+            str(script),
+            cwd=str(root),
+            env=environment,
+            stdin=asyncio.subprocess.PIPE,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        try:
+            stdout, stderr = await asyncio.wait_for(
+                process.communicate(payload), timeout=self.timeout_seconds
+            )
+        except TimeoutError:
+            process.kill()
+            await process.wait()
+            raise RuntimeError("Brand World context compilation timed out") from None
+        if process.returncode != 0:
+            detail = stderr.decode("utf-8", errors="replace").strip()
+            raise RuntimeError(f"Brand World context compilation failed: {detail}")
+        try:
+            packet = json.loads(stdout)
+        except json.JSONDecodeError as error:
+            raise RuntimeError("Brand World compiler returned invalid JSON") from error
+        if not isinstance(packet, dict):
+            raise RuntimeError("Brand World compiler returned a non-object packet")
+        request = packet.get("request")
+        if (
+            not isinstance(request, Mapping)
+            or request.get("workspaceId") != BRAND_WORLD_WORKSPACE
+            or request.get("branchId") != "public-research-v3"
+            or request.get("principalRef") != "agent:hellobiotic-newsletter-strategist"
+            or packet.get("status") not in {"ready", "partial"}
+        ):
+            raise RuntimeError(
+                "Brand World compiler returned a packet outside the newsletter scope"
+            )
+        return packet
+
+
 class RelationalNewsletterContextCompiler:
     """Compile strategy, audience, and evidence inputs into a bounded packet."""
+
+    def __init__(self, world_context_compiler: BrandWorldV3NewsletterContextCompiler) -> None:
+        self.world_context_compiler = world_context_compiler
 
     async def execute(self, context: StepExecutionContext) -> StepResult:
         if CONTENT_STRATEGY_WORKSPACE not in context.step.access.workspace_ids:
             raise PermissionError("newsletter context step did not declare the strategy workspace")
         if "knowledge.retrieve" not in context.step.capabilities:
             raise PermissionError("newsletter context step lacks retrieval capability")
+        if BRAND_WORLD_WORKSPACE not in context.step.access.workspace_ids:
+            raise PermissionError(
+                "newsletter context step did not declare the Brand World workspace"
+            )
+        if "world:read" not in context.step.capabilities:
+            raise PermissionError("newsletter context step lacks Brand World read capability")
         try:
             model, model_ref = _read_artifact("relational-content-model.yaml")
             charter, charter_ref = _read_artifact("newsletter-agent-charter.yaml")
@@ -111,6 +191,22 @@ class RelationalNewsletterContextCompiler:
             "aggregated": "audience_level_only",
             "unknown": "broad_non_personalized_only",
         }[source_status]
+        try:
+            brand_world_packet = await self.world_context_compiler.compile(
+                request_id=str(context.inputs["request_id"]),
+                task_ref=f"task:{context.run_id}:newsletter",
+                objective=str(context.arguments["issue_objective"]),
+            )
+        except (FileNotFoundError, RuntimeError, OSError) as error:
+            return StepResult(
+                status=ResultStatus.HOLD,
+                output={"reason": "brand_world_context_unavailable"},
+                receipt={
+                    "workspace_id": BRAND_WORLD_WORKSPACE,
+                    "status": "hold",
+                    "detail": str(error),
+                },
+            )
         return StepResult(
             status=ResultStatus.SUCCESS,
             output={
@@ -123,6 +219,7 @@ class RelationalNewsletterContextCompiler:
                 "current_field_signals": context.arguments.get("current_field_signals", []),
                 "prior_issue_feedback": context.arguments.get("prior_issue_feedback", []),
                 "authorized_product_context": context.arguments.get("authorized_product_context"),
+                "brand_world_v3": brand_world_packet,
                 "relational_contract": model["composition_contract"],
                 "candidate_fields": model["biotic_candidate_fields"],
                 "composition_requirements": {
@@ -163,6 +260,10 @@ class RelationalNewsletterContextCompiler:
                         "establish truth."
                     ),
                     (
+                        "Brand World v3 records are public-research proposals, not approved "
+                        "brand facts; cite their evidence and preserve their lifecycle status."
+                    ),
+                    (
                         "This workflow produces a reviewable proposal only and has no publication "
                         "authority."
                     ),
@@ -170,6 +271,8 @@ class RelationalNewsletterContextCompiler:
             },
             receipt={
                 "workspace_id": CONTENT_STRATEGY_WORKSPACE,
+                "brand_world_workspace_id": BRAND_WORLD_WORKSPACE,
+                "brand_world_context_status": brand_world_packet["status"],
                 "source_refs": [model_ref, charter_ref, rubric_ref],
                 "operator_ids": [
                     "world://operator/guardrail/workspace-isolation@1",
@@ -442,7 +545,15 @@ def register_workflow_handlers(
             timeout_seconds=float(settings.get("operator_runtime_timeout_seconds", 120)),
         )
     prompt_handler = PromptStepHandler(client)
-    registry.register("biotic.compile_newsletter_context", RelationalNewsletterContextCompiler())
+    world_context_compiler = settings.get("brand_world_context_compiler")
+    if world_context_compiler is None:
+        world_context_compiler = BrandWorldV3NewsletterContextCompiler(
+            timeout_seconds=float(settings.get("brand_world_context_timeout_seconds", 15))
+        )
+    registry.register(
+        "biotic.compile_newsletter_context",
+        RelationalNewsletterContextCompiler(world_context_compiler),
+    )
     registry.register("biotic.compose_newsletter_issue", prompt_handler)
     registry.register("biotic.form_newsletter_content_plan", prompt_handler)
     registry.register(
@@ -453,4 +564,4 @@ def register_workflow_handlers(
     registry.register("biotic.prepare_newsletter_review_package", NewsletterReviewPackagePreparer())
 
 
-__all__ = ["register_workflow_handlers"]
+__all__ = ["BrandWorldV3NewsletterContextCompiler", "register_workflow_handlers"]

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brand World Explorer</title>
+    <link rel="stylesheet" href="/design/tokens.css" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -20,7 +21,7 @@
       <section class="controls" aria-label="Explorer controls">
         <label class="search">
           <span>Search the world</span>
-          <input id="search" type="search" placeholder="Nike Membership, football, perception…" />
+          <input id="search" type="search" placeholder="Identity, product, audience, evidence…" />
         </label>
         <label>
           <span>Context</span>
@@ -40,14 +41,44 @@
       </section>
 
       <nav class="tabs" aria-label="Views">
-        <button class="tab active" data-view="map">Brand map</button>
+        <button class="tab active" data-view="atlas">World atlas</button>
+        <button class="tab" data-view="map">Entity index</button>
         <button class="tab" data-view="graph">Graph</button>
         <button class="tab" data-view="visual">Visual language</button>
         <button class="tab" data-view="agent">Agent view</button>
         <button class="tab" data-view="learning">Learning loop</button>
       </nav>
 
-      <section id="map-view" class="view active">
+      <section id="atlas-view" class="view active">
+        <div class="atlas-heading">
+          <div>
+            <p class="eyebrow">Progressive world representation</p>
+            <h2>Begin with the whole.<br /><em>Descend with purpose.</em></h2>
+          </div>
+          <p id="atlas-summary">Loading the complete workspace projection…</p>
+        </div>
+
+        <div class="atlas-depth" role="group" aria-label="Representation depth">
+          <button type="button" data-atlas-depth="0" aria-pressed="true"><span>00</span>World</button>
+          <button type="button" data-atlas-depth="1" aria-pressed="false"><span>01</span>Domains</button>
+          <button type="button" data-atlas-depth="2" aria-pressed="false"><span>02</span>Records</button>
+          <button type="button" data-atlas-depth="3" aria-pressed="false"><span>03</span>Relations</button>
+          <button type="button" data-atlas-depth="4" aria-pressed="false"><span>04</span>Evidence</button>
+        </div>
+
+        <div class="atlas-shell">
+          <div class="atlas-register" aria-hidden="true"><span>WORLD / 01</span><span>ONTOLOGY 1.0.0</span></div>
+          <div id="atlas-canvas" class="atlas-canvas" aria-live="polite"></div>
+          <div id="atlas-status" class="atlas-status" aria-live="polite"></div>
+        </div>
+
+        <div class="atlas-lower">
+          <nav id="atlas-domain-nav" class="atlas-domain-nav" aria-label="World domains"></nav>
+          <section id="atlas-selection" class="atlas-selection" aria-live="polite"></section>
+        </div>
+      </section>
+
+      <section id="map-view" class="view">
         <div class="view-intro">
           <div>
             <p class="eyebrow">Stored knowledge</p>
@@ -95,7 +126,7 @@
             <p class="eyebrow">Versioned references</p>
             <h2>Visual language is scoped, dated and evidenced</h2>
           </div>
-          <p>These are public observations, not a proprietary Nike design system.</p>
+          <p>These are scoped observations and references, not automatically approved production rules.</p>
         </div>
         <div id="visual-language" class="visual-language"></div>
       </section>
@@ -109,11 +140,11 @@
           <p>Planning, retrieval and the resulting packet stay visibly separate.</p>
         </div>
         <form id="simulation-form" class="simulation-form">
-          <label class="wide"><span>Request</span><textarea id="prompt" rows="3">Create a Nike Membership landing page for young everyday athletes.</textarea></label>
+          <label class="wide"><span>Request</span><textarea id="prompt" rows="3">Create a useful Biotic newsletter about a reader-relevant body-care question.</textarea></label>
           <label><span>Workflow stage</span><select id="stage"><option value="brief">Brief</option><option value="concept">Concept</option><option value="production">Production</option><option value="review">Review</option></select></label>
-          <label><span>Asset type</span><input id="assetType" value="landing page" /></label>
-          <label><span>Audience</span><input id="audience" value="young athletes" /></label>
-          <label><span>Channel</span><input id="channel" value="member app" /></label>
+          <label><span>Asset type</span><input id="assetType" value="newsletter" /></label>
+          <label><span>Audience</span><input id="audience" value="body-care readers" /></label>
+          <label><span>Channel</span><input id="channel" value="email" /></label>
           <label><span>World context</span><select id="agent-context"></select></label>
           <label><span>Branch</span><select id="agent-branch"></select></label>
           <label><span>Perspective</span><select id="agent-perspective"><option value="">No additional perspective</option></select></label>

@@ -7,12 +7,13 @@ name = "testflight-adapter-sqlite-semantic"
 version = "0.1.0"
 description = "Append-oriented SQLite repository for Testflight semantic records"
 requires-python = ">=3.12,<3.14"
-dependencies = ["testflight-brand", "testflight-creative-field", "testflight-semantic"]
+dependencies = ["testflight-brand", "testflight-creative-field", "testflight-semantic", "testflight-world"]
 
 [tool.uv.sources]
 testflight-brand = { workspace = true }
 testflight-creative-field = { workspace = true }
 testflight-semantic = { workspace = true }
+testflight-world = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/testflight_adapter_sqlite_semantic"]

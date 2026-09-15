@@ -1,0 +1,605 @@
+{
+  "entries": [
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:71cb66b110b0a438d9ab1d39cda8ea4feefef40b969a1b52902407969c9ea0d5",
+      "legacy_id": "CTX-HELLOBIOTIC-DEODORANT-CURRENT",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:12a95ed5ba3040b06146b2f003b4c8126164c1d25cb92047c58335c45536ef5f",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:f90eb256ff40269feb37c61a188c17e84c80c221481b86361ec2ca418405e691",
+      "legacy_id": "ENT-HB-EN-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:e83caa0be885917a1d6b4c58222889e0e6e86c0f7230a1867e9afb77aa0a8d11",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "entity:biotic:audience:natural-deodorant-evaluators",
+        "entity:biotic:audience:natural-deodorant-evaluators:assertion",
+        "claim:biotic:interpretation:people-evaluating-natural-deodorant-alternatives"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:b98bcc5ff69eab414a87dc29f54e33da07de018a4bb66283a49084a0c77a23ad",
+      "legacy_id": "ENT-HB-EV-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:34a0fd04685c5d24696795c03f3519727d7ba538be3d3dc3fa54ab500bfb1f22",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "event:biotic:public-product-ecosystem-snapshot:2026-08-31",
+        "event:biotic:public-product-ecosystem-snapshot:2026-08-31:assertion",
+        "claim:biotic:interpretation:public-product-ecosystem-snapshot"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:a0a202cd0e9c8e3f5f72730f7106e63e5e1ba9aa738ab937cd3e16756a9611ba",
+      "legacy_id": "ENT-HB-EX-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:59526a970f65897912b975389dff02644b998226338760753ef543c0d7af9c9b",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:public-verbal-expression-pattern",
+        "claim:biotic:interpretation:playful-body-positive-verbal-expression"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:a8bc93a31bebf65e1b28ce03ee2d6f478b88b7008ece6c8615af983db87589c3",
+      "legacy_id": "ENT-HB-GV-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:85ca9992cfd465aedaadc3264f2181b24383a7636ba55b7cef7b3d56e4e833b2",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:founder-reported-stewardship",
+        "claim:biotic:interpretation:founder-reported-brand-stewardship"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:602b7781a933b1461d680c90b0c2e678be87acb52ed381228672901e8d7b7673",
+      "legacy_id": "ENT-HB-ID-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:4cf06945b6535c086c481f3948f667abf09a64f159775788b6addfb17fbe1136",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:public-whole-body-care-framing",
+        "claim:biotic:interpretation:microbiome-friendly-whole-body-care-intention"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:d6930588ba46acccaab7fea5188472dd2bd9f4a325387a2e39fb4f6b5d9c21f9",
+      "legacy_id": "ENT-HB-OF-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:817b33ff35a7c41dd9f13d7046fffd5ad7c73c9bf2e6b04ff03dddc5bf80026b",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "entity:biotic:offering:brightening-probiotic-deodorant",
+        "claim:biotic:offering:brightening-probiotic-deodorant:public-description",
+        "claim:biotic:interpretation:brightening-probiotic-deodorant"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:08801b2591f7cd1f4b09f9dd4ca9875a3c0b2341b5431d0dc8bd229f937a85f5",
+      "legacy_id": "ENT-HB-PE-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:6283fb6bcbaa7f9c6e0571e903ce6ea83e657b810d7b2b50acb59f8368180e06",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:public-testimonial-layer",
+        "claim:biotic:interpretation:public-testimonial-layer"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:82b5786447959ce698ef63290c1c0d4a618d6b7f96035ef1704488d108331d87",
+      "legacy_id": "ENT-HB-XP-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:668d0f88ee0b0c1b8092b295ad21d49b4dd70f5709452e10bfa5dd7a7f1f0da0",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:public-product-education-journey",
+        "claim:biotic:interpretation:direct-product-education-and-purchase-journey"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:91266e92c1fc50c8f532d119adbb3e7617afbe9a98a3ee8a64bc69b733261ca2",
+      "legacy_id": "EVID-HB-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:b8b51ed4b959d2bf61de94c719b101d0fa243cd35acf149078a13e5eef6c4d00",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "evidence:biotic:home-page-framing",
+        "claim:biotic:evidence-finding:home-page-framing:1",
+        "claim:biotic:evidence-finding:home-page-framing:2"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:2579df62f925b92aa76709ce0f2749fb6c066d22abfaf18bd707b4baa4b3167c",
+      "legacy_id": "EVID-HB-002",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:82da4f690ab0ab8a6e94d9834fd97e45f4e1bfbd2c51d73e9393341826e2f1c9",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "evidence:biotic:deodorant-product-description",
+        "claim:biotic:evidence-finding:deodorant-product-description:1",
+        "claim:biotic:evidence-finding:deodorant-product-description:2"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:2b027f0eb9d48a02c04d96902a276d7c9ee365b5c2e5ddf40977ef4b6cecf5c5",
+      "legacy_id": "EVID-HB-003",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:a1db35ed4bc6f9789510abfcfd51f2baabeb959153a2524dba3ddb721514b151",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "evidence:biotic:founder-story",
+        "claim:biotic:evidence-finding:founder-story:1",
+        "claim:biotic:evidence-finding:founder-story:2"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:11a9de493adcc85d3f9f09f012b5a8cb3118602f2eb2e0793569b3d4cd3629cb",
+      "legacy_id": "EVID-HB-004",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:64b26b5b698f57c945cad0ba7a1c8e473a66fe1013336e1108e856965b4ad790",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "evidence:biotic:faq-product-boundaries",
+        "claim:biotic:evidence-finding:faq-product-boundaries:1",
+        "claim:biotic:evidence-finding:faq-product-boundaries:2"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:fa01c8127f92f75e918ccf45e98b33b57bd9a31bc1a56b413e045ba209f165bc",
+      "legacy_id": "EVID-HB-005",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:53d676682441331787b38b6751b5fc7628f0bee9f39073cc0b5bd099b4d253ad",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "evidence:biotic:daily-sunshine-description",
+        "claim:biotic:evidence-finding:daily-sunshine-description:1",
+        "claim:biotic:evidence-finding:daily-sunshine-description:2"
+      ]
+    },
+    {
+      "disposition": "archived_only",
+      "information_loss": [],
+      "input_hash": "sha256:98aa6b90df8ca7df751452ec99b56f37f8fc9f0ff81a2c389183f29d247e45ea",
+      "legacy_id": "EVIDLINK-HELLOBIOTIC-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": null,
+      "rationale": "Legacy presentation or routing structure is retained verbatim in the immutable source snapshot; it has no canonical v3 semantic equivalent.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": []
+    },
+    {
+      "disposition": "archived_only",
+      "information_loss": [],
+      "input_hash": "sha256:436bf74fc3f180e111187a4354ca0024118224eecfb6fb34ea97c513b6cb814b",
+      "legacy_id": "EVIDLINK-HELLOBIOTIC-002",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": null,
+      "rationale": "Legacy presentation or routing structure is retained verbatim in the immutable source snapshot; it has no canonical v3 semantic equivalent.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": []
+    },
+    {
+      "disposition": "archived_only",
+      "information_loss": [],
+      "input_hash": "sha256:5f7d8d86794a82bd48df821cbd8be08644269aedb736587e3568bc334ba72a1e",
+      "legacy_id": "FRAME-HELLOBIOTIC-OFFER-EXPERIENCE-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": null,
+      "rationale": "Legacy presentation or routing structure is retained verbatim in the immutable source snapshot; it has no canonical v3 semantic equivalent.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": []
+    },
+    {
+      "disposition": "archived_only",
+      "information_loss": [],
+      "input_hash": "sha256:62c3d0b52ae51f7c470ced38d3ea709b805593956b6cc716241e394b166cd4fc",
+      "legacy_id": "PERS-HELLOBIOTIC-PUBLIC-CUSTOMER-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": null,
+      "rationale": "Legacy presentation or routing structure is retained verbatim in the immutable source snapshot; it has no canonical v3 semantic equivalent.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": []
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:6e5fad5a53d36cc81e697599ead1d30d6894e5a374677feec3177b3da4b38457",
+      "legacy_id": "REL-HELLOBIOTIC-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:7ae2761eaa291385661bb51b7d4c85a10daf6c2a173f0cdc835e49c71ada2bc1",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:brand-public-framing"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:1e0e21464e83d0e57548bfdad9e34756e8b8d5fe09f7cb5cf66046b0bd546923",
+      "legacy_id": "REL-HELLOBIOTIC-002",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:1c678f832d314fda9d2399527a867729381c006bd03964b79a79b13ff7111150",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:brand-public-expression"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:1384bb6a0d560d6bc6a00f1457775d7ed70f39e39d8a0501750d206174a17039",
+      "legacy_id": "REL-HELLOBIOTIC-003",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:9ca103b68c21d57938e861dda59a7b05ab4bb56eed9d08f0b1f5673185da9220",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:brand-offers-brightening-deodorant",
+        "relation:biotic:brand-offers-brightening-deodorant"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:a8e6b8d40f3e5273bba0ed6f895f97960c630c67f40e1411846573a9ff21fc62",
+      "legacy_id": "REL-HELLOBIOTIC-004",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:cdc6db5d109ea27545a1439b31aac58f2b848a1d44ba621f8240b58b35910959",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:offering-public-education-journey"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:36194c0fab26e204382cbe8493afb0d8aaee3c77c36c19a93808abc94fe6e04f",
+      "legacy_id": "REL-HELLOBIOTIC-005",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:e0acbeabba6c22dd1652a894e7f125adad93675f0ca938ee271dfa0b06f99910",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:brand-audience-perception-frame"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:1d52979f0e26eb3a696f3258fc4cec0bfd4e7925579548ecacf2accaa1375f5e",
+      "legacy_id": "REL-HELLOBIOTIC-006",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:ff7ea6b4dc676664f1d5e9651d3d125d8de93563ddf413e65487904375f446c3",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:brand-founder-stewardship-signal"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:cf5c59291ee2be8357bc0d613663f6c87d570060ed96673e7a15ec627dd5cf12",
+      "legacy_id": "REL-HELLOBIOTIC-007",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:ec06d77a45f33e0305a9063243e51b28fff210df66e29b8925da17ea3f3083d3",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:brand-natural-deodorant-environment"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:0681522bd86debda89124efde0e37a8183ca428a64fc386db7c4d5f388616bc1",
+      "legacy_id": "REL-HELLOBIOTIC-008",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:c3995709722093e842a65cc529e8ce99c0c5f37aefcec0dcf22d5dd612257786",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:brand-public-portfolio-evolution"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:1e64367756fc15e325a1d0ddd6ff4b032d02a578dcece62258d7893caac35e9e",
+      "legacy_id": "REL-HELLOBIOTIC-009",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:39623dcde6f90f6682dd58a591ab49ffdeba2e9328a44eeeb2a147dcc2ac031d",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:offering-testimonial-perception-hypothesis"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:01db3f6b8c08c3a67a9dd5142ae6f112dafef7c5e112bbd2d4bc5ca6ef5f7333",
+      "legacy_id": "REL-HELLOBIOTIC-010",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:e5a33114f1b4d9479cb1d5d59b7e315c4e2eb4ff007e4b331d841abfba64764b",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:portfolio-snapshot-identity-update"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:4a3c59ef5074de7228b967430b4cb2e1fcd2385a562a6bea11b46781b8e58a95",
+      "legacy_id": "REL-HELLOBIOTIC-011",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:b7ab08e6dc58cb1bfa3c736b49c618ae4d241fcef73d57c7c5ecc4d13428eafa",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:testimonial-identity-feedback-hypothesis"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:0dd1ab326f5c27b190be8fc58e0d6e9c7aa55508bc9985c23c7caa1a8b87467d",
+      "legacy_id": "REL-HELLOBIOTIC-012",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:9827e55dd09809b93b529d02a3b3cfaca5e3c61f158a2c81e9212ebc60395dbf",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:offering-supports-public-framing"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:c6033ea6c6fb21dc3f62238925e5e79c9ef5129961766baa270e48850074d10f",
+      "legacy_id": "REL-HELLOBIOTIC-013",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:8462ed8158bfc35afcf22da78e992cf95cd61d42015289214c38341163cbb677",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:offering-testimonial-contradiction-hypothesis"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:8af185a1dadc47f98ebc37772da9bdc691e4e3b3be215937139934e4f8957c02",
+      "legacy_id": "REL-HELLOBIOTIC-014",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:5e38f5118f6ab61bf4ff99d85b83fe38b56f23451ba38511f219faad034396fe",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "claim:biotic:relation:offering-audience-influence-hypothesis"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:94c52e0eb61f9def22464236958684f8174e9f381f1d39d9ff66af1a0a95c7dc",
+      "legacy_id": "SRC-HB-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:e760b7a44c5ab2caa1df2de35d972f413993657a96d10d347c119767962cfbb4",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "source:biotic:home-page"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:b0e72e5714c3cd1eb81a4a2eba133198a556193c297daa9a544893be2fa17d34",
+      "legacy_id": "SRC-HB-002",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:4791ba27e51ad397bffd0a299d57c8220d476b58acb468b34f836349afcdaee2",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "source:biotic:brightening-probiotic-deodorant-page"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:4cbd456dbae31216aabceee80ae9cb6cb427a8f2a188fe1d0a023656769d48bd",
+      "legacy_id": "SRC-HB-003",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:dc877d4e1cd36e68af64f263c3b1ab2af97da44235cfb3176ce317de265ce999",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "source:biotic:founder-story"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:7e5b8f127f5a6eb476fea66c32f587bb695819b579d2c50dcd14cc420920379a",
+      "legacy_id": "SRC-HB-004",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:18478de06d5f969f5aacfd24daf9f7b4cd15ee9a4c70a89fb29574518ce4bc7f",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "source:biotic:faq"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:1e7259fbd1c83b69bb4c0694f0c9b941a98accfd648f7870cb8bddc6aca24018",
+      "legacy_id": "SRC-HB-005",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:64c310490d8aa169e46ee691f87ae1da8cae08ce645111a601164c20d36ff975",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "source:biotic:daily-sunshine-page"
+      ]
+    },
+    {
+      "disposition": "migrated",
+      "information_loss": [],
+      "input_hash": "sha256:ec8f38e09f1fb0d6508c463e12121e7786ad97287808947e971143403109b427",
+      "legacy_id": "STATE-HELLOBIOTIC-PUBLIC-CORE-001",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": "sha256:d7e9c87b733bf4a78f031f5f394b53a7e486a33dc694ab0baba6c1e73008af0d",
+      "rationale": "Mapped by a deterministic, source-preserving public-research rule.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": [
+        "state:biotic:public-brand-core:2026-08-31"
+      ]
+    },
+    {
+      "disposition": "archived_only",
+      "information_loss": [],
+      "input_hash": "sha256:5cb4af7534e25f407b01dfb90b997a34477f395462093f7879c076962e9a54b8",
+      "legacy_id": "research-main",
+      "legacy_version": "1.0.0",
+      "migration_rule_id": "migration:biotic-public-research-v3@2",
+      "output_hash": null,
+      "rationale": "Legacy presentation or routing structure is retained verbatim in the immutable source snapshot; it has no canonical v3 semantic equivalent.",
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "target_ids": []
+    }
+  ],
+  "generated_at": "2026-08-31T00:00:00Z",
+  "ledger_id": "ledger:biotic-public-research-v3",
+  "snapshot_hash": "sha256:7c4dc47104c6bd66e980e17ecf0e5918ffe3c8c229a1488bb581e2f63e02ced8",
+  "workspace_id": "world://workspace/brand/hellobiotic-research"
+}

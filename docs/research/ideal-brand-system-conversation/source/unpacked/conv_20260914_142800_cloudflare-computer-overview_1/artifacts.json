@@ -1,0 +1,55 @@
+{
+  "count": 2,
+  "artifacts": [
+    {
+      "id": "art_0001",
+      "type": "image",
+      "role": "uploaded",
+      "filename": "1B85CAAF-95C6-46DC-B59F-0E3AEB57CCA1.jpeg",
+      "path": null,
+      "mime_type": "image/png",
+      "sha256": null,
+      "source_message_id": "msg_0123",
+      "derived_from": [],
+      "provider": "chatgpt",
+      "provider_id": "file_00000000cfe0824382b6f34420a36348",
+      "provider_ref": "sediment://file_00000000cfe0824382b6f34420a36348?shared_conversation_id=6a831cf1-83a0-83ed-b0a4-ccc66fa6b0aa",
+      "public_url": null,
+      "download_status": "metadata_only",
+      "metadata": {
+        "asset_pointer": "sediment://file_00000000cfe0824382b6f34420a36348?shared_conversation_id=6a831cf1-83a0-83ed-b0a4-ccc66fa6b0aa",
+        "library_file_id": "libfile_fff164dc9bc481919ca7a7e383a37e23",
+        "size_bytes": null,
+        "width": null,
+        "height": null,
+        "alt_text": "",
+        "source_url_host": ""
+      }
+    },
+    {
+      "id": "art_0002",
+      "type": "image",
+      "role": "uploaded",
+      "filename": "5553AA42-8412-4DF9-9034-62D7DC75D799.png",
+      "path": null,
+      "mime_type": "image/png",
+      "sha256": null,
+      "source_message_id": "msg_0213",
+      "derived_from": [],
+      "provider": "chatgpt",
+      "provider_id": "file_00000000439c81f4bfdac415d27d9414",
+      "provider_ref": "sediment://file_00000000439c81f4bfdac415d27d9414?shared_conversation_id=6a831cf1-83a0-83ed-b0a4-ccc66fa6b0aa",
+      "public_url": null,
+      "download_status": "metadata_only",
+      "metadata": {
+        "asset_pointer": "sediment://file_00000000439c81f4bfdac415d27d9414?shared_conversation_id=6a831cf1-83a0-83ed-b0a4-ccc66fa6b0aa",
+        "library_file_id": "libfile_a5e3f74da908819182145975d1ba1084",
+        "size_bytes": null,
+        "width": null,
+        "height": null,
+        "alt_text": "",
+        "source_url_host": ""
+      }
+    }
+  ]
+}

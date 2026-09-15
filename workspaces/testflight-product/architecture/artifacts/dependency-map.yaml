@@ -5,6 +5,8 @@ dependencies:
   - {subject_id: app:brand-intake-web, relation: implements_surface, object_id: surface:brand-intake, mode: direct_static}
   - {subject_id: app:brand-lab, relation: depends_on, object_id: package:testflight-brand, mode: owned_package}
   - {subject_id: app:brand-lab, relation: depends_on, object_id: package:testflight-semantic, mode: owned_package}
+  - {subject_id: app:brand-world, relation: depends_on, object_id: package:testflight-brand, mode: owned_package}
+  - {subject_id: app:brand-world, relation: projects, object_id: capability:brand-world, mode: read_only_semantic_canvas}
   - {subject_id: app:creative-studio, relation: depends_on, object_id: package:testflight-creative-field, mode: owned_package}
   - {subject_id: app:creative-studio, relation: persists_through, object_id: adapter:sqlite-semantic, mode: adapter}
   - {subject_id: app:creative-studio, relation: executes_through, object_id: runtime:operator-http, mode: private_http}

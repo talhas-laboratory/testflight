@@ -1,0 +1,17 @@
+module_id: world://ontology/module/brand-world/offering
+version: 3.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand-world/identity, world://ontology/module/brand-world/organizational-reality]
+competency_questions:
+  - Can an Offering be separated from the claim made about its benefit?
+  - Can a Benefit remain scoped to an audience and context rather than becoming a global promise?
+evidence_basis: [proposal:brand-world-v3-migration]
+entity_types:
+  - {id: world://ontology/brand-world/type/Offering, label: Offering, definition: "A product, service, or value-bearing commercial capability.", examples: ["A Biotic deodorant SKU."], counterexamples: ["A campaign headline."]}
+  - {id: world://ontology/brand-world/type/Benefit, label: Benefit, definition: "A stated or observed value that an Offering may provide in context.", examples: ["A stated daily-care benefit."], counterexamples: ["A typeface."]}
+  - {id: world://ontology/brand-world/type/ValueProposition, label: Value proposition, definition: "A selected promise connecting an Offering to a bounded relationship need.", examples: ["A proposition for a defined audience."], counterexamples: ["An unapproved product claim."]}
+  - {id: world://ontology/brand-world/type/ProofObligation, label: Proof obligation, definition: "A requirement for evidence or qualification before an Offering statement may be used.", examples: ["Verify claim by SKU and market."], counterexamples: ["A product benefit itself."]}
+relationship_types:
+  - {id: world://ontology/brand-world/relation/offers, label: offers, definition: "A Brand makes an Offering available in scope.", family: offering, source_type_ids: [world://ontology/brand-world/type/Brand], target_type_ids: [world://ontology/brand-world/type/Offering], examples: ["Biotic offers a deodorant."], counterexamples: ["An offering offers its Brand."]}
+  - {id: world://ontology/brand-world/relation/provides-capability, label: provides capability, definition: "An Offering provides a Capability.", family: offering, source_type_ids: [world://ontology/brand-world/type/Offering], target_type_ids: [world://ontology/brand-world/type/Capability], examples: ["An offering provides a product capability."], counterexamples: ["A capability provides an offering."]}
+  - {id: world://ontology/brand-world/relation/requires-proof, label: requires proof, definition: "An Offering, Benefit, or ValueProposition requires a ProofObligation before a bound claim is manifested.", family: governance, source_type_ids: [world://ontology/brand-world/type/Offering, world://ontology/brand-world/type/Benefit, world://ontology/brand-world/type/ValueProposition], target_type_ids: [world://ontology/brand-world/type/ProofObligation], examples: ["A benefit requires market-specific verification."], counterexamples: ["Proof obligation is a benefit."]}

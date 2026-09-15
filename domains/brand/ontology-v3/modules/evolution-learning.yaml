@@ -1,0 +1,17 @@
+module_id: world://ontology/module/brand-world/evolution-learning
+version: 3.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand-world/identity, world://ontology/module/brand-world/offering, world://ontology/module/brand-world/governance-decisions, world://ontology/module/brand-world/expression-manifestation]
+competency_questions:
+  - Can an observed outcome remain distinct from the hypothesis it was intended to test?
+  - Can a reviewed learning update identify stale downstream artifacts without rewriting them automatically?
+evidence_basis: [proposal:brand-world-v3-migration]
+entity_types:
+  - {id: world://ontology/brand-world/type/Era, label: Era, definition: "A named period in a Brand world's history defined by an approved boundary or meaningful state transition.", examples: ["A pre-launch era."], counterexamples: ["A single social post."]}
+  - {id: world://ontology/brand-world/type/Experiment, label: Experiment, definition: "A governed protocol intended to test a stated hypothesis under defined conditions.", examples: ["A newsletter subject-line test."], counterexamples: ["An expected result."]}
+  - {id: world://ontology/brand-world/type/ObservedOutcome, label: Observed outcome, definition: "A measured or recorded consequence with method, scope, and limitations.", examples: ["A measured newsletter open-rate change."], counterexamples: ["A simulated audience reaction."]}
+  - {id: world://ontology/brand-world/type/LearningUpdate, label: Learning update, definition: "A reviewed interpretation of outcomes that may inform later decisions without automatic mutation.", examples: ["A reviewed finding to test a narrative direction again."], counterexamples: ["An automatic strategy rewrite."]}
+relationship_types:
+  - {id: world://ontology/brand-world/relation/tests, label: tests, definition: "An Experiment tests a hypothesis or strategic proposition under a governed protocol.", family: learning, source_type_ids: [world://ontology/brand-world/type/Experiment], target_type_ids: [world://ontology/brand-world/type/StrategicDecision], examples: ["An experiment tests a decision direction."], counterexamples: ["An outcome tests itself."]}
+  - {id: world://ontology/brand-world/relation/produces-outcome, label: produces outcome, definition: "An Experiment produces an ObservedOutcome without proving a causal interpretation alone.", family: learning, source_type_ids: [world://ontology/brand-world/type/Experiment], target_type_ids: [world://ontology/brand-world/type/ObservedOutcome], examples: ["A completed experiment produces an outcome."], counterexamples: ["An expected outcome before measurement."]}
+  - {id: world://ontology/brand-world/relation/informs-learning, label: informs learning, definition: "An ObservedOutcome informs a reviewed LearningUpdate under scope and limitations.", family: learning, source_type_ids: [world://ontology/brand-world/type/ObservedOutcome], target_type_ids: [world://ontology/brand-world/type/LearningUpdate], examples: ["An outcome informs a learning update."], counterexamples: ["An outcome automatically changes strategy."]}

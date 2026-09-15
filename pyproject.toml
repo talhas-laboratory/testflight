@@ -17,6 +17,7 @@ package = false
 [tool.uv.workspace]
 members = [
   "apps/brand-lab",
+  "apps/brand-world",
   "apps/creative-studio",
   "apps/workflow-runtime",
   "packages/testflight-core",
@@ -25,6 +26,7 @@ members = [
   "packages/testflight-creative-field",
   "packages/testflight-content",
   "packages/testflight-workflows",
+  "packages/testflight-world",
   "adapters/cognee",
   "adapters/creative-connectors",
   "adapters/langgraph",

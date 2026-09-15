@@ -14,7 +14,11 @@ ROOT = Path(__file__).parents[3]
 
 
 class FakeNewsletterOperatorClient:
+    def __init__(self):
+        self.payloads = []
+
     async def execute(self, payload):
+        self.payloads.append(payload)
         prompt_id = payload["input"]["prompt_id"]
         if prompt_id.endswith("compose-issue"):
             output = {
@@ -174,14 +178,39 @@ class FakeNewsletterOperatorClient:
         }
 
 
+class FakeBrandWorldContextCompiler:
+    async def compile(self, *, request_id, task_ref, objective):
+        return {
+            "version": 2,
+            "status": "ready",
+            "request": {
+                "requestId": request_id,
+                "taskRef": task_ref,
+                "objective": objective,
+                "workspaceId": "world://workspace/brand/hellobiotic-research",
+                "branchId": "public-research-v3",
+                "principalRef": "agent:hellobiotic-newsletter-strategist",
+            },
+            "recordIds": ["entity:biotic", "claim:biotic:public-whole-body-care-framing"],
+            "evidenceIds": ["evidence:biotic:home-page-framing"],
+            "records": [],
+            "citations": [],
+            "omissions": [],
+            "instructions": ["Cite evidence IDs for material claims."],
+            "evaluation": {"status": "ready", "stopReason": "sufficient"},
+        }
+
+
 def test_biotic_newsletter_workflow_returns_review_only_package(tmp_path, monkeypatch):
     monkeypatch.setenv("TESTFLIGHT_PROJECT_ROOT", str(ROOT))
+    operator_client = FakeNewsletterOperatorClient()
     catalog = load_catalog(ROOT / "workflows/registry.yaml")
     handlers = load_handlers(
         ("testflight_workflow_runtime.biotic_newsletter_handlers",),
         {
             "testflight_workflow_runtime.biotic_newsletter_handlers": {
-                "operator_client": FakeNewsletterOperatorClient()
+                "operator_client": operator_client,
+                "brand_world_context_compiler": FakeBrandWorldContextCompiler(),
             }
         },
     )
@@ -238,6 +267,16 @@ def test_biotic_newsletter_workflow_returns_review_only_package(tmp_path, monkey
     assert package["generation_packet"]["constraints"]["product_role"] == "none"
     assert package["draft"]["claims_used"][0]["evidence_id"] == "evidence:microbiome-1"
     assert package["next_required_decision"] == "human_editorial_review"
+    compose_payload = next(
+        payload
+        for payload in operator_client.payloads
+        if payload["input"]["prompt_id"].endswith("compose-issue")
+    )
+    assert (
+        compose_payload["input"]["arguments"]["context"]["brand_world_v3"]["request"]["branchId"]
+        == "public-research-v3"
+    )
+    assert compose_payload["input"]["arguments"]["context"]["brand_world_v3"]["status"] == "ready"
 
 
 def test_review_package_rejects_claim_lineage_drift():

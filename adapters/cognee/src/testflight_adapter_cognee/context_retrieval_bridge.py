@@ -7,6 +7,7 @@ import hashlib
 import json
 import re
 import sys
+from pathlib import Path
 from typing import Any
 
 
@@ -104,6 +105,7 @@ def normalize_items(response: Any) -> list[dict[str, Any]]:
             or _header(text, "PROMOTION_STATUS"),
             "score": metadata.get("score"),
             "branchId": metadata.get("branch_id") or _header(text, "BRANCH_ID"),
+            "metadataJson": metadata.get("metadata_json"),
             "perspectiveIds": _string_list(metadata.get("perspective_ids")),
         }
         item.update({key: value for key, value in optional.items() if value is not None})
@@ -292,7 +294,264 @@ def exact_creative_field_items(
     return [found[record_id] for record_id in record_ids if record_id in found]
 
 
-async def retrieve(request: dict[str, Any]) -> list[dict[str, Any]]:
+def world_v3_projection_items(
+    items: list[dict[str, Any]], request: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Return projection candidates, never canonical record content or inferred truth."""
+
+    workspace_id = request.get("workspaceId")
+    branch_id = request.get("branchId")
+    lifecycles = request.get("lifecycleStatuses")
+    dataset_name = request.get("datasetName")
+    module_ids = request.get("moduleIds") or []
+    if not isinstance(workspace_id, str) or not isinstance(branch_id, str):
+        raise ValueError("world-v3 retrieval requires workspaceId and branchId")
+    if not isinstance(lifecycles, list) or any(not isinstance(value, str) for value in lifecycles):
+        raise ValueError("world-v3 retrieval requires lifecycleStatuses")
+    if not isinstance(module_ids, list) or any(not isinstance(value, str) for value in module_ids):
+        raise ValueError("moduleIds must be an array of strings")
+    candidates: list[dict[str, Any]] = []
+    for item in items:
+        metadata = _metadata(item)
+        raw_metadata = item.get("metadataJson") or metadata.get("metadata_json")
+        if isinstance(raw_metadata, str):
+            try:
+                metadata = {**metadata, **json.loads(raw_metadata)}
+            except json.JSONDecodeError:
+                continue
+        if metadata.get("workspace_id") != workspace_id or metadata.get("branch_id") != branch_id:
+            continue
+        if metadata.get("dataset_name") not in (None, dataset_name):
+            continue
+        if metadata.get("lifecycle_status") not in lifecycles:
+            continue
+        if module_ids and metadata.get("module_id") not in module_ids:
+            continue
+        record_id = metadata.get("record_id") or item.get("recordId")
+        record_version = metadata.get("record_version")
+        record_hash = metadata.get("canonical_record_hash")
+        snapshot_root = metadata.get("projection_snapshot_root")
+        if not (
+            isinstance(record_id, str)
+            and isinstance(record_version, int)
+            and isinstance(record_hash, str)
+            and isinstance(snapshot_root, str)
+        ):
+            continue
+        candidates.append(
+            {
+                "recordId": record_id,
+                "recordVersion": record_version,
+                "canonicalRecordHash": record_hash,
+                "projectionSnapshotRoot": snapshot_root,
+                "matchedFields": ["index_text"],
+                "retrievalMethod": "semantic",
+                "score": metadata.get("score", 1.0),
+            }
+        )
+    return candidates
+
+
+async def search_world_v3_projection(query: str, top_k: int) -> list[dict[str, Any]]:
+    """Search the typed V3 DataPoint indexes directly, without LLM completion."""
+
+    from cognee.infrastructure.databases.vector import get_vector_engine_async
+    from cognee.infrastructure.databases.vector.exceptions.exceptions import (
+        CollectionNotFoundError,
+    )
+
+    vector = await get_vector_engine_async()
+    results: dict[str, dict[str, Any]] = {}
+    for field in ("label", "text"):
+        try:
+            matches = await vector.search(
+                f"WorldV3DataPoint_{field}",
+                query_text=query,
+                query_vector=None,
+                limit=top_k,
+                include_payload=True,
+            )
+        except CollectionNotFoundError:  # collection may not exist before first projection
+            continue
+        for match in matches:
+            payload = match.payload if isinstance(match.payload, dict) else {}
+            identity = str(match.id)
+            candidate = {
+                **payload,
+                "score": 1.0 / (1.0 + max(0.0, float(match.score))),
+            }
+            previous = results.get(identity)
+            if previous is None or candidate["score"] > previous["score"]:
+                results[identity] = candidate
+    return sorted(results.values(), key=lambda item: (-item["score"], str(item)))[:top_k]
+
+
+_PROJECTION_EDGE_CLASSES = {
+    "canonical_relation",
+    "canonical_reference",
+    "derived_similarity",
+    "inferred_relation",
+    "projection_structure",
+}
+
+
+def world_v3_manifest_edges(
+    request: dict[str, Any], candidate_ids: list[str]
+) -> tuple[str | None, list[dict[str, Any]]]:
+    """Expand declared projection edges without treating the manifest as canonical truth.
+
+    The manifest is a deterministic, rebuildable representation produced by the
+    World V3 projection worker.  It supplies structure only; the Context
+    Compiler subsequently hydrates every selected record and canonical relation
+    from the pinned World snapshot.
+    """
+
+    raw_path = request.get("manifestPath")
+    if raw_path is None:
+        return None, []
+    if not isinstance(raw_path, str) or not raw_path:
+        raise ValueError("manifestPath must be a non-empty string when supplied")
+    maximum_graph_edges = request.get("maximumGraphEdges")
+    maximum_graph_hops = request.get("maximumGraphHops")
+    if not isinstance(maximum_graph_edges, int) or not 0 <= maximum_graph_edges <= 100:
+        raise ValueError("maximumGraphEdges must be an integer from 0 through 100")
+    if not isinstance(maximum_graph_hops, int) or not 0 <= maximum_graph_hops <= 2:
+        raise ValueError("maximumGraphHops must be an integer from 0 through 2")
+    try:
+        manifest = json.loads(Path(raw_path).resolve().read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise ValueError("world-v3 projection manifest is unreadable") from error
+    if not isinstance(manifest, dict) or manifest.get("projection_kind") != "world-v3-exact-graph":
+        raise ValueError("manifestPath does not identify a World v3 exact graph")
+    if manifest.get("workspace_id") != request.get("workspaceId") or manifest.get(
+        "branch_id"
+    ) != request.get("branchId"):
+        raise ValueError("projection manifest scope does not match retrieval scope")
+    snapshot_root = manifest.get("snapshot_root")
+    lifecycle_scope = manifest.get("lifecycle_scope")
+    requested_lifecycles = request.get("lifecycleStatuses")
+    if (
+        not isinstance(snapshot_root, str)
+        or not isinstance(lifecycle_scope, list)
+        or not isinstance(requested_lifecycles, list)
+        or any(status not in requested_lifecycles for status in lifecycle_scope)
+    ):
+        raise ValueError("projection manifest lifecycle scope is not permitted for retrieval")
+    raw_edges = manifest.get("custom_edges")
+    if not isinstance(raw_edges, list):
+        raise ValueError("projection manifest has no valid graph edges")
+    allowed_relation_types = request.get("allowedRelationTypeIds") or []
+    if not isinstance(allowed_relation_types, list) or any(
+        not isinstance(value, str) for value in allowed_relation_types
+    ):
+        raise ValueError("allowedRelationTypeIds must be an array of strings")
+    module_ids = request.get("moduleIds") or []
+    if not isinstance(module_ids, list) or any(not isinstance(value, str) for value in module_ids):
+        raise ValueError("moduleIds must be an array of strings")
+    raw_nodes = manifest.get("nodes")
+    if not isinstance(raw_nodes, list):
+        raise ValueError("projection manifest has no valid graph nodes")
+    allowed_record_ids = {
+        node.get("record_id")
+        for node in raw_nodes
+        if isinstance(node, dict)
+        and isinstance(node.get("metadata"), dict)
+        and (not module_ids or node["metadata"].get("module_id") in module_ids)
+    }
+
+    # Explicit task seeds are authoritative navigation anchors even when a
+    # semantic query produces no result. Candidate IDs remain only candidates.
+    seeds = set(candidate_ids) & allowed_record_ids
+    explicit_seeds = request.get("seedRecordIds") or []
+    if not isinstance(explicit_seeds, list) or any(
+        not isinstance(value, str) for value in explicit_seeds
+    ):
+        raise ValueError("seedRecordIds must be an array of strings")
+    seeds.update(set(explicit_seeds) & allowed_record_ids)
+    if not seeds or maximum_graph_edges == 0 or maximum_graph_hops == 0:
+        return snapshot_root, []
+
+    incident: dict[str, list[dict[str, Any]]] = {}
+    for raw_edge in raw_edges:
+        if not isinstance(raw_edge, dict):
+            continue
+        metadata = raw_edge.get("metadata")
+        if not isinstance(metadata, dict):
+            continue
+        source_id = metadata.get("source_record_id")
+        target_id = metadata.get("target_record_id")
+        predicate = raw_edge.get("predicate")
+        edge_class = metadata.get("edge_class")
+        if not (
+            isinstance(source_id, str)
+            and isinstance(target_id, str)
+            and isinstance(predicate, str)
+            and edge_class in _PROJECTION_EDGE_CLASSES
+        ):
+            continue
+        if source_id not in allowed_record_ids or target_id not in allowed_record_ids:
+            continue
+        if (
+            edge_class == "canonical_relation"
+            and allowed_relation_types
+            and metadata.get("canonical_relation_type_id") not in allowed_relation_types
+        ):
+            continue
+        edge: dict[str, Any] = {
+            "sourceRecordId": source_id,
+            "targetRecordId": target_id,
+            "predicate": predicate,
+            "edgeClass": edge_class,
+        }
+        if isinstance(metadata.get("canonical_relation_id"), str):
+            edge["canonicalRelationId"] = metadata["canonical_relation_id"]
+        if isinstance(metadata.get("canonical_relation_hash"), str):
+            edge["canonicalRelationHash"] = metadata["canonical_relation_hash"]
+        if isinstance(metadata.get("source_revision"), str):
+            edge["derivationRef"] = metadata["source_revision"]
+        incident.setdefault(source_id, []).append(edge)
+        incident.setdefault(target_id, []).append(edge)
+
+    output: list[dict[str, Any]] = []
+    queue = [(seed, 0) for seed in sorted(seeds)]
+    visited = set(seeds)
+    seen_edges: set[tuple[str, str, str, str]] = set()
+    while queue and len(output) < maximum_graph_edges:
+        current, depth = queue.pop(0)
+        if depth >= maximum_graph_hops:
+            continue
+        for edge in sorted(
+            incident.get(current, []),
+            key=lambda item: (
+                item["sourceRecordId"],
+                item["predicate"],
+                item["targetRecordId"],
+            ),
+        ):
+            identity = (
+                edge["sourceRecordId"],
+                edge["predicate"],
+                edge["targetRecordId"],
+                edge["edgeClass"],
+            )
+            if identity in seen_edges:
+                continue
+            seen_edges.add(identity)
+            output.append(edge)
+            if len(output) >= maximum_graph_edges:
+                break
+            neighbor = (
+                edge["targetRecordId"]
+                if edge["sourceRecordId"] == current
+                else edge["sourceRecordId"]
+            )
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append((neighbor, depth + 1))
+    return snapshot_root, output
+
+
+async def retrieve(request: dict[str, Any]) -> Any:
     dataset_name = request.get("datasetName")
     query = request.get("text")
     top_k = request.get("topK", 10)
@@ -320,6 +579,14 @@ async def retrieve(request: dict[str, Any]) -> list[dict[str, Any]]:
             or any(not isinstance(record_id, str) for record_id in value)
         ):
             raise ValueError(f"{field} must be an array of strings")
+
+    if request.get("retrievalKind") == "world_v3":
+        items = await search_world_v3_projection(query, top_k)
+        candidates = world_v3_projection_items(items, request)
+        snapshot_root, edges = world_v3_manifest_edges(
+            request, [candidate["recordId"] for candidate in candidates]
+        )
+        return {"items": candidates, "edges": edges, "projectionSnapshotRoot": snapshot_root}
 
     response = await cognee.search(
         query,
@@ -365,8 +632,9 @@ def main() -> int:
         request = json.loads(sys.stdin.read())
         if not isinstance(request, dict):
             raise ValueError("request must be a JSON object")
-        items = asyncio.run(retrieve(request))
-        print(json.dumps({"items": items}, ensure_ascii=False))
+        result = asyncio.run(retrieve(request))
+        payload = result if isinstance(result, dict) else {"items": result}
+        print(json.dumps(payload, ensure_ascii=False))
         return 0
     except Exception as error:  # noqa: BLE001 - process boundary converts failures to stderr
         print(f"context retrieval failed: {error}", file=sys.stderr)

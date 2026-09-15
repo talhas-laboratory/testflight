@@ -1,0 +1,16 @@
+module_id: world://ontology/module/brand-world/organizational-reality
+version: 3.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand-world/identity]
+competency_questions:
+  - Can an operating capability be distinguished from a promise or campaign claim about that capability?
+  - Can a Brand's internal practice be connected to a Principle without making the practice permanent identity?
+evidence_basis: [proposal:brand-world-v3-migration]
+entity_types:
+  - {id: world://ontology/brand-world/type/Organization, label: Organization, definition: "A legal or operating body participating in the Brand world.", examples: ["A company operating Biotic."], counterexamples: ["A marketing channel."]}
+  - {id: world://ontology/brand-world/type/Capability, label: Capability, definition: "A durable ability an Organization or Offering can provide.", examples: ["Product formulation capability."], counterexamples: ["An audience preference."]}
+  - {id: world://ontology/brand-world/type/Practice, label: Practice, definition: "A repeatable way of working or serving that may enact a Principle.", examples: ["A formulation review practice."], counterexamples: ["A one-time launch."]}
+  - {id: world://ontology/brand-world/type/Technology, label: Technology, definition: "A technical system or material capability used by an Organization or Offering.", examples: ["A microbiome-oriented formulation approach."], counterexamples: ["A customer need."]}
+relationship_types:
+  - {id: world://ontology/brand-world/relation/enacts, label: enacts, definition: "A Practice enacts a Principle in a bounded operational context.", family: organizational_reality, source_type_ids: [world://ontology/brand-world/type/Practice], target_type_ids: [world://ontology/brand-world/type/Principle], examples: ["A review practice enacts claim restraint."], counterexamples: ["A principle enacts a practice."]}
+  - {id: world://ontology/brand-world/relation/uses-technology, label: uses technology, definition: "An Organization or Capability uses a Technology.", family: organizational_reality, source_type_ids: [world://ontology/brand-world/type/Organization, world://ontology/brand-world/type/Capability], target_type_ids: [world://ontology/brand-world/type/Technology], examples: ["A capability uses a formulation technology."], counterexamples: ["A technology uses an audience."]}

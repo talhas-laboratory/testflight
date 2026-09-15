@@ -31,6 +31,31 @@ node's output schema to `127.0.0.1:8781`. It never reads provider credentials. T
 performs provider preflight and returns provider/model identity in a redacted receipt; the workflow
 handler validates the returned JSON again before LangGraph can advance.
 
+## Biotic newsletter Brand World context
+
+The `agent:hellobiotic-newsletter-strategist` workflow first compiles a deterministic, read-only
+packet from `world://workspace/brand/hellobiotic-research`, branch `public-research-v3`. The
+packet is intentionally bounded to identity, expression, offering, and relationship material,
+then carries the linked evidence, sources, trace, lifecycle status, and omissions into the
+proposal workflow. It is not a client-approved Brand World and cannot authorize a send, a
+canonical write, or an unsupported claim.
+
+Start it with the newsletter principal's environment-backed bearer token, after configuring the
+operator runtime's provider credentials outside the repository:
+
+```bash
+# terminal 1 — provider configuration remains in your local environment
+make serve-operator-runtime
+
+# terminal 2
+TESTFLIGHT_WORKFLOW_TOKEN_HELLOBIOTIC_NEWSLETTER='local-secret' \\
+  make serve-workflow-runtime
+```
+
+`make serve-workflow-runtime` builds the TypeScript Context Compiler before starting the Python
+runtime. The workflow returns a review package only; a human editor remains the next required
+decision.
+
 LangGraph owns graph scheduling and an in-process checkpoint seam. SQLite owns durable run records
 and action idempotency; durable LangGraph checkpoints and crash resume remain a later increment.
 

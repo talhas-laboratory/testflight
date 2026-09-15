@@ -143,11 +143,14 @@ test("filter excludes explicit branch and perspective mismatches while keeping s
     configuration,
   );
 
-  assert.deepEqual(result.accepted.map((item) => item.id), ["matching", "shared"]);
-  assert.deepEqual(result.rejected.map((item) => item.reason), [
-    "wrong branch",
-    "wrong perspective",
-  ]);
+  assert.deepEqual(
+    result.accepted.map((item) => item.id),
+    ["matching", "shared"],
+  );
+  assert.deepEqual(
+    result.rejected.map((item) => item.reason),
+    ["wrong branch", "wrong perspective"],
+  );
 });
 
 test("filter treats an explicit main branch as a real branch boundary", () => {
@@ -178,8 +181,14 @@ test("filter treats an explicit main branch as a real branch boundary", () => {
     configuration,
   );
 
-  assert.deepEqual(result.accepted.map((item) => item.id), ["main", "shared"]);
-  assert.deepEqual(result.rejected.map((item) => item.reason), ["wrong branch"]);
+  assert.deepEqual(
+    result.accepted.map((item) => item.id),
+    ["main", "shared"],
+  );
+  assert.deepEqual(
+    result.rejected.map((item) => item.reason),
+    ["wrong branch"],
+  );
 });
 
 class FakeModel implements IntelligenceModel {

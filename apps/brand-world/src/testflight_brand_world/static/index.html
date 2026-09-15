@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biotic Brand World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/design/tokens.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#world-canvas">Skip to Brand World</a>
+  <main class="app-shell">
+    <header class="world-header">
+      <div class="brand-lockup" aria-label="Biotic Brand World">
+        <span class="brand-index">BW / 01</span>
+        <strong>Biotic</strong>
+        <em>Brand World</em>
+      </div>
+      <nav class="breadcrumb" aria-label="Current graph location">
+        <button type="button" id="world-crumb" aria-current="page">Whole world</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" id="system-crumb" hidden></button>
+      </nav>
+      <div class="world-meta" aria-label="Projection information">
+        <span id="world-scope">Loading canonical workspace…</span>
+        <span id="world-version">Ontology —</span>
+      </div>
+    </header>
+
+    <section class="canvas-stage" aria-labelledby="canvas-title">
+      <h1 id="canvas-title" class="sr-only">Interactive Biotic Brand ontology</h1>
+      <div class="canvas-tools" aria-label="Canvas controls">
+        <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+        <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+        <button type="button" id="reset-view">Recenter</button>
+      </div>
+      <div class="orientation" aria-hidden="true">
+        <span>N</span><i></i><span>SEMANTIC FIELD</span>
+      </div>
+      <svg id="world-canvas" viewBox="0 0 1600 1000" role="img" aria-labelledby="graph-title graph-description">
+        <title id="graph-title">Biotic Brand World graph</title>
+        <desc id="graph-description">Biotic connected to eight canonical Brand ontology systems. Select a system to reveal its records and relations.</desc>
+        <defs>
+          <filter id="soft-field" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="34"></feGaussianBlur>
+          </filter>
+          <filter id="fine-field" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="13"></feGaussianBlur>
+          </filter>
+          <pattern id="registration-grid" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" stroke-width="1"></path>
+          </pattern>
+        </defs>
+        <rect class="grid-field" width="1600" height="1000" fill="url(#registration-grid)"></rect>
+        <g id="viewport">
+          <g id="atmosphere" aria-hidden="true"></g>
+          <g id="edges" aria-hidden="true"></g>
+          <g id="nodes"></g>
+        </g>
+      </svg>
+      <div id="loading-state" class="canvas-message" role="status">Compiling the Brand world…</div>
+      <div id="error-state" class="canvas-message error" role="alert" hidden></div>
+      <p id="canvas-caption" class="canvas-caption" aria-live="polite">Eight ontology systems · select one to enter its subsystem</p>
+    </section>
+
+    <aside id="specimen-card" class="specimen-card" aria-labelledby="specimen-title" hidden>
+      <div class="mount mount-a" aria-hidden="true"></div>
+      <div class="mount mount-b" aria-hidden="true"></div>
+      <header class="specimen-head">
+        <div>
+          <span id="specimen-index">RECORD</span>
+          <h2 id="specimen-title"></h2>
+        </div>
+        <button type="button" id="close-card" aria-label="Close record details">×</button>
+      </header>
+      <div id="specimen-status" class="specimen-status"></div>
+      <nav class="specimen-tabs" aria-label="Record detail sections">
+        <button type="button" data-panel="grounding" aria-pressed="true">Grounding</button>
+        <button type="button" data-panel="context" aria-pressed="false">Context</button>
+        <button type="button" data-panel="sources" aria-pressed="false">Sources</button>
+      </nav>
+      <div id="panel-grounding" class="specimen-panel"></div>
+      <div id="panel-context" class="specimen-panel" hidden></div>
+      <div id="panel-sources" class="specimen-panel" hidden></div>
+    </aside>
+
+    <footer class="world-footer">
+      <span id="projection-count">— records / — relations</span>
+      <span>Read-only semantic projection</span>
+      <span id="projection-fingerprint">—</span>
+    </footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

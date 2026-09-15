@@ -72,6 +72,40 @@ semantic ID; the original IDs remain explicit fields and edge metadata. The cano
 and policies live under `domains/brand/`, while accepted evidence and assertions live in the SQLite
 semantic repository.
 
+### World v3 exact graph projection
+
+`testflight_adapter_cognee.world_v3_projection` is the canonical v3 graph seam. It maps every
+current World record into a typed node and every declared reference into a typed edge. N-ary
+relations and events remain relation/event nodes with participant-role edges; claims retain their
+subject, object, perspective, evidence, opposing-evidence and contradiction links. Provenance,
+authority, context, derivation, time, lifecycle and raw typed payload are retained as node data.
+
+It is deterministic and never calls `cognify`: language-model extraction is inappropriate for an
+exact ontology projection. Missing-but-declared targets become reference-only nodes so the graph
+cannot silently lose a relationship.
+
+Each typed projection node indexes only its deterministic label and semantic retrieval text. The
+reader queries those V3 indexes directly, then enforces dataset, workspace, branch, lifecycle, and
+module scope before returning candidate record IDs. Graph traversal has separate edge-count and
+hop limits, and relation-family filters apply before canonical relation edges leave the adapter.
+Dataset identity participates in node identity so two revisioned staging projections cannot
+overwrite one another's unchanged nodes.
+
+`WorldService.approve` writes the accepted history and one `world_projection_outbox` job in the
+same SQLite transaction. `WorldV3ProjectionWorker` is the sole Cognee/Ladybug writer: it claims a
+job, reconstructs the accepted branch snapshot, validates graph completeness, writes a revisioned
+staging graph and manifest, then advances the branch's active projection head only after success.
+Run one worker process with:
+
+```bash
+uv run python scripts/run_world_v3_projection_worker.py \
+  --world-db .data/world.sqlite3
+```
+
+The Biotic public-research V3 bundle is still proposal-only. It can be rendered as a clearly
+labelled preview with `lifecycle_scope=("proposed",)`, but it will not be automatically projected
+by the approval outbox until authorised acceptance.
+
 ### Creative Field child projection
 
 `testflight_adapter_cognee.creative_field_projection` provides the same boundary for the

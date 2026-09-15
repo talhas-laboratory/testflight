@@ -1,0 +1,16 @@
+module_id: world://ontology/module/brand-world/environment
+version: 3.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand-world/identity, world://ontology/module/brand-world/offering]
+competency_questions:
+  - Can a market condition remain distinct from an internal Brand strategy?
+  - Can a public competitor observation carry its own scope and time?
+evidence_basis: [proposal:brand-world-v3-migration]
+entity_types:
+  - {id: world://ontology/brand-world/type/Market, label: Market, definition: "A bounded commercial or cultural field in which a Brand operates.", examples: ["The natural deodorant market."], counterexamples: ["A brand slogan."]}
+  - {id: world://ontology/brand-world/type/Competitor, label: Competitor, definition: "An organization or Offering that competes, substitutes, or creates a relevant alternative in scope.", examples: ["A competing deodorant brand."], counterexamples: ["An internal product team."]}
+  - {id: world://ontology/brand-world/type/CulturalCondition, label: Cultural condition, definition: "A bounded social or cultural condition relevant to interpretation or manifestation.", examples: ["A current interest in microbiome language."], counterexamples: ["A permanent company principle."]}
+  - {id: world://ontology/brand-world/type/Regulation, label: Regulation, definition: "A legal or policy condition constraining a Brand, Offering, claim, or action.", examples: ["A market-specific product-claim rule."], counterexamples: ["A visual preference."]}
+relationship_types:
+  - {id: world://ontology/brand-world/relation/competes-in, label: competes in, definition: "A Brand or Offering competes in a Market under a stated scope.", family: environment, source_type_ids: [world://ontology/brand-world/type/Brand, world://ontology/brand-world/type/Offering], target_type_ids: [world://ontology/brand-world/type/Market], examples: ["An offering competes in a market."], counterexamples: ["A market competes in an offering."]}
+  - {id: world://ontology/brand-world/relation/constrained-by, label: constrained by, definition: "A Brand or Offering is constrained by a Regulation in context.", family: governance, source_type_ids: [world://ontology/brand-world/type/Brand, world://ontology/brand-world/type/Offering], target_type_ids: [world://ontology/brand-world/type/Regulation], examples: ["An offering is constrained by a claim rule."], counterexamples: ["A regulation is a product benefit."]}

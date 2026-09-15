@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "bundle_type": "conversation",
+  "conversation_id": "conv_20260914_142800_cloudflare-computer-overview",
+  "title": "Cloudflare Computer Overview",
+  "created_at": "2026-09-14T14:28:00Z",
+  "source_url": "https://chatgpt.com/share/6a831cf1-83a0-83ed-b0a4-ccc66fa6b0aa",
+  "files": {
+    "messages": "messages.json",
+    "transcript": "transcript.md",
+    "ingestion": "INGESTION.md",
+    "artifacts_index": "artifacts.json",
+    "artifacts_dir": "artifacts"
+  },
+  "counts": {
+    "messages": 236,
+    "artifacts": 2
+  }
+}

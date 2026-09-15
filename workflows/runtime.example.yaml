@@ -21,3 +21,4 @@ handler_configuration:
   testflight_workflow_runtime.biotic_newsletter_handlers:
     operator_runtime_endpoint: http://127.0.0.1:8781/execute
     operator_runtime_timeout_seconds: 120
+    brand_world_context_timeout_seconds: 15

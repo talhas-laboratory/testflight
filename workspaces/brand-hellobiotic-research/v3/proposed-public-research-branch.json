@@ -1,0 +1,2100 @@
+{
+  "branch_id": "public-research-v3",
+  "proposal_id": "proposal:biotic-public-research-v3-migration",
+  "proposed_at": "2026-08-31T00:00:00Z",
+  "proposed_by": "operator:biotic-public-research-migration@2",
+  "rationale": "Deterministic migration of bounded Biotic public research. It preserves first-party evidence, interpretations, context, provenance, and uncertainty as proposed v3 records; legacy presentation structures remain immutable audit material.",
+  "records": [
+    {
+      "aliases": [
+        "Biotic",
+        "Hellobiotic"
+      ],
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "canonical_label": "Biotic / Hellobiotic",
+      "context_refs": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "definition": "The identity-bearing Brand referent scoped to bounded public research.",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "id": "entity:biotic",
+      "kind": "entity",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "module_id": "world://ontology/module/brand-world/identity",
+      "provenance_refs": [],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "type_id": "world://ontology/brand-world/type/Brand",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "captured_at": "2026-08-31T00:00:00Z",
+      "content_hash": "sha256:94c52e0eb61f9def22464236958684f8174e9f381f1d39d9ff66af1a0a95c7dc",
+      "content_policy": "bounded_excerpt",
+      "context_refs": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "id": "source:biotic:home-page",
+      "kind": "source",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "locator": "https://www.hellobiotic.com/",
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "title": "Biotic / Hellobiotic home page",
+      "type_id": "world://semantic/source/official-storefront",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "captured_at": "2026-08-31T00:00:00Z",
+      "content_hash": "sha256:b0e72e5714c3cd1eb81a4a2eba133198a556193c297daa9a544893be2fa17d34",
+      "content_policy": "bounded_excerpt",
+      "context_refs": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "id": "source:biotic:brightening-probiotic-deodorant-page",
+      "kind": "source",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "locator": "https://www.hellobiotic.com/products/brightening-probiotic-deodorant-1",
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "title": "Brightening Probiotic Deodorant product page",
+      "type_id": "world://semantic/source/official-product-page",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "captured_at": "2026-08-31T00:00:00Z",
+      "content_hash": "sha256:4cbd456dbae31216aabceee80ae9cb6cb427a8f2a188fe1d0a023656769d48bd",
+      "content_policy": "bounded_excerpt",
+      "context_refs": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "id": "source:biotic:founder-story",
+      "kind": "source",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "locator": "https://www.hellobiotic.com/pages/story",
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "title": "Our Story",
+      "type_id": "world://semantic/source/official-brand-story",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "captured_at": "2026-08-31T00:00:00Z",
+      "content_hash": "sha256:7e5b8f127f5a6eb476fea66c32f587bb695819b579d2c50dcd14cc420920379a",
+      "content_policy": "bounded_excerpt",
+      "context_refs": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "id": "source:biotic:faq",
+      "kind": "source",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "locator": "https://www.hellobiotic.com/pages/faqs",
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "title": "FAQs",
+      "type_id": "world://semantic/source/official-faq",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "captured_at": "2026-08-31T00:00:00Z",
+      "content_hash": "sha256:1e7259fbd1c83b69bb4c0694f0c9b941a98accfd648f7870cb8bddc6aca24018",
+      "content_policy": "bounded_excerpt",
+      "context_refs": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "id": "source:biotic:daily-sunshine-page",
+      "kind": "source",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "locator": "https://www.hellobiotic.com/products/daily-sunshine-probiotic-powder",
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "title": "Daily Sunshine Pre+Probiotic Powder product page",
+      "type_id": "world://semantic/source/official-product-page",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "excerpt": "Meet your microbiome-friendly deodorant.",
+      "id": "evidence:biotic:home-page-framing",
+      "integrity_hash": "sha256:91266e92c1fc50c8f532d119adbb3e7617afbe9a98a3ee8a64bc69b733261ca2",
+      "kind": "evidence",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Brand-authored public claims do not independently establish health, safety, efficacy, or customer outcomes."
+      ],
+      "locator": "#bounded-excerpt-home-framing",
+      "measurement": null,
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [
+        "source:biotic:home-page"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "source_id": "source:biotic:home-page",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/evidence/bounded-excerpt",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:evidence-finding:home-page-framing:1",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Brand-authored public claims do not independently establish health, safety, efficacy, or customer outcomes."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The storefront frames the core product around microbiome-friendly deodorant and whole-body care.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:evidence-finding:home-page-framing:2",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Brand-authored public claims do not independently establish health, safety, efficacy, or customer outcomes."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The site presents no-aluminum, no-baking-soda, no-parabens, cruelty-free, and unisex attributes as its own claims.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "excerpt": "Instead of masking odor, it supports your underarm microbiome to neutralize stink-causing bacteria at the source.",
+      "id": "evidence:biotic:deodorant-product-description",
+      "integrity_hash": "sha256:2579df62f925b92aa76709ce0f2749fb6c066d22abfaf18bd707b4baa4b3167c",
+      "kind": "evidence",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Product-page language is not an independent clinical efficacy or regulatory assessment."
+      ],
+      "locator": "#bounded-excerpt-deodorant-description",
+      "measurement": null,
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [
+        "source:biotic:brightening-probiotic-deodorant-page"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "source_id": "source:biotic:brightening-probiotic-deodorant-page",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/evidence/bounded-excerpt",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "id": "claim:biotic:evidence-finding:deodorant-product-description:1",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Product-page language is not an independent clinical efficacy or regulatory assessment."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The product page describes a 99% natural, aluminum-free, baking-soda-free deodorant with prebiotic and probiotic ingredients.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "id": "claim:biotic:evidence-finding:deodorant-product-description:2",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Product-page language is not an independent clinical efficacy or regulatory assessment."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The page offers 2 oz, 0.6 oz, and duo formats plus subscription frequency options.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "excerpt": "Founded by two adventurous best friends.",
+      "id": "evidence:biotic:founder-story",
+      "integrity_hash": "sha256:2b027f0eb9d48a02c04d96902a276d7c9ee365b5c2e5ddf40977ef4b6cecf5c5",
+      "kind": "evidence",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Founder story is a self-description and does not establish product outcomes for every person."
+      ],
+      "locator": "#bounded-excerpt-founder-story",
+      "measurement": null,
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [
+        "source:biotic:founder-story"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "source_id": "source:biotic:founder-story",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/evidence/bounded-excerpt",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:founder-story"
+      ],
+      "id": "claim:biotic:evidence-finding:founder-story:1",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Founder story is a self-description and does not establish product outcomes for every person."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The founders Sadaf and Leila describe a six-year development process and a desire for a natural, effective deodorant.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:founder-story"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:founder-story"
+      ],
+      "id": "claim:biotic:evidence-finding:founder-story:2",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Founder story is a self-description and does not establish product outcomes for every person."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The story says the brand aims to work for people across age, body type, and sex.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:founder-story"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "excerpt": "It is not an antiperspirant.",
+      "id": "evidence:biotic:faq-product-boundaries",
+      "integrity_hash": "sha256:11a9de493adcc85d3f9f09f012b5a8cb3118602f2eb2e0793569b3d4cd3629cb",
+      "kind": "evidence",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "FAQ explanations and health-adjacent statements require qualified review before use as medical or safety advice."
+      ],
+      "locator": "#bounded-excerpt-product-boundaries",
+      "measurement": null,
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [
+        "source:biotic:faq"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "source_id": "source:biotic:faq",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/evidence/bounded-excerpt",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "id": "claim:biotic:evidence-finding:faq-product-boundaries:1",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "FAQ explanations and health-adjacent statements require qualified review before use as medical or safety advice."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The FAQ distinguishes the deodorant from antiperspirants and says a transition period may occur when changing products.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "id": "claim:biotic:evidence-finding:faq-product-boundaries:2",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "FAQ explanations and health-adjacent statements require qualified review before use as medical or safety advice."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The FAQ describes packaging choices and product claims from the brand perspective.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "excerpt": "A pre+probiotic supplement formulated to support the essential gut microbiome.",
+      "id": "evidence:biotic:daily-sunshine-description",
+      "integrity_hash": "sha256:fa01c8127f92f75e918ccf45e98b33b57bd9a31bc1a56b413e045ba209f165bc",
+      "kind": "evidence",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Supplement claims are brand-authored product statements and need regulatory and scientific review before health messaging or advice."
+      ],
+      "locator": "#bounded-excerpt-daily-sunshine-description",
+      "measurement": null,
+      "module_id": "world://ontology/module/brand-world/environment",
+      "provenance_refs": [
+        "source:biotic:daily-sunshine-page"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "source_id": "source:biotic:daily-sunshine-page",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/evidence/bounded-excerpt",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "id": "claim:biotic:evidence-finding:daily-sunshine-description:1",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Supplement claims are brand-authored product statements and need regulatory and scientific review before health messaging or advice."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The site presents Daily Sunshine as a separate pre+probiotic powder product with digestion, mood, and stress-related support claims.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "id": "claim:biotic:evidence-finding:daily-sunshine-description:2",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Supplement claims are brand-authored product statements and need regulatory and scientific review before health messaging or advice."
+      ],
+      "module_id": "world://ontology/module/brand-world/environment",
+      "object_id": null,
+      "object_value": "The page identifies non-GMO, gluten-free, and vegan claims.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:biotic-public-self-description",
+      "predicate_id": "world://semantic/predicate/source-reports",
+      "provenance_refs": [
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/source-paraphrase",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:public-whole-body-care-framing",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Preserve its proposed status and attribute the underlying framing to Biotic's public storefront.",
+        "Constraint: Do not present whole-body care as an approved internal strategy without further evidence.",
+        "Unknown: Internal positioning, portfolio intent, and approval status are not available in the public corpus.",
+        "Permitted-use guidance: Use as a source-attributed identity hypothesis in briefs and concept exploration."
+      ],
+      "module_id": "world://ontology/module/brand-world/identity",
+      "object_id": null,
+      "object_value": "The public storefront presents Biotic through microbiome-friendly deodorant and broader whole-body care language.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/predicate/public-identity-framing",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:interpretation:microbiome-friendly-whole-body-care-intention",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Preserve its proposed status and attribute the underlying framing to Biotic's public storefront.",
+        "Constraint: Do not present whole-body care as an approved internal strategy without further evidence.",
+        "Unknown: Internal positioning, portfolio intent, and approval status are not available in the public corpus.",
+        "Permitted-use guidance: Use as a source-attributed identity hypothesis in briefs and concept exploration."
+      ],
+      "module_id": "world://ontology/module/brand-world/identity",
+      "object_id": null,
+      "object_value": "This supports a proposed whole-body-care identity direction; it does not establish an approved internal positioning or a complete product portfolio.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher",
+      "predicate_id": "world://semantic/predicate/interpreted-as",
+      "provenance_refs": [
+        "claim:biotic:public-whole-body-care-framing",
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "claim:biotic:public-whole-body-care-framing",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research-interpretation",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:public-verbal-expression-pattern",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Preserve the distinction between an observed pattern and an approved internal voice rule.",
+        "Unknown: No internal copy standard or approval matrix is available.",
+        "Permitted-use guidance: Use as an observed expression pattern when drafting or reviewing public-facing copy."
+      ],
+      "module_id": "world://ontology/module/brand-world/expression-manifestation",
+      "object_id": null,
+      "object_value": "Biotic's public copy uses informal body-positive phrases including pit-care and Hello everyBODY.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/predicate/uses-expression-pattern",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:interpretation:playful-body-positive-verbal-expression",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Preserve the distinction between an observed pattern and an approved internal voice rule.",
+        "Unknown: No internal copy standard or approval matrix is available.",
+        "Permitted-use guidance: Use as an observed expression pattern when drafting or reviewing public-facing copy."
+      ],
+      "module_id": "world://ontology/module/brand-world/expression-manifestation",
+      "object_id": null,
+      "object_value": "The observed language makes product education feel approachable and body-positive rather than clinical.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher",
+      "predicate_id": "world://semantic/predicate/interpreted-as",
+      "provenance_refs": [
+        "claim:biotic:public-verbal-expression-pattern",
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "claim:biotic:public-verbal-expression-pattern",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research-interpretation",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "aliases": [],
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "canonical_label": "Brightening Probiotic Deodorant",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "definition": "A publicly listed deodorant with documented formats and subscription options.",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "id": "entity:biotic:offering:brightening-probiotic-deodorant",
+      "kind": "entity",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "module_id": "world://ontology/module/brand-world/offering",
+      "provenance_refs": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "type_id": "world://ontology/brand-world/type/Offering",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "id": "claim:biotic:offering:brightening-probiotic-deodorant:public-description",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Do not generalize current formats, availability, ingredients, or claims across markets or time.",
+        "Unknown: Current inventory, market availability, formula, and subscription terms require live verification.",
+        "Permitted-use guidance: Use for product-specific briefs after verifying the current product page, SKU, and market."
+      ],
+      "module_id": "world://ontology/module/brand-world/offering",
+      "object_id": null,
+      "object_value": "Biotic publicly lists Brightening Probiotic Deodorant with documented formats and subscription options.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/predicate/public-offering-description",
+      "provenance_refs": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "id": "claim:biotic:interpretation:brightening-probiotic-deodorant",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Do not generalize current formats, availability, ingredients, or claims across markets or time.",
+        "Unknown: Current inventory, market availability, formula, and subscription terms require live verification.",
+        "Permitted-use guidance: Use for product-specific briefs after verifying the current product page, SKU, and market."
+      ],
+      "module_id": "world://ontology/module/brand-world/offering",
+      "object_id": null,
+      "object_value": "This is an observed offering record, not evidence of availability in every market.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher",
+      "predicate_id": "world://semantic/predicate/interpreted-as",
+      "provenance_refs": [
+        "claim:biotic:offering:brightening-probiotic-deodorant:public-description",
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "claim:biotic:offering:brightening-probiotic-deodorant:public-description",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research-interpretation",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "id": "claim:biotic:public-product-education-journey",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Do not infer conversion performance or customer comprehension from the presence of content.",
+        "Unknown: Journey analytics, usability evidence, and internal experience principles are unavailable.",
+        "Permitted-use guidance: Use as a public-journey observation when designing briefs, content sequences, or reviews."
+      ],
+      "module_id": "world://ontology/module/brand-world/relationships",
+      "object_id": null,
+      "object_value": "Biotic's storefront and product pages combine product education, ingredient explanation, purchase choices, and FAQ guidance.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/predicate/public-journey-observation",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "id": "claim:biotic:interpretation:direct-product-education-and-purchase-journey",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Do not infer conversion performance or customer comprehension from the presence of content.",
+        "Unknown: Journey analytics, usability evidence, and internal experience principles are unavailable.",
+        "Permitted-use guidance: Use as a public-journey observation when designing briefs, content sequences, or reviews."
+      ],
+      "module_id": "world://ontology/module/brand-world/relationships",
+      "object_id": null,
+      "object_value": "The observed journey uses education to bridge product consideration and purchase.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher",
+      "predicate_id": "world://semantic/predicate/interpreted-as",
+      "provenance_refs": [
+        "claim:biotic:public-product-education-journey",
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "claim:biotic:public-product-education-journey",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research-interpretation",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:public-testimonial-layer",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Do not treat testimonials as representative customer evidence or independent efficacy proof.",
+        "Unknown: Sampling, moderation, verification, and representativeness are not documented.",
+        "Permitted-use guidance: Use as attributed testimonial language or as a prompt for further research."
+      ],
+      "module_id": "world://ontology/module/brand-world/relationships",
+      "object_id": null,
+      "object_value": "Biotic's storefront displays customer testimonial statements.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/predicate/public-perception-observation",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:interpretation:public-testimonial-layer",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Do not treat testimonials as representative customer evidence or independent efficacy proof.",
+        "Unknown: Sampling, moderation, verification, and representativeness are not documented.",
+        "Permitted-use guidance: Use as attributed testimonial language or as a prompt for further research."
+      ],
+      "module_id": "world://ontology/module/brand-world/relationships",
+      "object_id": null,
+      "object_value": "The testimonials expose public customer language but do not establish representative perception or product outcomes.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher",
+      "predicate_id": "world://semantic/predicate/interpreted-as",
+      "provenance_refs": [
+        "claim:biotic:public-testimonial-layer",
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "claim:biotic:public-testimonial-layer",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research-interpretation",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:founder-story"
+      ],
+      "id": "claim:biotic:founder-reported-stewardship",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Do not infer decision rights, legal roles, or approval authority.",
+        "Unknown: Current roles, decision rights, approval workflows, and governance procedures are unavailable.",
+        "Permitted-use guidance: Attribute the founder relationship to the public story when relevant."
+      ],
+      "module_id": "world://ontology/module/brand-world/governance-decisions",
+      "object_id": null,
+      "object_value": "Biotic's public story identifies Sadaf and Leila as founders.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/predicate/public-stewardship-signal",
+      "provenance_refs": [
+        "evidence:biotic:founder-story"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:founder-story"
+      ],
+      "id": "claim:biotic:interpretation:founder-reported-brand-stewardship",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Do not infer decision rights, legal roles, or approval authority.",
+        "Unknown: Current roles, decision rights, approval workflows, and governance procedures are unavailable.",
+        "Permitted-use guidance: Attribute the founder relationship to the public story when relevant."
+      ],
+      "module_id": "world://ontology/module/brand-world/governance-decisions",
+      "object_id": null,
+      "object_value": "This supports founder stewardship as a public governance signal, but does not reveal operational authority or approval procedures.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher",
+      "predicate_id": "world://semantic/predicate/interpreted-as",
+      "provenance_refs": [
+        "claim:biotic:founder-reported-stewardship",
+        "evidence:biotic:founder-story"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "claim:biotic:founder-reported-stewardship",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research-interpretation",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "aliases": [],
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "canonical_label": "People evaluating natural deodorant alternatives",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "definition": "A bounded public audience environment inferred from product and FAQ framing, not a validated ICP.",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "id": "entity:biotic:audience:natural-deodorant-evaluators",
+      "kind": "entity",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "module_id": "world://ontology/module/brand-world/relationships",
+      "provenance_refs": [
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "type_id": "world://ontology/brand-world/type/Audience",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "id": "entity:biotic:audience:natural-deodorant-evaluators:assertion",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "No internal segmentation or independent audience study is available.",
+        "Constraint: Do not state segment size, purchase behavior, demographic composition, or validated fit.",
+        "Unknown: Internal segmentation, independent audience research, and behavioral data are unavailable.",
+        "Permitted-use guidance: Use as a research hypothesis for audience framing and information needs."
+      ],
+      "module_id": "world://ontology/module/brand-world/relationships",
+      "object_id": null,
+      "object_value": "Product and FAQ content addresses people evaluating alternatives to standard antiperspirants.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher-inference",
+      "predicate_id": "world://ontology/brand-world/predicate/public-audience-hypothesis",
+      "provenance_refs": [
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic:audience:natural-deodorant-evaluators",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "id": "claim:biotic:interpretation:people-evaluating-natural-deodorant-alternatives",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "No internal segmentation or independent audience study is available.",
+        "Constraint: Do not state segment size, purchase behavior, demographic composition, or validated fit.",
+        "Unknown: Internal segmentation, independent audience research, and behavioral data are unavailable.",
+        "Permitted-use guidance: Use as a research hypothesis for audience framing and information needs."
+      ],
+      "module_id": "world://ontology/module/brand-world/relationships",
+      "object_id": null,
+      "object_value": "This suggests a bounded consideration environment; it is not a validated customer segment or ideal-customer profile.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher",
+      "predicate_id": "world://semantic/predicate/interpreted-as",
+      "provenance_refs": [
+        "entity:biotic:audience:natural-deodorant-evaluators:assertion",
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic:audience:natural-deodorant-evaluators:assertion",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research-interpretation",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "event_type_id": "world://semantic/event/public-portfolio-snapshot",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "id": "event:biotic:public-product-ecosystem-snapshot:2026-08-31",
+      "kind": "event",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "occurred_at": {
+        "from_semantics": "known",
+        "from_time": "2026-08-31T00:00:00Z",
+        "precision": "day",
+        "source_timezone": null,
+        "to_semantics": "known",
+        "to_time": "2026-09-01T00:00:00Z"
+      },
+      "participants": [
+        {
+          "entity_id": "entity:biotic",
+          "role_id": "brand"
+        }
+      ],
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/event/public-portfolio-snapshot",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "id": "event:biotic:public-product-ecosystem-snapshot:2026-08-31:assertion",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Refresh the live storefront before making current portfolio or availability statements.",
+        "Unknown: Products added, removed, renamed, or made unavailable after the cutoff are not represented.",
+        "Permitted-use guidance: Use for time-bounded portfolio context with the research cutoff stated."
+      ],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": null,
+      "object_value": "At the research cutoff, Biotic's verified storefront listed deodorant and Daily Sunshine powder products.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/predicate/public-portfolio-snapshot",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "interpretation",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "id": "claim:biotic:interpretation:public-product-ecosystem-snapshot",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "Constraint: Refresh the live storefront before making current portfolio or availability statements.",
+        "Unknown: Products added, removed, renamed, or made unavailable after the cutoff are not represented.",
+        "Permitted-use guidance: Use for time-bounded portfolio context with the research cutoff stated."
+      ],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": null,
+      "object_value": "This is a time-bounded public portfolio snapshot, not a permanent offering definition.",
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher",
+      "predicate_id": "world://semantic/predicate/interpreted-as",
+      "provenance_refs": [
+        "event:biotic:public-product-ecosystem-snapshot:2026-08-31:assertion",
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "event:biotic:public-product-ecosystem-snapshot:2026-08-31:assertion",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/public-research-interpretation",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:brand-public-framing",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "claim:biotic:public-whole-body-care-framing",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/has-component",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:brand-public-expression",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "claim:biotic:public-verbal-expression-pattern",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/expressed-through",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:brand-offers-brightening-deodorant",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/offering",
+      "object_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/offers",
+      "provenance_refs": [
+        "relation:biotic:brand-offers-brightening-deodorant",
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "relation:biotic:brand-offers-brightening-deodorant",
+      "kind": "relation",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "module_id": "world://ontology/module/brand-world/offering",
+      "participants": [
+        {
+          "record_id": "entity:biotic",
+          "role_id": "brand"
+        },
+        {
+          "record_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+          "role_id": "offering"
+        }
+      ],
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "relation_type_id": "world://ontology/brand-world/relation/offers",
+      "schema_version": "3.0.0",
+      "supersedes_ref": null,
+      "type_id": "world://ontology/brand-world/relation/offers",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:offering-public-education-journey",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "claim:biotic:public-product-education-journey",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/experienced-through",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:brand-audience-perception-frame",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "entity:biotic:audience:natural-deodorant-evaluators",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/perceived-by",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:brand-founder-stewardship-signal",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "claim:biotic:founder-reported-stewardship",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/governed-by",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:brand-natural-deodorant-environment",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "entity:biotic:audience:natural-deodorant-evaluators",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/situated-in",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:brand-public-portfolio-evolution",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "event:biotic:public-product-ecosystem-snapshot:2026-08-31",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/evolves-through",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "hypothesis",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:offering-testimonial-perception-hypothesis",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "This is a testable modeling relation; public evidence does not establish causal effect or internal decision use.",
+        "Review state: held"
+      ],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "claim:biotic:public-testimonial-layer",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher-inference",
+      "predicate_id": "world://ontology/brand-world/relation/shapes",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:portfolio-snapshot-identity-update",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "claim:biotic:public-whole-body-care-framing",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/updates",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "event:biotic:public-product-ecosystem-snapshot:2026-08-31",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "hypothesis",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:testimonial-identity-feedback-hypothesis",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "This is a testable modeling relation; public evidence does not establish causal effect or internal decision use.",
+        "Review state: held"
+      ],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "claim:biotic:public-whole-body-care-framing",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher-inference",
+      "predicate_id": "world://ontology/brand-world/relation/feeds-back-into",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "claim:biotic:public-testimonial-layer",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "factual_assertion",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:offering-supports-public-framing",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "claim:biotic:public-whole-body-care-framing",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-research-report",
+      "predicate_id": "world://ontology/brand-world/relation/supports",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "hypothesis",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:offering-testimonial-contradiction-hypothesis",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "This is a testable modeling relation; public evidence does not establish causal effect or internal decision use.",
+        "Review state: held"
+      ],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "claim:biotic:public-testimonial-layer",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher-inference",
+      "predicate_id": "world://ontology/brand-world/relation/contradicts",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "claim_kind": "hypothesis",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "contradiction_ids": [],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "id": "claim:biotic:relation:offering-audience-influence-hypothesis",
+      "kind": "claim",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "limitations": [
+        "This is a testable modeling relation; public evidence does not establish causal effect or internal decision use.",
+        "Review state: held"
+      ],
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "object_id": "entity:biotic:audience:natural-deodorant-evaluators",
+      "object_value": null,
+      "opposing_evidence_ids": [],
+      "permitted_task_types": [],
+      "perspective_id": "perspective:public-researcher-inference",
+      "predicate_id": "world://ontology/brand-world/relation/influences",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "subject_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+      "supersedes_ref": null,
+      "type_id": "world://semantic/claim/relation-proposition",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    },
+    {
+      "authority_ref": null,
+      "branch_id": "public-research-v3",
+      "context_refs": [
+        "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246"
+      ],
+      "created_at": "2026-08-31T00:00:00Z",
+      "created_by": "operator:biotic-public-research-migration@2",
+      "derivation_ref": "operator:biotic-public-research-migration@2",
+      "described_by_claim_ids": [
+        "claim:biotic:relation:brand-offers-brightening-deodorant",
+        "claim:biotic:relation:offering-supports-public-framing"
+      ],
+      "id": "state:biotic:public-brand-core:2026-08-31",
+      "kind": "state",
+      "known_time": null,
+      "lifecycle_status": "proposed",
+      "module_id": "world://ontology/module/brand-world/evolution-learning",
+      "provenance_refs": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "record_version": 1,
+      "schema_version": "3.0.0",
+      "state_schema_id": "world://ontology/brand/state/public-brand-core",
+      "state_value": "- key: research_scope\n  value: publicly documented brand and product claims only",
+      "subject_ids": [
+        "claim:biotic:public-whole-body-care-framing",
+        "entity:biotic:offering:brightening-probiotic-deodorant"
+      ],
+      "supersedes_ref": null,
+      "type_id": "world://ontology/brand/state/public-brand-core",
+      "valid_time": null,
+      "workspace_id": "world://workspace/brand/hellobiotic-research"
+    }
+  ],
+  "rejection_rationale": null,
+  "review_decision_id": null,
+  "status": "proposed",
+  "workspace_id": "world://workspace/brand/hellobiotic-research"
+}

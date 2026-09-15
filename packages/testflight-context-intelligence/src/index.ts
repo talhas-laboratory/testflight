@@ -5,3 +5,4 @@ export * from "./engine.js";
 export * from "./filter.js";
 export * from "./tracing.js";
 export * from "./visual-language.js";
+export * from "./world-v3.js";

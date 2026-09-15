@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testflight-brand-world"
+version = "0.1.0"
+description = "Standalone semantic canvas for exploring Testflight Brand worlds"
+requires-python = ">=3.12,<3.14"
+dependencies = ["testflight-brand"]
+
+[project.scripts]
+brand-world = "testflight_brand_world.cli:main"
+
+[tool.uv.sources]
+testflight-brand = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testflight_brand_world"]
+
+[tool.hatch.build]
+include = ["src/testflight_brand_world/static/**"]

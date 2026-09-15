@@ -13,15 +13,16 @@ access:
   agent_ids: [agent:hellobiotic-newsletter-strategist]
 
 knowledge:
-  workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
-  container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+  workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy, world://workspace/brand/hellobiotic-research]
+  container_ids: [world://workspace/brand/hellobiotic-research/content-strategy, world://workspace/brand/hellobiotic-research]
+  allow_cross_workspace: true
   entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
-  data_classifications: [internal]
+  data_classifications: [internal, public_research]
   max_results: 20
   max_graph_hops: 2
 
 authority:
-  capabilities: [knowledge.retrieve, reasoning.compose, content.plan, content.packet, content.draft, content.evaluate, model.invoke]
+  capabilities: [knowledge.retrieve, world:read, reasoning.compose, content.plan, content.packet, content.draft, content.evaluate, model.invoke]
   credential_refs: [credential://testflight/workflow-runtime]
   proposal_write: false
   canonical_write: false
@@ -53,7 +54,7 @@ steps:
     handler: biotic.compile_newsletter_context
     description: >-
       Compile a bounded relational packet with a declared personalization mode, traceable evidence,
-      and invariants that all later nodes must preserve.
+      and a scoped read-only Brand World v3 packet that all later nodes must preserve.
     instruction:
       id: instruction://testflight/biotic/newsletter/compile-relational-context
       version: 1
@@ -63,6 +64,7 @@ steps:
         - Require audience source status plus source refs; unknown status permits broad issues only.
         - Require an evidence_id, source ref, evidence status, and limitations for each factual input.
         - Preserve uncertainty, evidence limitations, product authorization limits, and the lack of publication authority.
+        - Treat Brand World v3 material as public-research proposals; never upgrade it to an approved brand fact.
     arguments:
       issue_objective: $inputs.issue_objective
       audience_context: $inputs.audience_context
@@ -71,10 +73,10 @@ steps:
       prior_issue_feedback: $inputs.prior_issue_feedback
       authorized_product_context: $inputs.authorized_product_context
     access:
-      workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
-      container_ids: [world://workspace/brand/hellobiotic-research/content-strategy]
+      workspace_ids: [world://workspace/brand/hellobiotic-research/content-strategy, world://workspace/brand/hellobiotic-research]
+      container_ids: [world://workspace/brand/hellobiotic-research/content-strategy, world://workspace/brand/hellobiotic-research]
       entity_types: [field_of_engagement, tension_or_question, practice, brand, product, content_contribution, evidence]
-    capabilities: [knowledge.retrieve]
+    capabilities: [knowledge.retrieve, world:read]
     on_error: hold
 
   - id: compose_issue

@@ -128,3 +128,32 @@ def test_hellobiotic_copy_and_audience_graphs_keep_hypotheses_held() -> None:
         next(node for node in audience_graph["nodes"] if node["id"] == "AUD-HB-HYP-001")["status"]
         == "held"
     )
+
+
+def test_hellobiotic_atlas_is_exhaustive_and_boundary_aware() -> None:
+    snapshot = build_snapshot(ROOT / "workspaces/brand-hellobiotic-research")
+    atlas = snapshot["atlas"]
+    node_ids = {node["id"] for node in atlas["nodes"]}
+    edge_ids = {edge["id"] for edge in atlas["edges"]}
+
+    assert atlas["coverage"]["complete"] is True
+    assert atlas["coverage"]["danglingEdgeIds"] == []
+    assert {entity["id"] for entity in snapshot["entities"]}.issubset(node_ids)
+    assert {relationship["id"] for relationship in snapshot["relationships"]}.issubset(edge_ids)
+    for graph_name in ("visualGraph", "copyClaimsGraph", "audienceGraph"):
+        assert {node["id"] for node in snapshot[graph_name]["nodes"]}.issubset(node_ids)
+        assert {edge["id"] for edge in snapshot[graph_name]["edges"]}.issubset(edge_ids)
+    assert "product:biotic:brightening-probiotic-deodorant:v1" in node_ids
+    assert "world://brand/hellobiotic/content-strategy/relational-field" in node_ids
+    assert "agent:hellobiotic-newsletter-strategist" in node_ids
+    assert "rubric:hellobiotic-newsletter-content-v1" in node_ids
+    assert [domain["id"] for domain in atlas["domains"]] == [
+        "public-core",
+        "world-model",
+        "product-library",
+        "audience",
+        "copy-claims",
+        "visual-language",
+        "content-strategy",
+        "evidence",
+    ]

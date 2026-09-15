@@ -1,0 +1,16 @@
+module_id: world://ontology/module/brand-world/relationships
+version: 3.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand-world/identity, world://ontology/module/brand-world/offering]
+competency_questions:
+  - Can an observed audience segment remain distinct from an internally selected ideal customer profile?
+  - Can an Experience be represented as a bounded interaction rather than an entity bin?
+evidence_basis: [proposal:brand-world-v3-migration]
+entity_types:
+  - {id: world://ontology/brand-world/type/Audience, label: Audience, definition: "A bounded population, participant group, or relationship counterpart.", examples: ["People considering natural deodorant."], counterexamples: ["A fictional persona quote."]}
+  - {id: world://ontology/brand-world/type/Need, label: Need, definition: "A desired progress, problem, or constraint held by an Audience in context.", examples: ["A need for an approachable daily-care ritual."], counterexamples: ["A campaign channel."]}
+  - {id: world://ontology/brand-world/type/Community, label: Community, definition: "A social group with relationships or shared practices beyond a shared purchase potential.", examples: ["A care-oriented community."], counterexamples: ["All website visitors."]}
+  - {id: world://ontology/brand-world/type/Touchpoint, label: Touchpoint, definition: "A medium or situation through which an actor encounters an Offering or Expression.", examples: ["A product page."], counterexamples: ["A brand principle."]}
+relationship_types:
+  - {id: world://ontology/brand-world/relation/has-need, label: has need, definition: "An Audience has a Need in a stated context.", family: relationships, source_type_ids: [world://ontology/brand-world/type/Audience], target_type_ids: [world://ontology/brand-world/type/Need], examples: ["An audience has a bounded need."], counterexamples: ["A need has an audience."]}
+  - {id: world://ontology/brand-world/relation/encounters-through, label: encounters through, definition: "An Audience encounters an Offering or manifestation through a Touchpoint under a relationship frame.", family: experience, source_type_ids: [world://ontology/brand-world/type/Audience], target_type_ids: [world://ontology/brand-world/type/Touchpoint], examples: ["An audience encounters an offering through a product page."], counterexamples: ["A touchpoint is a stable audience identity."]}

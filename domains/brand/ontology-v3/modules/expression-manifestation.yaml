@@ -1,0 +1,16 @@
+module_id: world://ontology/module/brand-world/expression-manifestation
+version: 3.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand-world/identity, world://ontology/module/brand-world/offering, world://ontology/module/brand-world/relationships]
+competency_questions:
+  - Can shared Brand meaning be translated into a channel-specific expression without becoming identical to it?
+  - Can an artifact carry element-level responsibilities and whole-composition constraints?
+evidence_basis: [proposal:brand-world-v3-migration]
+entity_types:
+  - {id: world://ontology/brand-world/type/ManifestationPolicy, label: Manifestation policy, definition: "A versioned policy translating selected meaning into contextual expression constraints and directions.", examples: ["A newsletter manifestation policy."], counterexamples: ["A finished newsletter."]}
+  - {id: world://ontology/brand-world/type/MessageSystem, label: Message system, definition: "A reusable semantic and verbal expression system with bounds and examples.", examples: ["A message architecture."], counterexamples: ["A customer observation."]}
+  - {id: world://ontology/brand-world/type/VisualSystem, label: Visual system, definition: "A reusable visual expression system governed by explicit context and authority.", examples: ["A visual language profile."], counterexamples: ["A market condition."]}
+  - {id: world://ontology/brand-world/type/Artifact, label: Artifact, definition: "A concrete communication, interface, event, or composition created for a bounded purpose.", examples: ["A newsletter issue."], counterexamples: ["A Brand principle."]}
+relationship_types:
+  - {id: world://ontology/brand-world/relation/manifests, label: manifests, definition: "A ManifestationPolicy manifests a Principle, Offering, or selected Decision into an Artifact under context.", family: manifestation, source_type_ids: [world://ontology/brand-world/type/ManifestationPolicy], target_type_ids: [world://ontology/brand-world/type/Principle, world://ontology/brand-world/type/Offering], examples: ["A policy manifests a principle in a newsletter."], counterexamples: ["An artifact manifests itself without a policy."]}
+  - {id: world://ontology/brand-world/relation/governs-artifact, label: governs artifact, definition: "A ManifestationPolicy, MessageSystem, or VisualSystem governs an Artifact in context.", family: manifestation, source_type_ids: [world://ontology/brand-world/type/ManifestationPolicy, world://ontology/brand-world/type/MessageSystem, world://ontology/brand-world/type/VisualSystem], target_type_ids: [world://ontology/brand-world/type/Artifact], examples: ["A message system governs a newsletter."], counterexamples: ["An artifact globally governs a message system."]}

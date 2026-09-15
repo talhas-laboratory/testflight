@@ -1,0 +1,815 @@
+{
+  "decision_template": {
+    "affected_record_ids": [
+      "entity:biotic",
+      "source:biotic:home-page",
+      "source:biotic:brightening-probiotic-deodorant-page",
+      "source:biotic:founder-story",
+      "source:biotic:faq",
+      "source:biotic:daily-sunshine-page",
+      "evidence:biotic:home-page-framing",
+      "claim:biotic:evidence-finding:home-page-framing:1",
+      "claim:biotic:evidence-finding:home-page-framing:2",
+      "evidence:biotic:deodorant-product-description",
+      "claim:biotic:evidence-finding:deodorant-product-description:1",
+      "claim:biotic:evidence-finding:deodorant-product-description:2",
+      "evidence:biotic:founder-story",
+      "claim:biotic:evidence-finding:founder-story:1",
+      "claim:biotic:evidence-finding:founder-story:2",
+      "evidence:biotic:faq-product-boundaries",
+      "claim:biotic:evidence-finding:faq-product-boundaries:1",
+      "claim:biotic:evidence-finding:faq-product-boundaries:2",
+      "evidence:biotic:daily-sunshine-description",
+      "claim:biotic:evidence-finding:daily-sunshine-description:1",
+      "claim:biotic:evidence-finding:daily-sunshine-description:2",
+      "claim:biotic:public-whole-body-care-framing",
+      "claim:biotic:interpretation:microbiome-friendly-whole-body-care-intention",
+      "claim:biotic:public-verbal-expression-pattern",
+      "claim:biotic:interpretation:playful-body-positive-verbal-expression",
+      "entity:biotic:offering:brightening-probiotic-deodorant",
+      "claim:biotic:offering:brightening-probiotic-deodorant:public-description",
+      "claim:biotic:interpretation:brightening-probiotic-deodorant",
+      "claim:biotic:public-product-education-journey",
+      "claim:biotic:interpretation:direct-product-education-and-purchase-journey",
+      "claim:biotic:public-testimonial-layer",
+      "claim:biotic:interpretation:public-testimonial-layer",
+      "claim:biotic:founder-reported-stewardship",
+      "claim:biotic:interpretation:founder-reported-brand-stewardship",
+      "entity:biotic:audience:natural-deodorant-evaluators",
+      "entity:biotic:audience:natural-deodorant-evaluators:assertion",
+      "claim:biotic:interpretation:people-evaluating-natural-deodorant-alternatives",
+      "event:biotic:public-product-ecosystem-snapshot:2026-08-31",
+      "event:biotic:public-product-ecosystem-snapshot:2026-08-31:assertion",
+      "claim:biotic:interpretation:public-product-ecosystem-snapshot",
+      "claim:biotic:relation:brand-public-framing",
+      "claim:biotic:relation:brand-public-expression",
+      "claim:biotic:relation:brand-offers-brightening-deodorant",
+      "relation:biotic:brand-offers-brightening-deodorant",
+      "claim:biotic:relation:offering-public-education-journey",
+      "claim:biotic:relation:brand-audience-perception-frame",
+      "claim:biotic:relation:brand-founder-stewardship-signal",
+      "claim:biotic:relation:brand-natural-deodorant-environment",
+      "claim:biotic:relation:brand-public-portfolio-evolution",
+      "claim:biotic:relation:offering-testimonial-perception-hypothesis",
+      "claim:biotic:relation:portfolio-snapshot-identity-update",
+      "claim:biotic:relation:testimonial-identity-feedback-hypothesis",
+      "claim:biotic:relation:offering-supports-public-framing",
+      "claim:biotic:relation:offering-testimonial-contradiction-hypothesis",
+      "claim:biotic:relation:offering-audience-influence-hypothesis",
+      "state:biotic:public-brand-core:2026-08-31"
+    ],
+    "alternatives": [
+      {
+        "id": "review-record-by-record",
+        "label": "Review record by record",
+        "rationale": "Preserves epistemic type and requires an explicit disposition per item."
+      },
+      {
+        "id": "hold-entire-package",
+        "label": "Hold the entire package",
+        "rationale": "Leaves public research separate from approved Brand meaning."
+      }
+    ],
+    "authority_ref": null,
+    "branch_id": "client-approved-v3",
+    "context_refs": [],
+    "created_at": "2026-08-31T00:00:00Z",
+    "created_by": "operator:biotic-authority-review-package@1",
+    "derivation_ref": null,
+    "evidence_ids": [],
+    "id": "decision:biotic:client-approved-branch-population",
+    "kind": "decision",
+    "known_time": null,
+    "lifecycle_status": "proposed",
+    "module_id": "world://ontology/module/brand-world/governance-decisions",
+    "provenance_refs": [],
+    "question": "Which source-attributed public-research records should an authorized client actor adopt, reject, or keep held in the client-approved Brand World branch?",
+    "rationale": null,
+    "record_version": 1,
+    "schema_version": "3.0.0",
+    "selected_alternative_id": null,
+    "status": "proposed",
+    "supersedes_ref": null,
+    "type_id": "world://semantic/decision/brand-world-branch-review",
+    "valid_time": null,
+    "workspace_id": "world://workspace/brand/hellobiotic-research"
+  },
+  "proposal_id": "proposal:biotic-client-approved-branch-review",
+  "records_are_accepted": false,
+  "review_items": [
+    {
+      "evidence_ids": [],
+      "recommendation": "review_semantic_referent",
+      "record_id": "entity:biotic",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "entity"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "source:biotic:home-page",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "source"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "source:biotic:brightening-probiotic-deodorant-page",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "source"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "source:biotic:founder-story",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "source"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "source:biotic:faq",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "source"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "source:biotic:daily-sunshine-page",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "source"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "evidence:biotic:home-page-framing",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "evidence"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:home-page-framing:1",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:home-page-framing:2",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "evidence:biotic:deodorant-product-description",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "evidence"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:deodorant-product-description:1",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:deodorant-product-description:2",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "evidence:biotic:founder-story",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "evidence"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:founder-story"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:founder-story:1",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:founder-story"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:founder-story:2",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "evidence:biotic:faq-product-boundaries",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "evidence"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:faq-product-boundaries:1",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:faq-product-boundaries:2",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "verify_source_record",
+      "record_id": "evidence:biotic:daily-sunshine-description",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "evidence"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:daily-sunshine-description:1",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:evidence-finding:daily-sunshine-description:2",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:public-whole-body-care-framing",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:interpretation:microbiome-friendly-whole-body-care-intention",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:public-verbal-expression-pattern",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:interpretation:playful-body-positive-verbal-expression",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "review_semantic_referent",
+      "record_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "entity"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:offering:brightening-probiotic-deodorant:public-description",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:interpretation:brightening-probiotic-deodorant",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:public-product-education-journey",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:interpretation:direct-product-education-and-purchase-journey",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:public-testimonial-layer",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:interpretation:public-testimonial-layer",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:founder-story"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:founder-reported-stewardship",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:founder-story"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:interpretation:founder-reported-brand-stewardship",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "review_semantic_referent",
+      "record_id": "entity:biotic:audience:natural-deodorant-evaluators",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "entity"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "entity:biotic:audience:natural-deodorant-evaluators:assertion",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:deodorant-product-description",
+        "evidence:biotic:faq-product-boundaries"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:interpretation:people-evaluating-natural-deodorant-alternatives",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "recommendation": "review_typed_relation_or_state",
+      "record_id": "event:biotic:public-product-ecosystem-snapshot:2026-08-31",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "event"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "event:biotic:public-product-ecosystem-snapshot:2026-08-31:assertion",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing",
+        "evidence:biotic:daily-sunshine-description"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:interpretation:public-product-ecosystem-snapshot",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:brand-public-framing",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:brand-public-expression",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:brand-offers-brightening-deodorant",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_typed_relation_or_state",
+      "record_id": "relation:biotic:brand-offers-brightening-deodorant",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "relation"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:offering-public-education-journey",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:brand-audience-perception-frame",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:brand-founder-stewardship-signal",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:brand-natural-deodorant-environment",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:brand-public-portfolio-evolution",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:relation:offering-testimonial-perception-hypothesis",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:portfolio-snapshot-identity-update",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:relation:testimonial-identity-feedback-hypothesis",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "review_as_source_attributed_fact",
+      "record_id": "claim:biotic:relation:offering-supports-public-framing",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:relation:offering-testimonial-contradiction-hypothesis",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [
+        "evidence:biotic:home-page-framing"
+      ],
+      "recommendation": "hold_unless_client_adopts",
+      "record_id": "claim:biotic:relation:offering-audience-influence-hypothesis",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "claim"
+    },
+    {
+      "evidence_ids": [],
+      "recommendation": "review_typed_relation_or_state",
+      "record_id": "state:biotic:public-brand-core:2026-08-31",
+      "required_review": [
+        "Select adopt, reject, or hold.",
+        "Record reviewer identity, authority grant, rationale, and review time.",
+        "Preserve the record's epistemic kind; approval must not turn belief into fact."
+      ],
+      "semantic_kind": "state"
+    }
+  ],
+  "review_status": "awaiting_authorized_human",
+  "source_branch_id": "public-research-v3",
+  "source_snapshot_hash": "sha256:7c4dc47104c6bd66e980e17ecf0e5918ffe3c8c229a1488bb581e2f63e02ced8",
+  "target_branch_id": "client-approved-v3",
+  "workspace_id": "world://workspace/brand/hellobiotic-research"
+}

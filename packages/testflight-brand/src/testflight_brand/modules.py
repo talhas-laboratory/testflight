@@ -69,6 +69,9 @@ class BrandOntologyRelease(BaseModel):
         type_ids = {item.id for module in self.modules for item in module.entity_types}
         if len(type_ids) != sum(len(module.entity_types) for module in self.modules):
             raise ValueError("duplicate ontology type ID")
+        type_owner = {
+            item.id: module.module_id for module in self.modules for item in module.entity_types
+        }
         relation_ids = {item.id for module in self.modules for item in module.relationship_types}
         if len(relation_ids) != sum(len(module.relationship_types) for module in self.modules):
             raise ValueError("duplicate ontology relationship ID")
@@ -81,6 +84,18 @@ class BrandOntologyRelease(BaseModel):
                         f"relationship {relationship.id} references unknown types: "
                         f"{sorted(unknown_types)}"
                     )
+                if self.version.startswith("3"):
+                    required_imports = {
+                        type_owner[type_id]
+                        for type_id in endpoints
+                        if type_owner[type_id] != module.module_id
+                    }
+                    missing_imports = required_imports - set(module.imports)
+                    if missing_imports:
+                        raise ValueError(
+                            f"relationship {relationship.id} crosses modules without imports: "
+                            f"{sorted(missing_imports)}"
+                        )
         return self
 
     def relationship(self, relationship_id: str) -> ModuleRelationshipDefinition:

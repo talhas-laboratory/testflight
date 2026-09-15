@@ -1,0 +1,47 @@
+schema_version: "1.0"
+artifact_id: ideal-brand-system-conversation-substrate
+status: proposal_only
+concept_lab:
+  mode: distill
+  operator_id: world://operator/concept-lab/concept-extraction
+  operator_version: 1
+source:
+  archive: source/original-conversation.zip
+  sha256: 0cb79a9dba8aa45ee32eaa1773db4972ae94e9f3a4c432d6440875f3b05b8510
+  conversation_id: conv_20260914_142800_cloudflare-computer-overview
+  message_range: [msg_0001, msg_0236]
+  message_count: 236
+  artifacts:
+    - id: art_0001
+      source_message_id: msg_0123
+      availability: metadata_only
+    - id: art_0002
+      source_message_id: msg_0213
+      availability: metadata_only
+derived_artifacts:
+  - README.md
+  - 00-source-ledger.md
+  - 01-ideal-system-substrate.md
+  - 02-product-service-and-market.md
+  - 03-semantic-intelligence-architecture.md
+  - 04-technical-and-agent-architecture.md
+  - 05-experience-and-design-language.md
+  - 06-decisions-branches-and-open-questions.md
+  - 07-project-comparison-framework.md
+  - 08-current-vs-ideal-base-product.md
+comparison:
+  artifact: 08-current-vs-ideal-base-product.md
+  status: proposal_only
+  concept_lab:
+    mode: trace
+    operator_id: world://operator/concept-lab/formation-trace
+    operator_version: 1
+  authority:
+    canonical_write: false
+    promotion_required: true
+authority:
+  canonical_write: false
+  promotion_required: true
+limitations:
+  - Historical external claims and market figures were extracted, not independently revalidated.
+  - Two visual references and the generated summary DOCX are absent from the bundle binaries.

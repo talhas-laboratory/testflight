@@ -39,6 +39,17 @@ from .validation import (
     ValidationResult,
     validate_extraction,
 )
+from .world_v3_projection import (
+    WorldV3ProjectionManifest,
+    WorldV3ProjectionNode,
+    bounded_world_v3_traversal,
+    build_world_v3_projection,
+    compare_world_v3_projection_drift,
+    populate_world_v3_projection,
+    world_v3_projection_to_datapoints,
+    write_world_v3_projection_manifest,
+)
+from .world_v3_runtime import WorldV3ProjectionWorker
 
 
 class CogneeAdapter:
@@ -93,4 +104,13 @@ __all__ = [
     "relationship_occurrence_to_datapoint",
     "validate_extraction",
     "validation_to_datapoints",
+    "WorldV3ProjectionManifest",
+    "WorldV3ProjectionNode",
+    "WorldV3ProjectionWorker",
+    "bounded_world_v3_traversal",
+    "build_world_v3_projection",
+    "compare_world_v3_projection_drift",
+    "populate_world_v3_projection",
+    "world_v3_projection_to_datapoints",
+    "write_world_v3_projection_manifest",
 ]

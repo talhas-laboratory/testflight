@@ -1,0 +1,16 @@
+module_id: world://ontology/module/brand-world/governance-decisions
+version: 3.0.0-candidate
+status: candidate
+imports: [world://ontology/module/brand-world/identity, world://ontology/module/brand-world/offering, world://ontology/module/brand-world/expression-manifestation]
+competency_questions:
+  - Can an approval right be separated from a runtime credential and an approved decision?
+  - Can a claim permission restrict manifestation without being mistaken for supporting evidence?
+evidence_basis: [proposal:brand-world-v3-migration]
+entity_types:
+  - {id: world://ontology/brand-world/type/Policy, label: Policy, definition: "A governing rule constraining a Brand decision, claim, manifestation, or action.", examples: ["A claim-approval policy."], counterexamples: ["A source excerpt."]}
+  - {id: world://ontology/brand-world/type/DecisionRight, label: Decision right, definition: "A scoped authority role permitted to make a named class of Brand decision.", examples: ["Founder approval right for identity changes."], counterexamples: ["A bearer token."]}
+  - {id: world://ontology/brand-world/type/ClaimPermission, label: Claim permission, definition: "A scoped permission defining whether and how a claim may be manifested.", examples: ["A product attribute may be repeated after verification."], counterexamples: ["Evidence that the attribute is true."]}
+  - {id: world://ontology/brand-world/type/StrategicDecision, label: Strategic decision, definition: "An authorized choice among alternatives that changes a Brand's intended direction.", examples: ["Select a positioning direction."], counterexamples: ["An unreviewed model output."]}
+relationship_types:
+  - {id: world://ontology/brand-world/relation/governs, label: governs, definition: "A Policy governs an Offering, Artifact, claim, or StrategicDecision in scope.", family: governance, source_type_ids: [world://ontology/brand-world/type/Policy], target_type_ids: [world://ontology/brand-world/type/Offering, world://ontology/brand-world/type/Artifact, world://ontology/brand-world/type/StrategicDecision], examples: ["A policy governs an artifact claim."], counterexamples: ["An artifact governs a policy."]}
+  - {id: world://ontology/brand-world/relation/permits-claim, label: permits claim, definition: "A ClaimPermission permits a bounded claim manifestation for an Offering or Artifact.", family: governance, source_type_ids: [world://ontology/brand-world/type/ClaimPermission], target_type_ids: [world://ontology/brand-world/type/Offering, world://ontology/brand-world/type/Artifact], examples: ["A permission permits a product claim in an artifact."], counterexamples: ["A product claim is evidence by permission alone."]}

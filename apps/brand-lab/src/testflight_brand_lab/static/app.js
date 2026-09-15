@@ -3,16 +3,21 @@ let graphZoom = 1;
 let activeGraphMode = 'brand';
 let graphScene = { mode: 'brand', nodes: [], edges: [] };
 let graphCanvasBound = false;
+let atlasDepth = 0;
+let atlasDomain = 'public-core';
+let atlasSelectedId = '';
 const $ = (selector) => document.querySelector(selector);
 const plural = (count, word) => `${count} ${count === 1 ? word : (word === 'entity' ? 'entities' : `${word}s`)}`;
 const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (char) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[char]));
 
 async function initialise() {
   snapshot = await fetch('/api/snapshot').then((response) => response.json());
-  $('#provenance').innerHTML = `Canonical snapshot<br>${plural(snapshot.entities.length, 'entity')} · ${plural(snapshot.relationships.length, 'relationship')}<br><span>${escapeHtml(snapshot.provenance.sourceHash.slice(0, 12))}</span>`;
+  atlasSelectedId = snapshot.workspace.brandId;
+  const coverage = snapshot.atlas?.coverage;
+  $('#provenance').innerHTML = `Read-only workspace projection<br>${plural(coverage?.nodeCount || snapshot.entities.length, 'record')} · ${plural(coverage?.edgeCount || snapshot.relationships.length, 'relationship')}<br><span>${escapeHtml(snapshot.provenance.sourceHash.slice(0, 12))}</span>`;
   for (const context of snapshot.contexts) $('#context-filter').insertAdjacentHTML('beforeend', `<option value="${context.id}">${escapeHtml(context.purpose || context.id)}</option>`);
   populateWorldControls();
-  renderMap(); renderGraph(); renderVisualLanguage(); renderLearningLoop(); bindEvents();
+  renderAtlas(); renderMap(); renderGraph(); renderVisualLanguage(); renderLearningLoop(); bindEvents();
 }
 
 function populateWorldControls() {
@@ -41,6 +46,102 @@ function shown(entity) {
   const {search,context,perspective} = filters();
   const content = `${entity.label} ${entity.description} ${entity.id}`.toLowerCase();
   return (!search || content.includes(search)) && (!context || (entity.context_ids || []).includes(context)) && (!perspective || entity.perspective === perspective);
+}
+
+function atlasNode(id) { return snapshot.atlas.nodes.find((item) => item.id === id); }
+function atlasEdgesFor(id) { return snapshot.atlas.edges.filter((edge) => edge.sourceId === id || edge.targetId === id); }
+function atlasDomainRecord(id) { return snapshot.atlas.domains.find((item) => item.id === id); }
+function atlasStatusClass(status = '') {
+  const normalized = String(status).toLowerCase();
+  if (normalized.includes('held') || normalized.includes('partial') || normalized.includes('hypoth')) return 'held';
+  if (normalized.includes('accepted') || normalized.includes('observed') || normalized.includes('reported') || normalized.includes('active')) return 'observed';
+  return 'proposed';
+}
+function atlasFilteredNodes() {
+  const query = $('#search').value.toLowerCase().trim();
+  const nodes = snapshot.atlas.nodes.filter((node) => atlasDomain === 'all' || node.domain === atlasDomain);
+  if (!query) return nodes;
+  return nodes.filter((node) => `${node.label} ${node.id} ${node.recordType} ${node.description} ${JSON.stringify(node.payload)}`.toLowerCase().includes(query));
+}
+function setAtlasDepth(depth) {
+  atlasDepth = Number(depth);
+  document.querySelectorAll('[data-atlas-depth]').forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.atlasDepth) === atlasDepth)));
+  renderAtlas();
+}
+function setAtlasDomain(domain, descend = false) {
+  atlasDomain = domain;
+  if (descend && atlasDepth < 2) atlasDepth = 2;
+  const first = atlasFilteredNodes()[0];
+  if (first && !atlasFilteredNodes().some((node) => node.id === atlasSelectedId)) atlasSelectedId = first.id;
+  renderAtlas();
+}
+function selectAtlasNode(id, descend = true) {
+  atlasSelectedId = id;
+  const node = atlasNode(id);
+  if (node) atlasDomain = node.domain;
+  if (descend && atlasDepth < 3) atlasDepth = 3;
+  renderAtlas();
+}
+function atlasDomainNav() {
+  const query = $('#search').value.toLowerCase().trim();
+  const countFor = (id) => snapshot.atlas.nodes.filter((node) => {
+    if (node.domain !== id) return false;
+    return !query || `${node.label} ${node.id} ${node.recordType} ${node.description} ${JSON.stringify(node.payload)}`.toLowerCase().includes(query);
+  }).length;
+  const allCount = snapshot.atlas.domains.reduce((total, domain) => total + countFor(domain.id), 0);
+  $('#atlas-domain-nav').innerHTML = `<button type="button" data-atlas-domain="all" aria-pressed="${atlasDomain === 'all'}"><span>All records</span><b>${allCount}</b></button>${snapshot.atlas.domains.map((domain) => `<button type="button" data-atlas-domain="${escapeHtml(domain.id)}" aria-pressed="${atlasDomain === domain.id}"><span>${escapeHtml(domain.label)}</span><b>${countFor(domain.id)}</b></button>`).join('')}`;
+  document.querySelectorAll('[data-atlas-domain]').forEach((button) => button.addEventListener('click', () => setAtlasDomain(button.dataset.atlasDomain, true)));
+}
+function worldOverview() {
+  const domains = snapshot.atlas.domains;
+  return `<div class="atlas-world" role="img" aria-label="Biotic world surrounded by ${domains.length} bounded semantic domains">
+    <div class="atlas-orbit atlas-orbit-a"></div><div class="atlas-orbit atlas-orbit-b"></div><div class="atlas-crosshair x"></div><div class="atlas-crosshair y"></div>
+    <button type="button" class="atlas-nucleus" data-atlas-node="${escapeHtml(snapshot.workspace.brandId)}"><small>WORLD</small><strong>Biotic</strong><span>${snapshot.atlas.coverage.nodeCount} records<br>${snapshot.atlas.coverage.edgeCount} relations</span></button>
+    ${domains.map((domain, index) => { const angle = (index / domains.length) * Math.PI * 2 - Math.PI / 2; const left = 50 + Math.cos(angle) * 39; const top = 50 + Math.sin(angle) * 41; return `<button type="button" class="atlas-orbit-node" style="left:${left}%;top:${top}%" data-atlas-domain-jump="${escapeHtml(domain.id)}"><span>${String(index + 1).padStart(2, '0')}</span><strong>${escapeHtml(domain.label)}</strong><small>${domain.nodeCount} / ${domain.edgeCount}</small></button>`; }).join('')}
+  </div>`;
+}
+function domainOverview() {
+  return `<div class="atlas-planes">${snapshot.atlas.domains.map((domain, index) => `<button type="button" class="atlas-plane" data-atlas-domain-jump="${escapeHtml(domain.id)}" style="--plane:${index}"><span class="atlas-plane-index">0${index + 1}</span><span><strong>${escapeHtml(domain.label)}</strong><small>${escapeHtml(domain.description)}</small></span><span class="atlas-plane-count">${domain.nodeCount}<small>records</small>${domain.edgeCount}<small>relations</small></span></button>`).join('')}</div>`;
+}
+function recordOverview() {
+  const nodes = atlasFilteredNodes();
+  const domain = atlasDomain === 'all' ? {label:'All world records', description:'Cross-container search view. Boundaries remain visible on every record.'} : atlasDomainRecord(atlasDomain);
+  return `<div class="atlas-record-head"><div><span class="eyebrow">${escapeHtml(domain?.label || atlasDomain)}</span><p>${escapeHtml(domain?.description || '')}</p></div><strong>${nodes.length}</strong></div><div class="atlas-record-grid">${nodes.length ? nodes.map((node) => `<button type="button" class="atlas-record ${atlasStatusClass(node.status)}" data-atlas-node="${escapeHtml(node.id)}"><span class="atlas-record-type">${escapeHtml(node.recordType)}</span><strong>${escapeHtml(node.label)}</strong><small>${escapeHtml(node.status)} · ${escapeHtml(node.domain)}</small></button>`).join('') : '<div class="atlas-empty"><strong>No matching records</strong><span>Change the search or choose another domain.</span></div>'}</div>`;
+}
+function relationOverview() {
+  const selected = atlasNode(atlasSelectedId) || atlasFilteredNodes()[0] || atlasNode(snapshot.workspace.brandId);
+  if (!selected) return '<div class="atlas-empty"><strong>No record selected</strong></div>';
+  const relations = atlasEdgesFor(selected.id);
+  const neighbors = new Map();
+  relations.forEach((edge) => { const other = atlasNode(edge.sourceId === selected.id ? edge.targetId : edge.sourceId); if (other) neighbors.set(other.id, other); });
+  return `<div class="relation-field"><div class="relation-focus ${atlasStatusClass(selected.status)}"><span>${escapeHtml(selected.recordType)}</span><strong>${escapeHtml(selected.label)}</strong><small>${escapeHtml(selected.id)}</small></div><div class="relation-list">${relations.length ? relations.map((edge) => { const outgoing = edge.sourceId === selected.id; const otherId = outgoing ? edge.targetId : edge.sourceId; const other = atlasNode(otherId); return `<button type="button" class="relation-row ${atlasStatusClass(edge.status)}" data-atlas-node="${escapeHtml(otherId)}"><span class="relation-direction">${outgoing ? 'OUT' : 'IN'}</span><span class="relation-name">${escapeHtml(edge.relationshipType.replaceAll('_', ' '))}<small>${escapeHtml(edge.status)} · ${escapeHtml(edge.domain)}</small></span><strong>${escapeHtml(other?.label || otherId)}</strong></button>`; }).join('') : '<div class="atlas-empty"><strong>No explicit relationships</strong><span>The record remains available as an isolated source-backed item.</span></div>'}</div><p class="relation-caption">${relations.length} direct connections · ${neighbors.size} neighboring records · no inferred path expansion</p></div>`;
+}
+function evidenceOverview() {
+  const selected = atlasNode(atlasSelectedId) || atlasNode(snapshot.workspace.brandId);
+  const direct = atlasEdgesFor(selected.id);
+  const evidenceEdges = direct.filter((edge) => edge.relationshipType === 'supported_by' || edge.relationshipType === 'derived_from');
+  const evidenceNodes = evidenceEdges.map((edge) => atlasNode(edge.sourceId === selected.id ? edge.targetId : edge.sourceId)).filter(Boolean);
+  const limitations = selected.payload?.limitations || selected.payload?.gaps || selected.payload?.uncertainty;
+  const limitationList = Array.isArray(limitations) ? limitations : (limitations ? [limitations] : []);
+  return `<div class="evidence-trace"><article><span class="trace-index">01 / RECORD</span><strong>${escapeHtml(selected.label)}</strong><small>${escapeHtml(selected.id)}</small><p>${escapeHtml(selected.description || 'No prose description is recorded for this item.')}</p></article><i aria-hidden="true">↓</i><article><span class="trace-index">02 / SOURCE LOCUS</span><strong>${escapeHtml(selected.sourcePath)}</strong><small>${escapeHtml(selected.domain)} · ${escapeHtml(selected.status)}</small><p>The atlas points back to this canonical workspace record; it does not replace it.</p></article><i aria-hidden="true">↓</i><article class="trace-evidence"><span class="trace-index">03 / DIRECT EVIDENCE</span>${evidenceNodes.length ? evidenceNodes.map((node) => `<button type="button" data-atlas-node="${escapeHtml(node.id)}"><strong>${escapeHtml(node.label)}</strong><small>${escapeHtml(node.id)}</small></button>`).join('') : '<p>No direct evidence edge is recorded at this layer.</p>'}</article><article class="trace-limits"><span class="trace-index">04 / LIMITS</span>${limitationList.length ? `<ul>${limitationList.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : '<p>No explicit limitation is recorded on this item. Absence is not proof of completeness.</p>'}</article></div>`;
+}
+function atlasSelection() {
+  const selected = atlasNode(atlasSelectedId);
+  if (!selected) { $('#atlas-selection').innerHTML = '<p>Select a record to inspect it.</p>'; return; }
+  const payloadEntries = Object.entries(selected.payload || {}).filter(([key]) => !['description','summary','limitations'].includes(key)).slice(0, 12);
+  $('#atlas-selection').innerHTML = `<p class="eyebrow">Selected record</p><h3>${escapeHtml(selected.label)}</h3><div class="metadata"><span class="pill">${escapeHtml(selected.recordType)}</span><span class="pill">${escapeHtml(selected.domain)}</span><span class="pill ${atlasStatusClass(selected.status) === 'held' ? 'warn' : ''}">${escapeHtml(selected.status)}</span></div><p>${escapeHtml(selected.description || 'This structural record has no separate prose description.')}</p><p class="mono">${escapeHtml(selected.id)}<br>${escapeHtml(selected.sourcePath)}</p><details><summary>Inspect source fields</summary><dl>${payloadEntries.map(([key,value]) => `<div><dt>${escapeHtml(key)}</dt><dd>${escapeHtml(typeof value === 'string' ? value : JSON.stringify(value))}</dd></div>`).join('')}</dl></details>`;
+}
+function renderAtlas() {
+  if (!snapshot?.atlas) return;
+  document.querySelectorAll('[data-atlas-depth]').forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.atlasDepth) === atlasDepth)));
+  const coverage = snapshot.atlas.coverage;
+  $('#atlas-summary').innerHTML = `${coverage.complete ? 'Every indexed structured record is connected.' : `${coverage.danglingEdgeIds.length} unresolved connections.`}<br><span>${coverage.nodeCount} records across ${snapshot.atlas.domains.length} bounded domains; ${coverage.edgeCount} directed relationships.</span>`;
+  const renderers = [worldOverview, domainOverview, recordOverview, relationOverview, evidenceOverview];
+  $('#atlas-canvas').innerHTML = renderers[atlasDepth]();
+  $('#atlas-status').textContent = `${String(atlasDepth).padStart(2, '0')} / ${['whole world','semantic domains','source records','direct relations','evidence trace'][atlasDepth]} · ${atlasDomain === 'all' ? 'all boundaries' : atlasDomain}`;
+  atlasDomainNav(); atlasSelection();
+  document.querySelectorAll('[data-atlas-domain-jump]').forEach((button) => button.addEventListener('click', () => setAtlasDomain(button.dataset.atlasDomainJump, true)));
+  document.querySelectorAll('[data-atlas-node]').forEach((button) => button.addEventListener('click', () => selectAtlasNode(button.dataset.atlasNode)));
 }
 function renderMap() {
   const types = Object.keys(snapshot.ontology.typeCounts);
@@ -263,7 +364,8 @@ function renderAgentResult(result) {
 }
 
 function bindEvents() {
-  ['search','context-filter','perspective-filter'].forEach((id) => $(('#' + id)).addEventListener(id === 'search' ? 'input' : 'change', () => { renderMap(); renderGraph(); }));
+  ['search','context-filter','perspective-filter'].forEach((id) => $(('#' + id)).addEventListener(id === 'search' ? 'input' : 'change', () => { if (id === 'search' && $('#search').value.trim()) { atlasDomain = 'all'; if (atlasDepth < 2) atlasDepth = 2; } renderAtlas(); renderMap(); renderGraph(); }));
+  document.querySelectorAll('[data-atlas-depth]').forEach((button) => button.addEventListener('click', () => setAtlasDepth(button.dataset.atlasDepth)));
   document.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click', () => { document.querySelectorAll('.tab,.view').forEach((item) => item.classList.remove('active')); tab.classList.add('active'); $(`#${tab.dataset.view}-view`).classList.add('active'); if (tab.dataset.view === 'graph') renderGraph(); }));
   $('#close-inspector').addEventListener('click', () => $('#inspector').classList.remove('open'));
   document.querySelectorAll('[data-graph-mode]').forEach((button) => button.addEventListener('click', () => { activeGraphMode = button.dataset.graphMode; document.querySelectorAll('[data-graph-mode]').forEach((item) => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-selected', String(active)); }); graphZoom = 1; renderGraph(); }));

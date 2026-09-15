@@ -1,0 +1,35 @@
+{
+  "accepted_records": 0,
+  "bundle_id": "biotic-brand-world-v3-review-bundle",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "sha256:dd46a5b0db5bf8e759d406d4eec01a0e3ab8039224c418466840142b7647d9d2"
+    },
+    {
+      "path": "authority-review-proposal.json",
+      "sha256": "sha256:70ea399dacdba953cb45beea5cac6c43a50f5695ed050377e00678d3c8064fa9"
+    },
+    {
+      "path": "contexts.json",
+      "sha256": "sha256:0beef6f805f86fb002584adc9d02a2815b733521e20587076600455978c70bde"
+    },
+    {
+      "path": "immutable-legacy-source-snapshot.json",
+      "sha256": "sha256:57367fde24b5d6c222fdfe7bf3b64ac9d34c23ae66359e6f8dea5127c627d365"
+    },
+    {
+      "path": "legacy-disposition-ledger.json",
+      "sha256": "sha256:dccf40f9080e9c8862c26264f3ab319628086b6f0219c724bdabc6418d23b58d"
+    },
+    {
+      "path": "migration-integrity-report.json",
+      "sha256": "sha256:392801c23d232821a22652e6c095c3ae015fdbdcb4b7423bca6eea6542c12daf"
+    },
+    {
+      "path": "proposed-public-research-branch.json",
+      "sha256": "sha256:e2277a08a19ac421838b19cfcc7911917153cdeecef3e3b9b6512fb85cf0d095"
+    }
+  ],
+  "status": "proposal_only"
+}

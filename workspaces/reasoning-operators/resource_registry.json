@@ -157,6 +157,10 @@
     {"category": "creative_project_binding", "source_url": "repo://reasoning/operators/creative-project-binding.yaml"},
     {"category": "creative_field_projection", "source_url": "repo://reasoning/operators/creative-field-projection.yaml"},
     {"category": "creative_connector_packet", "source_url": "repo://reasoning/operators/creative-connector-packet.yaml"},
-    {"category": "creative_output_evaluation", "source_url": "repo://reasoning/operators/creative-output-evaluation.yaml"}
+    {"category": "creative_output_evaluation", "source_url": "repo://reasoning/operators/creative-output-evaluation.yaml"},
+    {"category": "concept_extraction", "source_url": "repo://reasoning/operators/concept-extraction.yaml"},
+    {"category": "theory_synthesis", "source_url": "repo://reasoning/operators/theory-synthesis.yaml"},
+    {"category": "formation_projection", "source_url": "repo://reasoning/operators/formation-projection.yaml"},
+    {"category": "formation_trace", "source_url": "repo://reasoning/operators/formation-trace.yaml"}
   ]
 }

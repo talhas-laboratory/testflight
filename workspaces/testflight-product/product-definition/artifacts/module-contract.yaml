@@ -12,7 +12,7 @@ initial_product:
   id: product:testflight-integration-laboratory
   name: Testflight integration laboratory
   character: editorial_intelligence_with_operational_clarity
-  surfaces: [surface:brand-intake, surface:brand-lab, surface:creative-studio]
+  surfaces: [surface:brand-intake, surface:brand-lab, surface:brand-world-canvas, surface:creative-studio]
 product_direction_branches:
   - product:founder-brand-world
   - offer:campaign-decision-intelligence

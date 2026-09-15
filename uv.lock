@@ -16,6 +16,7 @@ members = [
     "testflight-adapter-sqlite-workflow-runtime",
     "testflight-brand",
     "testflight-brand-lab",
+    "testflight-brand-world",
     "testflight-content",
     "testflight-core",
     "testflight-creative-field",
@@ -24,6 +25,7 @@ members = [
     "testflight-semantic",
     "testflight-workflow-runtime",
     "testflight-workflows",
+    "testflight-world",
 ]
 
 [[package]]
@@ -2548,6 +2550,7 @@ dependencies = [
     { name = "testflight-core" },
     { name = "testflight-creative-field" },
     { name = "testflight-semantic" },
+    { name = "testflight-world" },
 ]
 
 [package.optional-dependencies]
@@ -2563,6 +2566,7 @@ requires-dist = [
     { name = "testflight-core", editable = "packages/testflight-core" },
     { name = "testflight-creative-field", editable = "packages/testflight-creative-field" },
     { name = "testflight-semantic", editable = "packages/testflight-semantic" },
+    { name = "testflight-world", editable = "packages/testflight-world" },
 ]
 provides-extras = ["cognee"]
 
@@ -2624,6 +2628,7 @@ dependencies = [
     { name = "testflight-brand" },
     { name = "testflight-creative-field" },
     { name = "testflight-semantic" },
+    { name = "testflight-world" },
 ]
 
 [package.metadata]
@@ -2631,6 +2636,7 @@ requires-dist = [
     { name = "testflight-brand", editable = "packages/testflight-brand" },
     { name = "testflight-creative-field", editable = "packages/testflight-creative-field" },
     { name = "testflight-semantic", editable = "packages/testflight-semantic" },
+    { name = "testflight-world", editable = "packages/testflight-world" },
 ]
 
 [[package]]
@@ -2679,6 +2685,17 @@ requires-dist = [
     { name = "testflight-brand", editable = "packages/testflight-brand" },
     { name = "testflight-semantic", editable = "packages/testflight-semantic" },
 ]
+
+[[package]]
+name = "testflight-brand-world"
+version = "0.1.0"
+source = { editable = "apps/brand-world" }
+dependencies = [
+    { name = "testflight-brand" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "testflight-brand", editable = "packages/testflight-brand" }]
 
 [[package]]
 name = "testflight-content"
@@ -2800,6 +2817,21 @@ dependencies = [
 requires-dist = [
     { name = "pydantic", specifier = ">=2.10,<3" },
     { name = "pyyaml", specifier = ">=6.0,<7" },
+]
+
+[[package]]
+name = "testflight-world"
+version = "0.1.0"
+source = { editable = "packages/testflight-world" }
+dependencies = [
+    { name = "pydantic" },
+    { name = "testflight-semantic" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "pydantic", specifier = ">=2.10,<3" },
+    { name = "testflight-semantic", editable = "packages/testflight-semantic" },
 ]
 
 [[package]]

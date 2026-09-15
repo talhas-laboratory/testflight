@@ -10,5 +10,6 @@ sources:
   - repo://docs/decisions/0005-moodboard-creative-field-profile.md
   - repo://docs/decisions/0006-content-substrate-and-world-compilation.md
   - repo://docs/decisions/0007-concept-lab-formation-workspace.md
+  - repo://docs/decisions/0008-brand-world-v3-evolutionary-replacement.md
   - repo://docs/workboards/moodboard-creative-field-implementation/DECISIONS.md
   - repo://docs/plans/2026-09-04-testflight-product-workspace-design.md

@@ -24,6 +24,9 @@ retrieval, start with retrieval/reasoning, local/global, and evidence/truth.
 For Creative Field work, route observation, reference interpretation, field
 synthesis, review/versioning, binding, projection, connector packets and output
 evaluation to the corresponding `world://operator/creative/*` contract.
+For Concept Lab work, route extraction, theory synthesis, formation projection,
+and trace reconstruction to the corresponding `world://operator/concept-lab/*`
+contract.
 
 ## Source rules
 

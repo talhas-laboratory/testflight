@@ -1,0 +1,15 @@
+id: world://ontology/brand-world
+version: 3.0.0-candidate
+status: candidate
+vocabulary: vocabulary.yaml
+modules:
+  - modules/identity.yaml
+  - modules/organizational-reality.yaml
+  - modules/offering.yaml
+  - modules/relationships.yaml
+  - modules/environment.yaml
+  - modules/expression-manifestation.yaml
+  - modules/governance-decisions.yaml
+  - modules/evolution-learning.yaml
+projection_manifests:
+  - projections/eight-systems.yaml

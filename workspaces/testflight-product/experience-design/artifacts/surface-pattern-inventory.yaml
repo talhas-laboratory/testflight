@@ -12,9 +12,15 @@ surfaces:
   - id: surface:brand-lab
     source_refs: [repo://apps/brand-lab/src/testflight_brand_lab/static/index.html, repo://apps/brand-lab/src/testflight_brand_lab/static/styles.css, repo://apps/brand-lab/src/testflight_brand_lab/static/app.js]
     lifecycle: implemented_local_read_only
-    views: [brand_map, relationship_graph, visual_language, agent_context, learning_loop, inspector]
-    patterns: [search_and_filter, topology_switch, evidence_inspection, context_simulation, hypothesis_outcome_separation]
+    views: [world_atlas, entity_index, relationship_graph, visual_language, agent_context, learning_loop, inspector]
+    patterns: [progressive_disclosure, boundary_aware_complete_graph, depth_navigation, search_and_filter, topology_switch, evidence_inspection, context_simulation, hypothesis_outcome_separation]
     observed_character: editorial_analytical_dense
+  - id: surface:brand-world-canvas
+    source_refs: [repo://apps/brand-world/src/testflight_brand_world/static/index.html, repo://apps/brand-world/src/testflight_brand_world/static/styles.css, repo://apps/brand-world/src/testflight_brand_world/static/app.js]
+    lifecycle: implemented_local_read_only
+    views: [canonical_world, ontology_subsystem, record_relations, specimen_detail]
+    patterns: [semantic_zoom, deterministic_graph_layout, local_relation_reveal, mounted_detail_card, pan_and_zoom, evidence_inspection]
+    observed_character: scientific_editorial_spatial
   - id: surface:creative-studio
     source_refs: [repo://apps/creative-studio/src/testflight_creative_studio/static/index.html, repo://apps/creative-studio/src/testflight_creative_studio/static/styles.css, repo://apps/creative-studio/src/testflight_creative_studio/static/app.js]
     lifecycle: implemented_local_write_capable
@@ -32,8 +38,8 @@ shared_observed_patterns:
 drift_from_active_token_projection:
   status: open
   findings:
-    - existing_apps_do_not_import_packages/testflight-design-language/tokens.css
+    - brand_intake_and_creative_studio_do_not_import_packages/testflight-design-language/tokens.css
+    - brand_lab_imports_the_active_tokens_but_retains_scoped_atlas_palette_exceptions
     - existing_surfaces_use_distinct_accent_palettes_including_blue_coral_and_lime
     - shared_patterns_are_conceptually_aligned_but_not_mechanically_enforced
   remediation: migrate_each_surface_through_visual_regression_and_accessibility_review
-

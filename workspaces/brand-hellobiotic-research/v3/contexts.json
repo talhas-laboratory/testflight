@@ -1,0 +1,46 @@
+[
+  {
+    "artifact_type_ids": [
+      "product-landing-page",
+      "product-detail-page",
+      "educational-content"
+    ],
+    "audience_ids": [
+      "entity:biotic:audience:natural-deodorant-evaluators"
+    ],
+    "branch_id": "public-research-v3",
+    "brand_id": "entity:biotic",
+    "brand_system_id": null,
+    "campaign_or_occasion_ids": [
+      "product-education",
+      "deodorant-consideration"
+    ],
+    "channel_ids": [
+      "website",
+      "product-page"
+    ],
+    "context_id": "world://context/sha256:7da626808a07dc42127606b80646dfb95d3debe2ee66b15b4fdc342841e35246",
+    "dimensions": {
+      "geography": "availability_not_independently_verified",
+      "perspective_scope": [
+        "intended",
+        "reported",
+        "observed",
+        "inferred"
+      ],
+      "purpose": "Current public deodorant product-education context.",
+      "source_context_lineage": "CTX-HELLOBIOTIC-DEODORANT-CURRENT"
+    },
+    "locale": null,
+    "offering_id": "entity:biotic:offering:brightening-probiotic-deodorant",
+    "portfolio_id": null,
+    "valid_time": {
+      "from_semantics": "unknown",
+      "from_time": null,
+      "precision": "day",
+      "source_timezone": null,
+      "to_semantics": "known",
+      "to_time": "2026-09-01T00:00:00Z"
+    }
+  }
+]

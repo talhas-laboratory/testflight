@@ -1,0 +1,16 @@
+module_id: world://ontology/module/brand-world/identity
+version: 3.0.0-candidate
+status: candidate
+imports: []
+competency_questions:
+  - Can a company principle remain distinct from an observed statement about its public expression?
+  - Can a stated purpose persist while a product, campaign, or expression changes?
+evidence_basis: [proposal:brand-world-v3-migration]
+entity_types:
+  - {id: world://ontology/brand-world/type/Brand, label: Brand, definition: "An identity-bearing organization or commercial world with continuity across time.", examples: ["Biotic"], counterexamples: ["A sentence about Biotic."]}
+  - {id: world://ontology/brand-world/type/Purpose, label: Purpose, definition: "A declared reason for a Brand's continuing activity.", examples: ["A purpose statement approved by a founder."], counterexamples: ["A campaign objective."]}
+  - {id: world://ontology/brand-world/type/Principle, label: Principle, definition: "A durable normative commitment that constrains Brand decisions or manifestations.", examples: ["Do not overstate health claims."], counterexamples: ["A temporary visual trend."]}
+  - {id: world://ontology/brand-world/type/Belief, label: Belief, definition: "A held proposition that informs a Brand's choices without being automatically external fact.", examples: ["A founder's belief about daily care."], counterexamples: ["A verified measurement."]}
+relationship_types:
+  - {id: world://ontology/brand-world/relation/has-purpose, label: has purpose, definition: "A Brand adopts a stated Purpose in a bounded context.", family: identity, source_type_ids: [world://ontology/brand-world/type/Brand], target_type_ids: [world://ontology/brand-world/type/Purpose], examples: ["Biotic has an approved purpose."], counterexamples: ["A purpose owns a Brand."]}
+  - {id: world://ontology/brand-world/relation/commits-to, label: commits to, definition: "A Brand or Decision commits to a Principle.", family: governance, source_type_ids: [world://ontology/brand-world/type/Brand], target_type_ids: [world://ontology/brand-world/type/Principle], examples: ["Biotic commits to claim restraint."], counterexamples: ["A public observation commits to a principle."]}

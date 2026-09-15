@@ -242,7 +242,9 @@ export class JsonProcessWorldViewResolver implements WorldViewResolver {
       child.once("error", reject);
       child.once("close", (code) => {
         if (code !== 0) {
-          reject(new Error(`world-view resolver exited ${code}: ${stderr.trim()}`));
+          reject(
+            new Error(`world-view resolver exited ${code}: ${stderr.trim()}`),
+          );
           return;
         }
         try {

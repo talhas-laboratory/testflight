@@ -1,0 +1,36 @@
+id: world://ontology/brand-world/vocabulary
+version: 3.0.0-candidate
+status: candidate
+constitutional_records:
+  - {id: entity, meaning: A referent with identity continuity.}
+  - {id: state, meaning: A condition bounded by subjects, context, valid time, and known time.}
+  - {id: event, meaning: A bounded occurrence with named participants and evidence.}
+  - {id: relation, meaning: A typed connection whose participants have named roles.}
+  - {id: claim, meaning: A proposition with epistemic kind, perspective, scope, and evidence roles.}
+  - {id: source, meaning: An origin that can be revisited under an explicit content policy.}
+  - {id: evidence, meaning: A bounded source locus or measurement with limitations and integrity.}
+  - {id: decision, meaning: An authorized choice among alternatives and its affected records.}
+supporting_contracts:
+  - {id: context, owner: testflight-semantic, meaning: Applicability across workspace, entity, perspective, locale, situation, and time.}
+  - {id: derivation, owner: testflight-semantic, meaning: Versioned production lineage and evaluator results.}
+  - {id: authority-grant, owner: testflight-semantic, meaning: Who may perform a capability over a bounded scope and time.}
+  - {id: branch, owner: testflight-semantic, meaning: Non-destructive evolution with explicit parentage and conflict assessment.}
+  - {id: dependency, owner: testflight-semantic, meaning: Why an upstream change can affect a downstream record or artifact.}
+work_and_intelligence_objects:
+  - {id: route-definition, owner: testflight-context-intelligence, canonical_world_record: false}
+  - {id: route-evaluation, owner: testflight-context-intelligence, canonical_world_record: false}
+  - {id: context-packet, owner: testflight-context-intelligence, canonical_world_record: false}
+  - {id: context-run-trace, owner: testflight-context-intelligence, canonical_world_record: false}
+  - {id: task, owner: testflight-work, canonical_world_record: false}
+  - {id: artifact, owner: owning-domain-or-testflight-work, canonical_world_record: false}
+projection_terms:
+  - {id: identity, canonical_kind: false}
+  - {id: expression, canonical_kind: false}
+  - {id: offering, canonical_kind: false}
+  - {id: experience, canonical_kind: false, maps_to: relationship-frame}
+  - {id: perception, canonical_kind: false, maps_to: scoped-claim-by-perspective}
+  - {id: governance, canonical_kind: false}
+  - {id: environment, canonical_kind: false}
+  - {id: event, canonical_kind: true}
+forbidden_generic_fields: [meaning, summary, assertion, metadata]
+valid_non_success_outcomes: [hold, branch, ask, partial, no_hit]
